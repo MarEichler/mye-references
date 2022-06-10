@@ -1,0 +1,51 @@
+
+# RMD 
+
+## Output and Pathways  
+
+- [R Markdown Cookbook | 16.6 The working directory for R code chunks](https://bookdown.org/yihui/rmarkdown-cookbook/working-directory.html) 
+- [Stack Overflow | Run R markdown (.Rmd) from inside other R script to produce HTML - Stack Overflow](https://stackoverflow.com/questions/65921907/run-r-markdown-rmd-from-inside-other-r-script-to-produce-html)
+- [RStudio Community | save rmarkdown output in different folder - R Markdown](https://community.rstudio.com/t/save-rmarkdown-output-in-different-folder/68192/4)
+
+## Style 
+
+- [Stack Overflow | R markdown: how to change style with internal css?](https://stackoverflow.com/questions/34022558/r-markdown-how-to-change-style-with-internal-css)
+- [Stack Overflow | rmarkdown: both portrait and landscape layout in a single PDF](https://stackoverflow.com/questions/25849814/rstudio-rmarkdown-both-portrait-and-landscape-layout-in-a-single-pdf)
+- [R Markdown Cookbook | 4.4 Unnumbered sections](https://bookdown.org/yihui/rmarkdown-cookbook/unnumbered-sections.html)
+- [Stack Overflow | Increase width of entire HTML Rmarkdown output](https://stackoverflow.com/questions/34906002/increase-width-of-entire-html-rmarkdown-output)
+- [Steve Sque | Symbols in LaTeX and HTML](https://www.stevesque.com/symbols/)
+- [RStudio Community | Copy to clipboard buttons for code blocks - R Markdown](https://community.rstudio.com/t/copy-to-clipboard-buttons-for-code-blocks/45367)
+
+
+
+## Images 
+
+### Markdown  
+
+`![this is Daffodil and Blossom](img/Peegs.jpg)`
+![this is Daffodil and Blossom](img/Peegs.jpg)
+
+Re sizing images in Markdown is required if you are knitting to a pdf - because you can't use HTML code.  
+
+[Tip and tricks for workign wtih images and figures in R Markdown documents - hollie@zevross.com](http://zevross.com/blog/2017/06/19/tips-and-tricks-for-working-with-images-and-figures-in-r-markdown-documents/)
+
+Adjust the `out.width` and `out.height` in the R chunk options
+
+```
+{r, out.width="50%"}  
+img <- "img/Peegs.jpg" #path to image  
+knitr::include_graphics(img) #in the knitr package   
+```
+
+```{r, echo=FALSE, out.width="50%"}
+img <- "img/Peegs.jpg" #path to image 
+knitr::include_graphics(img) #in the knitr package 
+```
+
+###  HTML in markdown  
+In my opinion, HTML is a lot easier to use for images options.  
+
+[HTML Images](https://www.w3schools.com/html/html_images.asp)
+
+`<img src="img/Peegs.jpg" alt="this is Daffodil and Blossom" width="50%"> `  
+<img src="img/Peegs.jpg" alt="this is Daffodil and Blossom" width="50%"> 

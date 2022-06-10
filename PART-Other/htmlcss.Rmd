@@ -1,0 +1,9 @@
+
+# HTML/CSS 
+
+## Links 
+
+- [W3 Schools | HTML Color Names](https://www.w3schools.com/colors/colors_names.asp)
+- [Hexadecimal color code for transparency](https://gist.github.com/lopspower/03fb1cc0ac9f32ef38f4)
+
+

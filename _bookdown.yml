@@ -1,6 +1,26 @@
-book_filename: "bookdown-demo"
+book_filename: "mye-references"
 output_dir: "docs"
-language:
-  ui:
-    chapter_name: "Chapter "
 delete_merged_file: true
+
+rmd_files: 
+- "index.Rmd"
+
+- "PART-Other/resources.Rmd"
+
+- "PART-R/AAA.Rmd"
+- "PART-R/datamanage.Rmd"
+- "PART-R/dataviz.Rmd"
+- "PART-R/dates.Rmd"
+- "PART-R/functions.Rmd"
+- "PART-R/im-ex-port.Rmd"
+- "PART-R/regex.Rmd"
+- "PART-R/versions.Rmd"
+
+
+- "PART-Other/AAA.Rmd"
+- "PART-Other/accessibility.Rmd"
+- "PART-Other/rmd.Rmd"
+- "PART-Other/htmlcss.Rmd"
+- "PART-Other/latex.Rmd"
+
+

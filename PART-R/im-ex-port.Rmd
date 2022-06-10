@@ -1,0 +1,113 @@
+# Import/Export 
+
+
+
+
+## CSV
+
+### `{utils}::read.csv()`
+
+```{r csv-utils-read-csv}
+utils::read.csv("data/import.csv")
+```
+
+- output is data frame (base R)
+- missing for character is blank
+- missing for numeric is 'NA' (not colored)
+- spaces or special characters in headers are replaced with period 
+- Sometimes `ï..` added to beginning of first column name (to remove use `read.csv("example.csv", fileEncoding = 'UTF-8-BOM')`; [Source](https://www.roelpeters.be/removing-i-umlaut-two-dots-data-frame-column-read-csv/))
+- remove headers with `header = FALSE`; column names will be V1, V2, V3, etc. 
+
+
+### `{readr}::read_csv()`
+
+```{r csv-readr-read-csv}
+readr::read_csv("data/import.csv")
+```
+
+- output is tibble (tidyverse)
+- receive message with type of columns that R is using for import 
+- missing for character and numeric is NA (colored red) in R console; outputs (html) will show \<NA\> for missing character and NA for missing numeric 
+- headers are that have spaces or special characters are placed within backticks (``)
+- remove headers with `col_names = FALSE`; column names will be X1, X2, X3, etc. 
+
+
+#### Specify Column Types 
+
+R does a pretty good job of figuring out what the columns should be but if its needed to specify column types (or you want don't want the default col_types message to show) column types can be specified:  
+
+```{r csv-readr-read-csv-col-types}
+test <- readr::read_csv("data/import.csv"
+         , col_types = readr::cols(
+            `Name 1`   = readr::col_character()
+          , `Name (2)` = readr::col_double()
+          , `Name #3`  = readr::col_double()
+           )
+)
+
+test
+```
+
+
+### Export
+
+Can use `utils::write.csv()` or `readr::write_csv()` - have slightly different functionality.    
+
+```{r csv-utils-write-csv}
+utils::write.csv(test, "data/export1_utils.txt")
+```
+
+```
+ "", "Name 1","Name (2)","Name #3"
+"1",    "ch1",        1,       10
+"2",    "ch2",        2,       12
+"3",    "ch3",        3,       13
+"4",    "ch4",       NA,       14
+"5",    "ch5",        5,       15
+"6",      NA,         6,       16
+"7",     "ch7",       7,       17
+```
+
+```{r csv-readr-write-csv}
+readr::write_csv(test, "data/export2_readr.txt")
+```
+
+
+```
+Name 1, Name (2),Name #3
+   ch1,        1,     10
+   ch2,        2,     12
+   ch3,        3,     13
+   ch4,       NA,     14
+   ch5,        5,     15
+    NA,        6,     16
+   ch7,        7,     17
+```
+
+
+Rownames; `row.names = TRUE` to include; `row.names = FALSE` to exclude 
+
+* `utils::write.csv()` default includes row names (usually row number) 
+* `readr::write_csv()` default does not include row names; CANNOT ADD
+
+<br>
+
+NA values; `na = ""` to have missing data be exported as blank cell 
+
+* If data set is a base R data frame: 
+  + `write.csv()` default is `na = "NA"` for numeric, always blank for character (CAN'T CHANGE!) 
+  + `write_csv()` default is `na = "NA"` for numeric, always blank for character (CAN'T CHANGE!) 
+* If data set is a tibble: 
+  + `write.csv()` default is `na = "NA"` for numeric and character 
+  + `write_csv()` default is `na = "NA"` for numeric and character 
+
+## Links 
+
+
+- [Stack Overflow | How do you read a password protected excel file into r?](https://stackoverflow.com/questions/35852722/how-do-you-read-a-password-protected-excel-file-into-r)
+- [R-bloggers | How to save (and load) datasets in R: An overview](https://www.r-bloggers.com/2019/05/how-to-save-and-load-datasets-in-r-an-overview/)
+- [R Documentation | {writexl}::write_xlsx function](https://www.rdocumentation.org/packages/writexl/versions/1.4.0/topics/write_xlsx)
+- [Stack Overflow | Error in .jcall(cell, "V", "setCellValue", value) : method setCellValue with signature ([D)V not found when attempting write.xlsx](https://stackoverflow.com/questions/44394159/error-in-jcallcell-v-setcellvalue-value-method-setcellvalue-with-sig)
+- [Stack Overflow | Error: package or namespace load failed for {XLConnect}](https://stackoverflow.com/questions/67087299/error-package-or-namespace-load-failed-for-xlconnect)
+- [STHDA | R xlsx package  A quick start guide to manipulate Excel files in R](http://www.sthda.com/english/wiki/r-xlsx-package-a-quick-start-guide-to-manipulate-excel-files-in-r)
+
