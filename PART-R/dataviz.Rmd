@@ -1,9 +1,29 @@
 # Data Viz 
 
-```{r, message=FALSE}
-# load-packages
-library(tidyverse)
-```
+**Links**  
+
+- [GitHub nprapps/dailygraphics | dailygraphics-templates/index.html](https://github.com/nprapps/dailygraphics-templates/blob/master/state_grid_map/index.html)
+- [Stack Overflow | Add a box for the NA values to the ggplot legend for a continous map](https://stackoverflow.com/questions/42365483/add-a-box-for-the-na-values-to-the-ggplot-legend-for-a-continous-map)
+- [Stack Overflow | ggplot - Multiple legends arrangement](https://stackoverflow.com/questions/52060601/ggplot-multiple-legends-arrangement)
+- [SAPE | ggplot2 Quick Reference: size](http://sape.inf.usi.ch/quick-reference/ggplot2/size)
+- [ggplot2 | 11 Colour scales and legends, scale color binned](https://ggplot2-book.org/scale-colour.html)
+- [Datanovia | How To Easily Customize GGPlot Legend for Great Graphics](https://www.datanovia.com/en/blog/ggplot-legend-title-position-and-labels/)
+- [Albert's Blog | Point Shape Options in ggplot](https://blog.albertkuo.me/post/point-shape-options-in-ggplot/)
+- [R project | tableGrob - Displaying tables as grid graphics](https://cran.r-project.org/web/packages/gridExtra/vignettes/tableGrob.html)
+- [Statistics Globe | Remove Border of ggplot2 geom_label Text Annotation in R](https://statisticsglobe.com/remove-border-of-ggplot2-geom_label-text-annotation-in-r)
+- [Statistics Globe | Extract Default Color Palette of ggplot2 R Package - Hex Codes](https://statisticsglobe.com/identify-default-color-palette-names-of-ggplot2-in-r); `scales::hue_pal()` and `scales::show_col()`
+- [{gridExtra}::tableGrob](https://www.rdocumentation.org/packages/gridExtra/versions/2.3/topics/tableGrob)
+- [Stack Overflow | customize ggplot2 axis labels with different colors](https://stackoverflow.com/questions/38862303/customize-ggplot2-axis-labels-with-different-colors)
+- [Stack Overflow | Consistently center ggplot title across PANEL not PLOT](https://stackoverflow.com/questions/52469245/consistently-center-ggplot-title-across-panel-not-plot)
+- [Stack Overflow | ggplot2: change colour of font and background in facet strip?](https://stackoverflow.com/questions/53455092/r-ggplot2-change-colour-of-font-and-background-in-facet-strip)
+- [Stack Overflow | Accents using ggplot2](https://stackoverflow.com/questions/18972628/accents-using-ggplot2)
+- [Stack Overflow | How does ggplot scale_continuous expand argument work?](https://stackoverflow.com/questions/44170871/how-does-ggplot-scale-continuous-expand-argument-work)
+- [Stack Overflow | Using ggplot2, can I insert a break in the axis?](https://stackoverflow.com/questions/7194688/using-ggplot2-can-i-insert-a-break-in-the-axis)
+- [Set Axis Break for ggplot2](https://mran.microsoft.com/web/packages/ggbreak/vignettes/ggbreak.html)
+- [{cowplot}::add_sub | Add annotation underneath a plot](https://wilkelab.org/cowplot/reference/add_sub.html)
+- [R CHARTS | Slopegraph in ggplot2 with newggslopegraph](https://r-charts.com/evolution/newggslopegraph/)
+- [GitHub hrbrmstr/statebins | Alternative to choropleths of US States](https://github.com/hrbrmstr/statebins)
+- [Stack Overflow | Add ggplot annotation outside the panel? Or two titles?](https://stackoverflow.com/questions/21997715/add-ggplot-annotation-outside-the-panel-or-two-titles)
 
 
 ## hjust and vjust
@@ -46,7 +66,7 @@ hv + labs(title="Various values of angle, hjust and vjust in ggplot \n", y ="vju
 ```
 
 <span class="source">
-Source: [R bloggers: hjust and vjust](https://www.r-bloggers.com/hjust-and-vjust/) and corresponding [GitHub: cdesante/hjustvjust.r](https://gist.github.com/cdesante/4070548)
+Sources: [R bloggers: hjust and vjust](https://www.r-bloggers.com/hjust-and-vjust/) and [GitHub: cdesante/hjustvjust.r](https://gist.github.com/cdesante/4070548)
 </span>
 
 ## Math Expressions in labels 
@@ -234,26 +254,3 @@ grid::grid.draw(rbind(gA, gB))
 ```
 
 
-## Links 
-
-- [GitHub nprapps/dailygraphics | dailygraphics-templates/index.html](https://github.com/nprapps/dailygraphics-templates/blob/master/state_grid_map/index.html)
-- [Stack Overflow | Add a box for the NA values to the ggplot legend for a continous map](https://stackoverflow.com/questions/42365483/add-a-box-for-the-na-values-to-the-ggplot-legend-for-a-continous-map)
-- [Stack Overflow | ggplot - Multiple legends arrangement](https://stackoverflow.com/questions/52060601/ggplot-multiple-legends-arrangement)
-- [SAPE | ggplot2 Quick Reference: size](http://sape.inf.usi.ch/quick-reference/ggplot2/size)
-- [ggplot2 | 11 Colour scales and legends, scale color binned](https://ggplot2-book.org/scale-colour.html)
-- [Datanovia | How To Easily Customize GGPlot Legend for Great Graphics](https://www.datanovia.com/en/blog/ggplot-legend-title-position-and-labels/)
-- [Albert's Blog | Point Shape Options in ggplot](https://blog.albertkuo.me/post/point-shape-options-in-ggplot/)
-- [R project | tableGrob - Displaying tables as grid graphics](https://cran.r-project.org/web/packages/gridExtra/vignettes/tableGrob.html)
-- [Statistics Globe | Remove Border of ggplot2 geom_label Text Annotation in R](https://statisticsglobe.com/remove-border-of-ggplot2-geom_label-text-annotation-in-r)
-- [Statistics Globe | Extract Default Color Palette of ggplot2 R Package - Hex Codes](https://statisticsglobe.com/identify-default-color-palette-names-of-ggplot2-in-r); `scales::hue_pal()` and `scales::show_col()`
-- [{gridExtra}::tableGrob](https://www.rdocumentation.org/packages/gridExtra/versions/2.3/topics/tableGrob)
-- [Stack Overflow | customize ggplot2 axis labels with different colors](https://stackoverflow.com/questions/38862303/customize-ggplot2-axis-labels-with-different-colors)
-- [Stack Overflow | Consistently center ggplot title across PANEL not PLOT](https://stackoverflow.com/questions/52469245/consistently-center-ggplot-title-across-panel-not-plot)
-- [Stack Overflow | ggplot2: change colour of font and background in facet strip?](https://stackoverflow.com/questions/53455092/r-ggplot2-change-colour-of-font-and-background-in-facet-strip)
-- [Stack Overflow | Accents using ggplot2](https://stackoverflow.com/questions/18972628/accents-using-ggplot2)
-- [Stack Overflow | How does ggplot scale_continuous expand argument work?](https://stackoverflow.com/questions/44170871/how-does-ggplot-scale-continuous-expand-argument-work)
-- [Stack Overflow | Using ggplot2, can I insert a break in the axis?](https://stackoverflow.com/questions/7194688/using-ggplot2-can-i-insert-a-break-in-the-axis)
-- [Set Axis Break for ggplot2](https://mran.microsoft.com/web/packages/ggbreak/vignettes/ggbreak.html)
-- [{cowplot}::add_sub | Add annotation underneath a plot](https://wilkelab.org/cowplot/reference/add_sub.html)
-- [R CHARTS | Slopegraph in ggplot2 with newggslopegraph](https://r-charts.com/evolution/newggslopegraph/)
-- [GitHub hrbrmstr/statebins | Alternative to choropleths of US States](https://github.com/hrbrmstr/statebins)

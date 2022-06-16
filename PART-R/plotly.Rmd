@@ -1,0 +1,18 @@
+
+# plotly
+
+**Links** 
+
+
+- [plotly | Interactive web-based data visualization with R, plotly, and shiny](https://plotly-r.com/)
+- [plotly | layout - R](https://plotly.com/r/reference/layout/#layout-margin)
+- [plotly | Pie Charts - R](https://plotly.com/r/pie-charts/)
+- [plotly community forum | Remove options from the Hover Toolbar? - Graphing Library / Plotly.js](https://community.plotly.com/t/remove-options-from-the-hover-toolbar/130)
+- [Stack Overflow | Remove certain configuration options in plotly](https://stackoverflow.com/questions/56620850/remove-certain-configuration-options-in-plotly)
+- [Stack Overflow | How to remove option bar from ggplotly plot?](https://stackoverflow.com/questions/40223308/how-to-remove-option-bar-from-ggplotly-plot)
+- [Stack Overflow | Manipulating legend text in R plotly](https://stackoverflow.com/questions/43432881/manipulating-legend-text-in-r-plotly)
+- [GitHub ropensci/plotly | Support for arbitrary coordinate systems · Issue #878](https://github.com/plotly/plotly.R/issues/878)
+- [Stack Overflow | Pie chart: How to fixate the color assignment color per group?](https://stackoverflow.com/questions/62021769/plotly-r-pie-chart-how-to-fixate-the-color-assignment-color-per-group)
+- [GitHub plotly/plotly.js | Support for multiple legends · Issue #1668](https://github.com/plotly/plotly.js/issues/1668)
+- [plotly Community Forum | Hoverinfo over fill area of polygon - Dash R, MATLAB, Julia / Dash R](https://community.plotly.com/t/hoverinfo-over-fill-area-of-polygon/44986)
+- [plotly Community Forum | How to make tooltips show in region rather than on border (map using ggplotly) - Plotly R, MATLAB, Julia, Net / Plotly R](https://community.plotly.com/t/how-to-make-tooltips-show-in-region-rather-than-on-border-map-using-ggplotly/13507)

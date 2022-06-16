@@ -23,13 +23,21 @@
 
 - [{dplyr}::mutate_##](https://dplyr.tidyverse.org/reference/mutate_all.html)
 - [{dplyr}::mutate](https://dplyr.tidyverse.org/reference/mutate.html)
+- [{DT}](https://rstudio.github.io/DT/)
 - [{ggpattern}](https://coolbutuseless.github.io/package/ggpattern/)
 - [{kableExtra} HTML tables](https://haozhu233.github.io/kableExtra/awesome_table_in_html.html)
 - [{stringr} From base R ~WAYBACK~](https://web.archive.org/web/20220329172721/https://stringr.tidyverse.org/articles/from-base.html)
 - [{sf} shape files](https://r-spatial.github.io/sf/articles/sf1.html)
+- [{shinyWidgets}](http://shinyapps.dreamrs.fr/shinyWidgets/)
 - [{styler}](https://styler.r-lib.org/)
 - [{pkgdown}](https://pkgdown.r-lib.org/articles/pkgdown.html)
+- [{shiny}](https://shiny.rstudio.com/reference/shiny/latest/)
 
+
+## Cheat Sheets 
+
+- [RStudio cheatsheets](https://github.com/rstudio/cheatsheets)
+- [{data.table}](https://github.com/rstudio/cheatsheets/blob/main/datatable.pdf)
 
 ## Conferences 
 

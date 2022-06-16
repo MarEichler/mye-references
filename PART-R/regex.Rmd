@@ -1,5 +1,12 @@
 
-# Regular Expressions 
+# regex
+
+
+**Links** 
+
+- [Stack Overflow | Multiple pattern Matching in R](https://stackoverflow.com/questions/24035057/multiple-pattern-matching-in-r)
+- [Stack Overflow | R regex to match beginning and end of string, ignoring middle](https://stackoverflow.com/questions/50668761/r-regex-to-match-beginning-and-end-of-string-ignoring-middle)
+- [Stack Overflow | regex - How to match a string and white space in R](https://stackoverflow.com/questions/38392493/how-to-match-a-string-and-white-space-in-r)
 
 ## Select/Remove Items
 
@@ -40,9 +47,4 @@ dplyr::bind_rows(mget(ls(pattern="^df\\.")))
 ```
 
 
-## Links 
 
-
-- [Stack Overflow | Multiple pattern Matching in R](https://stackoverflow.com/questions/24035057/multiple-pattern-matching-in-r)
-- [Stack Overflow | R regex to match beginning and end of string, ignoring middle](https://stackoverflow.com/questions/50668761/r-regex-to-match-beginning-and-end-of-string-ignoring-middle)
-- [Stack Overflow | regex - How to match a string and white space in R](https://stackoverflow.com/questions/38392493/how-to-match-a-string-and-white-space-in-r)

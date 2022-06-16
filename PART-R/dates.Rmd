@@ -1,12 +1,9 @@
 
 # Dates and Times
 
+- [ggplot2 | Section 9: Scales: Position scales and axes](https://ggplot2-book.org/scale-position.html)
+- [R-Bloggers | Date Formats in R](https://www.r-bloggers.com/2013/08/date-formats-in-r/)
 
-```{r, echo = TRUE, warning = FALSE, message = FALSE}
-library(tidyverse)
-library(knitr)
-library(kableExtra)
-```
 
 ## Date Formats 
 
@@ -51,7 +48,9 @@ tribble(
   )
 ```
 
-
+<span class="source">
+Source: [stat.berkeley | Dates and Times in R Stack Overflow | Adding time to POSIXct object in R](https://www.stat.berkeley.edu/~s133/dates.html) 
+</span>
 
 ## Time Formats 
 
@@ -92,6 +91,11 @@ tribble(
   )
 ```
 
+<span class="source">
+Source: [stat.berkeley | Dates and Times in R Stack Overflow | Adding time to POSIXct object in R](https://www.stat.berkeley.edu/~s133/dates.html) 
+</span>
+
+
 ## Time Zone options in R
 
 The above example uses Central time and so I can use `tz = America/Chicago`; other timezone options can be found using the code below: 
@@ -106,10 +110,4 @@ OlsonNames()[1:20]
 
 
 
-## Links
-
-<a href="https://ggplot2-book.org/scale-position.html"          target="_blank"> ggplot2 | Section 9: Scales: Position scales and axes </a>  
-<a href="https://www.r-bloggers.com/2013/08/date-formats-in-r/" target="_blank"> R-Bloggers | Date Formats in R </a>  
-<a href="https://www.stat.berkeley.edu/~s133/dates.html"        target="_blank"> state.berkeley | Dates and Times in R</a>
-<a href="https://stackoverflow.com/questions/11922181/adding-time-to-posixct-object-in-r" target="_blank"> Stack Overflow | Adding time to POSIXct object in R</a>
 

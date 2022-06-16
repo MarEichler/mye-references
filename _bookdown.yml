@@ -13,13 +13,18 @@ rmd_files:
 - "PART-R/dates.Rmd"
 - "PART-R/functions.Rmd"
 - "PART-R/im-ex-port.Rmd"
+- "PART-R/plotly.Rmd"
 - "PART-R/regex.Rmd"
+- "PART-R/rmd.Rmd"
+- "PART-R/rtweet.Rmd"
+- "PART-R/shape.Rmd"
+- "PART-R/shiny.Rmd"
+- "PART-R/specialchar.Rmd"
 - "PART-R/versions.Rmd"
-
+- "PART-R/zzmisc.Rmd"
 
 - "PART-Other/AAA.Rmd"
 - "PART-Other/accessibility.Rmd"
-- "PART-Other/rmd.Rmd"
 - "PART-Other/htmlcss.Rmd"
 - "PART-Other/latex.Rmd"
 

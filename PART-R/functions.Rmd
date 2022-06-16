@@ -1,6 +1,12 @@
 
 # Functions 
 
+**Links** 
+
+- [R package development | 5 Documenting functions](https://combine-australia.github.io/r-pkg-dev/documenting-functions.html)
+- [Stack Overflow | Print dataframe name in function output](https://stackoverflow.com/questions/16742951/print-dataframe-name-in-function-output)
+- [Stack Overflow | How to write "descriptions for arguments" in R when coding the wrapper functions?](https://stackoverflow.com/questions/54624408/how-to-write-descriptions-for-arguments-in-r-when-coding-the-wrapper-functions)
+
 ## Correlation
 
 ### base R correlation: `cor()`  
@@ -73,8 +79,3 @@ case_when(
 ```
 
 
-## Links 
-
-- [R package development | 5 Documenting functions](https://combine-australia.github.io/r-pkg-dev/documenting-functions.html)
-- [Stack Overflow | Print dataframe name in function output](https://stackoverflow.com/questions/16742951/print-dataframe-name-in-function-output)
-- [Stack Overflow | How to write "descriptions for arguments" in R when coding the wrapper functions?](https://stackoverflow.com/questions/54624408/how-to-write-descriptions-for-arguments-in-r-when-coding-the-wrapper-functions)

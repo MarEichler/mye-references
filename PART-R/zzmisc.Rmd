@@ -1,0 +1,29 @@
+
+# Misc.
+
+**Links** 
+
+
+- [Introduction to summarytools](https://cran.r-project.org/web/packages/summarytools/vignettes/introduction.html)
+- [R-statistics blog | How to load the {rJava} package after the error "JAVA_HOME cannot be determined from the Registry"](https://www.r-statistics.com/2012/08/how-to-load-the-rjava-package-after-the-error-java_home-cannot-be-determined-from-the-registry/)
+- [R Save All Console Input & Output to File (Example) - Export RStudio to txt](https://statisticsglobe.com/r-save-all-console-input-output-to-file)
+- [Stack Overflow | Error in FUN(X\[\[i\]\], ...) : object 'X' not found](https://stackoverflow.com/questions/38988028/error-in-funxi-object-x-not-found)
+- [Stack Overflow | Remove multiple objects with rm()](https://stackoverflow.com/questions/11624885/remove-multiple-objects-with-rm)
+- [Stack Overflow | Compare if two dataframe objects in R are equal?](https://stackoverflow.com/questions/10592148/compare-if-two-dataframe-objects-in-r-are-equal)
+- [Martin Chan | RStudio Projects and Working Directories: A Beginner's Guide – Musings on R](https://martinctc.github.io/blog/rstudio-projects-and-working-directories-a-beginner's-guide/)
+- [Tutorialspoint | Data Types](https://www.tutorialspoint.com/r/r_data_types.htm)
+- [Stack Overflow | Error in open.connection(x, "rb") : HTTP error 500 when using map_df](https://stackoverflow.com/questions/57416887/error-in-open-connectionx-rb-http-error-500-when-using-map-df)
+- [GitHub r-lib/httr | Error in open.connection(con, "rb") : HTTP error 500. · Issue #338](https://github.com/r-lib/httr/issues/338)
+- [Check If Two Data Frames are the Same in R (Example) - Identical / Equal](https://statisticsglobe.com/check-if-two-data-frames-are-the-same-in-r)
+- [Reopen RStudio | Quit & Restart Clean R Session from within R (Example)](https://statisticsglobe.com/quit-restart-clean-r-session-from-within-r)
+- [Stack Overflow | Quit and restart a clean R session from within R?](https://stackoverflow.com/questions/6313079/quit-and-restart-a-clean-r-session-from-within-r)
+- [Stack Overflow | How do I clean up R memory without restarting my PC?](https://stackoverflow.com/questions/11579765/how-do-i-clean-up-r-memory-without-restarting-my-pc)
+- [Stack Overflow | How to save all console output to file in R?](https://stackoverflow.com/questions/7096989/how-to-save-all-console-output-to-file-in-r)
+- [Keep Trailing Zeros in R (Example) - How to Round Number & Show Zero](https://statisticsglobe.com/keep-trailing-zeros-r)
+- [R-bloggers | Handling Large Datasets in R](https://www.r-bloggers.com/2010/10/handling-large-datasets-in-r/)
+- [Stack Overflow | Merge two vectors by non NA values](https://stackoverflow.com/questions/13604322/merge-two-vectors-by-non-na-values)
+- [Stack Overflow | Rendering kableExtra table with colors and unicode characters to PDF with RMarkdown](https://stackoverflow.com/questions/50670838/rendering-kableextra-table-with-colors-and-unicode-characters-to-pdf-with-rmarkd)
+- [Stack Overflow | row_spec() function from kableExtra does not create a horizontal line in html output](https://stackoverflow.com/questions/53655983/row-spec-function-from-kableextra-does-not-create-a-horizontal-line-in-html-ou)
+
+
+

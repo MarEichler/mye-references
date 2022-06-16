@@ -1,0 +1,21 @@
+
+# Shape Files 
+
+**Links** 
+
+
+- [Michael T. Hallworth | Introduction to spatial polygons in R](https://mhallwor.github.io/_pages/basics_SpatialPolygons)
+- [Computing for the Social Sciences | Importing spatial data files using sf](https://cfss.uchicago.edu/notes/simple-features/)
+- [Computing for the Social Sciences | Drawing vector maps with simple features and ggplot2](https://cfss.uchicago.edu/notes/vector-maps/)
+- [Stack Overflow | Create SpatialPointsDataframe](https://stackoverflow.com/questions/32583606/create-spatialpointsdataframe)
+- [Stack Overflow | How to attach a simple data.frame to a SpatialPolygonDataFrame in R?](https://stackoverflow.com/questions/3650636/how-to-attach-a-simple-data-frame-to-a-spatialpolygondataframe-in-r)
+- [Red Fox GIS | How to read and write shapefiles with R?](https://www.redfoxgis.com/single-post/2015/06/23/How-to-read-and-write-shapefiles-with-R)
+- [R-bloggers | Things I Forget: Reading a Shapefile in R with readOGR](https://www.r-bloggers.com/2013/09/things-i-forget-reading-a-shapefile-in-r-with-readogr/)
+- [Stack Overflow | extract coordinates of points in simple feature data frame](https://stackoverflow.com/questions/52951877/extract-coordinates-of-points-in-simple-feature-data-frame)
+- [Stack Overflow | How to make Multipolygons with Package SF and dplyr](https://stackoverflow.com/questions/56561262/how-to-make-multipolygons-with-package-sf-and-dplyr)
+- [Stack Overflow | ggplot2 - How to set CRS for a .shp polygon file in R](https://stackoverflow.com/questions/61590209/how-to-set-crs-for-a-shp-polygon-file-in-r)
+- [Stack Overflow | Convert data frame containing coordinates of polygons to sf](https://stackoverflow.com/questions/56258655/convert-data-frame-containing-coordinates-of-polygons-to-sf)
+- [Stack Overflow | Efficient union of features by attributes using simple features (SF) in r?](https://stackoverflow.com/questions/57482403/efficient-union-of-features-by-attributes-using-simple-features-sf-in-r) 
+- [Stack Overflow | How to calculate centroid of polygon using sf::st_centroid?](https://stackoverflow.com/questions/46176660/how-to-calculate-centroid-of-polygon-using-sfst-centroid)
+- [GIS Stack Exchange | Removing empty polygon from sf object in R?](https://gis.stackexchange.com/questions/329110/removing-empty-polygon-from-sf-object-in-r)
+

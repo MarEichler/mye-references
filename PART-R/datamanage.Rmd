@@ -1,8 +1,7 @@
 
 # Data Management 
 
-
-## Links 
+**Links** 
 
 - [Stack Overflow | Is there a good replacement for plyr::rbind.fill in dplyr?](https://stackoverflow.com/questions/44464441/r-is-there-a-good-replacement-for-plyrrbind-fill-in-dplyr); `dplyr::bind_rows()` 
 - [Stack Overflow | using strsplit in a tibble column](https://stackoverflow.com/questions/58253379/r-using-strsplit-in-a-tibble-column)
@@ -12,3 +11,4 @@
 - [Stack Overflow | add a dplyr group label as a number](https://stackoverflow.com/questions/50099010/r-add-a-dplyr-group-label-as-a-number)
 - [Stack Overflow | using strsplit and subset in dplyr and mutate](https://stackoverflow.com/questions/42565539/using-strsplit-and-subset-in-dplyr-and-mutate)
 - [GitHub {bigrquery} | Can't join across sources · Issue #219 ](https://github.com/r-dbi/bigrquery/issues/219)
+- [Stack Overflow | Assign variable labels of data frame columns](https://stackoverflow.com/questions/27347548/r-assign-variable-labels-of-data-frame-columns)

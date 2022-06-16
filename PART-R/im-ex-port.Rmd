@@ -1,7 +1,13 @@
 # Import/Export 
 
+**Links**  
 
-
+- [Stack Overflow | How do you read a password protected excel file into r?](https://stackoverflow.com/questions/35852722/how-do-you-read-a-password-protected-excel-file-into-r)
+- [R-bloggers | How to save (and load) datasets in R: An overview](https://www.r-bloggers.com/2019/05/how-to-save-and-load-datasets-in-r-an-overview/)
+- [R Documentation | {writexl}::write_xlsx function](https://www.rdocumentation.org/packages/writexl/versions/1.4.0/topics/write_xlsx)
+- [Stack Overflow | Error in .jcall(cell, "V", "setCellValue", value) : method setCellValue with signature ([D)V not found when attempting write.xlsx](https://stackoverflow.com/questions/44394159/error-in-jcallcell-v-setcellvalue-value-method-setcellvalue-with-sig)
+- [Stack Overflow | Error: package or namespace load failed for {XLConnect}](https://stackoverflow.com/questions/67087299/error-package-or-namespace-load-failed-for-xlconnect)
+- [STHDA | R xlsx package  A quick start guide to manipulate Excel files in R](http://www.sthda.com/english/wiki/r-xlsx-package-a-quick-start-guide-to-manipulate-excel-files-in-r)
 
 ## CSV
 
@@ -101,13 +107,5 @@ NA values; `na = ""` to have missing data be exported as blank cell
   + `write.csv()` default is `na = "NA"` for numeric and character 
   + `write_csv()` default is `na = "NA"` for numeric and character 
 
-## Links 
 
-
-- [Stack Overflow | How do you read a password protected excel file into r?](https://stackoverflow.com/questions/35852722/how-do-you-read-a-password-protected-excel-file-into-r)
-- [R-bloggers | How to save (and load) datasets in R: An overview](https://www.r-bloggers.com/2019/05/how-to-save-and-load-datasets-in-r-an-overview/)
-- [R Documentation | {writexl}::write_xlsx function](https://www.rdocumentation.org/packages/writexl/versions/1.4.0/topics/write_xlsx)
-- [Stack Overflow | Error in .jcall(cell, "V", "setCellValue", value) : method setCellValue with signature ([D)V not found when attempting write.xlsx](https://stackoverflow.com/questions/44394159/error-in-jcallcell-v-setcellvalue-value-method-setcellvalue-with-sig)
-- [Stack Overflow | Error: package or namespace load failed for {XLConnect}](https://stackoverflow.com/questions/67087299/error-package-or-namespace-load-failed-for-xlconnect)
-- [STHDA | R xlsx package  A quick start guide to manipulate Excel files in R](http://www.sthda.com/english/wiki/r-xlsx-package-a-quick-start-guide-to-manipulate-excel-files-in-r)
 
