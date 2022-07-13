@@ -1,7 +1,7 @@
 {
-  "hash": "f89d2cae73031aafc1d0dc4ae48f295e",
+  "hash": "28d58420c765db867f1e3470f0d2847a",
   "result": {
-    "markdown": "# Preface {.unnumbered}\n\nThis is a Quarto book.\n\nTo learn more about Quarto books visit <https://quarto.org/docs/books>.\n\n\n::: {.cell}\n\n```{.r .cell-code}\n1 + 1\n```\n\n::: {.cell-output .cell-output-stdout}\n```\n[1] 2\n```\n:::\n:::\n",
+    "markdown": "# Welcome {.unnumbered}\n\nThis is a collection of information and links in one place so it's easier to look up.\n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(tidyverse)\nlibrary(knitr)\nlibrary(kableExtra)\n```\n:::\n\n::: {.cell}\n\n:::\n\n\nLast updated: 2022-07-13 13:29:13\n",
     "supporting": [],
     "filters": [
       "rmarkdown/pagebreak.lua"

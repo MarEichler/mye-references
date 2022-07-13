@@ -1,0 +1,86 @@
+[
+  {
+    "objectID": "R_dataviz.html",
+    "href": "R_dataviz.html",
+    "title": "3  Data Viz",
+    "section": "",
+    "text": "Links"
+  },
+  {
+    "objectID": "R_dataviz.html#hjust-and-vjust",
+    "href": "R_dataviz.html#hjust-and-vjust",
+    "title": "3  Data Viz",
+    "section": "3.1 hjust and vjust",
+    "text": "3.1 hjust and vjust\nWhy do I always forget the direction of these?\nhjust: 0 = left-aligned, 0.5=center, 1 = right-aligned\nvjust: 0 = top-aligned, 0.5=middle, 1 = bottom-aligned\n\nlibrary(tidyverse)\n\n── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──\n\n\n✔ ggplot2 3.3.6     ✔ purrr   0.3.4\n✔ tibble  3.1.7     ✔ dplyr   1.0.9\n✔ tidyr   1.2.0     ✔ stringr 1.4.0\n✔ readr   2.1.2     ✔ forcats 0.5.1\n\n\n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\n\nhjustvjust <- expand.grid(\n  hjust=c(0, 0.5, 1),\n  vjust=c(0, 0.5, 1),\n  angle=c(0, 45, 90),\n  text=\"is-R\"\n)\nhv <- ggplot(hjustvjust, aes(x=hjust, y=vjust)) + \n  geom_point() +\n  geom_text(aes(label=text, angle=angle, hjust=hjust, vjust=vjust)) + \n  facet_grid(~angle) +\n  scale_x_continuous(breaks=c(0, 0.5, 1), expand=c(0, 0.2)) +\n  scale_y_continuous(breaks=c(0, 0.5, 1), expand=c(0, 0.2)) + theme_bw()\nhv + labs(title=\"Various values of angle, hjust and vjust in ggplot \\n\", y =\"vjust \\n\", x =\" \\n hjust\") + \n  theme(axis.text.x = element_text(colour=\"black\", \n                                           size = 12, \n                                           face = \"bold\") , \n                axis.text.y = element_text(colour=\"black\", \n                                           size = 12, \n                                           face = \"bold\"),\n                axis.title.x = element_text(face=\"plain\", \n              colour=\"black\", \n              size=24),\n              axis.title.y = element_text(face=\"plain\", \n              colour=\"black\", \n               size=24),\n              plot.title = element_text(face=\"bold\", \n                                    colour=\"black\", \n                                    size=18)) \n\n\n\n\n Sources: R bloggers: hjust and vjust and GitHub: cdesante/hjustvjust.r"
+  },
+  {
+    "objectID": "R_dataviz.html#math-expressions-in-labels",
+    "href": "R_dataviz.html#math-expressions-in-labels",
+    "title": "3  Data Viz",
+    "section": "3.2 Math Expressions in labels",
+    "text": "3.2 Math Expressions in labels\n\n3.2.1 Use quote()\n\nggplot(mpg, aes(displ, hwy))+geom_point()+\n  ggtitle(\n    quote(\n      alpha ^ 2 - frac(1, 10) + sum(n[i], i==1, N)\n                )\n    )\n\n\n\n\n\n\n3.2.2 Use TeX() from the latex2exp package\n\nmust be in a string\nmust be denoted as math mode with dollar signs\nmust include 2 backslashes for \\(\\LaTeX\\) commands\n\n\nlibrary(latex2exp)\nggplot(mpg, aes(displ, hwy))+geom_point()+\n  ggtitle(TeX(\n    \"$\\\\alpha^2 - \\\\frac{1}{10} + \\\\sum_{i}^N n_i$\"\n                )\n    )"
+  },
+  {
+    "objectID": "R_dataviz.html#laying-out-multiple-plots",
+    "href": "R_dataviz.html#laying-out-multiple-plots",
+    "title": "3  Data Viz",
+    "section": "3.3 Laying out multiple plots",
+    "text": "3.3 Laying out multiple plots\n Laying out multiple plots on a page - Baptiste Auguie"
+  },
+  {
+    "objectID": "R_dataviz.html#line-up-axes-on-stacked-plots",
+    "href": "R_dataviz.html#line-up-axes-on-stacked-plots",
+    "title": "3  Data Viz",
+    "section": "3.4 Line up axes on stacked plots",
+    "text": "3.4 Line up axes on stacked plots\nSometimes I’m working on two different types of plots (like a bar chart and a scatter plot) that happen to have the same x-axis. I want to line up these axes so that when the plots are stacked the values correspond to the same date.\n\n3.4.1 gridExtra::grid.arrange() and cowplot::plot_grid()\n\n# two different bar charts\nA <- ggplot(mpg, aes(class))+geom_bar()+coord_flip()+ylim(0, 109)\nB <- ggplot(mpg, aes(drv))+geom_bar()+coord_flip()+ylim(0, 109)\n\nUsing grid.arrange command from the gridExtra package does not line up axes.\n\n#axes don't line up\ngridExtra::grid.arrange(A, B, ncol=1)\n\n\n\n\nUse grid.draw command from the grid package.\n Source \n\n#make plots into Grobs (grid graphical object)\ngA <- ggplotGrob(A) \ngB <- ggplotGrob(B)\ngrid::grid.draw(rbind(gA, gB))\n\n\n\n\nThe cowplot::plot_grid() function allows you to line up plots by a specific axis.\n\ncowplot::plot_grid(A, B, ncol = 1, align = \"v\")\n\n\n\n\n\n\n3.4.2 Facets\nAnother option is facet_wrap() or facet_grid(), which can works if the axes are the same for the different variables you want to compare, but be careful as facets are supposed to be comparing items with the same measurements.\n\ntidy.df <- pivot_longer(mpg, c(class, drv), names_to = \"category\", values_to = \"type\")\nggplot(tidy.df, aes(type))+\n  geom_bar()+\n  coord_flip()+ \n  facet_wrap(\n      ~category\n    ,  ncol = 1\n    , scales = \"free\" #removes types from the axis if that category has 0 cars of that type \n  )\n\n\n\nggplot(tidy.df, aes(type))+\n  geom_bar()+\n  coord_flip()+ \n  facet_grid(\n      category ~ . \n    , scales = \"free\" #removes types from the axis if that category has 0 cars of that type \n    , space  = \"free\" #spaces based on number of obs (i.e. number of bars);\n                      #         rather than giving each facet equal sizing\n  )\n\n\n\n\n\n\n3.4.3 Mixed Geoms (Bar + Scatter)\nScatter plots and bar charts will not line up automatically, even when using the grid.draw command detailed above. This is because their default limits are different given that the bar chart is centered on the value and the scatter plot is a single point on the value.\n\n#work with smaller subset of data from economics, part of ggplot2 package \nstartdate <- \"2014-06-01\"\neconomics_small <- economics %>%\n  filter(date >= as.Date(startdate)) %>%\n  arrange(date)\n\n\nA <- ggplot(economics_small, aes(date, unemploy))+\n  geom_bar(stat=\"identity\")+\n  geom_vline(xintercept = as.Date(startdate), color=\"red\", size=2)\nB <- ggplot(economics_small, aes(date, uempmed))+\n  geom_point()+geom_line()+\n  geom_vline(xintercept = as.Date(startdate), color=\"red\", size=2)\ngA <- ggplotGrob(A) \ngB <- ggplotGrob(B)\ngrid::grid.draw(rbind(gA, gB)) #cowplot::plot_grid(A, B, ncol = 1, align = \"v\") produces same result \n\n\n\n\nIn order to line the up there a a couple of options.\n\n3.4.3.1 Fix xlim for all charts\nIf you make the limit the first x-value, the bar chart will not show up (remember it’s centered over the value).\n\nA <- ggplot(economics_small, aes(date, unemploy))+\n  geom_bar(stat=\"identity\")+\n  geom_vline(xintercept = as.Date(startdate), color=\"red\", size=2)+\n  xlim(as.Date(startdate), NA)\nB <- ggplot(economics_small, aes(date, uempmed))+\n  geom_point()+geom_line()+\n  geom_vline(xintercept = as.Date(startdate), color=\"red\", size=2)+\n  xlim(as.Date(startdate), NA)\ngA <- ggplotGrob(A) \n\nWarning: Removed 1 rows containing missing values (geom_bar).\n\ngB <- ggplotGrob(B)\ngrid::grid.draw(rbind(gA, gB))\n\n\n\n\nThis can be fixed by adding a half unit to the x-axis (i.e. having the lower limit be half-unit lower than smallest x-value). In this case the unit is a month, so a half-unit would be ~15 days.\n\nHalfUnit <- .5*(economics_small$date[2] - economics_small$date[1])\nHalfUnit\n\nTime difference of 15 days\n\n\n\nA <- ggplot(economics_small, aes(date, unemploy))+\n  geom_bar(stat=\"identity\")+\n  geom_vline(xintercept = as.Date(startdate), color=\"red\", size=2)+\n  xlim(as.Date(startdate)-HalfUnit, NA)\nB <- ggplot(economics_small, aes(date, uempmed))+\n  geom_point()+geom_line()+\n  geom_vline(xintercept = as.Date(startdate), color=\"red\", size=2)+\n  xlim(as.Date(startdate)-HalfUnit, NA)\ngA <- ggplotGrob(A) \ngB <- ggplotGrob(B)\ngrid::grid.draw(rbind(gA, gB))\n\n\n\n\n\n\n3.4.3.2 Shift Bar chart to right\nBar charts are automatically centered over the x-value. Bar charts (and any geom object) can be shifted by using position - position_nudge()). The shift needs to be half a unit on the x-axis, again here it is monthly data so a half unit would be ~15 days.\n Source \n\nA <- ggplot(economics_small, aes(date, unemploy))+\n  geom_bar(stat=\"identity\", position = position_nudge(x = as.vector(HalfUnit)))+\n  geom_vline(xintercept = as.Date(startdate), color=\"red\", size=2)\nB <- ggplot(economics_small, aes(date, uempmed))+\n  geom_point()+geom_line()+\n  geom_vline(xintercept = as.Date(startdate), color=\"red\", size=2)\ngA <- ggplotGrob(A) \ngB <- ggplotGrob(B)\ngrid::grid.draw(rbind(gA, gB))"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "MYE References",
+    "section": "",
+    "text": "This is a collection of information and links in one place so it’s easier to look up.\n\nlibrary(tidyverse)\nlibrary(knitr)\nlibrary(kableExtra)\n\n\n\n\nLast updated: 2022-07-13 13:29:13"
+  },
+  {
+    "objectID": "resources.html",
+    "href": "resources.html",
+    "title": "1  Resources",
+    "section": "",
+    "text": "Fundamentals of Data Visualization; GitHub\nggplot2\nAdvanced R\nR for Data Science\nR Markdown: The Definitive Guide\nR Markdown Cookbook\nR Packages\nMastering Shiny\nMastering Shiny\nMethods for Network Analysis\ntidyverse style guide"
+  },
+  {
+    "objectID": "resources.html#documentation-pages",
+    "href": "resources.html#documentation-pages",
+    "title": "1  Resources",
+    "section": "1.2 Documentation Pages",
+    "text": "1.2 Documentation Pages\n\n{dplyr}::mutate_##\n{dplyr}::mutate\n{DT}\n{ggpattern}\n{kableExtra} HTML tables\n{stringr} From base R WAYBACK\n{sf} shape files\n{shinyWidgets}\n{styler}\n{pkgdown}\n{shiny}"
+  },
+  {
+    "objectID": "resources.html#cheat-sheets",
+    "href": "resources.html#cheat-sheets",
+    "title": "1  Resources",
+    "section": "1.3 Cheat Sheets",
+    "text": "1.3 Cheat Sheets\n\nRStudio cheatsheets\n{data.table}"
+  },
+  {
+    "objectID": "resources.html#conferences",
+    "href": "resources.html#conferences",
+    "title": "1  Resources",
+    "section": "1.4 Conferences",
+    "text": "1.4 Conferences\n\n2021 Nobel Conference Big Data Revolution, talks\nR: Conferences\nrstudio::conf(2022)\nrstudio::global 2021, talks"
+  },
+  {
+    "objectID": "R.html",
+    "href": "R.html",
+    "title": "R",
+    "section": "",
+    "text": "Specifically regarding R code"
+  },
+  {
+    "objectID": "R_datamanage.html",
+    "href": "R_datamanage.html",
+    "title": "2  Data Management",
+    "section": "",
+    "text": "Stack Overflow | Is there a good replacement for plyr::rbind.fill in dplyr?; dplyr::bind_rows()\nStack Overflow | using strsplit in a tibble column\nStack Overflow | How to tell what is in one vector and not another?\nStack Overflow | How to set the row names of a data frame passed on with the pipe %>% operator?\nStack Overflow | How to remove columns from a data.frame by data type?; df[,-which(sapply(df, class) == \"factor\")]\nStack Overflow | add a dplyr group label as a number\nStack Overflow | using strsplit and subset in dplyr and mutate\nGitHub {bigrquery} | Can’t join across sources · Issue #219\nStack Overflow | Assign variable labels of data frame columns"
+  }
+]

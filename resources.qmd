@@ -1,0 +1,47 @@
+
+# Resources
+
+## Books 
+
+
+- [Fundamentals of Data Visualization](https://clauswilke.com/dataviz/); [GitHub](https://github.com/clauswilke/dataviz) 
+- [ggplot2](https://ggplot2-book.org/)
+- [Advanced R](https://adv-r.hadley.nz/index.html)
+- [R for Data Science](https://r4ds.had.co.nz/)
+- [R Markdown: The Definitive Guide](https://bookdown.org/yihui/rmarkdown/)
+- [R Markdown Cookbook](https://bookdown.org/yihui/rmarkdown-cookbook/)
+- [R Packages](https://r-pkgs.org/)
+- [Mastering Shiny](https://mastering-shiny.org/index.html)
+- [Mastering Shiny](https://mastering-shiny-solutions.org/)
+- [Methods for Network Analysis](https://bookdown.org/markhoff/social_network_analysis/)
+- [tidyverse style guide](https://style.tidyverse.org/index.html)
+
+
+
+## Documentation Pages 
+
+
+- [{dplyr}::mutate_##](https://dplyr.tidyverse.org/reference/mutate_all.html)
+- [{dplyr}::mutate](https://dplyr.tidyverse.org/reference/mutate.html)
+- [{DT}](https://rstudio.github.io/DT/)
+- [{ggpattern}](https://coolbutuseless.github.io/package/ggpattern/)
+- [{kableExtra} HTML tables](https://haozhu233.github.io/kableExtra/awesome_table_in_html.html)
+- [{stringr} From base R ~WAYBACK~](https://web.archive.org/web/20220329172721/https://stringr.tidyverse.org/articles/from-base.html)
+- [{sf} shape files](https://r-spatial.github.io/sf/articles/sf1.html)
+- [{shinyWidgets}](http://shinyapps.dreamrs.fr/shinyWidgets/)
+- [{styler}](https://styler.r-lib.org/)
+- [{pkgdown}](https://pkgdown.r-lib.org/articles/pkgdown.html)
+- [{shiny}](https://shiny.rstudio.com/reference/shiny/latest/)
+
+
+## Cheat Sheets 
+
+- [RStudio cheatsheets](https://github.com/rstudio/cheatsheets)
+- [{data.table}](https://github.com/rstudio/cheatsheets/blob/main/datatable.pdf)
+
+## Conferences 
+
+- [2021 Nobel Conference Big Data Revolution, talks](https://www.youtube.com/watch?v=4cL7C8plTIQ&list=PLHuAoPzfQhGEifhJjE5rpdQmMzt9eXx_V)
+- [R: Conferences](https://www.r-project.org/conferences/)
+- [rstudio::conf(2022)](https://www.rstudio.com/conference/)
+- [rstudio::global 2021, talks](https://www.rstudio.com/resources/rstudioglobal-2021/)

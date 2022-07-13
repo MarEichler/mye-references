@@ -1,23 +1,22 @@
 project:
   type: book
+  output-dir: docs
 
 book:
-  title: "testbook"
-  author: "Jane Doe"
-  date: "7/13/2022"
+  title: "MYE References"
   chapters:
     - index.qmd
-    - intro.qmd
-    - summary.qmd
-    - references.qmd
+    - resources.qmd 
+    - part: R.qmd
+      chapters: 
+      - R_datamanage.qmd
+      - R_dataviz.qmd
 
 bibliography: references.bib
 
 format:
   html:
     theme: cosmo
-  pdf:
-    documentclass: scrreprt
 
-editor: visual
+editor: source
 

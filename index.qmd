@@ -1,9 +1,17 @@
-# Preface {.unnumbered}
+# Welcome {.unnumbered}
 
-This is a Quarto book.
-
-To learn more about Quarto books visit <https://quarto.org/docs/books>.
+This is a collection of information and links in one place so it's easier to look up.
 
 ```{r}
-1 + 1
+#| warning: false
+library(tidyverse)
+library(knitr)
+library(kableExtra)
 ```
+
+```{r}
+#| echo = FALSE
+systime <- Sys.time()
+```
+
+Last updated: `r systime`
