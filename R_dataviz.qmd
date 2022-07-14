@@ -6,29 +6,90 @@ library(tidyverse)
 ```
 
 
-**Links**  
+## Axis Breaks 
+
+### {ggbreak}
+
+```{r}
+df <- data.frame(a = c(1,2,3,500), b = c('a1', 'a2','a3', 'a4'))
+
+ggplot(df) + 
+  aes(x = b, y = a) +
+  geom_col() +
+  ggbreak::scale_y_break(c(5, 490))
+```
 
 
-- [Stack Overflow | ggplot - Multiple legends arrangement](https://stackoverflow.com/questions/52060601/ggplot-multiple-legends-arrangement)
-- [ggplot2 | 11 Colour scales and legends, scale color binned](https://ggplot2-book.org/scale-colour.html)
-- [R project | tableGrob - Displaying tables as grid graphics](https://cran.r-project.org/web/packages/gridExtra/vignettes/tableGrob.html)
-- [Statistics Globe | Remove Border of ggplot2 geom_label Text Annotation in R](https://statisticsglobe.com/remove-border-of-ggplot2-geom_label-text-annotation-in-r)
-- [Statistics Globe | Extract Default Color Palette of ggplot2 R Package - Hex Codes](https://statisticsglobe.com/identify-default-color-palette-names-of-ggplot2-in-r); `scales::hue_pal()` and `scales::show_col()`
-- [{gridExtra}::tableGrob](https://www.rdocumentation.org/packages/gridExtra/versions/2.3/topics/tableGrob)
-- [Stack Overflow | customize ggplot2 axis labels with different colors](https://stackoverflow.com/questions/38862303/customize-ggplot2-axis-labels-with-different-colors)
-- [Stack Overflow | Consistently center ggplot title across PANEL not PLOT](https://stackoverflow.com/questions/52469245/consistently-center-ggplot-title-across-panel-not-plot)
-- [Stack Overflow | ggplot2: change colour of font and background in facet strip?](https://stackoverflow.com/questions/53455092/r-ggplot2-change-colour-of-font-and-background-in-facet-strip)
-- [Stack Overflow | Accents using ggplot2](https://stackoverflow.com/questions/18972628/accents-using-ggplot2)
-- [Stack Overflow | How does ggplot scale_continuous expand argument work?](https://stackoverflow.com/questions/44170871/how-does-ggplot-scale-continuous-expand-argument-work)
-- [Stack Overflow | Using ggplot2, can I insert a break in the axis?](https://stackoverflow.com/questions/7194688/using-ggplot2-can-i-insert-a-break-in-the-axis)
-- [Set Axis Break for ggplot2](https://mran.microsoft.com/web/packages/ggbreak/vignettes/ggbreak.html)
-- [{cowplot}::add_sub | Add annotation underneath a plot](https://wilkelab.org/cowplot/reference/add_sub.html)
-- [R CHARTS | Slopegraph in ggplot2 with newggslopegraph](https://r-charts.com/evolution/newggslopegraph/)
+<div class="source">
+Source: [{ggbreak} | Set Axis Break for ggplot2](https://mran.microsoft.com/web/packages/ggbreak/vignettes/ggbreak.html)
+</div>
 
-- [Stack Overflow | Add ggplot annotation outside the panel? Or two titles?](https://stackoverflow.com/questions/21997715/add-ggplot-annotation-outside-the-panel-or-two-titles)
+### {ggforce}::facet_zoom 
+
+```{r}
+df <- data.frame(a = c(1,2,3,500), b = c('a1', 'a2','a3', 'a4'))
+
+ggplot(df) + 
+  aes(x = b, y = a) +
+  geom_col() +
+  ggforce::facet_zoom(ylim = c(0, 5))
+```
 
 
-## Secondary Legend
+<div class="source">
+Source: [Stack Overflow, Sep 2011 | Using ggplot2, can I insert a break in the axis?](https://stackoverflow.com/questions/7194688/using-ggplot2-can-i-insert-a-break-in-the-axis)
+</div>
+
+
+
+## Annotation outside panel 
+
+The one time I've done this is to add a axis break symbol for when the y axis does not start at zero.  In addition to adding the symbol, you also have to set the ggplotGrob to not clip items outside the plot panel.  
+
+```{r}
+base <- mpg %>% 
+  ggplot(aes(x = cty, y = hwy)) + 
+  geom_point() + 
+  lims(x = c(0, NA)) + 
+  theme_minimal() + 
+  theme(axis.line = element_line(color = "grey35", size = 0.25))
+
+p.zoomin <- base + 
+  annotate("text"
+    , x = -Inf, y = -Inf #bottom left corner of plot 
+    , label = "\u2e17"   #symbol ⸗ (diag double hyphen)
+    , color = "grey35"   #same color as axis.line
+    , size = 4.5         #adjust based on out plot size
+    , vjust = -0.25      #adjust further up 
+  ) 
+
+#get grob instructions 
+g.zoomin <- ggplotGrob(p.zoomin) 
+
+#turn panel clipping off 
+g.zoomin$layout$clip[g.zoomin$layout$name == "panel"] = "off"
+
+#draw final 
+cowplot::ggdraw(
+  cowplot::add_sub(
+    g.zoomin
+    , "'broken axis' symbol, also extra note under plot"
+    , size = 12
+    , x = 0
+    , hjust = 0
+    #, y = 1.25 #same line as x axis title 
+  ))
+```
+
+
+
+<div class="source">
+Sources: [Stack Overflow, Mar 2014 | set layout clip to 'off' ](https://stackoverflow.com/questions/21997715/add-ggplot-annotation-outside-the-panel-or-two-titles) and 
+[{cowplot}::add_sub | add annotation under plot](https://wilkelab.org/cowplot/reference/add_sub.html)
+</div>
+
+
+## Secondary Legend 
 
 ### NA Legend 
 
@@ -67,7 +128,7 @@ ggplot(states_sf) +
   ) 
 ```
 <div class="source">
-Source: [Stack Overflow, Mar 2017](https://stackoverflow.com/questions/42365483/add-a-box-for-the-na-values-to-the-ggplot-legend-for-a-continous-map)
+Source: [Stack Overflow, Mar 2017 | Add a box for NA values for continuous map](https://stackoverflow.com/questions/42365483/add-a-box-for-the-na-values-to-the-ggplot-legend-for-a-continous-map)
 </div>
 
 ### 2+ Special Values 
@@ -119,6 +180,11 @@ p.final  <- p.main  + theme(legend.position = "none")
 ## Combined everything 
 cowplot::plot_grid(p.final, leg.final, nrow = 1, rel_widths = c(4, 1))
 ```
+
+<div class="source">
+Quick Link: [Stack Overflow, Sep 2018 | Use cowplot for custom multiple legends arrangement](https://stackoverflow.com/questions/52060601/ggplot-multiple-legends-arrangement)
+</div> 
+
 **OUTSTANDING** 
 
 - how to minimize space between main legend and secondary legend
@@ -156,7 +222,7 @@ ggplot(hjustvjust, aes(x=hjust, y=vjust)) +
   ) 
 ```
 <div class="source">
-Sources: [R bloggers: hjust and vjust](https://www.r-bloggers.com/hjust-and-vjust/) and [GitHub: cdesante/hjustvjust.r](https://gist.github.com/cdesante/4070548)
+Sources: [R bloggers, Nov 2012 | hjust and vjust](https://www.r-bloggers.com/hjust-and-vjust/) and [GitHub: cdesante/hjustvjust.r](https://gist.github.com/cdesante/4070548)
 </div>
 
 ## Math Expressions 
@@ -183,6 +249,7 @@ ggplot(mpg, aes(displ, hwy))+geom_point()+
     ) #end TeX
   ) #end ggtitle
 ```
+
 ## Facets: scales/space
 
 Another option is `facet_wrap()` or `facet_grid()`, which can works  if the axes are the same for the different variables you want to compare, but be careful as facets are supposed to be comparing items with the same measurements.  
@@ -248,7 +315,7 @@ gridExtra::grid.arrange(A, B, ncol=1)
 
 Use `grid.draw` command from the `grid` package to left align graph edges .  
 <div class = "source">
-Source: [Stack Overflow, Nov 2012](https://stackoverflow.com/questions/13294952/left-align-two-graph-edges-ggplot)
+Source: [Stack Overflow, Nov 2012 | left align two graph edges](https://stackoverflow.com/questions/13294952/left-align-two-graph-edges-ggplot)
 </div>  
 
 The `cowplot::plot_grid()` function allows you to line up plots by a specific axis.   
@@ -333,7 +400,7 @@ cowplot::plot_grid(A, B, ncol = 1, align = "v")
 #### Shift Bar Chart
 Bar charts are automatically centered over the x-value.  Bar charts (and any geom object) can be shifted by using `position - position_nudge())`.  The shift needs to be half a unit on the x-axis, again here it is monthly data so a half unit would be ~15 days.  
 <div class="source">
-Source: [Stack Overflow, Aug 2016](https://stackoverflow.com/questions/38752968/shift-geom-bar-right-not-center-aligned)
+Source: [Stack Overflow, Aug 2016 | shift geom bar right](https://stackoverflow.com/questions/38752968/shift-geom-bar-right-not-center-aligned)
 </div>
 
 ```{r}
@@ -350,11 +417,62 @@ cowplot::plot_grid(A, B, ncol = 1, align = "v")
 ```
 
 
+## Default ggplot2 
+
+### Colors 
+
+Default colors can be recreated using `scales::hue_pal()` and can be shown using `scales::show_col()` 
+
+```{r}
+#| fig.height: 4
+scales::show_col(scales::hue_pal()(4))
+```
+<div class="source">
+Source: [Statistics Globe | Extract Default Color Palette of ggplot2 R Package - Hex Codes](https://statisticsglobe.com/identify-default-color-palette-names-of-ggplot2-in-r)
+</div>
+
+## Geom Defaults 
+
+Look up geom's default aes using: `GeomName$default_aes$`
+
+Example: `geom_text()`
+
+```{r}
+GeomText$default_aes
+```
+
+
+
+
 ## Links 
 
-- [Baptiste Augie, Jul 2019 | Laying out multiple plots on a page](https://cran.r-project.org/web/packages/egg/vignettes/Ecosystem.html)
-- [GitHub nprapps/dailygraphics | dailygraphics-templates/index.html](https://github.com/nprapps/dailygraphics-templates/blob/master/state_grid_map/index.html) 
+*new sections* 
+
+- [Stack Overflow | Consistently center ggplot title across PANEL not PLOT](https://stackoverflow.com/questions/52469245/consistently-center-ggplot-title-across-panel-not-plot)
+- [Stack Overflow | customize ggplot2 axis labels with different colors](https://stackoverflow.com/questions/38862303/customize-ggplot2-axis-labels-with-different-colors)
+
+
+*shape/line in ggplot*   
+
 - [SAPE | ggplot2 Quick Reference: size](http://sape.inf.usi.ch/quick-reference/ggplot2/size)
-- [Datanovia | How To Easily Customize GGPlot Legend for Great Graphics](https://www.datanovia.com/en/blog/ggplot-legend-title-position-and-labels/)
+- [SAPE | ggplot2 Quick Reference: shape](http://sape.inf.usi.ch/quick-reference/ggplot2/shape)
 - [Albert's Blog | Point Shape Options in ggplot](https://blog.albertkuo.me/post/point-shape-options-in-ggplot/)  
+
+
+**layout**  
+
+- [Baptiste Augie, Jul 2019 | Laying out multiple plots on a page](https://cran.r-project.org/web/packages/egg/vignettes/Ecosystem.html)
+- [Datanovia | How To Easily Customize GGPlot Legend for Great Graphics](https://www.datanovia.com/en/blog/ggplot-legend-title-position-and-labels/)
+- [R project | tableGrob - Displaying tables as grid graphics](https://cran.r-project.org/web/packages/gridExtra/vignettes/tableGrob.html)
+- [Statistics Globe | Remove Border of ggplot2 geom_label Text Annotation in R](https://statisticsglobe.com/remove-border-of-ggplot2-geom_label-text-annotation-in-r)
+- [{gridExtra}::tableGrob](https://www.rdocumentation.org/packages/gridExtra/versions/2.3/topics/tableGrob)  
+- [Stack Overflow | ggplot2: change colour of font and background in facet strip?](https://stackoverflow.com/questions/53455092/r-ggplot2-change-colour-of-font-and-background-in-facet-strip)
+
+
+**other**  
+
+- [GitHub nprapps/dailygraphics | dailygraphics-templates/index.html](https://github.com/nprapps/dailygraphics-templates/blob/master/state_grid_map/index.html) 
 - [GitHub hrbrmstr/statebins | Alternative to choropleths of US States](https://github.com/hrbrmstr/statebins)
+- [Stack Overflow | Accents using ggplot2](https://stackoverflow.com/questions/18972628/accents-using-ggplot2)
+- [Stack Overflow | How does ggplot scale_continuous expand argument work?](https://stackoverflow.com/questions/44170871/how-does-ggplot-scale-continuous-expand-argument-work)
+- [R CHARTS | Slopegraph in ggplot2 with newggslopegraph](https://r-charts.com/evolution/newggslopegraph/)

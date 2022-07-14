@@ -20,7 +20,7 @@ y <- c(2,3,4)
 setdiff(x, y)
 ```
 <div class="source">
-Source: [Stack Overflow, Dec 2012](https://stackoverflow.com/questions/1837968/how-to-tell-what-is-in-one-vector-and-not-another)
+Source: [Stack Overflow, Dec 2012 | how to tell what is in one vector and not another](https://stackoverflow.com/questions/1837968/how-to-tell-what-is-in-one-vector-and-not-another)
 </div>
 
 
@@ -29,14 +29,14 @@ Source: [Stack Overflow, Dec 2012](https://stackoverflow.com/questions/1837968/h
 ### replacement for plyr::rbind.fill 
 `dplyr::bind_rows()`  
 <div class="source">
-Source: [Stack Overflow, Jun 2017](https://stackoverflow.com/questions/44464441/r-is-there-a-good-replacement-for-plyrrbind-fill-in-dplyr)
+Source: [Stack Overflow, Jun 2017 | good replacement for plyr::rbind.fill](https://stackoverflow.com/questions/44464441/r-is-there-a-good-replacement-for-plyrrbind-fill-in-dplyr)
 </div> 
 
 
 ### Set colnames in pipe
 ``df %>% `colnames<-` newnames``  
 <div class="source">
-Source: [Stack Overflow, Mar 2016](https://stackoverflow.com/questions/35518218/how-to-set-the-row-names-of-a-data-frame-passed-on-with-the-pipe-operator)
+Source: [Stack Overflow, Mar 2016 | how to set row names of data frame passed on with the pipe operator](https://stackoverflow.com/questions/35518218/how-to-set-the-row-names-of-a-data-frame-passed-on-with-the-pipe-operator)
 </div> 
 
 ```{r}
@@ -48,7 +48,7 @@ cars |> `colnames<-`(c("one", "two")) |> head()
 `df[, sapply(df, class) != "factor"]`  
 `df[,sapply(df, is.numeric)]`  
 <div class="source">
-Source: [Stack Overflow, Mar 2015](https://stackoverflow.com/questions/28548245/how-to-remove-columns-from-a-data-frame-by-data-type); 
+Source: [Stack Overflow, Mar 2015 | how to remove columns for a data frame by data type](https://stackoverflow.com/questions/28548245/how-to-remove-columns-from-a-data-frame-by-data-type); 
 </div>
 
 
