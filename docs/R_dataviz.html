@@ -190,24 +190,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#hjust-and-vjust" id="toc-hjust-and-vjust" class="nav-link active" data-scroll-target="#hjust-and-vjust"> <span class="header-section-number">3.1</span> hjust and vjust</a></li>
-  <li><a href="#math-expressions-in-labels" id="toc-math-expressions-in-labels" class="nav-link" data-scroll-target="#math-expressions-in-labels"> <span class="header-section-number">3.2</span> Math Expressions in labels</a>
+  <li><a href="#secondary-legend" id="toc-secondary-legend" class="nav-link active" data-scroll-target="#secondary-legend"> <span class="header-section-number">3.1</span> Secondary Legend</a>
   <ul class="collapse">
-  <li><a href="#use-quote" id="toc-use-quote" class="nav-link" data-scroll-target="#use-quote"> <span class="header-section-number">3.2.1</span> Use <code>quote()</code></a></li>
-  <li><a href="#use-tex-from-the-latex2exp-package" id="toc-use-tex-from-the-latex2exp-package" class="nav-link" data-scroll-target="#use-tex-from-the-latex2exp-package"> <span class="header-section-number">3.2.2</span> Use <code>TeX()</code> from the <code>latex2exp</code> package</a></li>
+  <li><a href="#na-legend" id="toc-na-legend" class="nav-link" data-scroll-target="#na-legend"> <span class="header-section-number">3.1.1</span> NA Legend</a></li>
+  <li><a href="#special-values" id="toc-special-values" class="nav-link" data-scroll-target="#special-values"> <span class="header-section-number">3.1.2</span> 2+ Special Values</a></li>
   </ul></li>
-  <li><a href="#laying-out-multiple-plots" id="toc-laying-out-multiple-plots" class="nav-link" data-scroll-target="#laying-out-multiple-plots"> <span class="header-section-number">3.3</span> Laying out multiple plots</a></li>
-  <li><a href="#line-up-axes-on-stacked-plots" id="toc-line-up-axes-on-stacked-plots" class="nav-link" data-scroll-target="#line-up-axes-on-stacked-plots"> <span class="header-section-number">3.4</span> Line up axes on stacked plots</a>
+  <li><a href="#hjustvjust" id="toc-hjustvjust" class="nav-link" data-scroll-target="#hjustvjust"> <span class="header-section-number">3.2</span> hjust/vjust</a></li>
+  <li><a href="#math-expressions" id="toc-math-expressions" class="nav-link" data-scroll-target="#math-expressions"> <span class="header-section-number">3.3</span> Math Expressions</a>
   <ul class="collapse">
-  <li><a href="#gridextragrid.arrange-and-cowplotplot_grid" id="toc-gridextragrid.arrange-and-cowplotplot_grid" class="nav-link" data-scroll-target="#gridextragrid.arrange-and-cowplotplot_grid"> <span class="header-section-number">3.4.1</span> <code>gridExtra::grid.arrange()</code> and <code>cowplot::plot_grid()</code></a></li>
-  <li><a href="#facets" id="toc-facets" class="nav-link" data-scroll-target="#facets"> <span class="header-section-number">3.4.2</span> Facets</a></li>
-  <li><a href="#mixed-geoms-bar-scatter" id="toc-mixed-geoms-bar-scatter" class="nav-link" data-scroll-target="#mixed-geoms-bar-scatter"> <span class="header-section-number">3.4.3</span> Mixed Geoms (Bar + Scatter)</a></li>
+  <li><a href="#use-quote" id="toc-use-quote" class="nav-link" data-scroll-target="#use-quote"> <span class="header-section-number">3.3.1</span> Use <code>quote()</code></a></li>
+  <li><a href="#use-tex-from-the-latex2exp-package" id="toc-use-tex-from-the-latex2exp-package" class="nav-link" data-scroll-target="#use-tex-from-the-latex2exp-package"> <span class="header-section-number">3.3.2</span> Use <code>TeX()</code> from the <code>latex2exp</code> package</a></li>
   </ul></li>
+  <li><a href="#facets-scalesspace" id="toc-facets-scalesspace" class="nav-link" data-scroll-target="#facets-scalesspace"> <span class="header-section-number">3.4</span> Facets: scales/space</a></li>
+  <li><a href="#align-axes" id="toc-align-axes" class="nav-link" data-scroll-target="#align-axes"> <span class="header-section-number">3.5</span> Align Axes</a>
+  <ul class="collapse">
+  <li><a href="#gridextragrid.arrange-and-cowplotplot_grid" id="toc-gridextragrid.arrange-and-cowplotplot_grid" class="nav-link" data-scroll-target="#gridextragrid.arrange-and-cowplotplot_grid"> <span class="header-section-number">3.5.1</span> <code>gridExtra::grid.arrange()</code> and <code>cowplot::plot_grid()</code></a></li>
+  <li><a href="#mixed-geoms" id="toc-mixed-geoms" class="nav-link" data-scroll-target="#mixed-geoms"> <span class="header-section-number">3.5.2</span> Mixed Geoms</a></li>
+  </ul></li>
+  <li><a href="#links" id="toc-links" class="nav-link" data-scroll-target="#links"> <span class="header-section-number">3.6</span> Links</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -225,287 +230,418 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p><strong>Links</strong></p>
 <ul>
-<li><a href="https://github.com/nprapps/dailygraphics-templates/blob/master/state_grid_map/index.html">GitHub nprapps/dailygraphics | dailygraphics-templates/index.html</a></li>
-<li><a href="https://stackoverflow.com/questions/42365483/add-a-box-for-the-na-values-to-the-ggplot-legend-for-a-continous-map">Stack Overflow | Add a box for the NA values to the ggplot legend for a continous map</a></li>
-<li><a href="https://stackoverflow.com/questions/52060601/ggplot-multiple-legends-arrangement">Stack Overflow | ggplot - Multiple legends arrangement</a></li>
-<li><a href="http://sape.inf.usi.ch/quick-reference/ggplot2/size">SAPE | ggplot2 Quick Reference: size</a></li>
-<li><a href="https://ggplot2-book.org/scale-colour.html">ggplot2 | 11 Colour scales and legends, scale color binned</a></li>
-<li><a href="https://www.datanovia.com/en/blog/ggplot-legend-title-position-and-labels/">Datanovia | How To Easily Customize GGPlot Legend for Great Graphics</a></li>
-<li><a href="https://blog.albertkuo.me/post/point-shape-options-in-ggplot/">Albert’s Blog | Point Shape Options in ggplot</a></li>
-<li><a href="https://cran.r-project.org/web/packages/gridExtra/vignettes/tableGrob.html">R project | tableGrob - Displaying tables as grid graphics</a></li>
-<li><a href="https://statisticsglobe.com/remove-border-of-ggplot2-geom_label-text-annotation-in-r">Statistics Globe | Remove Border of ggplot2 geom_label Text Annotation in R</a></li>
-<li><a href="https://statisticsglobe.com/identify-default-color-palette-names-of-ggplot2-in-r">Statistics Globe | Extract Default Color Palette of ggplot2 R Package - Hex Codes</a>; <code>scales::hue_pal()</code> and <code>scales::show_col()</code></li>
-<li><a href="https://www.rdocumentation.org/packages/gridExtra/versions/2.3/topics/tableGrob">{gridExtra}::tableGrob</a></li>
-<li><a href="https://stackoverflow.com/questions/38862303/customize-ggplot2-axis-labels-with-different-colors">Stack Overflow | customize ggplot2 axis labels with different colors</a></li>
-<li><a href="https://stackoverflow.com/questions/52469245/consistently-center-ggplot-title-across-panel-not-plot">Stack Overflow | Consistently center ggplot title across PANEL not PLOT</a></li>
-<li><a href="https://stackoverflow.com/questions/53455092/r-ggplot2-change-colour-of-font-and-background-in-facet-strip">Stack Overflow | ggplot2: change colour of font and background in facet strip?</a></li>
-<li><a href="https://stackoverflow.com/questions/18972628/accents-using-ggplot2">Stack Overflow | Accents using ggplot2</a></li>
-<li><a href="https://stackoverflow.com/questions/44170871/how-does-ggplot-scale-continuous-expand-argument-work">Stack Overflow | How does ggplot scale_continuous expand argument work?</a></li>
-<li><a href="https://stackoverflow.com/questions/7194688/using-ggplot2-can-i-insert-a-break-in-the-axis">Stack Overflow | Using ggplot2, can I insert a break in the axis?</a></li>
-<li><a href="https://mran.microsoft.com/web/packages/ggbreak/vignettes/ggbreak.html">Set Axis Break for ggplot2</a></li>
-<li><a href="https://wilkelab.org/cowplot/reference/add_sub.html">{cowplot}::add_sub | Add annotation underneath a plot</a></li>
-<li><a href="https://r-charts.com/evolution/newggslopegraph/">R CHARTS | Slopegraph in ggplot2 with newggslopegraph</a></li>
-<li><a href="https://github.com/hrbrmstr/statebins">GitHub hrbrmstr/statebins | Alternative to choropleths of US States</a></li>
-<li><a href="https://stackoverflow.com/questions/21997715/add-ggplot-annotation-outside-the-panel-or-two-titles">Stack Overflow | Add ggplot annotation outside the panel? Or two titles?</a></li>
+<li><p><a href="https://stackoverflow.com/questions/52060601/ggplot-multiple-legends-arrangement">Stack Overflow | ggplot - Multiple legends arrangement</a></p></li>
+<li><p><a href="https://ggplot2-book.org/scale-colour.html">ggplot2 | 11 Colour scales and legends, scale color binned</a></p></li>
+<li><p><a href="https://cran.r-project.org/web/packages/gridExtra/vignettes/tableGrob.html">R project | tableGrob - Displaying tables as grid graphics</a></p></li>
+<li><p><a href="https://statisticsglobe.com/remove-border-of-ggplot2-geom_label-text-annotation-in-r">Statistics Globe | Remove Border of ggplot2 geom_label Text Annotation in R</a></p></li>
+<li><p><a href="https://statisticsglobe.com/identify-default-color-palette-names-of-ggplot2-in-r">Statistics Globe | Extract Default Color Palette of ggplot2 R Package - Hex Codes</a>; <code>scales::hue_pal()</code> and <code>scales::show_col()</code></p></li>
+<li><p><a href="https://www.rdocumentation.org/packages/gridExtra/versions/2.3/topics/tableGrob">{gridExtra}::tableGrob</a></p></li>
+<li><p><a href="https://stackoverflow.com/questions/38862303/customize-ggplot2-axis-labels-with-different-colors">Stack Overflow | customize ggplot2 axis labels with different colors</a></p></li>
+<li><p><a href="https://stackoverflow.com/questions/52469245/consistently-center-ggplot-title-across-panel-not-plot">Stack Overflow | Consistently center ggplot title across PANEL not PLOT</a></p></li>
+<li><p><a href="https://stackoverflow.com/questions/53455092/r-ggplot2-change-colour-of-font-and-background-in-facet-strip">Stack Overflow | ggplot2: change colour of font and background in facet strip?</a></p></li>
+<li><p><a href="https://stackoverflow.com/questions/18972628/accents-using-ggplot2">Stack Overflow | Accents using ggplot2</a></p></li>
+<li><p><a href="https://stackoverflow.com/questions/44170871/how-does-ggplot-scale-continuous-expand-argument-work">Stack Overflow | How does ggplot scale_continuous expand argument work?</a></p></li>
+<li><p><a href="https://stackoverflow.com/questions/7194688/using-ggplot2-can-i-insert-a-break-in-the-axis">Stack Overflow | Using ggplot2, can I insert a break in the axis?</a></p></li>
+<li><p><a href="https://mran.microsoft.com/web/packages/ggbreak/vignettes/ggbreak.html">Set Axis Break for ggplot2</a></p></li>
+<li><p><a href="https://wilkelab.org/cowplot/reference/add_sub.html">{cowplot}::add_sub | Add annotation underneath a plot</a></p></li>
+<li><p><a href="https://r-charts.com/evolution/newggslopegraph/">R CHARTS | Slopegraph in ggplot2 with newggslopegraph</a></p></li>
+<li><p><a href="https://stackoverflow.com/questions/21997715/add-ggplot-annotation-outside-the-panel-or-two-titles">Stack Overflow | Add ggplot annotation outside the panel? Or two titles?</a></p></li>
 </ul>
-<section id="hjust-and-vjust" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="hjust-and-vjust"><span class="header-section-number">3.1</span> hjust and vjust</h2>
+<section id="secondary-legend" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="secondary-legend"><span class="header-section-number">3.1</span> Secondary Legend</h2>
+<section id="na-legend" class="level3" data-number="3.1.1">
+<h3 data-number="3.1.1" class="anchored" data-anchor-id="na-legend"><span class="header-section-number">3.1.1</span> NA Legend</h3>
+<p>Added automatically if NA is part of discrete legend, but is NOT included automatically for continuous legend.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">20220713</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>states_sf <span class="ot">&lt;-</span> urbnmapr<span class="sc">::</span><span class="fu">get_urbn_map</span>(<span class="at">map =</span> <span class="st">"states"</span>, <span class="at">sf =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="co">#set new CRS </span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  sf<span class="sc">::</span><span class="fu">st_transform</span>(states_sf, <span class="at">crs =</span> <span class="dv">4326</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">val_dis =</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>), <span class="fu">nrow</span>(.), <span class="cn">TRUE</span>)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    , <span class="at">val_con =</span> <span class="fu">sample</span>(<span class="sc">-</span><span class="dv">50</span><span class="sc">:</span><span class="dv">50</span>          , <span class="fu">nrow</span>(.), <span class="cn">TRUE</span>)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>      <span class="at">val_dis =</span> <span class="fu">ifelse</span>(state_abbv <span class="sc">==</span> <span class="st">"MN"</span>, <span class="cn">NA</span>, val_dis)</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    , <span class="at">val_con =</span> <span class="fu">ifelse</span>(state_abbv <span class="sc">==</span> <span class="st">"MN"</span>, <span class="cn">NA</span>, val_con)</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>old-style crs object detected; please recreate object with a recent sf::st_crs()</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(states_sf) <span class="sc">+</span> <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill =</span> val_dis))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="R_dataviz_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(states_sf) <span class="sc">+</span> <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill =</span> val_con))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="R_dataviz_files/figure-html/unnamed-chunk-2-2.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Add <code>NA</code> legend to continuous plot:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(states_sf) <span class="sc">+</span> </span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill =</span> val_con, <span class="at">color =</span> <span class="st">""</span>)) <span class="sc">+</span> </span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_continuous</span>(<span class="at">na.value =</span> <span class="st">"grey40"</span>) <span class="sc">+</span> </span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="cn">NA</span>) <span class="sc">+</span> </span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">guides</span>(</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">color =</span> <span class="fu">guide_legend</span>(<span class="st">"NA"</span>, <span class="at">override.aes =</span> <span class="fu">list</span>(<span class="at">fill =</span> <span class="st">"grey40"</span>))</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    , <span class="at">fill =</span> <span class="fu">guide_colorbar</span>(<span class="at">order =</span> <span class="dv">1</span>)</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  ) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="R_dataviz_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="source">
+<p>Source: <a href="https://stackoverflow.com/questions/42365483/add-a-box-for-the-na-values-to-the-ggplot-legend-for-a-continous-map">Stack Overflow, Mar 2017</a></p>
+</div>
+</section>
+<section id="special-values" class="level3" data-number="3.1.2">
+<h3 data-number="3.1.2" class="anchored" data-anchor-id="special-values"><span class="header-section-number">3.1.2</span> 2+ Special Values</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cowplot) </span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co">#special value for 'suppressed' data</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>states_sf <span class="ot">&lt;-</span> states_sf <span class="sc">%&gt;%</span> </span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">val_con =</span> <span class="fu">ifelse</span>(state_abbv <span class="sc">==</span> <span class="st">"CA"</span>, <span class="dv">999</span>, val_con))</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="do">## Main Plot </span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>p.main <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(states_sf) <span class="sc">+</span> </span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>( <span class="co"># non-special values, typical cont. color bar </span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> <span class="fu">filter</span>(states_sf, val_con <span class="sc">!=</span> <span class="dv">999</span> <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(val_con))</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    , <span class="fu">aes</span>(<span class="at">fill =</span> val_con), <span class="at">color =</span> <span class="cn">NA</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span> </span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>( <span class="co"># NA states (missing data) </span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> <span class="fu">filter</span>(states_sf, <span class="fu">is.na</span>(val_con))</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>    , <span class="at">fill =</span> <span class="st">"grey30"</span>, <span class="at">color =</span> <span class="cn">NA</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span> </span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>( <span class="co"># Special values (suppressed data) </span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> <span class="fu">filter</span>(states_sf, val_con <span class="sc">==</span> <span class="dv">999</span>)</span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>    , <span class="at">fill =</span> <span class="st">"grey80"</span>, <span class="at">color =</span> <span class="cn">NA</span></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span> </span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>( <span class="co"># add borders for all </span></span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="cn">NA</span>, <span class="at">color =</span> <span class="st">"white"</span></span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>  ) </span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a><span class="do">## Dummy Plot for 2nd Legend </span></span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>p.missup <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">val =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="at">type =</span> <span class="fu">c</span>(<span class="st">"Missing"</span>, <span class="st">"Suppressed"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(val, <span class="at">fill =</span> type)) <span class="sc">+</span> </span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">name =</span> <span class="cn">NULL</span></span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>    , <span class="at">values =</span> <span class="fu">c</span>(<span class="st">"grey30"</span>, <span class="st">"grey80"</span>)</span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>    , <span class="at">guide =</span> <span class="fu">guide_legend</span>( <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span> </span>
+<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.spacing.y =</span> <span class="fu">unit</span>(<span class="dv">5</span>, <span class="st">"pt"</span>))</span>
+<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a><span class="do">## Pull out legends and combine </span></span>
+<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a>leg.main <span class="ot">&lt;-</span> cowplot<span class="sc">::</span><span class="fu">get_legend</span>(p.main)</span>
+<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a>leg.sec  <span class="ot">&lt;-</span> cowplot<span class="sc">::</span><span class="fu">get_legend</span>(p.missup)</span>
+<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a>leg.final <span class="ot">&lt;-</span> cowplot<span class="sc">::</span><span class="fu">plot_grid</span>(leg.main, leg.sec, <span class="at">ncol =</span> <span class="dv">1</span>, <span class="at">align =</span> <span class="st">"v"</span>) </span>
+<span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a><span class="do">## Remvoe main legend from plot </span></span>
+<span id="cb7-41"><a href="#cb7-41" aria-hidden="true" tabindex="-1"></a>p.final  <span class="ot">&lt;-</span> p.main  <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>) </span>
+<span id="cb7-42"><a href="#cb7-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-43"><a href="#cb7-43" aria-hidden="true" tabindex="-1"></a><span class="do">## Combined everything </span></span>
+<span id="cb7-44"><a href="#cb7-44" aria-hidden="true" tabindex="-1"></a>cowplot<span class="sc">::</span><span class="fu">plot_grid</span>(p.final, leg.final, <span class="at">nrow =</span> <span class="dv">1</span>, <span class="at">rel_widths =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="R_dataviz_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p><strong>OUTSTANDING</strong></p>
+<ul>
+<li>how to minimize space between main legend and secondary legend</li>
+<li><code>grid::grid.draw(rbind(leg.main, leg.sec))</code> binds together without huge space, but need to figure out how to add to another ggplot item</li>
+</ul>
+</section>
+</section>
+<section id="hjustvjust" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="hjustvjust"><span class="header-section-number">3.2</span> hjust/vjust</h2>
 <p>Why do I always forget the direction of these?</p>
 <p><strong>hjust:</strong> 0 = left-aligned, 0.5=center, 1 = right-aligned<br>
 <strong>vjust:</strong> 0 = top-aligned, 0.5=middle, 1 = bottom-aligned</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>✔ ggplot2 3.3.6     ✔ purrr   0.3.4
-✔ tibble  3.1.7     ✔ dplyr   1.0.9
-✔ tidyr   1.2.0     ✔ stringr 1.4.0
-✔ readr   2.1.2     ✔ forcats 0.5.1</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-✖ dplyr::filter() masks stats::filter()
-✖ dplyr::lag()    masks stats::lag()</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>hjustvjust <span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">hjust=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.5</span>, <span class="dv">1</span>),</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">vjust=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.5</span>, <span class="dv">1</span>),</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">angle=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">45</span>, <span class="dv">90</span>),</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">text=</span><span class="st">"is-R"</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>hv <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(hjustvjust, <span class="fu">aes</span>(<span class="at">x=</span>hjust, <span class="at">y=</span>vjust)) <span class="sc">+</span> </span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label=</span>text, <span class="at">angle=</span>angle, <span class="at">hjust=</span>hjust, <span class="at">vjust=</span>vjust)) <span class="sc">+</span> </span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(<span class="sc">~</span>angle) <span class="sc">+</span></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.5</span>, <span class="dv">1</span>), <span class="at">expand=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.2</span>)) <span class="sc">+</span></span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">breaks=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.5</span>, <span class="dv">1</span>), <span class="at">expand=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.2</span>)) <span class="sc">+</span> <span class="fu">theme_bw</span>()</span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>hv <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Various values of angle, hjust and vjust in ggplot </span><span class="sc">\n</span><span class="st">"</span>, <span class="at">y =</span><span class="st">"vjust </span><span class="sc">\n</span><span class="st">"</span>, <span class="at">x =</span><span class="st">" </span><span class="sc">\n</span><span class="st"> hjust"</span>) <span class="sc">+</span> </span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">colour=</span><span class="st">"black"</span>, </span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>                                           <span class="at">size =</span> <span class="dv">12</span>, </span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>                                           <span class="at">face =</span> <span class="st">"bold"</span>) , </span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>                <span class="at">axis.text.y =</span> <span class="fu">element_text</span>(<span class="at">colour=</span><span class="st">"black"</span>, </span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>                                           <span class="at">size =</span> <span class="dv">12</span>, </span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>                                           <span class="at">face =</span> <span class="st">"bold"</span>),</span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>                <span class="at">axis.title.x =</span> <span class="fu">element_text</span>(<span class="at">face=</span><span class="st">"plain"</span>, </span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>              <span class="at">colour=</span><span class="st">"black"</span>, </span>
-<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>              <span class="at">size=</span><span class="dv">24</span>),</span>
-<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>              <span class="at">axis.title.y =</span> <span class="fu">element_text</span>(<span class="at">face=</span><span class="st">"plain"</span>, </span>
-<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>              <span class="at">colour=</span><span class="st">"black"</span>, </span>
-<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>               <span class="at">size=</span><span class="dv">24</span>),</span>
-<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>              <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">face=</span><span class="st">"bold"</span>, </span>
-<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">colour=</span><span class="st">"black"</span>, </span>
-<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">size=</span><span class="dv">18</span>)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>hjustvjust <span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">hjust=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.5</span>, <span class="dv">1</span>),</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">vjust=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.5</span>, <span class="dv">1</span>),</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">angle=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">45</span>, <span class="dv">90</span>),</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">text=</span><span class="st">"TEXT"</span>)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(hjustvjust, <span class="fu">aes</span>(<span class="at">x=</span>hjust, <span class="at">y=</span>vjust)) <span class="sc">+</span> </span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label=</span>text, <span class="at">angle=</span>angle, <span class="at">hjust=</span>hjust, <span class="at">vjust=</span>vjust)) <span class="sc">+</span> </span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(<span class="sc">~</span>angle) <span class="sc">+</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.5</span>, <span class="dv">1</span>), <span class="at">expand=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.2</span>)) <span class="sc">+</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">breaks=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.5</span>, <span class="dv">1</span>), <span class="at">expand=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.2</span>)) <span class="sc">+</span> </span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">title=</span><span class="st">"Various values of angle, hjust and vjust in ggplot </span><span class="sc">\n</span><span class="st">"</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>    , <span class="at">y =</span><span class="st">"vjust </span><span class="sc">\n</span><span class="st">"</span></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>    , <span class="at">x =</span><span class="st">" </span><span class="sc">\n</span><span class="st"> hjust"</span></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span>  </span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span> </span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text  =</span> <span class="fu">element_text</span>(<span class="at">color=</span><span class="st">"black"</span>, <span class="at">face=</span><span class="st">"bold"</span> , <span class="at">size=</span><span class="dv">12</span>)</span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>  , <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">color=</span><span class="st">"black"</span>, <span class="at">face=</span><span class="st">"plain"</span>, <span class="at">size=</span><span class="dv">24</span>)</span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>  , <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">color=</span><span class="st">"black"</span>, <span class="at">face=</span><span class="st">"bold"</span> , <span class="at">size=</span><span class="dv">18</span>)</span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>  ) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="R_dataviz_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="672"></p>
+<p><img src="R_dataviz_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p><span class="source"> Sources: <a href="https://www.r-bloggers.com/hjust-and-vjust/">R bloggers: hjust and vjust</a> and <a href="https://gist.github.com/cdesante/4070548">GitHub: cdesante/hjustvjust.r</a> </span></p>
+<div class="source">
+<p>Sources: <a href="https://www.r-bloggers.com/hjust-and-vjust/">R bloggers: hjust and vjust</a> and <a href="https://gist.github.com/cdesante/4070548">GitHub: cdesante/hjustvjust.r</a></p>
+</div>
 </section>
-<section id="math-expressions-in-labels" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="math-expressions-in-labels"><span class="header-section-number">3.2</span> Math Expressions in labels</h2>
-<section id="use-quote" class="level3" data-number="3.2.1">
-<h3 data-number="3.2.1" class="anchored" data-anchor-id="use-quote"><span class="header-section-number">3.2.1</span> Use <code>quote()</code></h3>
+<section id="math-expressions" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="math-expressions"><span class="header-section-number">3.3</span> Math Expressions</h2>
+<section id="use-quote" class="level3" data-number="3.3.1">
+<h3 data-number="3.3.1" class="anchored" data-anchor-id="use-quote"><span class="header-section-number">3.3.1</span> Use <code>quote()</code></h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(displ, hwy))<span class="sc">+</span><span class="fu">geom_point</span>()<span class="sc">+</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">quote</span>(</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>      alpha <span class="sc">^</span> <span class="dv">2</span> <span class="sc">-</span> <span class="fu">frac</span>(<span class="dv">1</span>, <span class="dv">10</span>) <span class="sc">+</span> <span class="fu">sum</span>(n[i], i<span class="sc">==</span><span class="dv">1</span>, N)</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>                )</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(displ, hwy))<span class="sc">+</span><span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">quote</span>(</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>      alpha <span class="sc">^</span> <span class="dv">2</span> <span class="sc">-</span> <span class="fu">frac</span>(<span class="dv">1</span>, <span class="dv">10</span>) <span class="sc">+</span> <span class="fu">sum</span>(n[i], i<span class="sc">==</span><span class="dv">1</span>, N)</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    ) <span class="co">#end quote</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="co">#end of ggtitle</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="R_dataviz_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
+<p><img src="R_dataviz_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>
-<section id="use-tex-from-the-latex2exp-package" class="level3" data-number="3.2.2">
-<h3 data-number="3.2.2" class="anchored" data-anchor-id="use-tex-from-the-latex2exp-package"><span class="header-section-number">3.2.2</span> Use <code>TeX()</code> from the <code>latex2exp</code> package</h3>
+<section id="use-tex-from-the-latex2exp-package" class="level3" data-number="3.3.2">
+<h3 data-number="3.3.2" class="anchored" data-anchor-id="use-tex-from-the-latex2exp-package"><span class="header-section-number">3.3.2</span> Use <code>TeX()</code> from the <code>latex2exp</code> package</h3>
 <ul>
 <li>must be in a string</li>
 <li>must be denoted as math mode with dollar signs</li>
 <li>must include <strong>2</strong> backslashes for <span class="math inline">\(\LaTeX\)</span> commands</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(latex2exp)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(displ, hwy))<span class="sc">+</span><span class="fu">geom_point</span>()<span class="sc">+</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="fu">TeX</span>(</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"$</span><span class="sc">\\</span><span class="st">alpha^2 - </span><span class="sc">\\</span><span class="st">frac{1}{10} + </span><span class="sc">\\</span><span class="st">sum_{i}^N n_i$"</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>                )</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="R_dataviz_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-</section>
-</section>
-<section id="laying-out-multiple-plots" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="laying-out-multiple-plots"><span class="header-section-number">3.3</span> Laying out multiple plots</h2>
-<p><a href="https://cran.r-project.org/web/packages/egg/vignettes/Ecosystem.html" target="_blank"> Laying out multiple plots on a page - Baptiste Auguie </a></p>
-</section>
-<section id="line-up-axes-on-stacked-plots" class="level2" data-number="3.4">
-<h2 data-number="3.4" class="anchored" data-anchor-id="line-up-axes-on-stacked-plots"><span class="header-section-number">3.4</span> Line up axes on stacked plots</h2>
-<p>Sometimes I’m working on two different types of plots (like a bar chart and a scatter plot) that happen to have the same x-axis. I want to line up these axes so that when the plots are stacked the values correspond to the same date.</p>
-<section id="gridextragrid.arrange-and-cowplotplot_grid" class="level3" data-number="3.4.1">
-<h3 data-number="3.4.1" class="anchored" data-anchor-id="gridextragrid.arrange-and-cowplotplot_grid"><span class="header-section-number">3.4.1</span> <code>gridExtra::grid.arrange()</code> and <code>cowplot::plot_grid()</code></h3>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># two different bar charts</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(class))<span class="sc">+</span><span class="fu">geom_bar</span>()<span class="sc">+</span><span class="fu">coord_flip</span>()<span class="sc">+</span><span class="fu">ylim</span>(<span class="dv">0</span>, <span class="dv">109</span>)</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>B <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(drv))<span class="sc">+</span><span class="fu">geom_bar</span>()<span class="sc">+</span><span class="fu">coord_flip</span>()<span class="sc">+</span><span class="fu">ylim</span>(<span class="dv">0</span>, <span class="dv">109</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Using <code>grid.arrange</code> command from the <code>gridExtra</code> package does not line up axes.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#axes don't line up</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>gridExtra<span class="sc">::</span><span class="fu">grid.arrange</span>(A, B, <span class="at">ncol=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="R_dataviz_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-<p>Use <code>grid.draw</code> command from the <code>grid</code> package.<br>
-<a href="https://stackoverflow.com/questions/13294952/left-align-two-graph-edges-ggplot" target="_blank"> Source </a></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">#make plots into Grobs (grid graphical object)</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>gA <span class="ot">&lt;-</span> <span class="fu">ggplotGrob</span>(A) </span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>gB <span class="ot">&lt;-</span> <span class="fu">ggplotGrob</span>(B)</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>grid<span class="sc">::</span><span class="fu">grid.draw</span>(<span class="fu">rbind</span>(gA, gB))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="R_dataviz_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-<p>The <code>cowplot::plot_grid()</code> function allows you to line up plots by a specific axis.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>cowplot<span class="sc">::</span><span class="fu">plot_grid</span>(A, B, <span class="at">ncol =</span> <span class="dv">1</span>, <span class="at">align =</span> <span class="st">"v"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(latex2exp)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(displ, hwy))<span class="sc">+</span><span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="fu">TeX</span>(</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"$</span><span class="sc">\\</span><span class="st">alpha^2 - </span><span class="sc">\\</span><span class="st">frac{1}{10} + </span><span class="sc">\\</span><span class="st">sum_{i}^N n_i$"</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    ) <span class="co">#end TeX</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="co">#end ggtitle</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="R_dataviz_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>
-<section id="facets" class="level3" data-number="3.4.2">
-<h3 data-number="3.4.2" class="anchored" data-anchor-id="facets"><span class="header-section-number">3.4.2</span> Facets</h3>
+</section>
+<section id="facets-scalesspace" class="level2 page-columns page-full" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="facets-scalesspace"><span class="header-section-number">3.4</span> Facets: scales/space</h2>
 <p>Another option is <code>facet_wrap()</code> or <code>facet_grid()</code>, which can works if the axes are the same for the different variables you want to compare, but be careful as facets are supposed to be comparing items with the same measurements.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>tidy.df <span class="ot">&lt;-</span> <span class="fu">pivot_longer</span>(mpg, <span class="fu">c</span>(class, drv), <span class="at">names_to =</span> <span class="st">"category"</span>, <span class="at">values_to =</span> <span class="st">"type"</span>)</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(tidy.df, <span class="fu">aes</span>(type))<span class="sc">+</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()<span class="sc">+</span></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>()<span class="sc">+</span> </span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(</span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>      <span class="sc">~</span>category</span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>    ,  <span class="at">ncol =</span> <span class="dv">1</span></span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>    , <span class="at">scales =</span> <span class="st">"free"</span> <span class="co">#removes types from the axis if that category has 0 cars of that type </span></span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="R_dataviz_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>tidy.df <span class="ot">&lt;-</span> tidyr<span class="sc">::</span><span class="fu">pivot_longer</span>(</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  mpg, <span class="fu">c</span>(class, drv)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  , <span class="at">names_to =</span> <span class="st">"category"</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  , <span class="at">values_to =</span> <span class="st">"type"</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(tidy.df, <span class="fu">aes</span>(type))<span class="sc">+</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()<span class="sc">+</span></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>()<span class="sc">+</span> </span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>      category <span class="sc">~</span> . </span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    , <span class="at">scales =</span> <span class="st">"free"</span> <span class="co">#removes types from the axis if that category has 0 cars of that type </span></span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>    , <span class="at">space  =</span> <span class="st">"free"</span> <span class="co">#spaces based on number of obs (i.e. number of bars);</span></span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>                      <span class="co">#         rather than giving each facet equal sizing</span></span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="R_dataviz_files/figure-html/unnamed-chunk-8-2.png" class="img-fluid" width="672"></p>
+<p><code>scales = "free"</code>: removes types from the axis if that category has 0 cars of that type</p>
+<div class="page-columns page-full">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(tidy.df, <span class="fu">aes</span>(type)) <span class="sc">+</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span> <span class="fu">coord_flip</span>() <span class="sc">+</span> </span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>category,  <span class="at">ncol =</span> <span class="dv">1</span>, <span class="at">scales =</span> <span class="st">"fixed"</span>) <span class="sc">+</span> </span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">'facet_wrap: scales = "fixed"'</span>)</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(tidy.df, <span class="fu">aes</span>(type)) <span class="sc">+</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span> <span class="fu">coord_flip</span>() <span class="sc">+</span> </span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>category,  <span class="at">ncol =</span> <span class="dv">1</span>, <span class="at">scales =</span> <span class="st">"free"</span>) <span class="sc">+</span> </span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">'facet_wrap: scales = "free"'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell column-screen-inset-shaded quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="R_dataviz_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="R_dataviz_files/figure-html/unnamed-chunk-9-2.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</div>
+</div>
+<p><code>space = "free"</code>: spaces based on number of obs (i.e.&nbsp;number of bars); rather than giving each facet equal sizing, <strong>ONLY</strong> available for <code>facet_grid</code></p>
+<div class="page-columns page-full">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(tidy.df, <span class="fu">aes</span>(type)) <span class="sc">+</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span> <span class="fu">coord_flip</span>() <span class="sc">+</span> </span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(category <span class="sc">~</span> ., <span class="at">scales =</span> <span class="st">"fixed"</span> , <span class="at">space  =</span> <span class="st">"fixed"</span>) <span class="sc">+</span> </span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">'facet_grid: scales = "fixed" and space = "fixed"'</span>)</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(tidy.df, <span class="fu">aes</span>(type)) <span class="sc">+</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span> <span class="fu">coord_flip</span>() <span class="sc">+</span> </span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(category <span class="sc">~</span> ., <span class="at">scales =</span> <span class="st">"free"</span> , <span class="at">space  =</span> <span class="st">"free"</span>) <span class="sc">+</span> </span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">'facet_grid: scales = "free" and space = "free"'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell column-screen-inset-shaded quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="R_dataviz_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="R_dataviz_files/figure-html/unnamed-chunk-10-2.png" class="img-fluid" width="672"></p>
+</div>
+</div>
 </div>
 </div>
 </section>
-<section id="mixed-geoms-bar-scatter" class="level3" data-number="3.4.3">
-<h3 data-number="3.4.3" class="anchored" data-anchor-id="mixed-geoms-bar-scatter"><span class="header-section-number">3.4.3</span> Mixed Geoms (Bar + Scatter)</h3>
-<p>Scatter plots and bar charts will not line up automatically, even when using the <code>grid.draw</code> command detailed above. This is because their default limits are different given that the bar chart is centered on the value and the scatter plot is a single point on the value.</p>
+<section id="align-axes" class="level2 page-columns page-full" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="align-axes"><span class="header-section-number">3.5</span> Align Axes</h2>
+<p>Sometimes I’m working on two different types of plots (like a bar chart and a scatter plot) that happen to have the same x-axis. I want to line up these axes so that when the plots are stacked the values correspond to the same date.</p>
+<section id="gridextragrid.arrange-and-cowplotplot_grid" class="level3 page-columns page-full" data-number="3.5.1">
+<h3 data-number="3.5.1" class="anchored" data-anchor-id="gridextragrid.arrange-and-cowplotplot_grid"><span class="header-section-number">3.5.1</span> <code>gridExtra::grid.arrange()</code> and <code>cowplot::plot_grid()</code></h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">#work with smaller subset of data from economics, part of ggplot2 package </span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>startdate <span class="ot">&lt;-</span> <span class="st">"2014-06-01"</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>economics_small <span class="ot">&lt;-</span> economics <span class="sc">%&gt;%</span></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(date <span class="sc">&gt;=</span> <span class="fu">as.Date</span>(startdate)) <span class="sc">%&gt;%</span></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(date)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># two different bar charts</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(class))<span class="sc">+</span><span class="fu">geom_bar</span>()<span class="sc">+</span><span class="fu">coord_flip</span>()<span class="sc">+</span><span class="fu">ylim</span>(<span class="dv">0</span>, <span class="dv">109</span>)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>B <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(drv))<span class="sc">+</span><span class="fu">geom_bar</span>()<span class="sc">+</span><span class="fu">coord_flip</span>()<span class="sc">+</span><span class="fu">ylim</span>(<span class="dv">0</span>, <span class="dv">109</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Using <code>grid.arrange</code> command from the <code>gridExtra</code> package does not line up axes.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">#axes don't line up</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>gridExtra<span class="sc">::</span><span class="fu">grid.arrange</span>(A, B, <span class="at">ncol=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="R_dataviz_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+Use <code>grid.draw</code> command from the <code>grid</code> package to left align graph edges .<br>
+
+<div class="source">
+<p>Source: <a href="https://stackoverflow.com/questions/13294952/left-align-two-graph-edges-ggplot">Stack Overflow, Nov 2012</a></p>
+</div>
+<p>The <code>cowplot::plot_grid()</code> function allows you to line up plots by a specific axis.</p>
+<div class="page-columns page-full">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">#make plots into Grobs (grid graphical object)</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>gA <span class="ot">&lt;-</span> <span class="fu">ggplotGrob</span>(A) </span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>gB <span class="ot">&lt;-</span> <span class="fu">ggplotGrob</span>(B)</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>grid<span class="sc">::</span><span class="fu">grid.draw</span>(<span class="fu">rbind</span>(gA, gB))</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>cowplot<span class="sc">::</span><span class="fu">plot_grid</span>(A, B, <span class="at">ncol =</span> <span class="dv">1</span>, <span class="at">align =</span> <span class="st">"v"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell column-screen-inset-shaded quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="R_dataviz_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="R_dataviz_files/figure-html/unnamed-chunk-13-2.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="mixed-geoms" class="level3" data-number="3.5.2">
+<h3 data-number="3.5.2" class="anchored" data-anchor-id="mixed-geoms"><span class="header-section-number">3.5.2</span> Mixed Geoms</h3>
+<p>Scatter plots and bar charts will not line up automatically, even when using the <code>grid.draw</code>/<code>plot_grid</code> command detailed above. This is because their default limits are different given that the bar chart is centered on the value and the scatter plot is a single point on the value.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co">#work with smaller subset of economics (ggplot2)</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>startdate <span class="ot">&lt;-</span> <span class="st">"2014-06-01"</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>economics_small <span class="ot">&lt;-</span> economics <span class="sc">%&gt;%</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(date <span class="sc">&gt;=</span> <span class="fu">as.Date</span>(startdate)) <span class="sc">%&gt;%</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(date)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(economics_small, <span class="fu">aes</span>(date, unemploy))<span class="sc">+</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">"identity"</span>)<span class="sc">+</span></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">as.Date</span>(startdate), <span class="at">color=</span><span class="st">"red"</span>, <span class="at">size=</span><span class="dv">2</span>)</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>B <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(economics_small, <span class="fu">aes</span>(date, uempmed))<span class="sc">+</span></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span><span class="fu">geom_line</span>()<span class="sc">+</span></span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">as.Date</span>(startdate), <span class="at">color=</span><span class="st">"red"</span>, <span class="at">size=</span><span class="dv">2</span>)</span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>gA <span class="ot">&lt;-</span> <span class="fu">ggplotGrob</span>(A) </span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>gB <span class="ot">&lt;-</span> <span class="fu">ggplotGrob</span>(B)</span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>grid<span class="sc">::</span><span class="fu">grid.draw</span>(<span class="fu">rbind</span>(gA, gB)) <span class="co">#cowplot::plot_grid(A, B, ncol = 1, align = "v") produces same result </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(economics_small, <span class="fu">aes</span>(date, unemploy))<span class="sc">+</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">"identity"</span>)<span class="sc">+</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">as.Date</span>(startdate), <span class="at">color=</span><span class="st">"red"</span>, <span class="at">size=</span><span class="dv">2</span>)</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>B <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(economics_small, <span class="fu">aes</span>(date, uempmed))<span class="sc">+</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span><span class="fu">geom_line</span>()<span class="sc">+</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">as.Date</span>(startdate), <span class="at">color=</span><span class="st">"red"</span>, <span class="at">size=</span><span class="dv">2</span>)</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>gA <span class="ot">&lt;-</span> <span class="fu">ggplotGrob</span>(A) </span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>gB <span class="ot">&lt;-</span> <span class="fu">ggplotGrob</span>(B)</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a><span class="co">#grid::grid.draw(rbind(gA, gB)) </span></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>cowplot<span class="sc">::</span><span class="fu">plot_grid</span>(A, B, <span class="at">ncol =</span> <span class="dv">1</span>, <span class="at">align =</span> <span class="st">"v"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="R_dataviz_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
+<p><img src="R_dataviz_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>In order to line the up there a a couple of options.</p>
-<section id="fix-xlim-for-all-charts" class="level4" data-number="3.4.3.1">
-<h4 data-number="3.4.3.1" class="anchored" data-anchor-id="fix-xlim-for-all-charts"><span class="header-section-number">3.4.3.1</span> Fix xlim for all charts</h4>
+<section id="fix-xlim" class="level4" data-number="3.5.2.1">
+<h4 data-number="3.5.2.1" class="anchored" data-anchor-id="fix-xlim"><span class="header-section-number">3.5.2.1</span> Fix xlim</h4>
 <p>If you make the limit the first x-value, the bar chart will not show up (remember it’s centered over the value).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(economics_small, <span class="fu">aes</span>(date, unemploy))<span class="sc">+</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">"identity"</span>)<span class="sc">+</span></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">as.Date</span>(startdate), <span class="at">color=</span><span class="st">"red"</span>, <span class="at">size=</span><span class="dv">2</span>)<span class="sc">+</span></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="fu">as.Date</span>(startdate), <span class="cn">NA</span>)</span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>B <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(economics_small, <span class="fu">aes</span>(date, uempmed))<span class="sc">+</span></span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span><span class="fu">geom_line</span>()<span class="sc">+</span></span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">as.Date</span>(startdate), <span class="at">color=</span><span class="st">"red"</span>, <span class="at">size=</span><span class="dv">2</span>)<span class="sc">+</span></span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="fu">as.Date</span>(startdate), <span class="cn">NA</span>)</span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>gA <span class="ot">&lt;-</span> <span class="fu">ggplotGrob</span>(A) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(economics_small, <span class="fu">aes</span>(date, unemploy))<span class="sc">+</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">"identity"</span>)<span class="sc">+</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">as.Date</span>(startdate), <span class="at">color=</span><span class="st">"red"</span>, <span class="at">size=</span><span class="dv">2</span>)<span class="sc">+</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="fu">as.Date</span>(startdate), <span class="cn">NA</span>)</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>B <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(economics_small, <span class="fu">aes</span>(date, uempmed))<span class="sc">+</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span><span class="fu">geom_line</span>()<span class="sc">+</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">as.Date</span>(startdate), <span class="at">color=</span><span class="st">"red"</span>, <span class="at">size=</span><span class="dv">2</span>)<span class="sc">+</span></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="fu">as.Date</span>(startdate), <span class="cn">NA</span>)</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>gA <span class="ot">&lt;-</span> <span class="fu">ggplotGrob</span>(A) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: Removed 1 rows containing missing values (geom_bar).</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>gB <span class="ot">&lt;-</span> <span class="fu">ggplotGrob</span>(B)</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>grid<span class="sc">::</span><span class="fu">grid.draw</span>(<span class="fu">rbind</span>(gA, gB))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>gB <span class="ot">&lt;-</span> <span class="fu">ggplotGrob</span>(B)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="co">#grid::grid.draw(rbind(gA, gB))</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>cowplot<span class="sc">::</span><span class="fu">plot_grid</span>(A, B, <span class="at">ncol =</span> <span class="dv">1</span>, <span class="at">align =</span> <span class="st">"v"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 1 rows containing missing values (geom_bar).</code></pre>
+</div>
 <div class="cell-output-display">
-<p><img src="R_dataviz_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="672"></p>
+<p><img src="R_dataviz_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>This can be fixed by adding a half unit to the x-axis (i.e.&nbsp;having the lower limit be half-unit lower than smallest x-value). In this case the unit is a month, so a half-unit would be ~15 days.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>HalfUnit <span class="ot">&lt;-</span> .<span class="dv">5</span><span class="sc">*</span>(economics_small<span class="sc">$</span>date[<span class="dv">2</span>] <span class="sc">-</span> economics_small<span class="sc">$</span>date[<span class="dv">1</span>])</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>HalfUnit</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>HalfUnit <span class="ot">&lt;-</span> .<span class="dv">5</span><span class="sc">*</span>(economics_small<span class="sc">$</span>date[<span class="dv">2</span>] <span class="sc">-</span> economics_small<span class="sc">$</span>date[<span class="dv">1</span>])</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>HalfUnit</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Time difference of 15 days</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(economics_small, <span class="fu">aes</span>(date, unemploy))<span class="sc">+</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">"identity"</span>)<span class="sc">+</span></span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">as.Date</span>(startdate), <span class="at">color=</span><span class="st">"red"</span>, <span class="at">size=</span><span class="dv">2</span>)<span class="sc">+</span></span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="fu">as.Date</span>(startdate)<span class="sc">-</span>HalfUnit, <span class="cn">NA</span>)</span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>B <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(economics_small, <span class="fu">aes</span>(date, uempmed))<span class="sc">+</span></span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span><span class="fu">geom_line</span>()<span class="sc">+</span></span>
-<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">as.Date</span>(startdate), <span class="at">color=</span><span class="st">"red"</span>, <span class="at">size=</span><span class="dv">2</span>)<span class="sc">+</span></span>
-<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="fu">as.Date</span>(startdate)<span class="sc">-</span>HalfUnit, <span class="cn">NA</span>)</span>
-<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>gA <span class="ot">&lt;-</span> <span class="fu">ggplotGrob</span>(A) </span>
-<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>gB <span class="ot">&lt;-</span> <span class="fu">ggplotGrob</span>(B)</span>
-<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>grid<span class="sc">::</span><span class="fu">grid.draw</span>(<span class="fu">rbind</span>(gA, gB))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(economics_small, <span class="fu">aes</span>(date, unemploy))<span class="sc">+</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">"identity"</span>)<span class="sc">+</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">as.Date</span>(startdate), <span class="at">color=</span><span class="st">"red"</span>, <span class="at">size=</span><span class="dv">2</span>)<span class="sc">+</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="fu">as.Date</span>(startdate)<span class="sc">-</span>HalfUnit, <span class="cn">NA</span>)</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>B <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(economics_small, <span class="fu">aes</span>(date, uempmed))<span class="sc">+</span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span><span class="fu">geom_line</span>()<span class="sc">+</span></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">as.Date</span>(startdate), <span class="at">color=</span><span class="st">"red"</span>, <span class="at">size=</span><span class="dv">2</span>)<span class="sc">+</span></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="fu">as.Date</span>(startdate)<span class="sc">-</span>HalfUnit, <span class="cn">NA</span>)</span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>gA <span class="ot">&lt;-</span> <span class="fu">ggplotGrob</span>(A) </span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>gB <span class="ot">&lt;-</span> <span class="fu">ggplotGrob</span>(B)</span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a><span class="co">#grid::grid.draw(rbind(gA, gB))</span></span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>cowplot<span class="sc">::</span><span class="fu">plot_grid</span>(A, B, <span class="at">ncol =</span> <span class="dv">1</span>, <span class="at">align =</span> <span class="st">"v"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="R_dataviz_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="672"></p>
+<p><img src="R_dataviz_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>
-<section id="shift-bar-chart-to-right" class="level4" data-number="3.4.3.2">
-<h4 data-number="3.4.3.2" class="anchored" data-anchor-id="shift-bar-chart-to-right"><span class="header-section-number">3.4.3.2</span> Shift Bar chart to right</h4>
-<p>Bar charts are automatically centered over the x-value. Bar charts (and any geom object) can be shifted by using <code>position - position_nudge())</code>. The shift needs to be half a unit on the x-axis, again here it is monthly data so a half unit would be ~15 days.<br>
-<a href="https://stackoverflow.com/questions/38752968/shift-geom-bar-right-not-center-aligned" target="_blank"> Source </a></p>
+<section id="shift-bar-chart" class="level4" data-number="3.5.2.2">
+<h4 data-number="3.5.2.2" class="anchored" data-anchor-id="shift-bar-chart"><span class="header-section-number">3.5.2.2</span> Shift Bar Chart</h4>
+Bar charts are automatically centered over the x-value. Bar charts (and any geom object) can be shifted by using <code>position - position_nudge())</code>. The shift needs to be half a unit on the x-axis, again here it is monthly data so a half unit would be ~15 days.<br>
+
+<div class="source">
+<p>Source: <a href="https://stackoverflow.com/questions/38752968/shift-geom-bar-right-not-center-aligned">Stack Overflow, Aug 2016</a></p>
+</div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(economics_small, <span class="fu">aes</span>(date, unemploy))<span class="sc">+</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">"identity"</span>, <span class="at">position =</span> <span class="fu">position_nudge</span>(<span class="at">x =</span> <span class="fu">as.vector</span>(HalfUnit)))<span class="sc">+</span></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">as.Date</span>(startdate), <span class="at">color=</span><span class="st">"red"</span>, <span class="at">size=</span><span class="dv">2</span>)</span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>B <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(economics_small, <span class="fu">aes</span>(date, uempmed))<span class="sc">+</span></span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span><span class="fu">geom_line</span>()<span class="sc">+</span></span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">as.Date</span>(startdate), <span class="at">color=</span><span class="st">"red"</span>, <span class="at">size=</span><span class="dv">2</span>)</span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>gA <span class="ot">&lt;-</span> <span class="fu">ggplotGrob</span>(A) </span>
-<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>gB <span class="ot">&lt;-</span> <span class="fu">ggplotGrob</span>(B)</span>
-<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>grid<span class="sc">::</span><span class="fu">grid.draw</span>(<span class="fu">rbind</span>(gA, gB))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(economics_small, <span class="fu">aes</span>(date, unemploy))<span class="sc">+</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">"identity"</span>, <span class="at">position =</span> <span class="fu">position_nudge</span>(<span class="at">x =</span> <span class="fu">as.vector</span>(HalfUnit)))<span class="sc">+</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">as.Date</span>(startdate), <span class="at">color=</span><span class="st">"red"</span>, <span class="at">size=</span><span class="dv">2</span>)</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>B <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(economics_small, <span class="fu">aes</span>(date, uempmed))<span class="sc">+</span></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span><span class="fu">geom_line</span>()<span class="sc">+</span></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">as.Date</span>(startdate), <span class="at">color=</span><span class="st">"red"</span>, <span class="at">size=</span><span class="dv">2</span>)</span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>gA <span class="ot">&lt;-</span> <span class="fu">ggplotGrob</span>(A) </span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>gB <span class="ot">&lt;-</span> <span class="fu">ggplotGrob</span>(B)</span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a><span class="co">#grid::grid.draw(rbind(gA, gB))</span></span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>cowplot<span class="sc">::</span><span class="fu">plot_grid</span>(A, B, <span class="at">ncol =</span> <span class="dv">1</span>, <span class="at">align =</span> <span class="st">"v"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="R_dataviz_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="672"></p>
+<p><img src="R_dataviz_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-
-
 </section>
 </section>
+</section>
+<section id="links" class="level2" data-number="3.6">
+<h2 data-number="3.6" class="anchored" data-anchor-id="links"><span class="header-section-number">3.6</span> Links</h2>
+<ul>
+<li><a href="https://cran.r-project.org/web/packages/egg/vignettes/Ecosystem.html">Baptiste Augie, Jul 2019 | Laying out multiple plots on a page</a></li>
+<li><a href="https://github.com/nprapps/dailygraphics-templates/blob/master/state_grid_map/index.html">GitHub nprapps/dailygraphics | dailygraphics-templates/index.html</a></li>
+<li><a href="http://sape.inf.usi.ch/quick-reference/ggplot2/size">SAPE | ggplot2 Quick Reference: size</a></li>
+<li><a href="https://www.datanovia.com/en/blog/ggplot-legend-title-position-and-labels/">Datanovia | How To Easily Customize GGPlot Legend for Great Graphics</a></li>
+<li><a href="https://blog.albertkuo.me/post/point-shape-options-in-ggplot/">Albert’s Blog | Point Shape Options in ggplot</a><br>
+</li>
+<li><a href="https://github.com/hrbrmstr/statebins">GitHub hrbrmstr/statebins | Alternative to choropleths of US States</a></li>
+</ul>
+
+
 </section>
 
 </main> <!-- /main -->

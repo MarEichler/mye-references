@@ -1,13 +1,63 @@
 # Data Management 
 
-**Links** 
 
-- [Stack Overflow | Is there a good replacement for plyr::rbind.fill in dplyr?](https://stackoverflow.com/questions/44464441/r-is-there-a-good-replacement-for-plyrrbind-fill-in-dplyr); `dplyr::bind_rows()` 
-- [Stack Overflow | using strsplit in a tibble column](https://stackoverflow.com/questions/58253379/r-using-strsplit-in-a-tibble-column)
-- [Stack Overflow | How to tell what is in one vector and not another?](https://stackoverflow.com/questions/1837968/how-to-tell-what-is-in-one-vector-and-not-another)
-- [Stack Overflow | How to set the row names of a data frame passed on with the pipe %>% operator?](https://stackoverflow.com/questions/35518218/how-to-set-the-row-names-of-a-data-frame-passed-on-with-the-pipe-operator)
-- [Stack Overflow | How to remove columns from a data.frame by data type?](https://stackoverflow.com/questions/28548245/how-to-remove-columns-from-a-data-frame-by-data-type); `df[,-which(sapply(df, class) == "factor")]`
-- [Stack Overflow | add a dplyr group label as a number](https://stackoverflow.com/questions/50099010/r-add-a-dplyr-group-label-as-a-number)
-- [Stack Overflow | using strsplit and subset in dplyr and mutate](https://stackoverflow.com/questions/42565539/using-strsplit-and-subset-in-dplyr-and-mutate)
-- [GitHub {bigrquery} | Can't join across sources · Issue #219 ](https://github.com/r-dbi/bigrquery/issues/219)
-- [Stack Overflow | Assign variable labels of data frame columns](https://stackoverflow.com/questions/27347548/r-assign-variable-labels-of-data-frame-columns)
+## Differences 
+
+### [{waldo}](https://waldo.r-lib.org/)
+
+```{r}
+waldo::compare(c("a", "b", "c"), c("a", "b"))
+df1 <- data.frame(x = 1:3, y = 3:1)
+df2 <- tibble::tibble(rev(df1))
+waldo::compare(df1, df2)
+```
+
+### Vector Item Difference   
+
+```{r}
+x <- c(1,2,3,4)
+y <- c(2,3,4)
+setdiff(x, y)
+```
+<div class="source">
+Source: [Stack Overflow, Dec 2012](https://stackoverflow.com/questions/1837968/how-to-tell-what-is-in-one-vector-and-not-another)
+</div>
+
+
+## Quick Q&A 
+
+### replacement for plyr::rbind.fill 
+`dplyr::bind_rows()`  
+<div class="source">
+Source: [Stack Overflow, Jun 2017](https://stackoverflow.com/questions/44464441/r-is-there-a-good-replacement-for-plyrrbind-fill-in-dplyr)
+</div> 
+
+
+### Set colnames in pipe
+``df %>% `colnames<-` newnames``  
+<div class="source">
+Source: [Stack Overflow, Mar 2016](https://stackoverflow.com/questions/35518218/how-to-set-the-row-names-of-a-data-frame-passed-on-with-the-pipe-operator)
+</div> 
+
+```{r}
+colnames(cars)
+cars |> `colnames<-`(c("one", "two")) |> head()
+```
+### Remove Columns by Var Type  
+`df[,-which(sapply(df, class) == "factor")]`  
+`df[, sapply(df, class) != "factor"]`  
+`df[,sapply(df, is.numeric)]`  
+<div class="source">
+Source: [Stack Overflow, Mar 2015](https://stackoverflow.com/questions/28548245/how-to-remove-columns-from-a-data-frame-by-data-type); 
+</div>
+
+
+
+## Links  
+
+- [Stack Overflow, Oct 2019 | using strsplit in a tibble column](https://stackoverflow.com/questions/58253379/r-using-strsplit-in-a-tibble-column)
+- [Stack Overflow, Dec 2014 | Assign variable labels of data frame columns](https://stackoverflow.com/questions/27347548/r-assign-variable-labels-of-data-frame-columns)
+- [Stack Overflow, Mar 2017 | using strsplit and subset in dplyr and mutate](https://stackoverflow.com/questions/42565539/using-strsplit-and-subset-in-dplyr-and-mutate)  
+- [Stack Overflow, May 2013 | add a dplyr group label as a number](https://stackoverflow.com/questions/50099010/r-add-a-dplyr-group-label-as-a-number)
+- [GitHub {bigrquery}, Apr 2018 | Can't join across sources · Issue #219 ](https://github.com/r-dbi/bigrquery/issues/219)
+

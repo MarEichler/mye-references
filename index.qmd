@@ -3,15 +3,10 @@
 This is a collection of information and links in one place so it's easier to look up.
 
 ```{r}
-#| warning: false
-library(tidyverse)
-library(knitr)
-library(kableExtra)
-```
-
-```{r}
 #| echo = FALSE
 systime <- Sys.time()
 ```
 
 Last updated: `r systime`
+
+

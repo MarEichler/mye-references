@@ -1,14 +1,16 @@
 # Data Viz 
 
+```{r}
+#| message = FALSE 
+library(tidyverse)
+```
+
+
 **Links**  
 
-- [GitHub nprapps/dailygraphics | dailygraphics-templates/index.html](https://github.com/nprapps/dailygraphics-templates/blob/master/state_grid_map/index.html)
-- [Stack Overflow | Add a box for the NA values to the ggplot legend for a continous map](https://stackoverflow.com/questions/42365483/add-a-box-for-the-na-values-to-the-ggplot-legend-for-a-continous-map)
+
 - [Stack Overflow | ggplot - Multiple legends arrangement](https://stackoverflow.com/questions/52060601/ggplot-multiple-legends-arrangement)
-- [SAPE | ggplot2 Quick Reference: size](http://sape.inf.usi.ch/quick-reference/ggplot2/size)
 - [ggplot2 | 11 Colour scales and legends, scale color binned](https://ggplot2-book.org/scale-colour.html)
-- [Datanovia | How To Easily Customize GGPlot Legend for Great Graphics](https://www.datanovia.com/en/blog/ggplot-legend-title-position-and-labels/)
-- [Albert's Blog | Point Shape Options in ggplot](https://blog.albertkuo.me/post/point-shape-options-in-ggplot/)
 - [R project | tableGrob - Displaying tables as grid graphics](https://cran.r-project.org/web/packages/gridExtra/vignettes/tableGrob.html)
 - [Statistics Globe | Remove Border of ggplot2 geom_label Text Annotation in R](https://statisticsglobe.com/remove-border-of-ggplot2-geom_label-text-annotation-in-r)
 - [Statistics Globe | Extract Default Color Palette of ggplot2 R Package - Hex Codes](https://statisticsglobe.com/identify-default-color-palette-names-of-ggplot2-in-r); `scales::hue_pal()` and `scales::show_col()`
@@ -22,53 +24,142 @@
 - [Set Axis Break for ggplot2](https://mran.microsoft.com/web/packages/ggbreak/vignettes/ggbreak.html)
 - [{cowplot}::add_sub | Add annotation underneath a plot](https://wilkelab.org/cowplot/reference/add_sub.html)
 - [R CHARTS | Slopegraph in ggplot2 with newggslopegraph](https://r-charts.com/evolution/newggslopegraph/)
-- [GitHub hrbrmstr/statebins | Alternative to choropleths of US States](https://github.com/hrbrmstr/statebins)
+
 - [Stack Overflow | Add ggplot annotation outside the panel? Or two titles?](https://stackoverflow.com/questions/21997715/add-ggplot-annotation-outside-the-panel-or-two-titles)
 
 
-## hjust and vjust
+## Secondary Legend
+
+### NA Legend 
+
+Added automatically if NA is part of discrete legend, but is NOT included automatically for continuous legend.  
+
+```{r}
+#| fig.height: 3
+set.seed(20220713)
+states_sf <- urbnmapr::get_urbn_map(map = "states", sf = TRUE) %>% 
+  #set new CRS 
+  sf::st_transform(states_sf, crs = 4326) %>% 
+  mutate(
+      val_dis = sample(c("A", "B", "C"), nrow(.), TRUE)
+    , val_con = sample(-50:50          , nrow(.), TRUE)
+  ) %>% 
+  mutate(
+      val_dis = ifelse(state_abbv == "MN", NA, val_dis)
+    , val_con = ifelse(state_abbv == "MN", NA, val_con)
+  )
+
+ggplot(states_sf) + geom_sf(aes(fill = val_dis))
+ggplot(states_sf) + geom_sf(aes(fill = val_con))
+```
+
+Add `NA` legend to continuous plot: 
+
+```{r}
+#| fig.height = 3
+ggplot(states_sf) + 
+  geom_sf(aes(fill = val_con, color = "")) + 
+  scale_fill_continuous(na.value = "grey40") + 
+  scale_color_manual(values = NA) + 
+  guides(
+      color = guide_legend("NA", override.aes = list(fill = "grey40"))
+    , fill = guide_colorbar(order = 1)
+  ) 
+```
+<div class="source">
+Source: [Stack Overflow, Mar 2017](https://stackoverflow.com/questions/42365483/add-a-box-for-the-na-values-to-the-ggplot-legend-for-a-continous-map)
+</div>
+
+### 2+ Special Values 
+
+```{r}
+#| fig.height = 3
+library(cowplot) 
+
+#special value for 'suppressed' data
+states_sf <- states_sf %>% 
+  mutate(val_con = ifelse(state_abbv == "CA", 999, val_con))
+
+## Main Plot 
+p.main <- ggplot(states_sf) + 
+  geom_sf( # non-special values, typical cont. color bar 
+    data = filter(states_sf, val_con != 999 & !is.na(val_con))
+    , aes(fill = val_con), color = NA
+  ) + 
+  geom_sf( # NA states (missing data) 
+    data = filter(states_sf, is.na(val_con))
+    , fill = "grey30", color = NA
+  ) + 
+  geom_sf( # Special values (suppressed data) 
+    data = filter(states_sf, val_con == 999)
+    , fill = "grey80", color = NA
+  ) + 
+  geom_sf( # add borders for all 
+    fill = NA, color = "white"
+  ) 
+
+## Dummy Plot for 2nd Legend 
+p.missup <- tibble(val = c(0, 1), type = c("Missing", "Suppressed")) %>% 
+  ggplot() + 
+  geom_bar(aes(val, fill = type)) + 
+  scale_fill_manual(name = NULL
+    , values = c("grey30", "grey80")
+    , guide = guide_legend( byrow = TRUE)
+  ) + 
+  theme(legend.spacing.y = unit(5, "pt"))
+
+## Pull out legends and combine 
+leg.main <- cowplot::get_legend(p.main)
+leg.sec  <- cowplot::get_legend(p.missup)
+leg.final <- cowplot::plot_grid(leg.main, leg.sec, ncol = 1, align = "v") 
+
+## Remvoe main legend from plot 
+p.final  <- p.main  + theme(legend.position = "none") 
+
+## Combined everything 
+cowplot::plot_grid(p.final, leg.final, nrow = 1, rel_widths = c(4, 1))
+```
+**OUTSTANDING** 
+
+- how to minimize space between main legend and secondary legend
+- `grid::grid.draw(rbind(leg.main, leg.sec))` binds together without huge space, but need to figure out how to add to another ggplot item 
+
+## hjust/vjust
 Why do I always forget the direction of these? 
 
 **hjust:** 0 = left-aligned, 0.5=center, 1 = right-aligned  
 **vjust:** 0 = top-aligned, 0.5=middle, 1 = bottom-aligned  
 
 ```{r}
-library(tidyverse)
 hjustvjust <- expand.grid(
   hjust=c(0, 0.5, 1),
   vjust=c(0, 0.5, 1),
   angle=c(0, 45, 90),
-  text="is-R"
-)
-hv <- ggplot(hjustvjust, aes(x=hjust, y=vjust)) + 
+  text="TEXT")
+
+ggplot(hjustvjust, aes(x=hjust, y=vjust)) + 
   geom_point() +
   geom_text(aes(label=text, angle=angle, hjust=hjust, vjust=vjust)) + 
   facet_grid(~angle) +
   scale_x_continuous(breaks=c(0, 0.5, 1), expand=c(0, 0.2)) +
-  scale_y_continuous(breaks=c(0, 0.5, 1), expand=c(0, 0.2)) + theme_bw()
-hv + labs(title="Various values of angle, hjust and vjust in ggplot \n", y ="vjust \n", x =" \n hjust") + 
-  theme(axis.text.x = element_text(colour="black", 
-                                           size = 12, 
-                                           face = "bold") , 
-                axis.text.y = element_text(colour="black", 
-                                           size = 12, 
-                                           face = "bold"),
-                axis.title.x = element_text(face="plain", 
-              colour="black", 
-              size=24),
-              axis.title.y = element_text(face="plain", 
-              colour="black", 
-               size=24),
-              plot.title = element_text(face="bold", 
-                                    colour="black", 
-                                    size=18)) 
+  scale_y_continuous(breaks=c(0, 0.5, 1), expand=c(0, 0.2)) + 
+  labs(
+    title="Various values of angle, hjust and vjust in ggplot \n"
+    , y ="vjust \n"
+    , x =" \n hjust"
+  ) +  
+  theme_bw() + 
+  theme(
+    axis.text  = element_text(color="black", face="bold" , size=12)
+  , axis.title = element_text(color="black", face="plain", size=24)
+  , plot.title = element_text(color="black", face="bold" , size=18)
+  ) 
 ```
-
-<span class="source">
+<div class="source">
 Sources: [R bloggers: hjust and vjust](https://www.r-bloggers.com/hjust-and-vjust/) and [GitHub: cdesante/hjustvjust.r](https://gist.github.com/cdesante/4070548)
-</span>
+</div>
 
-## Math Expressions in labels 
+## Math Expressions 
 
 ### Use `quote()` 
 ```{r}
@@ -76,8 +167,8 @@ ggplot(mpg, aes(displ, hwy))+geom_point()+
   ggtitle(
     quote(
       alpha ^ 2 - frac(1, 10) + sum(n[i], i==1, N)
-                )
-    )
+    ) #end quote
+  ) #end of ggtitle
 ```
 
 ### Use `TeX()` from the `latex2exp` package  
@@ -89,19 +180,57 @@ library(latex2exp)
 ggplot(mpg, aes(displ, hwy))+geom_point()+
   ggtitle(TeX(
     "$\\alpha^2 - \\frac{1}{10} + \\sum_{i}^N n_i$"
-                )
-    )
+    ) #end TeX
+  ) #end ggtitle
+```
+## Facets: scales/space
+
+Another option is `facet_wrap()` or `facet_grid()`, which can works  if the axes are the same for the different variables you want to compare, but be careful as facets are supposed to be comparing items with the same measurements.  
+
+```{r}
+tidy.df <- tidyr::pivot_longer(
+  mpg, c(class, drv)
+  , names_to = "category"
+  , values_to = "type"
+)
 ```
 
 
-## Laying out multiple plots 
-<a href="https://cran.r-project.org/web/packages/egg/vignettes/Ecosystem.html" target="_blank"> Laying out multiple plots on a page - Baptiste Auguie </a>  
+`scales = "free"`: removes types from the axis if that category has 0 cars of that type   
+
+```{r}
+#| column: screen-inset-shaded
+#| layout-nrow: 1
+ggplot(tidy.df, aes(type)) +
+  geom_bar() + coord_flip() + 
+  facet_wrap(~category,  ncol = 1, scales = "fixed") + 
+  labs(title = 'facet_wrap: scales = "fixed"')
+
+ggplot(tidy.df, aes(type)) +
+  geom_bar() + coord_flip() + 
+  facet_wrap(~category,  ncol = 1, scales = "free") + 
+  labs(title = 'facet_wrap: scales = "free"')
+```
+
+`space = "free"`: spaces based on number of obs (i.e. number of bars); rather than giving each facet equal sizing, **ONLY** available for `facet_grid`
+
+```{r}
+#| column: screen-inset-shaded
+#| layout-nrow: 1
+ggplot(tidy.df, aes(type)) +
+  geom_bar() + coord_flip() + 
+  facet_grid(category ~ ., scales = "fixed" , space  = "fixed") + 
+  labs(title = 'facet_grid: scales = "fixed" and space = "fixed"')
+
+ggplot(tidy.df, aes(type)) +
+  geom_bar() + coord_flip() + 
+  facet_grid(category ~ ., scales = "free" , space  = "free") + 
+  labs(title = 'facet_grid: scales = "free" and space = "free"')
+```
 
 
-## Line up axes on stacked plots 
+## Align Axes
 Sometimes I'm working on two different types of plots (like a bar chart and a scatter plot) that happen to have the same x-axis.  I want to line up these axes so that when the plots are stacked the values correspond to the same date.  
-
-
 
 
 ### `gridExtra::grid.arrange()` and `cowplot::plot_grid()`
@@ -111,59 +240,33 @@ A <- ggplot(mpg, aes(class))+geom_bar()+coord_flip()+ylim(0, 109)
 B <- ggplot(mpg, aes(drv))+geom_bar()+coord_flip()+ylim(0, 109)
 ```
 
- Using `grid.arrange` command from the `gridExtra` package does not line up axes.  
+Using `grid.arrange` command from the `gridExtra` package does not line up axes.  
 ```{r}
 #axes don't line up
 gridExtra::grid.arrange(A, B, ncol=1)
 ```
 
-Use `grid.draw` command from the `grid` package.  
-<a href="https://stackoverflow.com/questions/13294952/left-align-two-graph-edges-ggplot" target="_blank"> Source </a>
+Use `grid.draw` command from the `grid` package to left align graph edges .  
+<div class = "source">
+Source: [Stack Overflow, Nov 2012](https://stackoverflow.com/questions/13294952/left-align-two-graph-edges-ggplot)
+</div>  
+
+The `cowplot::plot_grid()` function allows you to line up plots by a specific axis.   
 ```{r}
+#| column: screen-inset-shaded
+#| layout-nrow: 1
 #make plots into Grobs (grid graphical object)
 gA <- ggplotGrob(A) 
 gB <- ggplotGrob(B)
 grid::grid.draw(rbind(gA, gB))
-```
-
-The `cowplot::plot_grid()` function allows you to line up plots by a specific axis. 
-
-```{r}
 cowplot::plot_grid(A, B, ncol = 1, align = "v")
 ```
 
-### Facets 
-
-Another option is `facet_wrap()` or `facet_grid()`, which can works  if the axes are the same for the different variables you want to compare, but be careful as facets are supposed to be comparing items with the same measurements.  
-
-```{r}
-tidy.df <- pivot_longer(mpg, c(class, drv), names_to = "category", values_to = "type")
-ggplot(tidy.df, aes(type))+
-  geom_bar()+
-  coord_flip()+ 
-  facet_wrap(
-      ~category
-    ,  ncol = 1
-    , scales = "free" #removes types from the axis if that category has 0 cars of that type 
-  )
-ggplot(tidy.df, aes(type))+
-  geom_bar()+
-  coord_flip()+ 
-  facet_grid(
-      category ~ . 
-    , scales = "free" #removes types from the axis if that category has 0 cars of that type 
-    , space  = "free" #spaces based on number of obs (i.e. number of bars);
-                      #         rather than giving each facet equal sizing
-  )
-```
-
-
-
-### Mixed Geoms (Bar + Scatter)  
-Scatter plots and bar charts will not line up automatically, even when using the `grid.draw` command detailed above.  This is because their default limits are different given that the bar chart is centered on the value and the scatter plot is a single point on the value.  
+### Mixed Geoms 
+Scatter plots and bar charts will not line up automatically, even when using the `grid.draw`/`plot_grid` command detailed above.  This is because their default limits are different given that the bar chart is centered on the value and the scatter plot is a single point on the value.  
 
 ```{r}
-#work with smaller subset of data from economics, part of ggplot2 package 
+#work with smaller subset of economics (ggplot2)
 startdate <- "2014-06-01"
 economics_small <- economics %>%
   filter(date >= as.Date(startdate)) %>%
@@ -180,12 +283,13 @@ B <- ggplot(economics_small, aes(date, uempmed))+
   geom_vline(xintercept = as.Date(startdate), color="red", size=2)
 gA <- ggplotGrob(A) 
 gB <- ggplotGrob(B)
-grid::grid.draw(rbind(gA, gB)) #cowplot::plot_grid(A, B, ncol = 1, align = "v") produces same result 
+#grid::grid.draw(rbind(gA, gB)) 
+cowplot::plot_grid(A, B, ncol = 1, align = "v")
 ```
 
 In order to line the up there a a couple of options.  
 
-#### Fix xlim for all charts 
+#### Fix xlim
 
 If you make the limit the first x-value, the bar chart will not show up (remember it's centered over the value).  
 ```{r}
@@ -199,7 +303,8 @@ B <- ggplot(economics_small, aes(date, uempmed))+
   xlim(as.Date(startdate), NA)
 gA <- ggplotGrob(A) 
 gB <- ggplotGrob(B)
-grid::grid.draw(rbind(gA, gB))
+#grid::grid.draw(rbind(gA, gB))
+cowplot::plot_grid(A, B, ncol = 1, align = "v")
 ```
 
 This can be fixed by adding a half unit to the x-axis (i.e. having the lower limit be half-unit lower than smallest x-value). In this case the unit is a month, so a half-unit would be ~15 days.  
@@ -221,12 +326,15 @@ B <- ggplot(economics_small, aes(date, uempmed))+
   xlim(as.Date(startdate)-HalfUnit, NA)
 gA <- ggplotGrob(A) 
 gB <- ggplotGrob(B)
-grid::grid.draw(rbind(gA, gB))
+#grid::grid.draw(rbind(gA, gB))
+cowplot::plot_grid(A, B, ncol = 1, align = "v")
 ```
 
-#### Shift Bar chart to right  
+#### Shift Bar Chart
 Bar charts are automatically centered over the x-value.  Bar charts (and any geom object) can be shifted by using `position - position_nudge())`.  The shift needs to be half a unit on the x-axis, again here it is monthly data so a half unit would be ~15 days.  
-<a href="https://stackoverflow.com/questions/38752968/shift-geom-bar-right-not-center-aligned" target="_blank"> Source </a>
+<div class="source">
+Source: [Stack Overflow, Aug 2016](https://stackoverflow.com/questions/38752968/shift-geom-bar-right-not-center-aligned)
+</div>
 
 ```{r}
 A <- ggplot(economics_small, aes(date, unemploy))+
@@ -237,5 +345,16 @@ B <- ggplot(economics_small, aes(date, uempmed))+
   geom_vline(xintercept = as.Date(startdate), color="red", size=2)
 gA <- ggplotGrob(A) 
 gB <- ggplotGrob(B)
-grid::grid.draw(rbind(gA, gB))
+#grid::grid.draw(rbind(gA, gB))
+cowplot::plot_grid(A, B, ncol = 1, align = "v")
 ```
+
+
+## Links 
+
+- [Baptiste Augie, Jul 2019 | Laying out multiple plots on a page](https://cran.r-project.org/web/packages/egg/vignettes/Ecosystem.html)
+- [GitHub nprapps/dailygraphics | dailygraphics-templates/index.html](https://github.com/nprapps/dailygraphics-templates/blob/master/state_grid_map/index.html) 
+- [SAPE | ggplot2 Quick Reference: size](http://sape.inf.usi.ch/quick-reference/ggplot2/size)
+- [Datanovia | How To Easily Customize GGPlot Legend for Great Graphics](https://www.datanovia.com/en/blog/ggplot-legend-title-position-and-labels/)
+- [Albert's Blog | Point Shape Options in ggplot](https://blog.albertkuo.me/post/point-shape-options-in-ggplot/)  
+- [GitHub hrbrmstr/statebins | Alternative to choropleths of US States](https://github.com/hrbrmstr/statebins)
