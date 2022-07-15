@@ -1,0 +1,82 @@
+# Functions 
+
+## Correlation
+
+### base R correlation: `cor()`  
+
+
+```{r}
+cor(mtcars[,1:4])
+```
+
+If data has NA's in any of the values the `cor()` will results in `NA`.  If you want to remove the NA's when calculating correlation do: 
+
+```
+cor(..., use = "complete.obs")
+```
+
+<div class="source">
+Source: [https://stackoverflow.com/questions/3798998/cor-shows-only-na-or-1-for-correlations-why](https://stackoverflow.com/questions/3798998/cor-shows-only-na-or-1-for-correlations-why)
+</div>
+
+### Dot Plots for Multiple Variables: `pairs()`  
+ 
+That chart that plots all variables against eachother as a dot plot when looking to see if variables are correlated with eachother 
+
+```{r}
+#lots of variables so only look at first 4
+testdf <- mtcars[,1:4]
+pairs(testdf, main = "title")
+```
+
+
+
+## if else 
+
+### Statements 
+
+
+test expression goes in parenthesis `()` and the statement goes in the curly brackets `{}` 
+
+```r
+if (test) { statment } 
+```
+
+
+R is a bit finicky with where the brackets go; I get errors when I put `else` on a new line by itself - it wants to have the right brackets before it; `} else` 
+```r
+if (test_A) {
+statment #1
+} if else (test_B) {
+} else {
+statment #2 
+}
+```
+
+### Vectorized 
+
+
+```
+ifelse(test, if_true, if_false)
+```
+
+Use case when when have more than 2 options (this is a replacement for nested `ifelse()` functions) 
+
+```r
+case_when(
+    x == A ~ "a"
+  , x == B ~ "b"
+  , x == C ~ "c"
+  , TRUE    ~ NA_character # catchall, default is NA
+  # need to specify *type* of NA
+)
+```
+
+## Links 
+
+
+**Links** 
+
+- [R package development | 5 Documenting functions](https://combine-australia.github.io/r-pkg-dev/documenting-functions.html)
+- [Stack Overflow | Print dataframe name in function output](https://stackoverflow.com/questions/16742951/print-dataframe-name-in-function-output)
+- [Stack Overflow | How to write "descriptions for arguments" in R when coding the wrapper functions?](https://stackoverflow.com/questions/54624408/how-to-write-descriptions-for-arguments-in-r-when-coding-the-wrapper-functions)

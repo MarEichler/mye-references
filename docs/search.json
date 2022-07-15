@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "MYE References",
     "section": "",
-    "text": "This is a collection of information and links in one place so it’s easier to look up.\n\n\n\nLast updated: 2022-07-13 22:39:36"
+    "text": "This is a collection of information and links in one place so it’s easier to look up.\n\n\n\nLast updated: 2022-07-15 14:31:39"
   },
   {
     "objectID": "resources.html",
@@ -40,6 +40,13 @@
     "title": "R",
     "section": "",
     "text": "Specifically regarding R code"
+  },
+  {
+    "objectID": "R.html#versions",
+    "href": "R.html#versions",
+    "title": "R",
+    "section": "Versions",
+    "text": "Versions\n\nInstall Older Package from Source\n\nR Studio Support - Installing older versions of packages and Package Archive\n\n# P: package name, e.g. \"ggplot2\"\n# V: version number, e.g. \"3.3.5\"\n\n#single install \ninstall.packages(\n  \"https://cran.r-project.org/src/contrib/Archive/<P>/<P>_<V>.tar.gz\"\n  , repos=NULL\n  , type=\"source\"\n)\n\n#function to install (for multiple instances)\nlibrary(glue) \ninstall_old_version <- function(P, V){\n  if (packageVersion(P) == V){\n    logger::log_info(\"Package already at that version\")\n  } else {\n    packageurl <- as.character(glue(\n    \"https://cran.r-project.org/src/contrib/Archive/{P}/{P}_{V}.tar.gz\"\n    ))\n    install.packages(packageurl, repos=NULL, type=\"source\")\n    logger::log_success(\"{P} {V}\")\n  }\n}\n\n\nInstall Older Version of R (Windows)\nIf a program was built entirely in an older version of R, it may be difficult to get it to work with an updated version of R. When their isn’t time to investigate and re-code, installing an older version of R is possible.\n\ncran.r-project.org\nClick the ‘Download for Windows’ link for your given operating system\n\nClick on the ‘base’ link\n\nClick on the ‘Previous releases’ link \nClick on the specific R version you want, say R 3.5.3 \nClick on the ‘Download R  for Windows’ and this will download an exe file \nRun the exe file to install the older version of R\n\n\n\nSwitch between versions of R\n\nOpen R Studio\nTools > Global Options…\nGeneral > R Version > Change…"
   },
   {
     "objectID": "R_datamanage.html",
@@ -138,5 +145,229 @@
     "title": "3  Data Viz",
     "section": "3.10 Links",
     "text": "3.10 Links\nnew sections\n\nStack Overflow | Consistently center ggplot title across PANEL not PLOT\nStack Overflow | customize ggplot2 axis labels with different colors\n\nshape/line in ggplot\n\nSAPE | ggplot2 Quick Reference: size\nSAPE | ggplot2 Quick Reference: shape\nAlbert’s Blog | Point Shape Options in ggplot\n\nlayout\n\nBaptiste Augie, Jul 2019 | Laying out multiple plots on a page\nDatanovia | How To Easily Customize GGPlot Legend for Great Graphics\nR project | tableGrob - Displaying tables as grid graphics\nStatistics Globe | Remove Border of ggplot2 geom_label Text Annotation in R\n{gridExtra}::tableGrob\n\nStack Overflow | ggplot2: change colour of font and background in facet strip?\n\nother\n\nGitHub nprapps/dailygraphics | dailygraphics-templates/index.html\nGitHub hrbrmstr/statebins | Alternative to choropleths of US States\nStack Overflow | Accents using ggplot2\nStack Overflow | How does ggplot scale_continuous expand argument work?\nR CHARTS | Slopegraph in ggplot2 with newggslopegraph"
+  },
+  {
+    "objectID": "R_dates.html#date-formats",
+    "href": "R_dates.html#date-formats",
+    "title": "4  Dates and Times",
+    "section": "4.1 Date Formats",
+    "text": "4.1 Date Formats\n\n\n\n\n\n \n  \n    String \n    Meaning \n    Code \n    Output \n  \n \n\n  \n    %a \n    Day of the week, abbreviated (Mon-Sun) \n    format.Date(\"2020-12-10\", \"%a\") \n    Thu \n  \n  \n    %A \n    Day of the week, full (Monday-Sunday \n    format.Date(\"2020-12-10\", \"%A\") \n    Thursday \n  \n  \n    %w \n    Day of the week, numeric, 0 = Sunday (0-6) \n    format.Date(\"2020-12-10\", \"%w\") \n    4 \n  \n  \n    %e \n    Day of month (1-31) \n    format.Date(\"2020-12-10\", \"%e\") \n    10 \n  \n  \n    %d \n    Day of month (01-31) \n    format.Date(\"2020-12-10\", \"%d\") \n    10 \n  \n  \n    %m \n    Month, numeric (01-12) \n    format.Date(\"2020-12-10\", \"%m\") \n    12 \n  \n  \n    %b \n    Month, abbreviated (Jan-Dec) \n    format.Date(\"2020-12-10\", \"%b\") \n    Dec \n  \n  \n    %B \n    Month, full (January-December) \n    format.Date(\"2020-12-10\", \"%B\") \n    December \n  \n  \n    %y \n    Year, without century (00-99) \n    format.Date(\"2020-12-10\", \"%y\") \n    20 \n  \n  \n    %Y \n    Year, with century (0000-9999) \n    format.Date(\"2020-12-10\", \"%Y\") \n    2020 \n  \n  \n    %j \n    Day of the Year (001-366) \n    format.Date(\"2020-12-10\", \"%j\") \n    345 \n  \n  \n    %U \n    Week of year, numeric, starting on Sunday (00-52) \n    format.Date(\"2020-12-10\", \"%U\") \n    49 \n  \n  \n    %W \n    Week of year, numeric, starting on Monday (00-52) \n    format.Date(\"2020-12-10\", \"%W\") \n    49 \n  \n  \n    %x \n    Locale-specific date \n    format.Date(\"2020-12-10\", \"%x\") \n    2020-12-10 \n  \n\n\n\n\n\n\n\nSource: stat.berkeley | Dates and Times in R Stack Overflow"
+  },
+  {
+    "objectID": "R_dates.html#time-formats",
+    "href": "R_dates.html#time-formats",
+    "title": "4  Dates and Times",
+    "section": "4.2 Time Formats",
+    "text": "4.2 Time Formats\n\n\n\n\n\n \n  \n    String \n    Meaning \n    Code \n    Output \n  \n \n\n  \n    %S \n    Second (00-59) \n    format.Date(as.POSIXct(\"2020-12-10 15:30:10\", tz = \"America/Chicago\"), \"%S\") \n    10 \n  \n  \n    %M \n    Minute (00-59) \n    format.Date(as.POSIXct(\"2020-12-10 15:30:10\", tz = \"America/Chicago\"), \"%M\") \n    30 \n  \n  \n    %l \n    Hour, in 12-hour clock (1-12) \n    format.Date(as.POSIXct(\"2020-12-10 15:30:10\", tz = \"America/Chicago\"), \"%l\") \n    3 \n  \n  \n    %I \n    Hour, in 12-hour clock (01-12) \n    format.Date(as.POSIXct(\"2020-12-10 15:30:10\", tz = \"America/Chicago\"), \"%I\") \n    03 \n  \n  \n    %p \n    am/pm \n    format.Date(as.POSIXct(\"2020-12-10 15:30:10\", tz = \"America/Chicago\"), \"%p\") \n    PM \n  \n  \n    %H \n    Hour, in 24-hour clock (00-23) \n    format.Date(as.POSIXct(\"2020-12-10 15:30:10\", tz = \"America/Chicago\"), \"%H\") \n    15 \n  \n  \n    %X \n    Locale-specific time \n    format.Date(as.POSIXct(\"2020-12-10 15:30:10\", tz = \"America/Chicago\"), \"%X\") \n    15:30:10 \n  \n  \n    %c \n    Locale-specific date and time \n    format.Date(as.POSIXct(\"2020-12-10 15:30:10\", tz = \"America/Chicago\"), \"%c\") \n    Thu Dec 10 15:30:10 2020 \n  \n  \n    %z \n    Offset from GMT \n    format.Date(as.POSIXct(\"2020-12-10 15:30:10\", tz = \"America/Chicago\"), \"%z\") \n    -0600 \n  \n  \n    %Z \n    Time zone (character) \n    format.Date(as.POSIXct(\"2020-12-10 15:30:10\", tz = \"America/Chicago\"), \"%Z\") \n    CST \n  \n\n\n\n\n\n\n\nSource: stat.berkeley | Dates and Times in R Stack Overflow"
+  },
+  {
+    "objectID": "R_dates.html#time-zone-options-in-r",
+    "href": "R_dates.html#time-zone-options-in-r",
+    "title": "4  Dates and Times",
+    "section": "4.3 Time Zone options in R",
+    "text": "4.3 Time Zone options in R\nThe above example uses Central time and so I can use tz = America/Chicago; other timezone options can be found using the code below:\n\n#check system time zone\nSys.timezone(location = TRUE)\n\n[1] \"America/Los_Angeles\"\n\n#other time zone options (only show first 20)\nOlsonNames()[1:20]\n\n [1] \"Africa/Abidjan\"       \"Africa/Accra\"         \"Africa/Addis_Ababa\"  \n [4] \"Africa/Algiers\"       \"Africa/Asmara\"        \"Africa/Asmera\"       \n [7] \"Africa/Bamako\"        \"Africa/Bangui\"        \"Africa/Banjul\"       \n[10] \"Africa/Bissau\"        \"Africa/Blantyre\"      \"Africa/Brazzaville\"  \n[13] \"Africa/Bujumbura\"     \"Africa/Cairo\"         \"Africa/Casablanca\"   \n[16] \"Africa/Ceuta\"         \"Africa/Conakry\"       \"Africa/Dakar\"        \n[19] \"Africa/Dar_es_Salaam\" \"Africa/Djibouti\""
+  },
+  {
+    "objectID": "R_dates.html#links",
+    "href": "R_dates.html#links",
+    "title": "4  Dates and Times",
+    "section": "4.4 Links",
+    "text": "4.4 Links\n\nggplot2 | Section 9: Scales: Date Time Scales\nR-Bloggers | Date Formats in R"
+  },
+  {
+    "objectID": "R_functions.html",
+    "href": "R_functions.html",
+    "title": "5  Functions",
+    "section": "",
+    "text": "cor(mtcars[,1:4])\n\n            mpg        cyl       disp         hp\nmpg   1.0000000 -0.8521620 -0.8475514 -0.7761684\ncyl  -0.8521620  1.0000000  0.9020329  0.8324475\ndisp -0.8475514  0.9020329  1.0000000  0.7909486\nhp   -0.7761684  0.8324475  0.7909486  1.0000000\n\n\nIf data has NA’s in any of the values the cor() will results in NA. If you want to remove the NA’s when calculating correlation do:\ncor(..., use = \"complete.obs\")\n\nSource: https://stackoverflow.com/questions/3798998/cor-shows-only-na-or-1-for-correlations-why\n\n\n\n\nThat chart that plots all variables against eachother as a dot plot when looking to see if variables are correlated with eachother\n\n#lots of variables so only look at first 4\ntestdf <- mtcars[,1:4]\npairs(testdf, main = \"title\")"
+  },
+  {
+    "objectID": "R_functions.html#if-else",
+    "href": "R_functions.html#if-else",
+    "title": "5  Functions",
+    "section": "5.2 if else",
+    "text": "5.2 if else\n\n5.2.1 Statements\ntest expression goes in parenthesis () and the statement goes in the curly brackets {}\nif (test) { statment } \nR is a bit finicky with where the brackets go; I get errors when I put else on a new line by itself - it wants to have the right brackets before it; } else\nif (test_A) {\nstatment #1\n} if else (test_B) {\n} else {\nstatment #2 \n}\n\n\n5.2.2 Vectorized\nifelse(test, if_true, if_false)\nUse case when when have more than 2 options (this is a replacement for nested ifelse() functions)\ncase_when(\n    x == A ~ \"a\"\n  , x == B ~ \"b\"\n  , x == C ~ \"c\"\n  , TRUE    ~ NA_character # catchall, default is NA\n  # need to specify *type* of NA\n)"
+  },
+  {
+    "objectID": "R_functions.html#links",
+    "href": "R_functions.html#links",
+    "title": "5  Functions",
+    "section": "5.3 Links",
+    "text": "5.3 Links\nLinks\n\nR package development | 5 Documenting functions\nStack Overflow | Print dataframe name in function output\nStack Overflow | How to write “descriptions for arguments” in R when coding the wrapper functions?"
+  },
+  {
+    "objectID": "R_impexp.html",
+    "href": "R_impexp.html",
+    "title": "6  Import/Export",
+    "section": "",
+    "text": "{utils} is part of base R\n\nim_utils <- utils::read.csv(\"data/import.csv\")\nim_utils\n\n  Name.1 Name..2. Name..3\n1    ch1        1      11\n2    ch2        2      12\n3    ch3        3      13\n4    ch4       NA      14\n5    ch5        5      15\n6               6      16\n7    ch7        7      17\n\nclass(im_utils)\n\n[1] \"data.frame\"\n\n\n\noutput is data frame (base R)\nmissing for character is blank\nmissing for numeric is ‘NA’\nspaces or special characters in headers are replaced with period\nSometimes ï.. added to beginning of first column name (to remove use read.csv(\"example.csv\", fileEncoding = 'UTF-8-BOM');  Source: roelpeters | remove i umlaut)\nremove headers with header = FALSE; column names will be V1, V2, V3, etc.\n\n\n\n\n\nim_readr <- readr::read_csv(\"data/import.csv\")\n\nRows: 7 Columns: 3\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr (1): Name 1\ndbl (2): Name (2), Name #3\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\nim_readr\n\n# A tibble: 7 × 3\n  `Name 1` `Name (2)` `Name #3`\n  <chr>         <dbl>     <dbl>\n1 ch1               1        11\n2 ch2               2        12\n3 ch3               3        13\n4 ch4              NA        14\n5 ch5               5        15\n6 <NA>              6        16\n7 ch7               7        17\n\nclass(im_readr)\n\n[1] \"spec_tbl_df\" \"tbl_df\"      \"tbl\"         \"data.frame\" \n\n\n\noutput is tibble (tidyverse)\nreceive message with type of columns that R is using for import\nmissing for character and numeric is NA; outputs (html) will show <NA> for missing character and NA for missing numeric\nheaders are that have spaces or special characters are placed within back ticks (``)\nremove headers with col_names = FALSE; column names will be X1, X2, X3, etc.\n\n\n\nR does a pretty good job of figuring out what the columns should be but if its needed to specify column types column types can be specified as shown below. If you don’t want the column types message to show and don’t want to show column types use the show_col_types = FALSE.\n\ntest <- readr::read_csv(\"data/import.csv\"\n         , col_types = readr::cols(\n            `Name 1`   = readr::col_character()\n          , `Name (2)` = readr::col_double()\n          , `Name #3`  = readr::col_double()\n           )\n)\ntest\n\n# A tibble: 7 × 3\n  `Name 1` `Name (2)` `Name #3`\n  <chr>         <dbl>     <dbl>\n1 ch1               1        11\n2 ch2               2        12\n3 ch3               3        13\n4 ch4              NA        14\n5 ch5               5        15\n6 <NA>              6        16\n7 ch7               7        17\n\n\n\n\n\n\nCan use utils::write.csv() or readr::write_csv() - have slightly different functionality.\n\nutils::write.csv(test, \"data/export1_utils.txt\")\n\n \"\", \"Name 1\",\"Name (2)\",\"Name #3\"\n\"1\",    \"ch1\",        1,       10\n\"2\",    \"ch2\",        2,       12\n\"3\",    \"ch3\",        3,       13\n\"4\",    \"ch4\",       NA,       14\n\"5\",    \"ch5\",        5,       15\n\"6\",      NA,         6,       16\n\"7\",     \"ch7\",       7,       17\n\nreadr::write_csv(test, \"data/export2_readr.txt\")\n\nName 1, Name (2),Name #3\n   ch1,        1,     10\n   ch2,        2,     12\n   ch3,        3,     13\n   ch4,       NA,     14\n   ch5,        5,     15\n    NA,        6,     16\n   ch7,        7,     17\nRownames; row.names = TRUE to include; row.names = FALSE to exclude\n\nutils::write.csv() default includes row names (usually row number)\nreadr::write_csv() default does not include row names; CANNOT ADD\n\nNA values; na = \"\" to have missing data be exported as blank cell\n\nIf data set is a base R data frame:\n\nwrite.csv() default is na = \"NA\" for numeric, always blank for character (CAN’T CHANGE!)\nwrite_csv() default is na = \"NA\" for numeric, always blank for character (CAN’T CHANGE!)\n\nIf data set is a tibble:\n\nwrite.csv() default is na = \"NA\" for numeric and character\nwrite_csv() default is na = \"NA\" for numeric and character"
+  },
+  {
+    "objectID": "R_impexp.html#links",
+    "href": "R_impexp.html#links",
+    "title": "6  Import/Export",
+    "section": "6.2 Links",
+    "text": "6.2 Links\n\nStack Overflow | How do you read a password protected excel file into r?\nR-bloggers | How to save (and load) datasets in R: An overview\nR Documentation | {writexl}::write_xlsx function\nStack Overflow | Error in .jcall(cell, “V”, “setCellValue”, value) : method setCellValue with signature ([D)V not found when attempting write.xlsx\nStack Overflow | Error: package or namespace load failed for {XLConnect}\nSTHDA | R xlsx package A quick start guide to manipulate Excel files in R"
+  },
+  {
+    "objectID": "R_regex.html",
+    "href": "R_regex.html",
+    "title": "7  regex",
+    "section": "",
+    "text": "thispatternexample <- \"example1\"\npatternexample     <- \"example2\"\nthispattern        <- \"example3\"\nmget(ls(pattern = \"pattern\"))  #pattern included within\n\n$patternexample\n[1] \"example2\"\n\n$thispattern\n[1] \"example3\"\n\n$thispatternexample\n[1] \"example1\"\n\nmget(ls(pattern = \"^pattern\")) #starts with pattern \n\n$patternexample\n[1] \"example2\"\n\nmget(ls(pattern = \"pattern$\")) #ends with pattern\n\n$thispattern\n[1] \"example3\"\n\n\n\n\n\n\nrm(list = ls(pattern = \"pattern\"))\nrm(list = ls(pattern = \"^prefix\"))\nrm(list = ls(pattern = \"suffix$\"))\n\n\n\n\n\ndf.1_toprows   <- mtcars[1:2,]\ndf.2_middle    <- mtcars[3:4,]\ndf.3_otherrows <- mtcars[5:6,] \ndf4other       <- mtcars[7:8,]\n\n#anythign that starts with df\nmget(ls(pattern=\"^df\")) |> names()\n\n[1] \"df.1_toprows\"   \"df.2_middle\"    \"df.3_otherrows\" \"df4other\"      \n\n#ignores . (need to denote special character)\nmget(ls(pattern=\"^df.\")) |> names()\n\n[1] \"df.1_toprows\"   \"df.2_middle\"    \"df.3_otherrows\" \"df4other\"      \n\n# use double slash for special character\nmget(ls(pattern=\"^df\\\\.\")) |> names()\n\n[1] \"df.1_toprows\"   \"df.2_middle\"    \"df.3_otherrows\"\n\n# can use bind_rows to combine all df's\n#(if they are the same variables) \ndplyr::bind_rows(mget(ls(pattern=\"^df\\\\.\")))\n\n                   mpg cyl disp  hp drat    wt  qsec vs am gear carb\nMazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4\nMazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4\nDatsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1\nHornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1\nHornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2\nValiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1"
+  },
+  {
+    "objectID": "R_regex.html#multiple-patterns",
+    "href": "R_regex.html#multiple-patterns",
+    "title": "7  regex",
+    "section": "7.2 Multiple Patterns",
+    "text": "7.2 Multiple Patterns\nUse | to search for multiple patterns\n\nmainstring    <- c(\n    \"I was born in MN\"\n  , \"I currently live in CA\"\n  , \"I have visited WA, but it was a long time ago\"\n)\npatternstring <- c(\"MN\",\"CA\",\"WA\")\n\n#search for if state is at end of string \nsearchstring <- paste0(patternstring, \"$\", collapse = \"|\") \ngrep(searchstring, mainstring, value = TRUE) \n\n[1] \"I was born in MN\"       \"I currently live in CA\"\n\n\n\nSource: Stack Overflow, Jun 2014 | Multiple pattern Matching in R"
+  },
+  {
+    "objectID": "R_regex.html#match-startend-ignore-middle",
+    "href": "R_regex.html#match-startend-ignore-middle",
+    "title": "7  regex",
+    "section": "7.3 Match Start/End, Ignore Middle",
+    "text": "7.3 Match Start/End, Ignore Middle\npattern = ^start.*end$ (put .* in between ^start and end$)\nExample, I want pull all workbooks that start with “DATA” that are csv files.\n\nfiles <- c(\n    \"DATA for Martha.xlsx\"#exclude \n  , \"DATA_2022.csv\"       #INCLUDE\n  , \"DATA_2021.csv\"       #INCLUDE\n  , \"DATA_notes.csv\"      #INCLUDE\n  , \"quick_crosstab.csv\"  #exclude\n  , \"DATA weird file csv\" #exclude\n)\n\nfiles[grep(pattern = \"^DATA.*\\\\.csv$\", files)]\n\n[1] \"DATA_2022.csv\"  \"DATA_2021.csv\"  \"DATA_notes.csv\"\n\n\n\nSource: Stack Overflow, Jun 2018 | R regex to match beginning and end of string, ignoring middle"
+  },
+  {
+    "objectID": "R_regex.html#match-letters-and-white-space",
+    "href": "R_regex.html#match-letters-and-white-space",
+    "title": "7  regex",
+    "section": "7.4 Match Letters and White Space",
+    "text": "7.4 Match Letters and White Space\n\nex_string  <- c(\"Mean 21.34\", \"Medium 20.50\")\n\n#match all non-numeric characters and replace with ''\nsub(\"\\\\D+\", '', ex_string)\n\n[1] \"21.34\" \"20.50\"\n\n\n\nSource: Stack Overflow, Jul 2016 | regex - How to match a string and white space in R"
+  },
+  {
+    "objectID": "R_regex.html#cheat-sheet-table",
+    "href": "R_regex.html#cheat-sheet-table",
+    "title": "7  regex",
+    "section": "7.5 Cheat Sheet (Table)",
+    "text": "7.5 Cheat Sheet (Table)\n\n\n\nRegEx from Hypebright\n\n\n\nSource: Hypebright, May 2020 | Ultimate cheatsheet for regex in R"
+  },
+  {
+    "objectID": "R_shape.html",
+    "href": "R_shape.html",
+    "title": "8  Shape",
+    "section": "",
+    "text": "Michael T. Hallworth | Introduction to spatial polygons in R\nComputing for the Social Sciences | Importing spatial data files using sf\nComputing for the Social Sciences | Drawing vector maps with simple features and ggplot2\nStack Overflow | Create SpatialPointsDataframe\nStack Overflow | How to attach a simple data.frame to a SpatialPolygonDataFrame in R?\nRed Fox GIS | How to read and write shapefiles with R?\nR-bloggers | Things I Forget: Reading a Shapefile in R with readOGR\nStack Overflow | extract coordinates of points in simple feature data frame\nStack Overflow | How to make Multipolygons with Package SF and dplyr\nStack Overflow | ggplot2 - How to set CRS for a .shp polygon file in R\nStack Overflow | Convert data frame containing coordinates of polygons to sf\nStack Overflow | Efficient union of features by attributes using simple features (SF) in r?\nStack Overflow | How to calculate centroid of polygon using sf::st_centroid?\nGIS Stack Exchange | Removing empty polygon from sf object in R?"
+  },
+  {
+    "objectID": "R_shiny.html",
+    "href": "R_shiny.html",
+    "title": "9  Shiny",
+    "section": "",
+    "text": "Shiny | Tutorial - Lesson 1 Welcome to Shiny\nMAPS Project | Example of styling in R Shiny\nStack Overflow | Background color of tabs in shiny tabPanel\nStack Overflow | Dashboard date in a shiny app deployed in shinyapps.io\nStack Overflow | Change font and color in helpText()\nStack Overflow | What are the default font sizes (in pixels) for the html heading tags (<h1>, <h2>, <h3>, etc.)?\nGitHub ropensci/plotly | renderPlotly() does not accept NULL values · Issue #1116\nUofT Coders | Making interactive plots using Shiny in R\nStack Overflow | How to disable a tabPanel in shinydashboard?\nStack Overflow | Print Shiny App Screen not working Error: shinyjs: extendShinyjs: functions argument must be provided\nStack Overflow | Button extension to download all data or only visible data\nShiny | Help users download data from your app\nShiny | Change the value of a number input on the client — updateNumericInput\nStack Overflow | Label position, textInput\nRStudio Community | Problem in downloading the plot with downloadhandler for shiny app - shiny\nStack Overflow | Download Handler with reactive datatable (R Shiny)\nStack Overflow | How do you change the color of an icon in an R Shiny app?\nStack Overflow | Save plots made in a shiny app\nStack Overflow | Downloading png from Shiny (R)\nUsing the downloadablePlot Shiny Module\nMastering Shiny Solutions | Chapter 9 Uploads and Downloads\nStack Overflow | Put ordered list in a table row\nWebDeveloper | How to use Numbered Lists inside HTML tables\nStack Overflow | How to add css tag to SideBarPanel in Shiny App (R)\nStack Overflow | R Shiny: Unable to dispatch task for application, there are 1 tasks in progress\nRStudio | Shiny in production: Principles, practices, and tools\nStackOverflow | ggplot2 and Shiny: how to scale the size of legend with figure size?\nStack Overflow | how to center box div element directly in center?\nStack Overflow | pickerInput font or background color\nOutstanding User Interfaces with Shiny | Chapter 8 Beautify with {fresh}\nStack Overflow | Change colour of checkbox using shinyWidgets\nRStudio {shinydashboard} | Customizing dashboard appearance\nSoundCode | Customize Radio Button Appearance with CSS\nStack Overflow | Is it possible to change the color of selected radio button’s center circle\nStack Overflow | R shiny: change colour of individual check boxes in checkboxGroupInput\nStack Overflow | Is it possible to change the color of progressBar() in ShinyWidgets to a custom color>\ndreamRs/shinyWidgets | checkboxGroupButtons color change on press · Issue #335\ndreamRs/shinyWidgets | Change colors outside the pre-defined ones · Issue #276\ndreamRs/shinyWidgets | change color in css · Issue #59\nrstudio/DT | display Inf as Inf not like NA · Issue #496\nDataTables | Type detection plug-ins\nRStudio Community | How to disable download button in shiny until user uploads the data - shiny\nStack Overflow | shiny app : disable downloadbutton\nStack Overflow | How to disable button based on a condition in a R Markdown document with shiny elements?\nlistendata | Add Loader for Shiny R\n{shinycssloaders} package 1.0.0\ndaattali/shinycssloaders | Add loading animations to a Shiny output while it’s recalculating\nmrismailt/r-shiny-dockerfile-template | Template for containerizing R Shiny using Docker\nMassoud Mazar | Show progress bar when pre-loading data in Shiny app -RStudio Community | The application failed to start - Error in value[[3L]](cond) : RStudio not running\nJiwan Heo | Pass around data between Shiny modules with R6"
+  },
+  {
+    "objectID": "R_shiny.html#iframe-sizing",
+    "href": "R_shiny.html#iframe-sizing",
+    "title": "9  Shiny",
+    "section": "9.1 iframe sizing",
+    "text": "9.1 iframe sizing\n\nJames Fisher | How do I make a full-width iframe with fixed aspect ratio?\nStack Overflow | Make iframe automatically adjust height according to the contents without using scrollbar?\nStack Overflow | How to set iframe size dynamically"
+  },
+  {
+    "objectID": "R_shiny.html#dt-in-shiny",
+    "href": "R_shiny.html#dt-in-shiny",
+    "title": "9  Shiny",
+    "section": "9.2 {DT} in Shiny",
+    "text": "9.2 {DT} in Shiny\n\nRStudio DT | An R interface to the DataTables library\nRStudio DT | DataTables Options\nRStudio DT | Helper Functions\nRstudio DT | Using DT in Shiny\nStack Overflow | Column alignment in DT datatable\nStack Overflow | Add download buttons in DT::renderDataTable\nGitHub rstudio/DT | Downloading all the data using Buttons extension · Issue #267\ndatatables.net | dom - define table control elements\nStack Overflow | Change filename when downloading data from datatable R\n\nStack Overflow | How to make datatable ellipsis plugin work with full data download button?\nDataTables | example - Format output data - export options\nStack Overflow | Title export options of DT::datatable using shiny app\n\nStack Overflow | dataframe - R: Assign variable labels of data frame columns\n\nStack Overflow | R Shiny set DataTable column width\n\nStack Overflow | formatting - changing font size in R DataTables (DT)\nYihui Shiny Apps | DataTables Information\nStack Overflow | how to remove padding in datatable column\nPierre Rebours’s Log | Custom sorting with DT"
+  },
+  {
+    "objectID": "R_shiny.html#shinywidgets",
+    "href": "R_shiny.html#shinywidgets",
+    "title": "9  Shiny",
+    "section": "9.3 {shinyWidgets}",
+    "text": "9.3 {shinyWidgets}\n\n{shinyWidgets} | Numeric Range Input — numericRangeInput\n\n{shinyWidgets} | Select picker Input Control — pickerInput\n{shinyWidgers} | Options for pickerInput — pickerOptions\nStack Overflow | How do I change the height of picker input in from shinywidget?\n\nStack Overflow | How to text wrap selected values in a pickerInput (from shinyWidgets package). Make the height of the selector change as to accommodate multiple lines\n\nStack Overflow |How to text wrap choices from a pickerInput, If the length of the choices are long the choices often end up outside the screen\nStack Overflow | How to change the container color of a pickerInput element?"
+  },
+  {
+    "objectID": "R_shiny.html#shiny-widgets",
+    "href": "R_shiny.html#shiny-widgets",
+    "title": "9  Shiny",
+    "section": "9.4 shiny widgets",
+    "text": "9.4 shiny widgets\n\nRStudio Community | selectInput size - shiny\nShiny | Selectize Examples\nStack Overflow | checkboxGroupInput - select all checkboxes by click\nR Documention | {shinyWidgets}::radioGroupButtons - buttons group radio input control\nStack Overflow | Non-Slider Numeric Range Input"
+  },
+  {
+    "objectID": "R_zother.html",
+    "href": "R_zother.html",
+    "title": "10  Other",
+    "section": "",
+    "text": "plotly | Interactive web-based data visualization with R, plotly, and shiny\nplotly | layout - R\nplotly | Pie Charts - R\nplotly community forum | Remove options from the Hover Toolbar? - Graphing Library / Plotly.js\nStack Overflow | Remove certain configuration options in plotly\nStack Overflow | How to remove option bar from ggplotly plot?\nStack Overflow | Manipulating legend text in R plotly\nGitHub ropensci/plotly | Support for arbitrary coordinate systems · Issue #878\nStack Overflow | Pie chart: How to fixate the color assignment color per group?\nGitHub plotly/plotly.js | Support for multiple legends · Issue #1668\nplotly Community Forum | Hoverinfo over fill area of polygon - Dash R, MATLAB, Julia / Dash R\nplotly Community Forum | How to make tooltips show in region rather than on border (map using ggplotly) - Plotly R, MATLAB, Julia, Net / Plotly R"
+  },
+  {
+    "objectID": "R_zother.html#rmd",
+    "href": "R_zother.html#rmd",
+    "title": "10  Other",
+    "section": "10.2 Rmd",
+    "text": "10.2 Rmd"
+  },
+  {
+    "objectID": "R_zother.html#output-and-pathways",
+    "href": "R_zother.html#output-and-pathways",
+    "title": "10  Other",
+    "section": "10.3 Output and Pathways",
+    "text": "10.3 Output and Pathways\n\nR Markdown Cookbook | 16.6 The working directory for R code chunks\nStack Overflow | Run R markdown (.Rmd) from inside other R script to produce HTML - Stack Overflow\nRStudio Community | save rmarkdown output in different folder - R Markdown"
+  },
+  {
+    "objectID": "R_zother.html#style",
+    "href": "R_zother.html#style",
+    "title": "10  Other",
+    "section": "10.4 Style",
+    "text": "10.4 Style\n\nStack Overflow | R markdown: how to change style with internal css?\nStack Overflow | rmarkdown: both portrait and landscape layout in a single PDF\nR Markdown Cookbook | 4.4 Unnumbered sections\nStack Overflow | Increase width of entire HTML Rmarkdown output\nSteve Sque | Symbols in LaTeX and HTML\nRStudio Community | Copy to clipboard buttons for code blocks - R Markdown"
+  },
+  {
+    "objectID": "R_zother.html#rtweet",
+    "href": "R_zother.html#rtweet",
+    "title": "10  Other",
+    "section": "10.5 {rtweet}",
+    "text": "10.5 {rtweet}\n\nStack Overflow | Avoid Rate limit with rtweet get_timeline()\nGitHub ropensci/rtweet | 0.6.7 get_timeline: rate limit error · Issue #266\nGitHub ropensci/rtweet | problem getting large amounts of followers · Issue #168\nGitHub ropensci/rtweet | Invalid time error using get_followers · Issue #396\nGitHub ropensci/rtweet | Consistent pagination interface · Issue #510"
+  },
+  {
+    "objectID": "R_zother.html#special-characters",
+    "href": "R_zother.html#special-characters",
+    "title": "10  Other",
+    "section": "10.6 Special Characters",
+    "text": "10.6 Special Characters\n\nR Documentation | utf8 package #####\nThe R Blog | UTF-8 Support on Windows\nStack Overflow | Convert unicode to readable characters in R\nStack Overflow | convert HTML Character Entity Encoding in R\nStack Overflow | Differences in Unicode character output with print()\nStack Overflow | How to convert special characters into unicode in R?"
+  },
+  {
+    "objectID": "R_zother.html#misc",
+    "href": "R_zother.html#misc",
+    "title": "10  Other",
+    "section": "10.7 Misc",
+    "text": "10.7 Misc\n\nIntroduction to summarytools\nR-statistics blog | How to load the {rJava} package after the error “JAVA_HOME cannot be determined from the Registry”\nR Save All Console Input & Output to File (Example) - Export RStudio to txt\nStack Overflow | Error in FUN(X[[i]], …) : object ‘X’ not found\nStack Overflow | Remove multiple objects with rm()\nStack Overflow | Compare if two dataframe objects in R are equal?\nMartin Chan | RStudio Projects and Working Directories: A Beginner’s Guide – Musings on R\nTutorialspoint | Data Types\nStack Overflow | Error in open.connection(x, “rb”) : HTTP error 500 when using map_df\nGitHub r-lib/httr | Error in open.connection(con, “rb”) : HTTP error 500. · Issue #338\nCheck If Two Data Frames are the Same in R (Example) - Identical / Equal\nReopen RStudio | Quit & Restart Clean R Session from within R (Example)\nStack Overflow | Quit and restart a clean R session from within R?\nStack Overflow | How do I clean up R memory without restarting my PC?\nStack Overflow | How to save all console output to file in R?\nKeep Trailing Zeros in R (Example) - How to Round Number & Show Zero\nR-bloggers | Handling Large Datasets in R\nStack Overflow | Merge two vectors by non NA values\nStack Overflow | Rendering kableExtra table with colors and unicode characters to PDF with RMarkdown\nStack Overflow | row_spec() function from kableExtra does not create a horizontal line in html output"
+  },
+  {
+    "objectID": "accessibility.html",
+    "href": "accessibility.html",
+    "title": "11  Accessibility",
+    "section": "",
+    "text": "WebAIM | Color Contrast Checker\nWAVE Web Accessibility Evaluation Tool (for website/Rshiny app)\nRStudio Community | Making Shiny apps accessible for all humans - shiny\nGitHub | thedaviddias/Front-End-Checklist; https://frontendchecklist.io/\n\nA11Y Project | Checklist\nSmashing Magazine | Color Contrast And Why You Should Rethink It\n\nPeatworks | Creating Accessible Data Visualizations on the Web\nInclusive Components | Tooltips & Toggletips"
+  },
+  {
+    "objectID": "accessibility.html#shiny",
+    "href": "accessibility.html#shiny",
+    "title": "11  Accessibility",
+    "section": "11.2 {shiny}",
+    "text": "11.2 {shiny}\n\nGitHub | Issues · rstudio/shiny · Type: Accessiblity, check to see what has become accessible and current open issues on shiny’s github\nGitHub | Shiny HTML element has no lang attribute · Issue #2844 · rstudio/shiny; closed: tags$html(lang=\"en\")\n\nGitHub | Added alt param by jooyoungseo · Pull Request #3006"
+  },
+  {
+    "objectID": "accessibility.html#specific-issues",
+    "href": "accessibility.html#specific-issues",
+    "title": "11  Accessibility",
+    "section": "11.3 Specific Issues",
+    "text": "11.3 Specific Issues\n\n11.3.1 Roman Numerals\ngoal was trying to figure out how to get the screen reader to read ‘III’ as ‘3’ instead of as ‘I I I’; couldn’t figure out how to get it to work last time but here are some links I found about it\n\nWebAIM | Email Archives: How to write roman numerals;\n\nStack Overflow | accessibility - ARIA attributes for reading alternative text (e.g. Roman Numerals) in HTML\nReddit | Roman numerals and accessibility: HTML\nStack Overflow | html - How do screen readers read  tags?"
+  },
+  {
+    "objectID": "htmlcss.html",
+    "href": "htmlcss.html",
+    "title": "12  HTML/CSS",
+    "section": "",
+    "text": "W3 Schools | HTML Color Names\nHexadecimal color code for transparency\nW3 Schools | CSS Buttons\nTutorial Republic | How to Set Table Cellpadding and Cellspacing Using CSS\nStack Overflow | How to align the table cells content on the top?\nStack Overflow | HTML: how to make 2 tables with different CSS\nDataTables | Default styling options\nSetting width/height as percentage minus pixels - Stack Overflow"
+  },
+  {
+    "objectID": "latex.html",
+    "href": "latex.html",
+    "title": "13  Latex",
+    "section": "",
+    "text": "Definition \n    LaTeX \n    mu* \n    Result \n  \n \n\n  \n    Default \n      \n    0 \n    $f q$ \n  \n  \n    Thin \n    \\, or \\thinspace \n    3 \n    $f \\, q$ \n  \n  \n    Medium 1 \n    \\: \n    4 \n    $f \\: q$ \n  \n  \n    Medium 2 \n    \\; \n    5 \n    $f \\; q$ \n  \n  \n    Half of current font size, 0.5em \n    \\enspace \n    6 \n    $f \\enspace q$ \n  \n  \n    Current font size, 1em \n    \\quad \n    18 \n    $f \\quad q$ \n  \n  \n    2x Current font size, 2em \n    \\qquad \n    36 \n    $f \\qquad q$ \n  \n  \n    Space in normal text \n    \\  \n    NA \n    $f \\ q$ \n  \n  \n    Negative space \n    \\! \n    -3 \n    $f \\! q$ \n  \n\n\n* 1em (current font size) = 18mu\n\n\n\n\n\nSources: math-linux | Latex Horizontal space: qquad, hspace, thinspace, enspace and Overleaf | Spacing in math mode"
   }
 ]

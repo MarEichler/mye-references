@@ -1,0 +1,130 @@
+
+# Dates and Times
+
+```{r}
+#| message: FALSE 
+#| echo: FALSE
+library(tidyverse) 
+library(knitr)
+library(kableExtra)
+```
+
+
+## Date Formats 
+
+
+::: {.size_75em}
+
+```{r}
+#| echo: FALSE
+#| column: body
+tribble(
+  ~String, ~Meaning 
+  ,  "%a", "Day of the week, abbreviated (Mon-Sun)"
+  ,  "%A", "Day of the week, full (Monday-Sunday"
+  ,  "%w", "Day of the week, numeric, 0 = Sunday (0-6)"
+  ,  "%e", "Day of month (1-31)"
+  ,  "%d", "Day of month (01-31)"
+  ,  "%m", "Month, numeric (01-12)"
+  ,  "%b", "Month, abbreviated (Jan-Dec)"
+  ,  "%B", "Month, full (January-December)"
+  ,  "%y", "Year, without century (00-99)"
+  ,  "%Y", "Year, with century (0000-9999)"
+  ,  "%j", "Day of the Year (001-366)"
+  ,  "%U", "Week of year, numeric, starting on Sunday (00-52)"
+  ,  "%W", "Week of year, numeric, starting on Monday (00-52)"
+  ,  "%x", "Locale-specific date"
+  ) %>%
+ mutate( 
+      Code = paste0('format.Date("2020-12-10", "', String , '")')
+    , Output = format.Date("2020-12-10", String)
+  ) %>%
+  mutate(
+      String = cell_spec(String, monospace = TRUE)
+    , Code   = cell_spec(Code,   monospace = TRUE)
+  ) %>%
+  #escape = F --> allows conversion of html code
+  #ex make cell grey
+  #         escape = F --> NA     (in grey font)
+  #         escape = T --> <span style=" color: grey !important;" >NA</span>
+  kable(escape = F, label = "Date Formats") %>%
+  kable_styling(
+     # html_font = "arial" #"mono-space" 
+     bootstrap_options = c(
+          "striped" #add striped color to rows
+        , "hover" #highlight row when hover over it 
+        , full_width = FALSE #doesn't have to be full width 
+      )
+  )
+```
+:::
+
+<div class="source">
+Source: [stat.berkeley | Dates and Times in R Stack Overflow](https://www.stat.berkeley.edu/~s133/dates.html) 
+</div>
+
+## Time Formats 
+
+::: {.size_75em}
+
+```{r}
+#| echo: FALSE
+#| column: body
+tribble(
+  ~String, ~Meaning 
+  ,  "%S", "Second (00-59)"
+  ,  "%M", "Minute (00-59)"
+  ,  "%l",  "Hour, in 12-hour clock (1-12)"
+  ,  "%I", "Hour, in 12-hour clock (01-12)"
+  ,  "%p", "am/pm"
+  ,  "%H", "Hour, in 24-hour clock (00-23)"
+  ,  "%X", "Locale-specific time"
+  ,  "%c", "Locale-specific date and time"
+  ,  "%z", "Offset from GMT"
+  ,  "%Z", "Time zone (character)"
+  ) %>%
+  mutate( 
+      Code = paste0('format.Date(as.POSIXct("2020-12-10 15:30:10", tz = "America/Chicago"), "', String , '")')
+    , Output = format.Date(as.POSIXct("2020-12-10 15:30:10", tz = "America/Chicago"), String)
+  ) %>%
+  mutate(
+      String = cell_spec(String, monospace = TRUE)
+    , Code   = cell_spec(Code,   monospace = TRUE)
+  ) %>%
+  #escape = F --> allows conversion of html code
+  #ex make cell grey
+  #         escape = F --> NA     (in grey font)
+  #         escape = T --> <span style=" color: grey !important;" >NA</span>
+  kable(escape = F, label = "Date Formats") %>%
+  kable_styling(
+     # html_font = "arial" #"mono-space" 
+     bootstrap_options = c(
+          "striped" #add striped color to rows
+        , "hover" #highlight row when hover over it 
+        , full_width = FALSE #doesn't have to be full width 
+      )
+  )
+```
+::: 
+
+<div class="source">
+Source: [stat.berkeley | Dates and Times in R Stack Overflow](https://www.stat.berkeley.edu/~s133/dates.html) 
+</div>
+
+
+## Time Zone options in R
+
+The above example uses Central time and so I can use `tz = America/Chicago`; other timezone options can be found using the code below: 
+
+```{r}
+#check system time zone
+Sys.timezone(location = TRUE)
+#other time zone options (only show first 20)
+OlsonNames()[1:20]
+```
+
+
+## Links 
+
+- [ggplot2 | Section 9: Scales: Date Time Scales](https://ggplot2-book.org/scale-position.html#date-scales)
+- [R-Bloggers | Date Formats in R](https://www.r-bloggers.com/2013/08/date-formats-in-r/)

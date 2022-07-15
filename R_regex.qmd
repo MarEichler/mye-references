@@ -1,0 +1,117 @@
+
+# regex
+
+
+## Select/Remove Items
+
+### Select 
+
+```{r}
+thispatternexample <- "example1"
+patternexample     <- "example2"
+thispattern        <- "example3"
+mget(ls(pattern = "pattern"))  #pattern included within
+mget(ls(pattern = "^pattern")) #starts with pattern 
+mget(ls(pattern = "pattern$")) #ends with pattern
+```
+
+### Remove
+
+```{r, eval = FALSE }
+rm(list = ls(pattern = "pattern"))
+rm(list = ls(pattern = "^prefix"))
+rm(list = ls(pattern = "suffix$"))
+```
+
+### Special Characters (like `.`)
+
+```{r}
+df.1_toprows   <- mtcars[1:2,]
+df.2_middle    <- mtcars[3:4,]
+df.3_otherrows <- mtcars[5:6,] 
+df4other       <- mtcars[7:8,]
+
+#anythign that starts with df
+mget(ls(pattern="^df")) |> names()
+
+#ignores . (need to denote special character)
+mget(ls(pattern="^df.")) |> names()
+
+# use double slash for special character
+mget(ls(pattern="^df\\.")) |> names()
+
+# can use bind_rows to combine all df's
+#(if they are the same variables) 
+dplyr::bind_rows(mget(ls(pattern="^df\\.")))
+```
+
+## Multiple Patterns 
+
+Use `|` to search for multiple patterns 
+
+```{r}
+mainstring    <- c(
+    "I was born in MN"
+  , "I currently live in CA"
+  , "I have visited WA, but it was a long time ago"
+)
+patternstring <- c("MN","CA","WA")
+
+#search for if state is at end of string 
+searchstring <- paste0(patternstring, "$", collapse = "|") 
+grep(searchstring, mainstring, value = TRUE) 
+```
+<div class="source">
+Source: [Stack Overflow, Jun 2014 | Multiple pattern Matching in R](https://stackoverflow.com/questions/24035057/multiple-pattern-matching-in-r)
+</div>
+
+## Match Start/End, Ignore Middle 
+
+`pattern = ^start.*end$` (put `.*` in between `^start` and `end$`)
+
+Example, I want pull all workbooks that start with "DATA" that are csv files.  
+
+```{r}
+files <- c(
+    "DATA for Martha.xlsx"#exclude 
+  , "DATA_2022.csv"       #INCLUDE
+  , "DATA_2021.csv"       #INCLUDE
+  , "DATA_notes.csv"      #INCLUDE
+  , "quick_crosstab.csv"  #exclude
+  , "DATA weird file csv" #exclude
+)
+
+files[grep(pattern = "^DATA.*\\.csv$", files)]
+```
+
+
+<div class="source">
+Source: [Stack Overflow, Jun 2018 | R regex to match beginning and end of string, ignoring middle](https://stackoverflow.com/questions/50668761/r-regex-to-match-beginning-and-end-of-string-ignoring-middle)
+</div>
+
+## Match Letters and White Space
+
+```{r}
+ex_string  <- c("Mean 21.34", "Medium 20.50")
+
+#match all non-numeric characters and replace with ''
+sub("\\D+", '', ex_string)
+```
+
+
+<div class="source">
+Source: [Stack Overflow, Jul 2016 | regex - How to match a string and white space in R](https://stackoverflow.com/questions/38392493/how-to-match-a-string-and-white-space-in-r)
+</div>
+
+
+## Cheat Sheet (Table) 
+
+
+![RegEx from Hypebright](img/Hypebright_REGEX.png)
+
+<div class="source">
+Source: [Hypebright, May 2020 | Ultimate cheatsheet for regex in R](https://hypebright.nl/index.php/en/2020/05/25/ultimate-cheatsheet-for-regex-in-r-2/)
+</div>
+
+
+

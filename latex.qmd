@@ -1,0 +1,30 @@
+# Latex 
+
+## Horizontal Spacing
+
+
+```{r}
+#| echo: FALSE
+tibble::tribble(
+  ~Definition, ~LaTeX, ~`mu*`, ~Result
+  , "Default"  , "<code> </code>"                              , 0, "$f q$"
+  , "Thin"     , "<code>\\,</code> or <code>\\thinspace</code>", 3, "$f \\, q$"
+  , "Medium 1" , "<code>\\:</code>"                            , 4, "$f \\: q$"
+  , "Medium 2" , "<code>\\;</code>"                            , 5, "$f \\; q$"
+  , "Half of current font size, 0.5em","<code>\\enspace</code>", 6, "$f \\enspace q$"
+  , "Current font size, 1em", "<code>\\quad</code>"            ,18, "$f \\quad q$"
+  , "2x Current font size, 2em", "<code>\\qquad</code>"        ,36, "$f \\qquad q$"
+  , "Space in normal text", "<code>\\&nbsp;</code>"            ,NA, "$f \\ q$"
+  , "Negative space", "<code>\\!</code>"                       ,-3, "$f \\! q$"
+  ) |> 
+  knitr::kable(escape = F) |> 
+  kableExtra::kable_styling() |> 
+  kableExtra::footnote(symbol = "1em (current font size) = 18mu")
+```
+
+
+<div class="source">
+Sources: [math-linux | Latex Horizontal space: qquad, hspace, thinspace, enspace](https://math-linux.com/latex-26/faq/latex-faq/article/latex-horizontal-space-qquad-hspace-thinspace-enspace) and [Overleaf | Spacing in math mode](https://www.overleaf.com/learn/latex/Spacing_in_math_mode)
+</div>
+ 
+

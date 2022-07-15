@@ -1,0 +1,81 @@
+# Other 
+
+## Plotly 
+
+- [plotly | Interactive web-based data visualization with R, plotly, and shiny](https://plotly-r.com/)
+- [plotly | layout - R](https://plotly.com/r/reference/layout/#layout-margin)
+- [plotly | Pie Charts - R](https://plotly.com/r/pie-charts/)
+- [plotly community forum | Remove options from the Hover Toolbar? - Graphing Library / Plotly.js](https://community.plotly.com/t/remove-options-from-the-hover-toolbar/130)
+- [Stack Overflow | Remove certain configuration options in plotly](https://stackoverflow.com/questions/56620850/remove-certain-configuration-options-in-plotly)
+- [Stack Overflow | How to remove option bar from ggplotly plot?](https://stackoverflow.com/questions/40223308/how-to-remove-option-bar-from-ggplotly-plot)
+- [Stack Overflow | Manipulating legend text in R plotly](https://stackoverflow.com/questions/43432881/manipulating-legend-text-in-r-plotly)
+- [GitHub ropensci/plotly | Support for arbitrary coordinate systems · Issue #878](https://github.com/plotly/plotly.R/issues/878)
+- [Stack Overflow | Pie chart: How to fixate the color assignment color per group?](https://stackoverflow.com/questions/62021769/plotly-r-pie-chart-how-to-fixate-the-color-assignment-color-per-group)
+- [GitHub plotly/plotly.js | Support for multiple legends · Issue #1668](https://github.com/plotly/plotly.js/issues/1668)
+- [plotly Community Forum | Hoverinfo over fill area of polygon - Dash R, MATLAB, Julia / Dash R](https://community.plotly.com/t/hoverinfo-over-fill-area-of-polygon/44986)
+- [plotly Community Forum | How to make tooltips show in region rather than on border (map using ggplotly) - Plotly R, MATLAB, Julia, Net / Plotly R](https://community.plotly.com/t/how-to-make-tooltips-show-in-region-rather-than-on-border-map-using-ggplotly/13507)
+
+
+## Rmd 
+
+## Output and Pathways  
+
+- [R Markdown Cookbook | 16.6 The working directory for R code chunks](https://bookdown.org/yihui/rmarkdown-cookbook/working-directory.html) 
+- [Stack Overflow | Run R markdown (.Rmd) from inside other R script to produce HTML - Stack Overflow](https://stackoverflow.com/questions/65921907/run-r-markdown-rmd-from-inside-other-r-script-to-produce-html)
+- [RStudio Community | save rmarkdown output in different folder - R Markdown](https://community.rstudio.com/t/save-rmarkdown-output-in-different-folder/68192/4)
+
+## Style 
+
+- [Stack Overflow | R markdown: how to change style with internal css?](https://stackoverflow.com/questions/34022558/r-markdown-how-to-change-style-with-internal-css)
+- [Stack Overflow | rmarkdown: both portrait and landscape layout in a single PDF](https://stackoverflow.com/questions/25849814/rstudio-rmarkdown-both-portrait-and-landscape-layout-in-a-single-pdf)
+- [R Markdown Cookbook | 4.4 Unnumbered sections](https://bookdown.org/yihui/rmarkdown-cookbook/unnumbered-sections.html)
+- [Stack Overflow | Increase width of entire HTML Rmarkdown output](https://stackoverflow.com/questions/34906002/increase-width-of-entire-html-rmarkdown-output)
+- [Steve Sque | Symbols in LaTeX and HTML](https://www.stevesque.com/symbols/)
+- [RStudio Community | Copy to clipboard buttons for code blocks - R Markdown](https://community.rstudio.com/t/copy-to-clipboard-buttons-for-code-blocks/45367)
+
+
+## {rtweet} 
+
+
+- [Stack Overflow | Avoid Rate limit with rtweet get_timeline()](https://stackoverflow.com/questions/42025979/avoid-rate-limit-with-rtweet-get-timeline)
+- [GitHub ropensci/rtweet | 0.6.7 get_timeline: rate limit error · Issue #266](https://github.com/ropensci/rtweet/issues/266)
+- [GitHub ropensci/rtweet | problem getting large amounts of followers · Issue #168](https://github.com/ropensci/rtweet/issues/168)
+- [GitHub ropensci/rtweet | Invalid time error using get_followers · Issue #396](https://github.com/ropensci/rtweet/issues/396)
+- [GitHub ropensci/rtweet | Consistent pagination interface · Issue #510](https://github.com/ropensci/rtweet/issues/510)
+
+
+## Special Characters 
+
+
+- [R Documentation | utf8 package \u#####](https://www.rdocumentation.org/packages/utf8/versions/1.2.2)
+- [The R Blog | UTF-8 Support on Windows](https://developer.r-project.org/Blog/public/2020/05/02/utf-8-support-on-windows/)
+- [Stack Overflow | Convert unicode to readable characters in R](https://stackoverflow.com/questions/49739800/convert-unicode-to-readable-characters-in-r)
+- [Stack Overflow | convert HTML Character Entity Encoding in R](https://stackoverflow.com/questions/5060076/convert-html-character-entity-encoding-in-r)
+- [Stack Overflow | Differences in Unicode character output with print()](https://stackoverflow.com/questions/57515817/differences-in-unicode-character-output-with-print)
+- [Stack Overflow | How to convert special characters into unicode in R?](https://stackoverflow.com/questions/37703291/how-to-convert-special-characters-into-unicode-in-r)
+
+
+
+
+## Misc
+
+- [Introduction to summarytools](https://cran.r-project.org/web/packages/summarytools/vignettes/introduction.html)
+- [R-statistics blog | How to load the {rJava} package after the error "JAVA_HOME cannot be determined from the Registry"](https://www.r-statistics.com/2012/08/how-to-load-the-rjava-package-after-the-error-java_home-cannot-be-determined-from-the-registry/)
+- [R Save All Console Input & Output to File (Example) - Export RStudio to txt](https://statisticsglobe.com/r-save-all-console-input-output-to-file)
+- [Stack Overflow | Error in FUN(X\[\[i\]\], ...) : object 'X' not found](https://stackoverflow.com/questions/38988028/error-in-funxi-object-x-not-found)
+- [Stack Overflow | Remove multiple objects with rm()](https://stackoverflow.com/questions/11624885/remove-multiple-objects-with-rm)
+- [Stack Overflow | Compare if two dataframe objects in R are equal?](https://stackoverflow.com/questions/10592148/compare-if-two-dataframe-objects-in-r-are-equal)
+- [Martin Chan | RStudio Projects and Working Directories: A Beginner's Guide – Musings on R](https://martinctc.github.io/blog/rstudio-projects-and-working-directories-a-beginner's-guide/)
+- [Tutorialspoint | Data Types](https://www.tutorialspoint.com/r/r_data_types.htm)
+- [Stack Overflow | Error in open.connection(x, "rb") : HTTP error 500 when using map_df](https://stackoverflow.com/questions/57416887/error-in-open-connectionx-rb-http-error-500-when-using-map-df)
+- [GitHub r-lib/httr | Error in open.connection(con, "rb") : HTTP error 500. · Issue #338](https://github.com/r-lib/httr/issues/338)
+- [Check If Two Data Frames are the Same in R (Example) - Identical / Equal](https://statisticsglobe.com/check-if-two-data-frames-are-the-same-in-r)
+- [Reopen RStudio | Quit & Restart Clean R Session from within R (Example)](https://statisticsglobe.com/quit-restart-clean-r-session-from-within-r)
+- [Stack Overflow | Quit and restart a clean R session from within R?](https://stackoverflow.com/questions/6313079/quit-and-restart-a-clean-r-session-from-within-r)
+- [Stack Overflow | How do I clean up R memory without restarting my PC?](https://stackoverflow.com/questions/11579765/how-do-i-clean-up-r-memory-without-restarting-my-pc)
+- [Stack Overflow | How to save all console output to file in R?](https://stackoverflow.com/questions/7096989/how-to-save-all-console-output-to-file-in-r)
+- [Keep Trailing Zeros in R (Example) - How to Round Number & Show Zero](https://statisticsglobe.com/keep-trailing-zeros-r)
+- [R-bloggers | Handling Large Datasets in R](https://www.r-bloggers.com/2010/10/handling-large-datasets-in-r/)
+- [Stack Overflow | Merge two vectors by non NA values](https://stackoverflow.com/questions/13604322/merge-two-vectors-by-non-na-values)
+- [Stack Overflow | Rendering kableExtra table with colors and unicode characters to PDF with RMarkdown](https://stackoverflow.com/questions/50670838/rendering-kableextra-table-with-colors-and-unicode-characters-to-pdf-with-rmarkd)
+- [Stack Overflow | row_spec() function from kableExtra does not create a horizontal line in html output](https://stackoverflow.com/questions/53655983/row-spec-function-from-kableextra-does-not-create-a-horizontal-line-in-html-ou)

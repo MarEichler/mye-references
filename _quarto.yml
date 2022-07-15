@@ -11,8 +11,16 @@ book:
       chapters: 
       - R_datamanage.qmd
       - R_dataviz.qmd
-
-bibliography: references.bib
+      - R_dates.qmd
+      - R_functions.qmd
+      - R_impexp.qmd
+      - R_regex.qmd
+      - R_shape.qmd
+      - R_shiny.qmd
+      - R_zother.qmd
+    - accessibility.qmd
+    - htmlcss.qmd
+    - latex.qmd
 
 format:
   html:

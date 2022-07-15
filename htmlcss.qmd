@@ -1,0 +1,12 @@
+
+# HTML/CSS 
+
+
+- [W3 Schools | HTML Color Names](https://www.w3schools.com/colors/colors_names.asp)
+- [Hexadecimal color code for transparency](https://gist.github.com/lopspower/03fb1cc0ac9f32ef38f4)
+- [W3 Schools | CSS Buttons](https://www.w3schools.com/css/css3_buttons.asp)
+- [Tutorial Republic | How to Set Table Cellpadding and Cellspacing Using CSS](https://www.tutorialrepublic.com/faq/how-to-set-table-cellpadding-and-cellspacing-using-css.php)
+- [Stack Overflow | How to align the table cells content on the top?](https://stackoverflow.com/questions/3565620/how-to-align-the-table-cells-content-on-the-top)
+- [Stack Overflow | HTML: how to make 2 tables with different CSS](https://stackoverflow.com/questions/7992198/html-how-to-make-2-tables-with-different-css)
+- [DataTables | Default styling options](https://datatables.net/manual/styling/classes)
+- [Setting width/height as percentage minus pixels - Stack Overflow](https://stackoverflow.com/questions/2434602/setting-width-height-as-percentage-minus-pixels)

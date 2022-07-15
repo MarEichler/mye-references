@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>MYE References - R</title>
+<title>MYE References - 6&nbsp; Import/Export</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -88,8 +88,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./R_datamanage.html" rel="next">
-<link href="./resources.html" rel="prev">
+<link href="./R_regex.html" rel="next">
+<link href="./R_functions.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -128,7 +128,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">R</h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Import/Export</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -163,7 +163,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
         <li class="sidebar-item sidebar-item-section">
     <div class="sidebar-item-container"> 
-        <a href="./R.html" class="sidebar-item-text sidebar-link active">R</a>
+        <a href="./R.html" class="sidebar-item-text sidebar-link">R</a>
       <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
         <i class="bi bi-chevron-right ms-2"></i>
       </a>
@@ -191,7 +191,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./R_impexp.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Import/Export</span></a>
+  <a href="./R_impexp.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Import/Export</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -240,12 +240,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#versions" id="toc-versions" class="nav-link active" data-scroll-target="#versions">Versions</a>
+  <li><a href="#csv" id="toc-csv" class="nav-link active" data-scroll-target="#csv"> <span class="header-section-number">6.1</span> CSV</a>
   <ul class="collapse">
-  <li><a href="#install-older-package-from-source" id="toc-install-older-package-from-source" class="nav-link" data-scroll-target="#install-older-package-from-source">Install Older Package from Source</a></li>
-  <li><a href="#install-older-version-of-r-windows" id="toc-install-older-version-of-r-windows" class="nav-link" data-scroll-target="#install-older-version-of-r-windows">Install Older Version of R (Windows)</a></li>
-  <li><a href="#switch-between-versions-of-r" id="toc-switch-between-versions-of-r" class="nav-link" data-scroll-target="#switch-between-versions-of-r">Switch between versions of R</a></li>
+  <li><a href="#utilsread.csv" id="toc-utilsread.csv" class="nav-link" data-scroll-target="#utilsread.csv"> <span class="header-section-number">6.1.1</span> <code>{utils}::read.csv()</code></a></li>
+  <li><a href="#readrread_csv" id="toc-readrread_csv" class="nav-link" data-scroll-target="#readrread_csv"> <span class="header-section-number">6.1.2</span> <code>{readr}::read_csv()</code></a></li>
+  <li><a href="#export" id="toc-export" class="nav-link" data-scroll-target="#export"> <span class="header-section-number">6.1.3</span> Export</a></li>
   </ul></li>
+  <li><a href="#links" id="toc-links" class="nav-link" data-scroll-target="#links"> <span class="header-section-number">6.2</span> Links</a></li>
   </ul>
 </nav>
     </div>
@@ -254,7 +255,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">R</h1>
+<h1 class="title d-none d-lg-block"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Import/Export</span></h1>
 </div>
 
 
@@ -268,63 +269,161 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
-<p>Specifically regarding R code</p>
-<section id="versions" class="level2">
-<h2 class="anchored" data-anchor-id="versions">Versions</h2>
-<section id="install-older-package-from-source" class="level3">
-<h3 class="anchored" data-anchor-id="install-older-package-from-source">Install Older Package from Source</h3>
-<div class="source">
-<p><a href="https://support.rstudio.com/hc/en-us/articles/219949047-Installing-older-versions-of-packages">R Studio Support - Installing older versions of packages</a> and <a href="https://cran.r-project.org/src/contrib/Archive/">Package Archive</a></p>
+<section id="csv" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="csv"><span class="header-section-number">6.1</span> CSV</h2>
+<section id="utilsread.csv" class="level3" data-number="6.1.1">
+<h3 data-number="6.1.1" class="anchored" data-anchor-id="utilsread.csv"><span class="header-section-number">6.1.1</span> <code>{utils}::read.csv()</code></h3>
+<p>{utils} is part of base R</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>im_utils <span class="ot">&lt;-</span> utils<span class="sc">::</span><span class="fu">read.csv</span>(<span class="st">"data/import.csv"</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>im_utils</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Name.1 Name..2. Name..3
+1    ch1        1      11
+2    ch2        2      12
+3    ch3        3      13
+4    ch4       NA      14
+5    ch5        5      15
+6               6      16
+7    ch7        7      17</code></pre>
 </div>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># P: package name, e.g. "ggplot2"</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># V: version number, e.g. "3.3.5"</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">#single install </span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">"https://cran.r-project.org/src/contrib/Archive/&lt;P&gt;/&lt;P&gt;_&lt;V&gt;.tar.gz"</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  , <span class="at">repos=</span><span class="cn">NULL</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  , <span class="at">type=</span><span class="st">"source"</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co">#function to install (for multiple instances)</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(glue) </span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>install_old_version <span class="ot">&lt;-</span> <span class="cf">function</span>(P, V){</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">packageVersion</span>(P) <span class="sc">==</span> V){</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    logger<span class="sc">::</span><span class="fu">log_info</span>(<span class="st">"Package already at that version"</span>)</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    packageurl <span class="ot">&lt;-</span> <span class="fu">as.character</span>(<span class="fu">glue</span>(</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    <span class="st">"https://cran.r-project.org/src/contrib/Archive/{P}/{P}_{V}.tar.gz"</span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    ))</span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">install.packages</span>(packageurl, <span class="at">repos=</span><span class="cn">NULL</span>, <span class="at">type=</span><span class="st">"source"</span>)</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    logger<span class="sc">::</span><span class="fu">log_success</span>(<span class="st">"{P} {V}"</span>)</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(im_utils)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "data.frame"</code></pre>
+</div>
+</div>
+<ul>
+<li>output is data frame (base R)</li>
+<li>missing for character is blank</li>
+<li>missing for numeric is ‘NA’</li>
+<li>spaces or special characters in headers are replaced with period</li>
+<li>Sometimes <code>ï..</code> added to beginning of first column name (to remove use <code>read.csv("example.csv", fileEncoding = 'UTF-8-BOM')</code>; <span class="source"> Source: <a href="https://www.roelpeters.be/removing-i-umlaut-two-dots-data-frame-column-read-csv/">roelpeters | remove i umlaut</a>)</span></li>
+<li>remove headers with <code>header = FALSE</code>; column names will be V1, V2, V3, etc.</li>
+</ul>
 </section>
-<section id="install-older-version-of-r-windows" class="level3">
-<h3 class="anchored" data-anchor-id="install-older-version-of-r-windows">Install Older Version of R (Windows)</h3>
-<p>If a program was built entirely in an older version of R, it may be difficult to get it to work with an updated version of R. When their isn’t time to investigate and re-code, installing an older version of R is possible.</p>
-<ol type="1">
-<li><a href="https://cran.r-project.org/">cran.r-project.org</a></li>
-<li>Click the ‘Download for Windows’ link for your given operating system<br>
-<img src="img/versions_downloadforwindows.png" class="img-fluid"></li>
-<li>Click on the ‘base’ link<br>
-<img src="img/versions_base.png" class="img-fluid"></li>
-<li>Click on the ‘Previous releases’ link <img src="img/versions_previousreleases.png" class="img-fluid"></li>
-<li>Click on the specific R version you want, say R 3.5.3 <img src="img/versions_353.png" class="img-fluid"></li>
-<li>Click on the ‘Download R <version> for Windows’ and this will download an exe file <img src="img/versions_downloadexe.PNG" class="img-fluid"></version></li>
-<li>Run the exe file to install the older version of R</li>
-</ol>
+<section id="readrread_csv" class="level3" data-number="6.1.2">
+<h3 data-number="6.1.2" class="anchored" data-anchor-id="readrread_csv"><span class="header-section-number">6.1.2</span> <code>{readr}::read_csv()</code></h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>im_readr <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">"data/import.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 7 Columns: 3
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr (1): Name 1
+dbl (2): Name (2), Name #3
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>im_readr</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 7 × 3
+  `Name 1` `Name (2)` `Name #3`
+  &lt;chr&gt;         &lt;dbl&gt;     &lt;dbl&gt;
+1 ch1               1        11
+2 ch2               2        12
+3 ch3               3        13
+4 ch4              NA        14
+5 ch5               5        15
+6 &lt;NA&gt;              6        16
+7 ch7               7        17</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(im_readr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "spec_tbl_df" "tbl_df"      "tbl"         "data.frame" </code></pre>
+</div>
+</div>
+<ul>
+<li>output is tibble (tidyverse)</li>
+<li>receive message with type of columns that R is using for import</li>
+<li>missing for character and numeric is NA; outputs (html) will show &lt;NA&gt; for missing character and NA for missing numeric</li>
+<li>headers are that have spaces or special characters are placed within back ticks (``)</li>
+<li>remove headers with <code>col_names = FALSE</code>; column names will be X1, X2, X3, etc.</li>
+</ul>
+<section id="specify-column-types" class="level4" data-number="6.1.2.1">
+<h4 data-number="6.1.2.1" class="anchored" data-anchor-id="specify-column-types"><span class="header-section-number">6.1.2.1</span> Specify Column Types</h4>
+<p>R does a pretty good job of figuring out what the columns should be but if its needed to specify column types column types can be specified as shown below. If you don’t want the column types message to show and don’t want to show column types use the <code>show_col_types = FALSE</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>test <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">"data/import.csv"</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>         , <span class="at">col_types =</span> readr<span class="sc">::</span><span class="fu">cols</span>(</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>            <span class="st">`</span><span class="at">Name 1</span><span class="st">`</span>   <span class="ot">=</span> readr<span class="sc">::</span><span class="fu">col_character</span>()</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>          , <span class="st">`</span><span class="at">Name (2)</span><span class="st">`</span> <span class="ot">=</span> readr<span class="sc">::</span><span class="fu">col_double</span>()</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>          , <span class="st">`</span><span class="at">Name #3</span><span class="st">`</span>  <span class="ot">=</span> readr<span class="sc">::</span><span class="fu">col_double</span>()</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>           )</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>test</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 7 × 3
+  `Name 1` `Name (2)` `Name #3`
+  &lt;chr&gt;         &lt;dbl&gt;     &lt;dbl&gt;
+1 ch1               1        11
+2 ch2               2        12
+3 ch3               3        13
+4 ch4              NA        14
+5 ch5               5        15
+6 &lt;NA&gt;              6        16
+7 ch7               7        17</code></pre>
+</div>
+</div>
 </section>
-<section id="switch-between-versions-of-r" class="level3">
-<h3 class="anchored" data-anchor-id="switch-between-versions-of-r">Switch between versions of R</h3>
-<ol type="1">
-<li>Open R Studio</li>
-<li>Tools &gt; Global Options…</li>
-<li>General &gt; R Version &gt; Change…</li>
-</ol>
+</section>
+<section id="export" class="level3" data-number="6.1.3">
+<h3 data-number="6.1.3" class="anchored" data-anchor-id="export"><span class="header-section-number">6.1.3</span> Export</h3>
+<p>Can use <code>utils::write.csv()</code> or <code>readr::write_csv()</code> - have slightly different functionality.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>utils<span class="sc">::</span><span class="fu">write.csv</span>(test, <span class="st">"data/export1_utils.txt"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<pre><code> "", "Name 1","Name (2)","Name #3"
+"1",    "ch1",        1,       10
+"2",    "ch2",        2,       12
+"3",    "ch3",        3,       13
+"4",    "ch4",       NA,       14
+"5",    "ch5",        5,       15
+"6",      NA,         6,       16
+"7",     "ch7",       7,       17</code></pre>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>readr<span class="sc">::</span><span class="fu">write_csv</span>(test, <span class="st">"data/export2_readr.txt"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<pre><code>Name 1, Name (2),Name #3
+   ch1,        1,     10
+   ch2,        2,     12
+   ch3,        3,     13
+   ch4,       NA,     14
+   ch5,        5,     15
+    NA,        6,     16
+   ch7,        7,     17</code></pre>
+<p>Rownames; <code>row.names = TRUE</code> to include; <code>row.names = FALSE</code> to exclude</p>
+<ul>
+<li><code>utils::write.csv()</code> default includes row names (usually row number)</li>
+<li><code>readr::write_csv()</code> default does not include row names; CANNOT ADD</li>
+</ul>
+<p>NA values; <code>na = ""</code> to have missing data be exported as blank cell</p>
+<ul>
+<li>If data set is a base R data frame:
+<ul>
+<li><code>write.csv()</code> default is <code>na = "NA"</code> for numeric, always blank for character (CAN’T CHANGE!)</li>
+<li><code>write_csv()</code> default is <code>na = "NA"</code> for numeric, always blank for character (CAN’T CHANGE!)</li>
+</ul></li>
+<li>If data set is a tibble:
+<ul>
+<li><code>write.csv()</code> default is <code>na = "NA"</code> for numeric and character</li>
+<li><code>write_csv()</code> default is <code>na = "NA"</code> for numeric and character</li>
+</ul></li>
+</ul>
+</section>
+</section>
+<section id="links" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="links"><span class="header-section-number">6.2</span> Links</h2>
+<ul>
+<li><a href="https://stackoverflow.com/questions/35852722/how-do-you-read-a-password-protected-excel-file-into-r">Stack Overflow | How do you read a password protected excel file into r?</a></li>
+<li><a href="https://www.r-bloggers.com/2019/05/how-to-save-and-load-datasets-in-r-an-overview/">R-bloggers | How to save (and load) datasets in R: An overview</a></li>
+<li><a href="https://www.rdocumentation.org/packages/writexl/versions/1.4.0/topics/write_xlsx">R Documentation | {writexl}::write_xlsx function</a></li>
+<li><a href="https://stackoverflow.com/questions/44394159/error-in-jcallcell-v-setcellvalue-value-method-setcellvalue-with-sig">Stack Overflow | Error in .jcall(cell, “V”, “setCellValue”, value) : method setCellValue with signature ([D)V not found when attempting write.xlsx</a></li>
+<li><a href="https://stackoverflow.com/questions/67087299/error-package-or-namespace-load-failed-for-xlconnect">Stack Overflow | Error: package or namespace load failed for {XLConnect}</a></li>
+<li><a href="http://www.sthda.com/english/wiki/r-xlsx-package-a-quick-start-guide-to-manipulate-excel-files-in-r">STHDA | R xlsx package A quick start guide to manipulate Excel files in R</a></li>
+</ul>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -424,13 +523,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./resources.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Resources</span></span>
+      <a href="./R_functions.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Functions</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./R_datamanage.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Data Management</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./R_regex.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">regex</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
