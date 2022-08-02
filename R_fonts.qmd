@@ -1,0 +1,70 @@
+# Fonts  
+
+## ttf fonts  
+
+### Install Packages 
+
+
+```{r}
+#| eval: FALSE 
+install.packages("extrafont")
+remotes::install_version("Rttf2pt1", version = "1.3.8")
+```
+
+As of August 2022, if you just install `{extrafont}` as is, you will have a problem with importing fonts on Windows and there will be an error saying 'No Font Name'.  To solve this, install version 1.3.8 of `{Rttf2pt1}`.  
+
+<div class="source">
+Sources: [Stack Overflow, May 2020 | how to resolve the "No Font Name" issue when importing fonts into R with extrafont](https://stackoverflow.com/questions/61204259/how-can-i-resolve-the-no-font-name-issue-when-importing-fonts-into-r-using-ext) and [extrafont GitHub Issue #88 Jul 2021 | wzbillings comment](https://github.com/wch/extrafont/issues/88#issuecomment-890426514)
+</div>
+
+
+### Download All .ttf Fonts in `C:\Windows\Fonts` Folder
+
+```{r}
+#| eval: FALSE 
+#will import ALL fonts, takes 5-10 min
+extrafont::font_import() 
+```
+
+
+### Download Other Fonts by File 
+
+```{r}
+#| eval: FALSE 
+extrafont::font_import(paths = "C:/PATH/TO/FOLDER/WITH/TTF", prompt = FALSE) 
+```
+
+### Use 
+
+Prior to using fonts in R, need to load fonts in each session (this is like using `library()` or `box::use()` for a specific package) 
+
+```{r}
+#| eval = FALSE 
+#quiet = FALSE to remove listing of of fonts 
+extrafont::Loadfonts(devide = "win", quite = TRUE) 
+```
+
+## otf fonts 
+
+### Install Packages 
+
+- issues with `{showtext}` package when in use 
+- other ggplot2 fonts are affect when actively using this package, making the fonts smaller and making line breaks much larger
+
+```{r}
+#| eval: FALSE 
+install.packages("showtext")
+library(showtext)
+showtext_auto() 
+font_add("NewFont", regular = "C://PATH//TO//NewFont.otf")
+font_families()
+```
+
+
+```{r}
+#| eval: FALSE 
+#| echo: FALSE 
+showtext_auto() 
+font_add("Graphik", regular = "C://Users//meichlersmith//Desktop//Fonts//Graphik.otf")
+font_families()
+```

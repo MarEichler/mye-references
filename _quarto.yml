@@ -12,6 +12,7 @@ book:
       - R_datamanage.qmd
       - R_dataviz.qmd
       - R_dates.qmd
+      - R_fonts.qmd
       - R_functions.qmd
       - R_impexp.qmd
       - R_regex.qmd
