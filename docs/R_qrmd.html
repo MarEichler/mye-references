@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>MYE References - 4&nbsp; Fonts</title>
+<title>MYE References - 7&nbsp; qmd/Rmd</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -93,8 +93,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./R_functions.html" rel="next">
-<link href="./R_dates.html" rel="prev">
+<link href="./R_regex.html" rel="next">
+<link href="./R_impexp.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -133,7 +133,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Fonts</span></h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">qmd/Rmd</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -186,7 +186,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./R_fonts.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Fonts</span></a>
+  <a href="./R_fonts.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Fonts</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -201,7 +201,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./R_qrmd.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">qmd/Rmd</span></a>
+  <a href="./R_qrmd.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">qmd/Rmd</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -265,17 +265,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#ttf-fonts" id="toc-ttf-fonts" class="nav-link active" data-scroll-target="#ttf-fonts"><span class="toc-section-number">4.1</span>  ttf fonts</a>
-  <ul class="collapse">
-  <li><a href="#install-packages" id="toc-install-packages" class="nav-link" data-scroll-target="#install-packages"><span class="toc-section-number">4.1.1</span>  Install Packages</a></li>
-  <li><a href="#download-all-.ttf-fonts-in-cwindowsfonts-folder" id="toc-download-all-.ttf-fonts-in-cwindowsfonts-folder" class="nav-link" data-scroll-target="#download-all-.ttf-fonts-in-cwindowsfonts-folder"><span class="toc-section-number">4.1.2</span>  Download All .ttf Fonts in <code>C:\Windows\Fonts</code> Folder</a></li>
-  <li><a href="#download-other-fonts-by-file" id="toc-download-other-fonts-by-file" class="nav-link" data-scroll-target="#download-other-fonts-by-file"><span class="toc-section-number">4.1.3</span>  Download Other Fonts by File</a></li>
-  <li><a href="#use" id="toc-use" class="nav-link" data-scroll-target="#use"><span class="toc-section-number">4.1.4</span>  Use</a></li>
-  </ul></li>
-  <li><a href="#otf-fonts" id="toc-otf-fonts" class="nav-link" data-scroll-target="#otf-fonts"><span class="toc-section-number">4.2</span>  otf fonts</a>
-  <ul class="collapse">
-  <li><a href="#install-packages-1" id="toc-install-packages-1" class="nav-link" data-scroll-target="#install-packages-1"><span class="toc-section-number">4.2.1</span>  Install Packages</a></li>
-  </ul></li>
+  <li><a href="#loop-with-child-sub-file" id="toc-loop-with-child-sub-file" class="nav-link active" data-scroll-target="#loop-with-child-sub-file"><span class="toc-section-number">7.1</span>  Loop with child (sub file)</a></li>
+  <li><a href="#quarto_render" id="toc-quarto_render" class="nav-link" data-scroll-target="#quarto_render"><span class="toc-section-number">7.2</span>  <code>quarto_render()</code></a></li>
+  <li><a href="#output-and-pathways" id="toc-output-and-pathways" class="nav-link" data-scroll-target="#output-and-pathways"><span class="toc-section-number">7.3</span>  Output and Pathways</a></li>
+  <li><a href="#style" id="toc-style" class="nav-link" data-scroll-target="#style"><span class="toc-section-number">7.4</span>  Style</a></li>
   </ul>
 </nav>
     </div>
@@ -284,7 +277,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Fonts</span></h1>
+<h1 class="title d-none d-lg-block"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">qmd/Rmd</span></h1>
 </div>
 
 
@@ -298,62 +291,111 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
-<section id="ttf-fonts" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="ttf-fonts"><span class="header-section-number">4.1</span> ttf fonts</h2>
-<section id="install-packages" class="level3" data-number="4.1.1">
-<h3 data-number="4.1.1" class="anchored" data-anchor-id="install-packages"><span class="header-section-number">4.1.1</span> Install Packages</h3>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"extrafont"</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_version</span>(<span class="st">"Rttf2pt1"</span>, <span class="at">version =</span> <span class="st">"1.3.8"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="loop-with-child-sub-file" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="loop-with-child-sub-file"><span class="header-section-number">7.1</span> Loop with child (sub file)</h2>
+<div class="grid">
+<div class="g-col-6">
+<p><strong>Main-file: <code>.qmd</code></strong></p>
 </div>
-<p>As of August 2022, if you just install <code>{extrafont}</code> as is, you will have a problem with importing fonts on Windows and there will be an error saying ‘No Font Name’. To solve this, install version 1.3.8 of <code>{Rttf2pt1}</code>.</p>
+<!-- END {.g-col-6} first column -->
+<div class="g-col-6">
+<p><strong>Sub-file: <code>plot_for_state.qmd</code></strong></p>
+</div>
+<!-- END {.g-col-6} second column -->
+</div>
+<!-- END {.grid} -->
+<div class="grid">
+<div class="g-col-6" style="border: 1px solid #dcdcdc; font-size: 0.7em;">
+<p>## Individual States</p>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># results: asis #outputs text as raw md content </span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>STATE_vec <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Alabama"</span>, <span class="st">"Alaska"</span>, <span class="st">"Arizona"</span>, ...)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">#create empty list </span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="at">mode =</span> <span class="st">"list"</span>, <span class="at">length =</span> 3L)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">#run loop </span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(STATE_vec)) { </span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="co">#run the qmd with a specific state, save in list</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  res[[i]] <span class="ot">&lt;-</span> knitr<span class="sc">::</span><span class="fu">knit_child</span>(</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>      <span class="st">"plot_for_state.qmd"</span>      </span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    , <span class="at">quiet =</span> <span class="cn">TRUE</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    , <span class="at">envir =</span> <span class="fu">environment</span>()</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="co">#unlist and paste together with a break </span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">unlist</span>(res), <span class="at">sep =</span> <span class="st">'</span><span class="sc">\n</span><span class="st">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>## Next Section</p>
+</div>
+<!-- END {.g-col-6} first column -->
+<div class="g-col-6" style="border: 1px solid #dcdcdc; font-size: 0.7em;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>this_STATE <span class="ot">&lt;-</span> STATE_vec[i]  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>### `r this_STATE`</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>all_data <span class="sc">%&gt;%</span> </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(STATE <span class="sc">==</span> this_STATE) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot_function</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<!-- END {.g-col-6} second column -->
+</div>
+<!-- END {.grid} -->
 <div class="source">
-<p>Sources: <a href="https://stackoverflow.com/questions/61204259/how-can-i-resolve-the-no-font-name-issue-when-importing-fonts-into-r-using-ext">Stack Overflow, May 2020 | how to resolve the “No Font Name” issue when importing fonts into R with extrafont</a> and <a href="https://github.com/wch/extrafont/issues/88#issuecomment-890426514">extrafont GitHub Issue #88 Jul 2021 | wzbillings comment</a></p>
-</div>
-</section>
-<section id="download-all-.ttf-fonts-in-cwindowsfonts-folder" class="level3" data-number="4.1.2">
-<h3 data-number="4.1.2" class="anchored" data-anchor-id="download-all-.ttf-fonts-in-cwindowsfonts-folder"><span class="header-section-number">4.1.2</span> Download All .ttf Fonts in <code>C:\Windows\Fonts</code> Folder</h3>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#will import ALL fonts, takes 5-10 min</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>extrafont<span class="sc">::</span><span class="fu">font_import</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="download-other-fonts-by-file" class="level3" data-number="4.1.3">
-<h3 data-number="4.1.3" class="anchored" data-anchor-id="download-other-fonts-by-file"><span class="header-section-number">4.1.3</span> Download Other Fonts by File</h3>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>extrafont<span class="sc">::</span><span class="fu">font_import</span>(<span class="at">paths =</span> <span class="st">"C:/PATH/TO/FOLDER/WITH/TTF"</span>, <span class="at">prompt =</span> <span class="cn">FALSE</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="use" class="level3" data-number="4.1.4">
-<h3 data-number="4.1.4" class="anchored" data-anchor-id="use"><span class="header-section-number">4.1.4</span> Use</h3>
-<p>Prior to using fonts in R, need to load fonts in each session (this is like using <code>library()</code> or <code>box::use()</code> for a specific package)</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#quiet = FALSE to remove listing of of fonts </span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>extrafont<span class="sc">::</span><span class="fu">Loadfonts</span>(<span class="at">devide =</span> <span class="st">"win"</span>, <span class="at">quite =</span> <span class="cn">TRUE</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-</section>
-<section id="otf-fonts" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="otf-fonts"><span class="header-section-number">4.2</span> otf fonts</h2>
-<section id="install-packages-1" class="level3" data-number="4.2.1">
-<h3 data-number="4.2.1" class="anchored" data-anchor-id="install-packages-1"><span class="header-section-number">4.2.1</span> Install Packages</h3>
+Sources:
 <ul>
-<li>issues with <code>{showtext}</code> package when in use</li>
-<li>other ggplot2 fonts are affect when actively using this package, making the fonts smaller and making line breaks much larger</li>
+<li>
+<a href="https://stackoverflow.com/questions/63011158/r-markdown-loop-with-child-rmd">Stack Overvlow, Aug 2020 | R Markdown: loop with child.rmd</a>
+</li>
+<li>
+<a href="https://www.harveyl888.com/post/2022-05-12-knit_child_quarto/">Harvey Lieberman, Mar 2022 | knitr::knit_child with Quarto</a>
+</li>
+</ul>
+</div>
+</section>
+<section id="quarto_render" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="quarto_render"><span class="header-section-number">7.2</span> <code>quarto_render()</code></h2>
+<ul>
+<li>issue rendering qmd and saving in another folder</li>
+<li>my work around is rendering in same place and moving to another folder and new name, then remove the rendered html</li>
+<li>links
+<ul>
+<li><a href="https://stackoverflow.com/questions/72346829/two-problems-rendering-a-qmd-file-with-quarto-render-from-r">Stack Overflow, Jun 2022 | Two problems rendering a qmd file with quarto_render from R</a></li>
+<li><a href="https://community.rstudio.com/t/output-directory-in-quarto-cli-not-respected/143762">RStudio, Aug 2022 | Output directory in quarto-cli not respected?</a></li>
+</ul></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"showtext"</span>)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(showtext)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">showtext_auto</span>() </span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">font_add</span>(<span class="st">"NewFont"</span>, <span class="at">regular =</span> <span class="st">"C://PATH//TO//NewFont.otf"</span>)</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">font_families</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#when bugs are fixed </span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># quarto::quarto_render(input = "in.qmd", output_file = "products/output.html")</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>quarto<span class="sc">::</span><span class="fu">quarto_render</span>(<span class="at">input =</span> <span class="st">"ind.qmd"</span>, <span class="at">output_file =</span> <span class="st">"output.html"</span>)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">file.copy</span>(<span class="at">from =</span> <span class="st">"output.html"</span>, <span class="at">to =</span> <span class="st">"products/output.html"</span>, <span class="at">overwrite =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="st">"output.html"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell">
-
-</div>
-
-
 </section>
+<section id="output-and-pathways" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="output-and-pathways"><span class="header-section-number">7.3</span> Output and Pathways</h2>
+<ul>
+<li><a href="https://bookdown.org/yihui/rmarkdown-cookbook/working-directory.html">R Markdown Cookbook | 16.6 The working directory for R code chunks</a></li>
+<li><a href="https://stackoverflow.com/questions/65921907/run-r-markdown-rmd-from-inside-other-r-script-to-produce-html">Stack Overflow | Run R markdown (.Rmd) from inside other R script to produce HTML - Stack Overflow</a></li>
+<li><a href="https://community.rstudio.com/t/save-rmarkdown-output-in-different-folder/68192/4">RStudio Community | save rmarkdown output in different folder - R Markdown</a></li>
+</ul>
+</section>
+<section id="style" class="level2" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="style"><span class="header-section-number">7.4</span> Style</h2>
+<ul>
+<li><a href="https://stackoverflow.com/questions/34022558/r-markdown-how-to-change-style-with-internal-css">Stack Overflow | R markdown: how to change style with internal css?</a></li>
+<li><a href="https://stackoverflow.com/questions/25849814/rstudio-rmarkdown-both-portrait-and-landscape-layout-in-a-single-pdf">Stack Overflow | rmarkdown: both portrait and landscape layout in a single PDF</a></li>
+<li><a href="https://bookdown.org/yihui/rmarkdown-cookbook/unnumbered-sections.html">R Markdown Cookbook | 4.4 Unnumbered sections</a></li>
+<li><a href="https://stackoverflow.com/questions/34906002/increase-width-of-entire-html-rmarkdown-output">Stack Overflow | Increase width of entire HTML Rmarkdown output</a></li>
+<li><a href="https://www.stevesque.com/symbols/">Steve Sque | Symbols in LaTeX and HTML</a></li>
+<li><a href="https://community.rstudio.com/t/copy-to-clipboard-buttons-for-code-blocks/45367">RStudio Community | Copy to clipboard buttons for code blocks - R Markdown</a></li>
+</ul>
+
+
 </section>
 
 </main> <!-- /main -->
@@ -457,13 +499,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./R_dates.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Dates and Times</span></span>
+      <a href="./R_impexp.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Import/Export</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./R_functions.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Functions</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./R_regex.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">regex</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

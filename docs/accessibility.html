@@ -2,19 +2,24 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.0.35">
+<meta name="generator" content="quarto-1.1.189">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>MYE References - 12&nbsp; Accessibility</title>
+<title>MYE References - 13&nbsp; Accessibility</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-span.underline{text-decoration: underline;}
-div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
 </style>
 
 
@@ -26,7 +31,7 @@ ul.task-list{list-style: none;}
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./htmlcss.html" rel="next">
-<link href="./R_zother.html" rel="prev">
+<link href="./R_datavizgen.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -65,7 +70,7 @@ ul.task-list{list-style: none;}
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Accessibility</span></h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Accessibility</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -113,27 +118,27 @@ ul.task-list{list-style: none;}
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./R_dataviz.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Data Viz</span></a>
+  <a href="./R_dates.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Dates and Times</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./R_dates.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Dates and Times</span></a>
+  <a href="./R_fonts.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Fonts</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./R_fonts.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Fonts</span></a>
+  <a href="./R_functions.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Functions</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./R_functions.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Functions</span></a>
+  <a href="./R_impexp.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Import/Export</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./R_impexp.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Import/Export</span></a>
+  <a href="./R_qrmd.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">qmd/Rmd</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -158,19 +163,34 @@ ul.task-list{list-style: none;}
 </li>
       </ul>
   </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">R data viz</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./R_datavizgen.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Data Viz</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./accessibility.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Accessibility</span></a>
+  <a href="./accessibility.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Accessibility</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./htmlcss.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">HTML/CSS</span></a>
+  <a href="./htmlcss.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">HTML/CSS</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./latex.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Latex</span></a>
+  <a href="./latex.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Latex</span></a>
   </div>
 </li>
     </ul>
@@ -178,15 +198,15 @@ ul.task-list{list-style: none;}
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc">
+        <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#general-informationchecks" id="toc-general-informationchecks" class="nav-link active" data-scroll-target="#general-informationchecks"> <span class="header-section-number">12.1</span> General Information/Checks</a></li>
-  <li><a href="#shiny" id="toc-shiny" class="nav-link" data-scroll-target="#shiny"> <span class="header-section-number">12.2</span> {shiny}</a></li>
-  <li><a href="#specific-issues" id="toc-specific-issues" class="nav-link" data-scroll-target="#specific-issues"> <span class="header-section-number">12.3</span> Specific Issues</a>
+  <li><a href="#general-informationchecks" id="toc-general-informationchecks" class="nav-link active" data-scroll-target="#general-informationchecks"><span class="toc-section-number">13.1</span>  General Information/Checks</a></li>
+  <li><a href="#shiny" id="toc-shiny" class="nav-link" data-scroll-target="#shiny"><span class="toc-section-number">13.2</span>  {shiny}</a></li>
+  <li><a href="#specific-issues" id="toc-specific-issues" class="nav-link" data-scroll-target="#specific-issues"><span class="toc-section-number">13.3</span>  Specific Issues</a>
   <ul class="collapse">
-  <li><a href="#roman-numerals" id="toc-roman-numerals" class="nav-link" data-scroll-target="#roman-numerals"> <span class="header-section-number">12.3.1</span> Roman Numerals</a></li>
+  <li><a href="#roman-numerals" id="toc-roman-numerals" class="nav-link" data-scroll-target="#roman-numerals"><span class="toc-section-number">13.3.1</span>  Roman Numerals</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -196,7 +216,7 @@ ul.task-list{list-style: none;}
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Accessibility</span></h1>
+<h1 class="title d-none d-lg-block"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Accessibility</span></h1>
 </div>
 
 
@@ -210,8 +230,8 @@ ul.task-list{list-style: none;}
 
 </header>
 
-<section id="general-informationchecks" class="level2" data-number="12.1">
-<h2 data-number="12.1" class="anchored" data-anchor-id="general-informationchecks"><span class="header-section-number">12.1</span> General Information/Checks</h2>
+<section id="general-informationchecks" class="level2" data-number="13.1">
+<h2 data-number="13.1" class="anchored" data-anchor-id="general-informationchecks"><span class="header-section-number">13.1</span> General Information/Checks</h2>
 <ul>
 <li><a href="https://webaim.org/resources/contrastchecker/">WebAIM | Color Contrast Checker</a></li>
 <li><a href="https://wave.webaim.org/">WAVE Web Accessibility Evaluation Tool (for website/Rshiny app)</a></li>
@@ -225,8 +245,8 @@ ul.task-list{list-style: none;}
 <li><a href="https://inclusive-components.design/tooltips-toggletips/">Inclusive Components | Tooltips &amp; Toggletips</a></li>
 </ul>
 </section>
-<section id="shiny" class="level2" data-number="12.2">
-<h2 data-number="12.2" class="anchored" data-anchor-id="shiny"><span class="header-section-number">12.2</span> {shiny}</h2>
+<section id="shiny" class="level2" data-number="13.2">
+<h2 data-number="13.2" class="anchored" data-anchor-id="shiny"><span class="header-section-number">13.2</span> {shiny}</h2>
 <ul>
 <li><a href="https://github.com/rstudio/shiny/issues?q=label%3A%22Type%3A+Accessibility%22">GitHub | Issues · rstudio/shiny · Type: Accessiblity</a>, check to see what has become accessible and current open issues on shiny’s github</li>
 <li><a href="https://github.com/rstudio/shiny/issues/2844">GitHub | Shiny HTML element has no lang attribute · Issue #2844 · rstudio/shiny</a>; closed: <code>tags$html(lang="en")</code><br>
@@ -234,10 +254,10 @@ ul.task-list{list-style: none;}
 <li><a href="https://github.com/rstudio/shiny/pull/3006">GitHub | Added alt param by jooyoungseo · Pull Request #3006</a></li>
 </ul>
 </section>
-<section id="specific-issues" class="level2" data-number="12.3">
-<h2 data-number="12.3" class="anchored" data-anchor-id="specific-issues"><span class="header-section-number">12.3</span> Specific Issues</h2>
-<section id="roman-numerals" class="level3" data-number="12.3.1">
-<h3 data-number="12.3.1" class="anchored" data-anchor-id="roman-numerals"><span class="header-section-number">12.3.1</span> Roman Numerals</h3>
+<section id="specific-issues" class="level2" data-number="13.3">
+<h2 data-number="13.3" class="anchored" data-anchor-id="specific-issues"><span class="header-section-number">13.3</span> Specific Issues</h2>
+<section id="roman-numerals" class="level3" data-number="13.3.1">
+<h3 data-number="13.3.1" class="anchored" data-anchor-id="roman-numerals"><span class="header-section-number">13.3.1</span> Roman Numerals</h3>
 <p>goal was trying to figure out how to get the screen reader to read ‘III’ as ‘3’ instead of as ‘I I I’; couldn’t figure out how to get it to work last time but here are some links I found about it</p>
 <ul>
 <li><a href="https://webaim.org/discussion/mail_thread?thread=5075">WebAIM | Email Archives: How to write roman numerals</a>;<br>
@@ -321,7 +341,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   for (var i=0; i<noterefs.length; i++) {
     const ref = noterefs[i];
     tippyHover(ref, function() {
-      let href = ref.getAttribute('href');
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
@@ -351,13 +372,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./R_zother.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Other</span></span>
+      <a href="./R_datavizgen.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Data Viz</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./htmlcss.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">HTML/CSS</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">HTML/CSS</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

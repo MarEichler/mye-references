@@ -10,15 +10,18 @@ book:
     - part: R.qmd
       chapters: 
       - R_datamanage.qmd
-      - R_dataviz.qmd
       - R_dates.qmd
       - R_fonts.qmd
       - R_functions.qmd
       - R_impexp.qmd
+      - R_qrmd.qmd
       - R_regex.qmd
       - R_shape.qmd
       - R_shiny.qmd
       - R_zother.qmd
+    - part: "R data viz" 
+      chapters: 
+      - R_datavizgen.qmd
     - accessibility.qmd
     - htmlcss.qmd
     - latex.qmd

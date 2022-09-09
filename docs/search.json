@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "MYE References",
     "section": "",
-    "text": "This is a collection of information and links in one place so it’s easier to look up.\n\n\n\nLast updated: 2022-08-02 15:20:16"
+    "text": "This is a collection of information and links in one place so it’s easier to look up.\n\n\n\nLast updated: 2022-09-08 21:00:03"
   },
   {
     "objectID": "resources.html",
@@ -70,158 +70,109 @@
     "text": "2.3 Links\n\nStack Overflow, Oct 2019 | using strsplit in a tibble column\nStack Overflow, Dec 2014 | Assign variable labels of data frame columns\nStack Overflow, Mar 2017 | using strsplit and subset in dplyr and mutate\n\nStack Overflow, May 2013 | add a dplyr group label as a number\nGitHub {bigrquery}, Apr 2018 | Can’t join across sources · Issue #219"
   },
   {
-    "objectID": "R_dataviz.html",
-    "href": "R_dataviz.html",
-    "title": "3  Data Viz",
-    "section": "",
-    "text": "library(tidyverse)"
-  },
-  {
-    "objectID": "R_dataviz.html#axis-breaks",
-    "href": "R_dataviz.html#axis-breaks",
-    "title": "3  Data Viz",
-    "section": "3.1 Axis Breaks",
-    "text": "3.1 Axis Breaks\n\n3.1.1 {ggbreak}\n\ndf <- data.frame(a = c(1,2,3,500), b = c('a1', 'a2','a3', 'a4'))\n\nggplot(df) + \n  aes(x = b, y = a) +\n  geom_col() +\n  ggbreak::scale_y_break(c(5, 490))\n\n\n\n\n\nSource: {ggbreak} | Set Axis Break for ggplot2\n\n\n\n3.1.2 {ggforce}::facet_zoom\n\ndf <- data.frame(a = c(1,2,3,500), b = c('a1', 'a2','a3', 'a4'))\n\nggplot(df) + \n  aes(x = b, y = a) +\n  geom_col() +\n  ggforce::facet_zoom(ylim = c(0, 5))\n\n\n\n\n\nSource: Stack Overflow, Sep 2011 | Using ggplot2, can I insert a break in the axis?"
-  },
-  {
-    "objectID": "R_dataviz.html#annotation-outside-panel",
-    "href": "R_dataviz.html#annotation-outside-panel",
-    "title": "3  Data Viz",
-    "section": "3.2 Annotation outside panel",
-    "text": "3.2 Annotation outside panel\nThe one time I’ve done this is to add a axis break symbol for when the y axis does not start at zero. In addition to adding the symbol, you also have to set the ggplotGrob to not clip items outside the plot panel.\n\nbase <- mpg %>% \n  ggplot(aes(x = cty, y = hwy)) + \n  geom_point() + \n  lims(x = c(0, NA)) + \n  theme_minimal() + \n  theme(axis.line = element_line(color = \"grey35\", size = 0.25))\n\np.zoomin <- base + \n  annotate(\"text\"\n    , x = -Inf, y = -Inf #bottom left corner of plot \n    , label = \"\\u2e17\"   #symbol ⸗ (diag double hyphen)\n    , color = \"grey35\"   #same color as axis.line\n    , size = 4.5         #adjust based on out plot size\n    , vjust = -0.25      #adjust further up \n  ) \n\n#get grob instructions \ng.zoomin <- ggplotGrob(p.zoomin) \n\n#turn panel clipping off \ng.zoomin$layout$clip[g.zoomin$layout$name == \"panel\"] = \"off\"\n\n#draw final \ncowplot::ggdraw(\n  cowplot::add_sub(\n    g.zoomin\n    , \"'broken axis' symbol, also extra note under plot\"\n    , size = 12\n    , x = 0\n    , hjust = 0\n    #, y = 1.25 #same line as x axis title \n  ))\n\n\n\n\n\nSources: Stack Overflow, Mar 2014 | set layout clip to ‘off’ and {cowplot}::add_sub | add annotation under plot"
-  },
-  {
-    "objectID": "R_dataviz.html#secondary-legend",
-    "href": "R_dataviz.html#secondary-legend",
-    "title": "3  Data Viz",
-    "section": "3.3 Secondary Legend",
-    "text": "3.3 Secondary Legend\n\n3.3.1 NA Legend\nAdded automatically if NA is part of discrete legend, but is NOT included automatically for continuous legend.\n\nset.seed(20220713)\nstates_sf <- urbnmapr::get_urbn_map(map = \"states\", sf = TRUE) %>% \n  #set new CRS \n  sf::st_transform(states_sf, crs = 4326) %>% \n  mutate(\n      val_dis = sample(c(\"A\", \"B\", \"C\"), nrow(.), TRUE)\n    , val_con = sample(-50:50          , nrow(.), TRUE)\n  ) %>% \n  mutate(\n      val_dis = ifelse(state_abbv == \"MN\", NA, val_dis)\n    , val_con = ifelse(state_abbv == \"MN\", NA, val_con)\n  )\n\nold-style crs object detected; please recreate object with a recent sf::st_crs()\n\nggplot(states_sf) + geom_sf(aes(fill = val_dis))\n\n\n\nggplot(states_sf) + geom_sf(aes(fill = val_con))\n\n\n\n\nAdd NA legend to continuous plot:\n\nggplot(states_sf) + \n  geom_sf(aes(fill = val_con, color = \"\")) + \n  scale_fill_continuous(na.value = \"grey40\") + \n  scale_color_manual(values = NA) + \n  guides(\n      color = guide_legend(\"NA\", override.aes = list(fill = \"grey40\"))\n    , fill = guide_colorbar(order = 1)\n  ) \n\n\n\n\n\nSource: Stack Overflow, Mar 2017 | Add a box for NA values for continuous map\n\n\n\n3.3.2 2+ Special Values\n\nlibrary(cowplot) \n\n#special value for 'suppressed' data\nstates_sf <- states_sf %>% \n  mutate(val_con = ifelse(state_abbv == \"CA\", 999, val_con))\n\n## Main Plot \np.main <- ggplot(states_sf) + \n  geom_sf( # non-special values, typical cont. color bar \n    data = filter(states_sf, val_con != 999 & !is.na(val_con))\n    , aes(fill = val_con), color = NA\n  ) + \n  geom_sf( # NA states (missing data) \n    data = filter(states_sf, is.na(val_con))\n    , fill = \"grey30\", color = NA\n  ) + \n  geom_sf( # Special values (suppressed data) \n    data = filter(states_sf, val_con == 999)\n    , fill = \"grey80\", color = NA\n  ) + \n  geom_sf( # add borders for all \n    fill = NA, color = \"white\"\n  ) \n\n## Dummy Plot for 2nd Legend \np.missup <- tibble(val = c(0, 1), type = c(\"Missing\", \"Suppressed\")) %>% \n  ggplot() + \n  geom_bar(aes(val, fill = type)) + \n  scale_fill_manual(name = NULL\n    , values = c(\"grey30\", \"grey80\")\n    , guide = guide_legend( byrow = TRUE)\n  ) + \n  theme(legend.spacing.y = unit(5, \"pt\"))\n\n## Pull out legends and combine \nleg.main <- cowplot::get_legend(p.main)\nleg.sec  <- cowplot::get_legend(p.missup)\nleg.final <- cowplot::plot_grid(leg.main, leg.sec, ncol = 1, align = \"v\") \n\n## Remvoe main legend from plot \np.final  <- p.main  + theme(legend.position = \"none\") \n\n## Combined everything \ncowplot::plot_grid(p.final, leg.final, nrow = 1, rel_widths = c(4, 1))\n\n\n\n\n\nQuick Link: Stack Overflow, Sep 2018 | Use cowplot for custom multiple legends arrangement\n\nOUTSTANDING\n\nhow to minimize space between main legend and secondary legend\ngrid::grid.draw(rbind(leg.main, leg.sec)) binds together without huge space, but need to figure out how to add to another ggplot item"
-  },
-  {
-    "objectID": "R_dataviz.html#hjustvjust",
-    "href": "R_dataviz.html#hjustvjust",
-    "title": "3  Data Viz",
-    "section": "3.4 hjust/vjust",
-    "text": "3.4 hjust/vjust\nWhy do I always forget the direction of these?\nhjust: 0 = left-aligned, 0.5=center, 1 = right-aligned\nvjust: 0 = top-aligned, 0.5=middle, 1 = bottom-aligned\n\nhjustvjust <- expand.grid(\n  hjust=c(0, 0.5, 1),\n  vjust=c(0, 0.5, 1),\n  angle=c(0, 45, 90),\n  text=\"TEXT\")\n\nggplot(hjustvjust, aes(x=hjust, y=vjust)) + \n  geom_point() +\n  geom_text(aes(label=text, angle=angle, hjust=hjust, vjust=vjust)) + \n  facet_grid(~angle) +\n  scale_x_continuous(breaks=c(0, 0.5, 1), expand=c(0, 0.2)) +\n  scale_y_continuous(breaks=c(0, 0.5, 1), expand=c(0, 0.2)) + \n  labs(\n    title=\"Various values of angle, hjust and vjust in ggplot \\n\"\n    , y =\"vjust \\n\"\n    , x =\" \\n hjust\"\n  ) +  \n  theme_bw() + \n  theme(\n    axis.text  = element_text(color=\"black\", face=\"bold\" , size=12)\n  , axis.title = element_text(color=\"black\", face=\"plain\", size=24)\n  , plot.title = element_text(color=\"black\", face=\"bold\" , size=18)\n  ) \n\n\n\n\n\nSources: R bloggers, Nov 2012 | hjust and vjust and GitHub: cdesante/hjustvjust.r"
-  },
-  {
-    "objectID": "R_dataviz.html#math-expressions",
-    "href": "R_dataviz.html#math-expressions",
-    "title": "3  Data Viz",
-    "section": "3.5 Math Expressions",
-    "text": "3.5 Math Expressions\n\n3.5.1 Use quote()\n\nggplot(mpg, aes(displ, hwy))+geom_point()+\n  ggtitle(\n    quote(\n      alpha ^ 2 - frac(1, 10) + sum(n[i], i==1, N)\n    ) #end quote\n  ) #end of ggtitle\n\n\n\n\n\n\n3.5.2 Use TeX() from the latex2exp package\n\nmust be in a string\nmust be denoted as math mode with dollar signs\nmust include 2 backslashes for \\(\\LaTeX\\) commands\n\n\nlibrary(latex2exp)\nggplot(mpg, aes(displ, hwy))+geom_point()+\n  ggtitle(TeX(\n    \"$\\\\alpha^2 - \\\\frac{1}{10} + \\\\sum_{i}^N n_i$\"\n    ) #end TeX\n  ) #end ggtitle"
-  },
-  {
-    "objectID": "R_dataviz.html#facets-scalesspace",
-    "href": "R_dataviz.html#facets-scalesspace",
-    "title": "3  Data Viz",
-    "section": "3.6 Facets: scales/space",
-    "text": "3.6 Facets: scales/space\nAnother option is facet_wrap() or facet_grid(), which can works if the axes are the same for the different variables you want to compare, but be careful as facets are supposed to be comparing items with the same measurements.\n\ntidy.df <- tidyr::pivot_longer(\n  mpg, c(class, drv)\n  , names_to = \"category\"\n  , values_to = \"type\"\n)\n\nscales = \"free\": removes types from the axis if that category has 0 cars of that type\n\nggplot(tidy.df, aes(type)) +\n  geom_bar() + coord_flip() + \n  facet_wrap(~category,  ncol = 1, scales = \"fixed\") + \n  labs(title = 'facet_wrap: scales = \"fixed\"')\nggplot(tidy.df, aes(type)) +\n  geom_bar() + coord_flip() + \n  facet_wrap(~category,  ncol = 1, scales = \"free\") + \n  labs(title = 'facet_wrap: scales = \"free\"')\n\n\n\n\n\n\n\n\n\n\n\nspace = \"free\": spaces based on number of obs (i.e. number of bars); rather than giving each facet equal sizing, ONLY available for facet_grid\n\nggplot(tidy.df, aes(type)) +\n  geom_bar() + coord_flip() + \n  facet_grid(category ~ ., scales = \"fixed\" , space  = \"fixed\") + \n  labs(title = 'facet_grid: scales = \"fixed\" and space = \"fixed\"')\nggplot(tidy.df, aes(type)) +\n  geom_bar() + coord_flip() + \n  facet_grid(category ~ ., scales = \"free\" , space  = \"free\") + \n  labs(title = 'facet_grid: scales = \"free\" and space = \"free\"')"
-  },
-  {
-    "objectID": "R_dataviz.html#align-axes",
-    "href": "R_dataviz.html#align-axes",
-    "title": "3  Data Viz",
-    "section": "3.7 Align Axes",
-    "text": "3.7 Align Axes\nSometimes I’m working on two different types of plots (like a bar chart and a scatter plot) that happen to have the same x-axis. I want to line up these axes so that when the plots are stacked the values correspond to the same date.\n\n3.7.1 gridExtra::grid.arrange() and cowplot::plot_grid()\n\n# two different bar charts\nA <- ggplot(mpg, aes(class))+geom_bar()+coord_flip()+ylim(0, 109)\nB <- ggplot(mpg, aes(drv))+geom_bar()+coord_flip()+ylim(0, 109)\n\nUsing grid.arrange command from the gridExtra package does not line up axes.\n\n#axes don't line up\ngridExtra::grid.arrange(A, B, ncol=1)\n\n\n\n\nUse grid.draw command from the grid package to left align graph edges .\n\n\nSource: Stack Overflow, Nov 2012 | left align two graph edges\n\nThe cowplot::plot_grid() function allows you to line up plots by a specific axis.\n\n#make plots into Grobs (grid graphical object)\ngA <- ggplotGrob(A) \ngB <- ggplotGrob(B)\ngrid::grid.draw(rbind(gA, gB))\ncowplot::plot_grid(A, B, ncol = 1, align = \"v\")\n\n\n\n\n\n\n\n\n\n\n\n\n\n3.7.2 Mixed Geoms\nScatter plots and bar charts will not line up automatically, even when using the grid.draw/plot_grid command detailed above. This is because their default limits are different given that the bar chart is centered on the value and the scatter plot is a single point on the value.\n\n#work with smaller subset of economics (ggplot2)\nstartdate <- \"2014-06-01\"\neconomics_small <- economics %>%\n  filter(date >= as.Date(startdate)) %>%\n  arrange(date)\n\n\nA <- ggplot(economics_small, aes(date, unemploy))+\n  geom_bar(stat=\"identity\")+\n  geom_vline(xintercept = as.Date(startdate), color=\"red\", size=2)\nB <- ggplot(economics_small, aes(date, uempmed))+\n  geom_point()+geom_line()+\n  geom_vline(xintercept = as.Date(startdate), color=\"red\", size=2)\ngA <- ggplotGrob(A) \ngB <- ggplotGrob(B)\n#grid::grid.draw(rbind(gA, gB)) \ncowplot::plot_grid(A, B, ncol = 1, align = \"v\")\n\n\n\n\nIn order to line the up there a a couple of options.\n\n3.7.2.1 Fix xlim\nIf you make the limit the first x-value, the bar chart will not show up (remember it’s centered over the value).\n\nA <- ggplot(economics_small, aes(date, unemploy))+\n  geom_bar(stat=\"identity\")+\n  geom_vline(xintercept = as.Date(startdate), color=\"red\", size=2)+\n  xlim(as.Date(startdate), NA)\nB <- ggplot(economics_small, aes(date, uempmed))+\n  geom_point()+geom_line()+\n  geom_vline(xintercept = as.Date(startdate), color=\"red\", size=2)+\n  xlim(as.Date(startdate), NA)\ngA <- ggplotGrob(A) \n\nWarning: Removed 1 rows containing missing values (geom_bar).\n\ngB <- ggplotGrob(B)\n#grid::grid.draw(rbind(gA, gB))\ncowplot::plot_grid(A, B, ncol = 1, align = \"v\")\n\nWarning: Removed 1 rows containing missing values (geom_bar).\n\n\n\n\n\nThis can be fixed by adding a half unit to the x-axis (i.e. having the lower limit be half-unit lower than smallest x-value). In this case the unit is a month, so a half-unit would be ~15 days.\n\nHalfUnit <- .5*(economics_small$date[2] - economics_small$date[1])\nHalfUnit\n\nTime difference of 15 days\n\n\n\nA <- ggplot(economics_small, aes(date, unemploy))+\n  geom_bar(stat=\"identity\")+\n  geom_vline(xintercept = as.Date(startdate), color=\"red\", size=2)+\n  xlim(as.Date(startdate)-HalfUnit, NA)\nB <- ggplot(economics_small, aes(date, uempmed))+\n  geom_point()+geom_line()+\n  geom_vline(xintercept = as.Date(startdate), color=\"red\", size=2)+\n  xlim(as.Date(startdate)-HalfUnit, NA)\ngA <- ggplotGrob(A) \ngB <- ggplotGrob(B)\n#grid::grid.draw(rbind(gA, gB))\ncowplot::plot_grid(A, B, ncol = 1, align = \"v\")\n\n\n\n\n\n\n3.7.2.2 Shift Bar Chart\nBar charts are automatically centered over the x-value. Bar charts (and any geom object) can be shifted by using position - position_nudge()). The shift needs to be half a unit on the x-axis, again here it is monthly data so a half unit would be ~15 days.\n\n\nSource: Stack Overflow, Aug 2016 | shift geom bar right\n\n\nA <- ggplot(economics_small, aes(date, unemploy))+\n  geom_bar(stat=\"identity\", position = position_nudge(x = as.vector(HalfUnit)))+\n  geom_vline(xintercept = as.Date(startdate), color=\"red\", size=2)\nB <- ggplot(economics_small, aes(date, uempmed))+\n  geom_point()+geom_line()+\n  geom_vline(xintercept = as.Date(startdate), color=\"red\", size=2)\ngA <- ggplotGrob(A) \ngB <- ggplotGrob(B)\n#grid::grid.draw(rbind(gA, gB))\ncowplot::plot_grid(A, B, ncol = 1, align = \"v\")"
-  },
-  {
-    "objectID": "R_dataviz.html#default-ggplot2",
-    "href": "R_dataviz.html#default-ggplot2",
-    "title": "3  Data Viz",
-    "section": "3.8 Default ggplot2",
-    "text": "3.8 Default ggplot2\n\n3.8.1 Colors\nDefault colors can be recreated using scales::hue_pal() and can be shown using scales::show_col()\n\nscales::show_col(scales::hue_pal()(4))\n\n\n\n\n\nSource: Statistics Globe | Extract Default Color Palette of ggplot2 R Package - Hex Codes"
-  },
-  {
-    "objectID": "R_dataviz.html#geom-defaults",
-    "href": "R_dataviz.html#geom-defaults",
-    "title": "3  Data Viz",
-    "section": "3.9 Geom Defaults",
-    "text": "3.9 Geom Defaults\nLook up geom’s default aes using: GeomName$default_aes$\nExample: geom_text()\n\nGeomText$default_aes\n\nAesthetic mapping: \n* `colour`     -> \"black\"\n* `size`       -> 3.88\n* `angle`      -> 0\n* `hjust`      -> 0.5\n* `vjust`      -> 0.5\n* `alpha`      -> NA\n* `family`     -> \"\"\n* `fontface`   -> 1\n* `lineheight` -> 1.2"
-  },
-  {
-    "objectID": "R_dataviz.html#links",
-    "href": "R_dataviz.html#links",
-    "title": "3  Data Viz",
-    "section": "3.10 Links",
-    "text": "3.10 Links\nnew sections\n\nStack Overflow | Consistently center ggplot title across PANEL not PLOT\nStack Overflow | customize ggplot2 axis labels with different colors\n\nshape/line in ggplot\n\nSAPE | ggplot2 Quick Reference: size\nSAPE | ggplot2 Quick Reference: shape\nAlbert’s Blog | Point Shape Options in ggplot\n\nlayout\n\nBaptiste Augie, Jul 2019 | Laying out multiple plots on a page\nDatanovia | How To Easily Customize GGPlot Legend for Great Graphics\nR project | tableGrob - Displaying tables as grid graphics\nStatistics Globe | Remove Border of ggplot2 geom_label Text Annotation in R\n{gridExtra}::tableGrob\n\nStack Overflow | ggplot2: change colour of font and background in facet strip?\n\nother\n\nGitHub nprapps/dailygraphics | dailygraphics-templates/index.html\nGitHub hrbrmstr/statebins | Alternative to choropleths of US States\nStack Overflow | Accents using ggplot2\nStack Overflow | How does ggplot scale_continuous expand argument work?\nR CHARTS | Slopegraph in ggplot2 with newggslopegraph"
-  },
-  {
     "objectID": "R_dates.html#date-formats",
     "href": "R_dates.html#date-formats",
-    "title": "4  Dates and Times",
-    "section": "4.1 Date Formats",
-    "text": "4.1 Date Formats\n\n\n\n\n\n \n  \n    String \n    Meaning \n    Code \n    Output \n  \n \n\n  \n    %a \n    Day of the week, abbreviated (Mon-Sun) \n    format.Date(\"2020-12-10\", \"%a\") \n    Thu \n  \n  \n    %A \n    Day of the week, full (Monday-Sunday \n    format.Date(\"2020-12-10\", \"%A\") \n    Thursday \n  \n  \n    %w \n    Day of the week, numeric, 0 = Sunday (0-6) \n    format.Date(\"2020-12-10\", \"%w\") \n    4 \n  \n  \n    %e \n    Day of month (1-31) \n    format.Date(\"2020-12-10\", \"%e\") \n    10 \n  \n  \n    %d \n    Day of month (01-31) \n    format.Date(\"2020-12-10\", \"%d\") \n    10 \n  \n  \n    %m \n    Month, numeric (01-12) \n    format.Date(\"2020-12-10\", \"%m\") \n    12 \n  \n  \n    %b \n    Month, abbreviated (Jan-Dec) \n    format.Date(\"2020-12-10\", \"%b\") \n    Dec \n  \n  \n    %B \n    Month, full (January-December) \n    format.Date(\"2020-12-10\", \"%B\") \n    December \n  \n  \n    %y \n    Year, without century (00-99) \n    format.Date(\"2020-12-10\", \"%y\") \n    20 \n  \n  \n    %Y \n    Year, with century (0000-9999) \n    format.Date(\"2020-12-10\", \"%Y\") \n    2020 \n  \n  \n    %j \n    Day of the Year (001-366) \n    format.Date(\"2020-12-10\", \"%j\") \n    345 \n  \n  \n    %U \n    Week of year, numeric, starting on Sunday (00-52) \n    format.Date(\"2020-12-10\", \"%U\") \n    49 \n  \n  \n    %W \n    Week of year, numeric, starting on Monday (00-52) \n    format.Date(\"2020-12-10\", \"%W\") \n    49 \n  \n  \n    %x \n    Locale-specific date \n    format.Date(\"2020-12-10\", \"%x\") \n    2020-12-10 \n  \n\n\n\n\n\n\n\nSource: stat.berkeley | Dates and Times in R Stack Overflow"
+    "title": "3  Dates and Times",
+    "section": "3.1 Date Formats",
+    "text": "3.1 Date Formats\n\n\n\n\n\n \n  \n    String \n    Meaning \n    Code \n    Output \n  \n \n\n  \n    %a \n    Day of the week, abbreviated (Mon-Sun) \n    format.Date(\"2020-12-10\", \"%a\") \n    Thu \n  \n  \n    %A \n    Day of the week, full (Monday-Sunday \n    format.Date(\"2020-12-10\", \"%A\") \n    Thursday \n  \n  \n    %w \n    Day of the week, numeric, 0 = Sunday (0-6) \n    format.Date(\"2020-12-10\", \"%w\") \n    4 \n  \n  \n    %e \n    Day of month (1-31) \n    format.Date(\"2020-12-10\", \"%e\") \n    10 \n  \n  \n    %d \n    Day of month (01-31) \n    format.Date(\"2020-12-10\", \"%d\") \n    10 \n  \n  \n    %m \n    Month, numeric (01-12) \n    format.Date(\"2020-12-10\", \"%m\") \n    12 \n  \n  \n    %b \n    Month, abbreviated (Jan-Dec) \n    format.Date(\"2020-12-10\", \"%b\") \n    Dec \n  \n  \n    %B \n    Month, full (January-December) \n    format.Date(\"2020-12-10\", \"%B\") \n    December \n  \n  \n    %y \n    Year, without century (00-99) \n    format.Date(\"2020-12-10\", \"%y\") \n    20 \n  \n  \n    %Y \n    Year, with century (0000-9999) \n    format.Date(\"2020-12-10\", \"%Y\") \n    2020 \n  \n  \n    %j \n    Day of the Year (001-366) \n    format.Date(\"2020-12-10\", \"%j\") \n    345 \n  \n  \n    %U \n    Week of year, numeric, starting on Sunday (00-52) \n    format.Date(\"2020-12-10\", \"%U\") \n    49 \n  \n  \n    %W \n    Week of year, numeric, starting on Monday (00-52) \n    format.Date(\"2020-12-10\", \"%W\") \n    49 \n  \n  \n    %x \n    Locale-specific date \n    format.Date(\"2020-12-10\", \"%x\") \n    2020-12-10 \n  \n\n\n\n\n\n\n\nSource: stat.berkeley | Dates and Times in R Stack Overflow"
   },
   {
     "objectID": "R_dates.html#time-formats",
     "href": "R_dates.html#time-formats",
-    "title": "4  Dates and Times",
-    "section": "4.2 Time Formats",
-    "text": "4.2 Time Formats\n\n\n\n\n\n \n  \n    String \n    Meaning \n    Code \n    Output \n  \n \n\n  \n    %S \n    Second (00-59) \n    format.Date(as.POSIXct(\"2020-12-10 15:30:10\", tz = \"America/Chicago\"), \"%S\") \n    10 \n  \n  \n    %M \n    Minute (00-59) \n    format.Date(as.POSIXct(\"2020-12-10 15:30:10\", tz = \"America/Chicago\"), \"%M\") \n    30 \n  \n  \n    %l \n    Hour, in 12-hour clock (1-12) \n    format.Date(as.POSIXct(\"2020-12-10 15:30:10\", tz = \"America/Chicago\"), \"%l\") \n    3 \n  \n  \n    %I \n    Hour, in 12-hour clock (01-12) \n    format.Date(as.POSIXct(\"2020-12-10 15:30:10\", tz = \"America/Chicago\"), \"%I\") \n    03 \n  \n  \n    %p \n    am/pm \n    format.Date(as.POSIXct(\"2020-12-10 15:30:10\", tz = \"America/Chicago\"), \"%p\") \n    PM \n  \n  \n    %H \n    Hour, in 24-hour clock (00-23) \n    format.Date(as.POSIXct(\"2020-12-10 15:30:10\", tz = \"America/Chicago\"), \"%H\") \n    15 \n  \n  \n    %X \n    Locale-specific time \n    format.Date(as.POSIXct(\"2020-12-10 15:30:10\", tz = \"America/Chicago\"), \"%X\") \n    15:30:10 \n  \n  \n    %c \n    Locale-specific date and time \n    format.Date(as.POSIXct(\"2020-12-10 15:30:10\", tz = \"America/Chicago\"), \"%c\") \n    Thu Dec 10 15:30:10 2020 \n  \n  \n    %z \n    Offset from GMT \n    format.Date(as.POSIXct(\"2020-12-10 15:30:10\", tz = \"America/Chicago\"), \"%z\") \n    -0600 \n  \n  \n    %Z \n    Time zone (character) \n    format.Date(as.POSIXct(\"2020-12-10 15:30:10\", tz = \"America/Chicago\"), \"%Z\") \n    CST \n  \n\n\n\n\n\n\n\nSource: stat.berkeley | Dates and Times in R Stack Overflow"
+    "title": "3  Dates and Times",
+    "section": "3.2 Time Formats",
+    "text": "3.2 Time Formats\n\n\n\n\n\n \n  \n    String \n    Meaning \n    Code \n    Output \n  \n \n\n  \n    %S \n    Second (00-59) \n    format.Date(as.POSIXct(\"2020-12-10 15:30:10\", tz = \"America/Chicago\"), \"%S\") \n    10 \n  \n  \n    %M \n    Minute (00-59) \n    format.Date(as.POSIXct(\"2020-12-10 15:30:10\", tz = \"America/Chicago\"), \"%M\") \n    30 \n  \n  \n    %l \n    Hour, in 12-hour clock (1-12) \n    format.Date(as.POSIXct(\"2020-12-10 15:30:10\", tz = \"America/Chicago\"), \"%l\") \n    3 \n  \n  \n    %I \n    Hour, in 12-hour clock (01-12) \n    format.Date(as.POSIXct(\"2020-12-10 15:30:10\", tz = \"America/Chicago\"), \"%I\") \n    03 \n  \n  \n    %p \n    am/pm \n    format.Date(as.POSIXct(\"2020-12-10 15:30:10\", tz = \"America/Chicago\"), \"%p\") \n    PM \n  \n  \n    %H \n    Hour, in 24-hour clock (00-23) \n    format.Date(as.POSIXct(\"2020-12-10 15:30:10\", tz = \"America/Chicago\"), \"%H\") \n    15 \n  \n  \n    %X \n    Locale-specific time \n    format.Date(as.POSIXct(\"2020-12-10 15:30:10\", tz = \"America/Chicago\"), \"%X\") \n    15:30:10 \n  \n  \n    %c \n    Locale-specific date and time \n    format.Date(as.POSIXct(\"2020-12-10 15:30:10\", tz = \"America/Chicago\"), \"%c\") \n    Thu Dec 10 15:30:10 2020 \n  \n  \n    %z \n    Offset from GMT \n    format.Date(as.POSIXct(\"2020-12-10 15:30:10\", tz = \"America/Chicago\"), \"%z\") \n    -0600 \n  \n  \n    %Z \n    Time zone (character) \n    format.Date(as.POSIXct(\"2020-12-10 15:30:10\", tz = \"America/Chicago\"), \"%Z\") \n    CST \n  \n\n\n\n\n\n\n\nSource: stat.berkeley | Dates and Times in R Stack Overflow"
   },
   {
     "objectID": "R_dates.html#time-zone-options-in-r",
     "href": "R_dates.html#time-zone-options-in-r",
-    "title": "4  Dates and Times",
-    "section": "4.3 Time Zone options in R",
-    "text": "4.3 Time Zone options in R\nThe above example uses Central time and so I can use tz = America/Chicago; other timezone options can be found using the code below:\n\n#check system time zone\nSys.timezone(location = TRUE)\n\n[1] \"America/Los_Angeles\"\n\n#other time zone options (only show first 20)\nOlsonNames()[1:20]\n\n [1] \"Africa/Abidjan\"       \"Africa/Accra\"         \"Africa/Addis_Ababa\"  \n [4] \"Africa/Algiers\"       \"Africa/Asmara\"        \"Africa/Asmera\"       \n [7] \"Africa/Bamako\"        \"Africa/Bangui\"        \"Africa/Banjul\"       \n[10] \"Africa/Bissau\"        \"Africa/Blantyre\"      \"Africa/Brazzaville\"  \n[13] \"Africa/Bujumbura\"     \"Africa/Cairo\"         \"Africa/Casablanca\"   \n[16] \"Africa/Ceuta\"         \"Africa/Conakry\"       \"Africa/Dakar\"        \n[19] \"Africa/Dar_es_Salaam\" \"Africa/Djibouti\""
+    "title": "3  Dates and Times",
+    "section": "3.3 Time Zone options in R",
+    "text": "3.3 Time Zone options in R\nThe above example uses Central time and so I can use tz = America/Chicago; other timezone options can be found using the code below:\n\n#check system time zone\nSys.timezone(location = TRUE)\n\n[1] \"America/Los_Angeles\"\n\n#other time zone options (only show first 20)\nOlsonNames()[1:20]\n\n [1] \"Africa/Abidjan\"       \"Africa/Accra\"         \"Africa/Addis_Ababa\"  \n [4] \"Africa/Algiers\"       \"Africa/Asmara\"        \"Africa/Asmera\"       \n [7] \"Africa/Bamako\"        \"Africa/Bangui\"        \"Africa/Banjul\"       \n[10] \"Africa/Bissau\"        \"Africa/Blantyre\"      \"Africa/Brazzaville\"  \n[13] \"Africa/Bujumbura\"     \"Africa/Cairo\"         \"Africa/Casablanca\"   \n[16] \"Africa/Ceuta\"         \"Africa/Conakry\"       \"Africa/Dakar\"        \n[19] \"Africa/Dar_es_Salaam\" \"Africa/Djibouti\""
   },
   {
     "objectID": "R_dates.html#links",
     "href": "R_dates.html#links",
-    "title": "4  Dates and Times",
-    "section": "4.4 Links",
-    "text": "4.4 Links\n\nggplot2 | Section 9: Scales: Date Time Scales\nR-Bloggers | Date Formats in R"
+    "title": "3  Dates and Times",
+    "section": "3.4 Links",
+    "text": "3.4 Links\n\nggplot2 | Section 9: Scales: Date Time Scales\nR-Bloggers | Date Formats in R"
   },
   {
     "objectID": "R_fonts.html",
     "href": "R_fonts.html",
-    "title": "5  Fonts",
+    "title": "4  Fonts",
     "section": "",
     "text": "install.packages(\"extrafont\")\nremotes::install_version(\"Rttf2pt1\", version = \"1.3.8\")\n\nAs of August 2022, if you just install {extrafont} as is, you will have a problem with importing fonts on Windows and there will be an error saying ‘No Font Name’. To solve this, install version 1.3.8 of {Rttf2pt1}.\n\nSources: Stack Overflow, May 2020 | how to resolve the “No Font Name” issue when importing fonts into R with extrafont and extrafont GitHub Issue #88 Jul 2021 | wzbillings comment\n\n\n\n\n\n#will import ALL fonts, takes 5-10 min\nextrafont::font_import() \n\n\n\n\n\nextrafont::font_import(paths = \"C:/PATH/TO/FOLDER/WITH/TTF\", prompt = FALSE) \n\n\n\n\nPrior to using fonts in R, need to load fonts in each session (this is like using library() or box::use() for a specific package)\n\n#quiet = FALSE to remove listing of of fonts \nextrafont::Loadfonts(devide = \"win\", quite = TRUE)"
   },
   {
     "objectID": "R_fonts.html#otf-fonts",
     "href": "R_fonts.html#otf-fonts",
-    "title": "5  Fonts",
-    "section": "5.2 otf fonts",
-    "text": "5.2 otf fonts\n\n5.2.1 Install Packages\n\nissues with {showtext} package when in use\nother ggplot2 fonts are affect when actively using this package, making the fonts smaller and making line breaks much larger\n\n\ninstall.packages(\"showtext\")\nlibrary(showtext)\nshowtext_auto() \nfont_add(\"NewFont\", regular = \"C://PATH//TO//NewFont.otf\")\nfont_families()"
+    "title": "4  Fonts",
+    "section": "4.2 otf fonts",
+    "text": "4.2 otf fonts\n\n4.2.1 Install Packages\n\nissues with {showtext} package when in use\nother ggplot2 fonts are affect when actively using this package, making the fonts smaller and making line breaks much larger\n\n\ninstall.packages(\"showtext\")\nlibrary(showtext)\nshowtext_auto() \nfont_add(\"NewFont\", regular = \"C://PATH//TO//NewFont.otf\")\nfont_families()"
   },
   {
     "objectID": "R_functions.html",
     "href": "R_functions.html",
-    "title": "6  Functions",
+    "title": "5  Functions",
     "section": "",
     "text": "cor(mtcars[,1:4])\n\n            mpg        cyl       disp         hp\nmpg   1.0000000 -0.8521620 -0.8475514 -0.7761684\ncyl  -0.8521620  1.0000000  0.9020329  0.8324475\ndisp -0.8475514  0.9020329  1.0000000  0.7909486\nhp   -0.7761684  0.8324475  0.7909486  1.0000000\n\n\nIf data has NA’s in any of the values the cor() will results in NA. If you want to remove the NA’s when calculating correlation do:\ncor(..., use = \"complete.obs\")\n\nSource: https://stackoverflow.com/questions/3798998/cor-shows-only-na-or-1-for-correlations-why\n\n\n\n\nThat chart that plots all variables against eachother as a dot plot when looking to see if variables are correlated with eachother\n\n#lots of variables so only look at first 4\ntestdf <- mtcars[,1:4]\npairs(testdf, main = \"title\")"
   },
   {
     "objectID": "R_functions.html#if-else",
     "href": "R_functions.html#if-else",
-    "title": "6  Functions",
-    "section": "6.2 if else",
-    "text": "6.2 if else\n\n6.2.1 Statements\ntest expression goes in parenthesis () and the statement goes in the curly brackets {}\nif (test) { statment } \nR is a bit finicky with where the brackets go; I get errors when I put else on a new line by itself - it wants to have the right brackets before it; } else\nif (test_A) {\nstatment #1\n} if else (test_B) {\n} else {\nstatment #2 \n}\n\n\n6.2.2 Vectorized\nifelse(test, if_true, if_false)\nUse case when when have more than 2 options (this is a replacement for nested ifelse() functions)\ncase_when(\n    x == A ~ \"a\"\n  , x == B ~ \"b\"\n  , x == C ~ \"c\"\n  , TRUE    ~ NA_character # catchall, default is NA\n  # need to specify *type* of NA\n)"
+    "title": "5  Functions",
+    "section": "5.2 if else",
+    "text": "5.2 if else\n\n5.2.1 Statements\ntest expression goes in parenthesis () and the statement goes in the curly brackets {}\nif (test) { statment } \nR is a bit finicky with where the brackets go; I get errors when I put else on a new line by itself - it wants to have the right brackets before it; } else\nif (test_A) {\nstatment #1\n} if else (test_B) {\n} else {\nstatment #2 \n}\n\n\n5.2.2 Vectorized\nifelse(test, if_true, if_false)\nUse case when when have more than 2 options (this is a replacement for nested ifelse() functions)\ncase_when(\n    x == A ~ \"a\"\n  , x == B ~ \"b\"\n  , x == C ~ \"c\"\n  , TRUE    ~ NA_character # catchall, default is NA\n  # need to specify *type* of NA\n)"
   },
   {
     "objectID": "R_functions.html#links",
     "href": "R_functions.html#links",
-    "title": "6  Functions",
-    "section": "6.3 Links",
-    "text": "6.3 Links\nLinks\n\nR package development | 5 Documenting functions\nStack Overflow | Print dataframe name in function output\nStack Overflow | How to write “descriptions for arguments” in R when coding the wrapper functions?"
+    "title": "5  Functions",
+    "section": "5.3 Links",
+    "text": "5.3 Links\nLinks\n\nR package development | 5 Documenting functions\nStack Overflow | Print dataframe name in function output\nStack Overflow | How to write “descriptions for arguments” in R when coding the wrapper functions?"
   },
   {
     "objectID": "R_impexp.html",
     "href": "R_impexp.html",
-    "title": "7  Import/Export",
+    "title": "6  Import/Export",
     "section": "",
     "text": "{utils} is part of base R\n\nim_utils <- utils::read.csv(\"data/import.csv\")\nim_utils\n\n  Name.1 Name..2. Name..3\n1    ch1        1      11\n2    ch2        2      12\n3    ch3        3      13\n4    ch4       NA      14\n5    ch5        5      15\n6               6      16\n7    ch7        7      17\n\nclass(im_utils)\n\n[1] \"data.frame\"\n\n\n\noutput is data frame (base R)\nmissing for character is blank\nmissing for numeric is ‘NA’\nspaces or special characters in headers are replaced with period\nSometimes ï.. added to beginning of first column name (to remove use read.csv(\"example.csv\", fileEncoding = 'UTF-8-BOM');  Source: roelpeters | remove i umlaut)\nremove headers with header = FALSE; column names will be V1, V2, V3, etc.\n\n\n\n\n\nim_readr <- readr::read_csv(\"data/import.csv\")\n\nRows: 7 Columns: 3\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr (1): Name 1\ndbl (2): Name (2), Name #3\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\nim_readr\n\n# A tibble: 7 × 3\n  `Name 1` `Name (2)` `Name #3`\n  <chr>         <dbl>     <dbl>\n1 ch1               1        11\n2 ch2               2        12\n3 ch3               3        13\n4 ch4              NA        14\n5 ch5               5        15\n6 <NA>              6        16\n7 ch7               7        17\n\nclass(im_readr)\n\n[1] \"spec_tbl_df\" \"tbl_df\"      \"tbl\"         \"data.frame\" \n\n\n\noutput is tibble (tidyverse)\nreceive message with type of columns that R is using for import\nmissing for character and numeric is NA; outputs (html) will show <NA> for missing character and NA for missing numeric\nheaders are that have spaces or special characters are placed within back ticks (``)\nremove headers with col_names = FALSE; column names will be X1, X2, X3, etc.\n\n\n\nR does a pretty good job of figuring out what the columns should be but if its needed to specify column types column types can be specified as shown below. If you don’t want the column types message to show and don’t want to show column types use the show_col_types = FALSE.\n\ntest <- readr::read_csv(\"data/import.csv\"\n         , col_types = readr::cols(\n            `Name 1`   = readr::col_character()\n          , `Name (2)` = readr::col_double()\n          , `Name #3`  = readr::col_double()\n           )\n)\ntest\n\n# A tibble: 7 × 3\n  `Name 1` `Name (2)` `Name #3`\n  <chr>         <dbl>     <dbl>\n1 ch1               1        11\n2 ch2               2        12\n3 ch3               3        13\n4 ch4              NA        14\n5 ch5               5        15\n6 <NA>              6        16\n7 ch7               7        17\n\n\n\n\n\n\nCan use utils::write.csv() or readr::write_csv() - have slightly different functionality.\n\nutils::write.csv(test, \"data/export1_utils.txt\")\n\n \"\", \"Name 1\",\"Name (2)\",\"Name #3\"\n\"1\",    \"ch1\",        1,       10\n\"2\",    \"ch2\",        2,       12\n\"3\",    \"ch3\",        3,       13\n\"4\",    \"ch4\",       NA,       14\n\"5\",    \"ch5\",        5,       15\n\"6\",      NA,         6,       16\n\"7\",     \"ch7\",       7,       17\n\nreadr::write_csv(test, \"data/export2_readr.txt\")\n\nName 1, Name (2),Name #3\n   ch1,        1,     10\n   ch2,        2,     12\n   ch3,        3,     13\n   ch4,       NA,     14\n   ch5,        5,     15\n    NA,        6,     16\n   ch7,        7,     17\nRownames; row.names = TRUE to include; row.names = FALSE to exclude\n\nutils::write.csv() default includes row names (usually row number)\nreadr::write_csv() default does not include row names; CANNOT ADD\n\nNA values; na = \"\" to have missing data be exported as blank cell\n\nIf data set is a base R data frame:\n\nwrite.csv() default is na = \"NA\" for numeric, always blank for character (CAN’T CHANGE!)\nwrite_csv() default is na = \"NA\" for numeric, always blank for character (CAN’T CHANGE!)\n\nIf data set is a tibble:\n\nwrite.csv() default is na = \"NA\" for numeric and character\nwrite_csv() default is na = \"NA\" for numeric and character"
   },
   {
     "objectID": "R_impexp.html#links",
     "href": "R_impexp.html#links",
-    "title": "7  Import/Export",
-    "section": "7.2 Links",
-    "text": "7.2 Links\n\nStack Overflow | How do you read a password protected excel file into r?\nR-bloggers | How to save (and load) datasets in R: An overview\nR Documentation | {writexl}::write_xlsx function\nStack Overflow | Error in .jcall(cell, “V”, “setCellValue”, value) : method setCellValue with signature ([D)V not found when attempting write.xlsx\nStack Overflow | Error: package or namespace load failed for {XLConnect}\nSTHDA | R xlsx package A quick start guide to manipulate Excel files in R"
+    "title": "6  Import/Export",
+    "section": "6.2 Links",
+    "text": "6.2 Links\n\nStack Overflow | How do you read a password protected excel file into r?\nR-bloggers | How to save (and load) datasets in R: An overview\nR Documentation | {writexl}::write_xlsx function\nStack Overflow | Error in .jcall(cell, “V”, “setCellValue”, value) : method setCellValue with signature ([D)V not found when attempting write.xlsx\nStack Overflow | Error: package or namespace load failed for {XLConnect}\nSTHDA | R xlsx package A quick start guide to manipulate Excel files in R"
+  },
+  {
+    "objectID": "R_qrmd.html",
+    "href": "R_qrmd.html",
+    "title": "7  qmd/Rmd",
+    "section": "",
+    "text": "Main-file: .qmd\n\n\n\nSub-file: plot_for_state.qmd\n\n\n\n\n\n\n## Individual States\n# results: asis #outputs text as raw md content \n\nSTATE_vec <- c(\"Alabama\", \"Alaska\", \"Arizona\", ...)\n\n#create empty list \nres <- vector(mode = \"list\", length = 3L)\n\n#run loop \nfor (i in 1:length(STATE_vec)) { \n  \n  #run the qmd with a specific state, save in list\n  res[[i]] <- knitr::knit_child(\n      \"plot_for_state.qmd\"      \n    , quiet = TRUE\n    , envir = environment()\n    )\n}\n\n#unlist and paste together with a break \ncat(unlist(res), sep = '\\n')\n## Next Section\n\n\n\n\nthis_STATE <- STATE_vec[i]  \n\n### `r this_STATE`\n\nall_data %>% \n  filter(STATE == this_STATE) %>% \n  plot_function()\n\n\n\n\n\n\nSources:\n\n\nStack Overvlow, Aug 2020 | R Markdown: loop with child.rmd\n\n\nHarvey Lieberman, Mar 2022 | knitr::knit_child with Quarto"
+  },
+  {
+    "objectID": "R_qrmd.html#quarto_render",
+    "href": "R_qrmd.html#quarto_render",
+    "title": "7  qmd/Rmd",
+    "section": "7.2 quarto_render()",
+    "text": "7.2 quarto_render()\n\nissue rendering qmd and saving in another folder\nmy work around is rendering in same place and moving to another folder and new name, then remove the rendered html\nlinks\n\nStack Overflow, Jun 2022 | Two problems rendering a qmd file with quarto_render from R\nRStudio, Aug 2022 | Output directory in quarto-cli not respected?\n\n\n\n#when bugs are fixed \n# quarto::quarto_render(input = \"in.qmd\", output_file = \"products/output.html\")\n\nquarto::quarto_render(input = \"ind.qmd\", output_file = \"output.html\")\nfile.copy(from = \"output.html\", to = \"products/output.html\", overwrite = TRUE)\nrm(\"output.html\")"
+  },
+  {
+    "objectID": "R_qrmd.html#output-and-pathways",
+    "href": "R_qrmd.html#output-and-pathways",
+    "title": "7  qmd/Rmd",
+    "section": "7.3 Output and Pathways",
+    "text": "7.3 Output and Pathways\n\nR Markdown Cookbook | 16.6 The working directory for R code chunks\nStack Overflow | Run R markdown (.Rmd) from inside other R script to produce HTML - Stack Overflow\nRStudio Community | save rmarkdown output in different folder - R Markdown"
+  },
+  {
+    "objectID": "R_qrmd.html#style",
+    "href": "R_qrmd.html#style",
+    "title": "7  qmd/Rmd",
+    "section": "7.4 Style",
+    "text": "7.4 Style\n\nStack Overflow | R markdown: how to change style with internal css?\nStack Overflow | rmarkdown: both portrait and landscape layout in a single PDF\nR Markdown Cookbook | 4.4 Unnumbered sections\nStack Overflow | Increase width of entire HTML Rmarkdown output\nSteve Sque | Symbols in LaTeX and HTML\nRStudio Community | Copy to clipboard buttons for code blocks - R Markdown"
   },
   {
     "objectID": "R_regex.html",
@@ -308,79 +259,135 @@
     "text": "plotly | Interactive web-based data visualization with R, plotly, and shiny\nplotly | layout - R\nplotly | Pie Charts - R\nplotly community forum | Remove options from the Hover Toolbar? - Graphing Library / Plotly.js\nStack Overflow | Remove certain configuration options in plotly\nStack Overflow | How to remove option bar from ggplotly plot?\nStack Overflow | Manipulating legend text in R plotly\nGitHub ropensci/plotly | Support for arbitrary coordinate systems · Issue #878\nStack Overflow | Pie chart: How to fixate the color assignment color per group?\nGitHub plotly/plotly.js | Support for multiple legends · Issue #1668\nplotly Community Forum | Hoverinfo over fill area of polygon - Dash R, MATLAB, Julia / Dash R\nplotly Community Forum | How to make tooltips show in region rather than on border (map using ggplotly) - Plotly R, MATLAB, Julia, Net / Plotly R"
   },
   {
-    "objectID": "R_zother.html#rmd",
-    "href": "R_zother.html#rmd",
-    "title": "11  Other",
-    "section": "11.2 Rmd",
-    "text": "11.2 Rmd"
-  },
-  {
-    "objectID": "R_zother.html#output-and-pathways",
-    "href": "R_zother.html#output-and-pathways",
-    "title": "11  Other",
-    "section": "11.3 Output and Pathways",
-    "text": "11.3 Output and Pathways\n\nR Markdown Cookbook | 16.6 The working directory for R code chunks\nStack Overflow | Run R markdown (.Rmd) from inside other R script to produce HTML - Stack Overflow\nRStudio Community | save rmarkdown output in different folder - R Markdown"
-  },
-  {
-    "objectID": "R_zother.html#style",
-    "href": "R_zother.html#style",
-    "title": "11  Other",
-    "section": "11.4 Style",
-    "text": "11.4 Style\n\nStack Overflow | R markdown: how to change style with internal css?\nStack Overflow | rmarkdown: both portrait and landscape layout in a single PDF\nR Markdown Cookbook | 4.4 Unnumbered sections\nStack Overflow | Increase width of entire HTML Rmarkdown output\nSteve Sque | Symbols in LaTeX and HTML\nRStudio Community | Copy to clipboard buttons for code blocks - R Markdown"
-  },
-  {
     "objectID": "R_zother.html#rtweet",
     "href": "R_zother.html#rtweet",
     "title": "11  Other",
-    "section": "11.5 {rtweet}",
-    "text": "11.5 {rtweet}\n\nStack Overflow | Avoid Rate limit with rtweet get_timeline()\nGitHub ropensci/rtweet | 0.6.7 get_timeline: rate limit error · Issue #266\nGitHub ropensci/rtweet | problem getting large amounts of followers · Issue #168\nGitHub ropensci/rtweet | Invalid time error using get_followers · Issue #396\nGitHub ropensci/rtweet | Consistent pagination interface · Issue #510"
+    "section": "11.2 {rtweet}",
+    "text": "11.2 {rtweet}\n\nStack Overflow | Avoid Rate limit with rtweet get_timeline()\nGitHub ropensci/rtweet | 0.6.7 get_timeline: rate limit error · Issue #266\nGitHub ropensci/rtweet | problem getting large amounts of followers · Issue #168\nGitHub ropensci/rtweet | Invalid time error using get_followers · Issue #396\nGitHub ropensci/rtweet | Consistent pagination interface · Issue #510"
   },
   {
     "objectID": "R_zother.html#special-characters",
     "href": "R_zother.html#special-characters",
     "title": "11  Other",
-    "section": "11.6 Special Characters",
-    "text": "11.6 Special Characters\n\nR Documentation | utf8 package #####\nThe R Blog | UTF-8 Support on Windows\nStack Overflow | Convert unicode to readable characters in R\nStack Overflow | convert HTML Character Entity Encoding in R\nStack Overflow | Differences in Unicode character output with print()\nStack Overflow | How to convert special characters into unicode in R?"
+    "section": "11.3 Special Characters",
+    "text": "11.3 Special Characters\n\nR Documentation | utf8 package #####\nThe R Blog | UTF-8 Support on Windows\nStack Overflow | Convert unicode to readable characters in R\nStack Overflow | convert HTML Character Entity Encoding in R\nStack Overflow | Differences in Unicode character output with print()\nStack Overflow | How to convert special characters into unicode in R?"
   },
   {
     "objectID": "R_zother.html#misc",
     "href": "R_zother.html#misc",
     "title": "11  Other",
-    "section": "11.7 Misc",
-    "text": "11.7 Misc\n\nIntroduction to summarytools\nR-statistics blog | How to load the {rJava} package after the error “JAVA_HOME cannot be determined from the Registry”\nR Save All Console Input & Output to File (Example) - Export RStudio to txt\nStack Overflow | Error in FUN(X[[i]], …) : object ‘X’ not found\nStack Overflow | Remove multiple objects with rm()\nStack Overflow | Compare if two dataframe objects in R are equal?\nMartin Chan | RStudio Projects and Working Directories: A Beginner’s Guide – Musings on R\nTutorialspoint | Data Types\nStack Overflow | Error in open.connection(x, “rb”) : HTTP error 500 when using map_df\nGitHub r-lib/httr | Error in open.connection(con, “rb”) : HTTP error 500. · Issue #338\nCheck If Two Data Frames are the Same in R (Example) - Identical / Equal\nReopen RStudio | Quit & Restart Clean R Session from within R (Example)\nStack Overflow | Quit and restart a clean R session from within R?\nStack Overflow | How do I clean up R memory without restarting my PC?\nStack Overflow | How to save all console output to file in R?\nKeep Trailing Zeros in R (Example) - How to Round Number & Show Zero\nR-bloggers | Handling Large Datasets in R\nStack Overflow | Merge two vectors by non NA values\nStack Overflow | Rendering kableExtra table with colors and unicode characters to PDF with RMarkdown\nStack Overflow | row_spec() function from kableExtra does not create a horizontal line in html output"
+    "section": "11.4 Misc",
+    "text": "11.4 Misc\n\nIntroduction to summarytools\nR-statistics blog | How to load the {rJava} package after the error “JAVA_HOME cannot be determined from the Registry”\nR Save All Console Input & Output to File (Example) - Export RStudio to txt\nStack Overflow | Error in FUN(X[[i]], …) : object ‘X’ not found\nStack Overflow | Remove multiple objects with rm()\nStack Overflow | Compare if two dataframe objects in R are equal?\nMartin Chan | RStudio Projects and Working Directories: A Beginner’s Guide – Musings on R\nTutorialspoint | Data Types\nStack Overflow | Error in open.connection(x, “rb”) : HTTP error 500 when using map_df\nGitHub r-lib/httr | Error in open.connection(con, “rb”) : HTTP error 500. · Issue #338\nCheck If Two Data Frames are the Same in R (Example) - Identical / Equal\nReopen RStudio | Quit & Restart Clean R Session from within R (Example)\nStack Overflow | Quit and restart a clean R session from within R?\nStack Overflow | How do I clean up R memory without restarting my PC?\nStack Overflow | How to save all console output to file in R?\nKeep Trailing Zeros in R (Example) - How to Round Number & Show Zero\nR-bloggers | Handling Large Datasets in R\nStack Overflow | Merge two vectors by non NA values\nStack Overflow | Rendering kableExtra table with colors and unicode characters to PDF with RMarkdown\nStack Overflow | row_spec() function from kableExtra does not create a horizontal line in html output"
+  },
+  {
+    "objectID": "R_datavizgen.html",
+    "href": "R_datavizgen.html",
+    "title": "12  Data Viz",
+    "section": "",
+    "text": "library(tidyverse)"
+  },
+  {
+    "objectID": "R_datavizgen.html#axis-breaks",
+    "href": "R_datavizgen.html#axis-breaks",
+    "title": "12  Data Viz",
+    "section": "12.1 Axis Breaks",
+    "text": "12.1 Axis Breaks\n\n12.1.1 {ggbreak}\n\ndf <- data.frame(a = c(1,2,3,500), b = c('a1', 'a2','a3', 'a4'))\n\nggplot(df) + \n  aes(x = b, y = a) +\n  geom_col() +\n  ggbreak::scale_y_break(c(5, 490))\n\n\n\n\n\nSource: {ggbreak} | Set Axis Break for ggplot2\n\n\n\n12.1.2 {ggforce}::facet_zoom\n\ndf <- data.frame(a = c(1,2,3,500), b = c('a1', 'a2','a3', 'a4'))\n\nggplot(df) + \n  aes(x = b, y = a) +\n  geom_col() +\n  ggforce::facet_zoom(ylim = c(0, 5))\n\n\n\n\n\nSource: Stack Overflow, Sep 2011 | Using ggplot2, can I insert a break in the axis?"
+  },
+  {
+    "objectID": "R_datavizgen.html#annotation-outside-panel",
+    "href": "R_datavizgen.html#annotation-outside-panel",
+    "title": "12  Data Viz",
+    "section": "12.2 Annotation outside panel",
+    "text": "12.2 Annotation outside panel\nThe one time I’ve done this is to add a axis break symbol for when the y axis does not start at zero. In addition to adding the symbol, you also have to set the ggplotGrob to not clip items outside the plot panel.\n\nbase <- mpg %>% \n  ggplot(aes(x = cty, y = hwy)) + \n  geom_point() + \n  lims(x = c(0, NA)) + \n  theme_minimal() + \n  theme(axis.line = element_line(color = \"grey35\", size = 0.25))\n\np.zoomin <- base + \n  annotate(\"text\"\n    , x = -Inf, y = -Inf #bottom left corner of plot \n    , label = \"\\u2e17\"   #symbol ⸗ (diag double hyphen)\n    , color = \"grey35\"   #same color as axis.line\n    , size = 4.5         #adjust based on out plot size\n    , vjust = -0.25      #adjust further up \n  ) \n\n#get grob instructions \ng.zoomin <- ggplotGrob(p.zoomin) \n\n#turn panel clipping off \ng.zoomin$layout$clip[g.zoomin$layout$name == \"panel\"] = \"off\"\n\n#draw final \ncowplot::ggdraw(\n  cowplot::add_sub(\n    g.zoomin\n    , \"'broken axis' symbol, also extra note under plot\"\n    , size = 12\n    , x = 0\n    , hjust = 0\n    #, y = 1.25 #same line as x axis title \n  ))\n\n\n\n\n\nSources: Stack Overflow, Mar 2014 | set layout clip to ‘off’ and {cowplot}::add_sub | add annotation under plot"
+  },
+  {
+    "objectID": "R_datavizgen.html#secondary-legend",
+    "href": "R_datavizgen.html#secondary-legend",
+    "title": "12  Data Viz",
+    "section": "12.3 Secondary Legend",
+    "text": "12.3 Secondary Legend\n\n12.3.1 NA Legend\nAdded automatically if NA is part of discrete legend, but is NOT included automatically for continuous legend.\n\nset.seed(20220713)\nstates_sf <- urbnmapr::get_urbn_map(map = \"states\", sf = TRUE) %>% \n  #set new CRS \n  sf::st_transform(states_sf, crs = 4326) %>% \n  mutate(\n      val_dis = sample(c(\"A\", \"B\", \"C\"), nrow(.), TRUE)\n    , val_con = sample(-50:50          , nrow(.), TRUE)\n  ) %>% \n  mutate(\n      val_dis = ifelse(state_abbv == \"MN\", NA, val_dis)\n    , val_con = ifelse(state_abbv == \"MN\", NA, val_con)\n  )\n\nold-style crs object detected; please recreate object with a recent sf::st_crs()\n\nggplot(states_sf) + geom_sf(aes(fill = val_dis))\n\n\n\nggplot(states_sf) + geom_sf(aes(fill = val_con))\n\n\n\n\nAdd NA legend to continuous plot:\n\nggplot(states_sf) + \n  geom_sf(aes(fill = val_con, color = \"\")) + \n  scale_fill_continuous(na.value = \"grey40\") + \n  scale_color_manual(values = NA) + \n  guides(\n      color = guide_legend(\"NA\", override.aes = list(fill = \"grey40\"))\n    , fill = guide_colorbar(order = 1)\n  ) \n\n\n\n\n\nSource: Stack Overflow, Mar 2017 | Add a box for NA values for continuous map\n\n\n\n12.3.2 2+ Special Values\n\nlibrary(cowplot) \n\n#special value for 'suppressed' data\nstates_sf <- states_sf %>% \n  mutate(val_con = ifelse(state_abbv == \"CA\", 999, val_con))\n\n## Main Plot \np.main <- ggplot(states_sf) + \n  geom_sf( # non-special values, typical cont. color bar \n    data = filter(states_sf, val_con != 999 & !is.na(val_con))\n    , aes(fill = val_con), color = NA\n  ) + \n  geom_sf( # NA states (missing data) \n    data = filter(states_sf, is.na(val_con))\n    , fill = \"grey30\", color = NA\n  ) + \n  geom_sf( # Special values (suppressed data) \n    data = filter(states_sf, val_con == 999)\n    , fill = \"grey80\", color = NA\n  ) + \n  geom_sf( # add borders for all \n    fill = NA, color = \"white\"\n  ) \n\n## Dummy Plot for 2nd Legend \np.missup <- tibble(val = c(0, 1), type = c(\"Missing\", \"Suppressed\")) %>% \n  ggplot() + \n  geom_bar(aes(val, fill = type)) + \n  scale_fill_manual(name = NULL\n    , values = c(\"grey30\", \"grey80\")\n    , guide = guide_legend( byrow = TRUE)\n  ) + \n  theme(legend.spacing.y = unit(5, \"pt\"))\n\n## Pull out legends and combine \nleg.main <- cowplot::get_legend(p.main)\nleg.sec  <- cowplot::get_legend(p.missup)\nleg.final <- cowplot::plot_grid(leg.main, leg.sec, ncol = 1, align = \"v\") \n\n## Remvoe main legend from plot \np.final  <- p.main  + theme(legend.position = \"none\") \n\n## Combined everything \ncowplot::plot_grid(p.final, leg.final, nrow = 1, rel_widths = c(4, 1))\n\n\n\n\n\nQuick Link: Stack Overflow, Sep 2018 | Use cowplot for custom multiple legends arrangement\n\nOUTSTANDING\n\nhow to minimize space between main legend and secondary legend\ngrid::grid.draw(rbind(leg.main, leg.sec)) binds together without huge space, but need to figure out how to add to another ggplot item"
+  },
+  {
+    "objectID": "R_datavizgen.html#hjustvjust",
+    "href": "R_datavizgen.html#hjustvjust",
+    "title": "12  Data Viz",
+    "section": "12.4 hjust/vjust",
+    "text": "12.4 hjust/vjust\nWhy do I always forget the direction of these?\nhjust: 0 = left-aligned, 0.5=center, 1 = right-aligned\nvjust: 0 = top-aligned, 0.5=middle, 1 = bottom-aligned\n\nhjustvjust <- expand.grid(\n  hjust=c(0, 0.5, 1),\n  vjust=c(0, 0.5, 1),\n  angle=c(0, 45, 90),\n  text=\"TEXT\")\n\nggplot(hjustvjust, aes(x=hjust, y=vjust)) + \n  geom_point() +\n  geom_text(aes(label=text, angle=angle, hjust=hjust, vjust=vjust)) + \n  facet_grid(~angle) +\n  scale_x_continuous(breaks=c(0, 0.5, 1), expand=c(0, 0.2)) +\n  scale_y_continuous(breaks=c(0, 0.5, 1), expand=c(0, 0.2)) + \n  labs(\n    title=\"Various values of angle, hjust and vjust in ggplot \\n\"\n    , y =\"vjust \\n\"\n    , x =\" \\n hjust\"\n  ) +  \n  theme_bw() + \n  theme(\n    axis.text  = element_text(color=\"black\", face=\"bold\" , size=12)\n  , axis.title = element_text(color=\"black\", face=\"plain\", size=24)\n  , plot.title = element_text(color=\"black\", face=\"bold\" , size=18)\n  ) \n\n\n\n\n\nSources: R bloggers, Nov 2012 | hjust and vjust and GitHub: cdesante/hjustvjust.r"
+  },
+  {
+    "objectID": "R_datavizgen.html#math-expressions",
+    "href": "R_datavizgen.html#math-expressions",
+    "title": "12  Data Viz",
+    "section": "12.5 Math Expressions",
+    "text": "12.5 Math Expressions\n\n12.5.1 Use quote()\n\nggplot(mpg, aes(displ, hwy))+geom_point()+\n  ggtitle(\n    quote(\n      alpha ^ 2 - frac(1, 10) + sum(n[i], i==1, N)\n    ) #end quote\n  ) #end of ggtitle\n\n\n\n\n\n\n12.5.2 Use TeX() from the latex2exp package\n\nmust be in a string\nmust be denoted as math mode with dollar signs\nmust include 2 backslashes for \\(\\LaTeX\\) commands\n\n\nlibrary(latex2exp)\nggplot(mpg, aes(displ, hwy))+geom_point()+\n  ggtitle(TeX(\n    \"$\\\\alpha^2 - \\\\frac{1}{10} + \\\\sum_{i}^N n_i$\"\n    ) #end TeX\n  ) #end ggtitle"
+  },
+  {
+    "objectID": "R_datavizgen.html#facets-scalesspace",
+    "href": "R_datavizgen.html#facets-scalesspace",
+    "title": "12  Data Viz",
+    "section": "12.6 Facets: scales/space",
+    "text": "12.6 Facets: scales/space\nAnother option is facet_wrap() or facet_grid(), which can works if the axes are the same for the different variables you want to compare, but be careful as facets are supposed to be comparing items with the same measurements.\n\ntidy.df <- tidyr::pivot_longer(\n  mpg, c(class, drv)\n  , names_to = \"category\"\n  , values_to = \"type\"\n)\n\nscales = \"free\": removes types from the axis if that category has 0 cars of that type\n\nggplot(tidy.df, aes(type)) +\n  geom_bar() + coord_flip() + \n  facet_wrap(~category,  ncol = 1, scales = \"fixed\") + \n  labs(title = 'facet_wrap: scales = \"fixed\"')\nggplot(tidy.df, aes(type)) +\n  geom_bar() + coord_flip() + \n  facet_wrap(~category,  ncol = 1, scales = \"free\") + \n  labs(title = 'facet_wrap: scales = \"free\"')\n\n\n\n\n\n\n\n\n\n\n\nspace = \"free\": spaces based on number of obs (i.e. number of bars); rather than giving each facet equal sizing, ONLY available for facet_grid\n\nggplot(tidy.df, aes(type)) +\n  geom_bar() + coord_flip() + \n  facet_grid(category ~ ., scales = \"fixed\" , space  = \"fixed\") + \n  labs(title = 'facet_grid: scales = \"fixed\" and space = \"fixed\"')\nggplot(tidy.df, aes(type)) +\n  geom_bar() + coord_flip() + \n  facet_grid(category ~ ., scales = \"free\" , space  = \"free\") + \n  labs(title = 'facet_grid: scales = \"free\" and space = \"free\"')"
+  },
+  {
+    "objectID": "R_datavizgen.html#align-axes",
+    "href": "R_datavizgen.html#align-axes",
+    "title": "12  Data Viz",
+    "section": "12.7 Align Axes",
+    "text": "12.7 Align Axes\nSometimes I’m working on two different types of plots (like a bar chart and a scatter plot) that happen to have the same x-axis. I want to line up these axes so that when the plots are stacked the values correspond to the same date.\n\n12.7.1 gridExtra::grid.arrange() and cowplot::plot_grid()\n\n# two different bar charts\nA <- ggplot(mpg, aes(class))+geom_bar()+coord_flip()+ylim(0, 109)\nB <- ggplot(mpg, aes(drv))+geom_bar()+coord_flip()+ylim(0, 109)\n\nUsing grid.arrange command from the gridExtra package does not line up axes.\n\n#axes don't line up\ngridExtra::grid.arrange(A, B, ncol=1)\n\n\n\n\nUse grid.draw command from the grid package to left align graph edges .\n\n\nSource: Stack Overflow, Nov 2012 | left align two graph edges\n\nThe cowplot::plot_grid() function allows you to line up plots by a specific axis.\n\n#make plots into Grobs (grid graphical object)\ngA <- ggplotGrob(A) \ngB <- ggplotGrob(B)\ngrid::grid.draw(rbind(gA, gB))\ncowplot::plot_grid(A, B, ncol = 1, align = \"v\")\n\n\n\n\n\n\n\n\n\n\n\n\n\n12.7.2 Mixed Geoms\nScatter plots and bar charts will not line up automatically, even when using the grid.draw/plot_grid command detailed above. This is because their default limits are different given that the bar chart is centered on the value and the scatter plot is a single point on the value.\n\n#work with smaller subset of economics (ggplot2)\nstartdate <- \"2014-06-01\"\neconomics_small <- economics %>%\n  filter(date >= as.Date(startdate)) %>%\n  arrange(date)\n\n\nA <- ggplot(economics_small, aes(date, unemploy))+\n  geom_bar(stat=\"identity\")+\n  geom_vline(xintercept = as.Date(startdate), color=\"red\", size=2)\nB <- ggplot(economics_small, aes(date, uempmed))+\n  geom_point()+geom_line()+\n  geom_vline(xintercept = as.Date(startdate), color=\"red\", size=2)\ngA <- ggplotGrob(A) \ngB <- ggplotGrob(B)\n#grid::grid.draw(rbind(gA, gB)) \ncowplot::plot_grid(A, B, ncol = 1, align = \"v\")\n\n\n\n\nIn order to line the up there a a couple of options.\n\n12.7.2.1 Fix xlim\nIf you make the limit the first x-value, the bar chart will not show up (remember it’s centered over the value).\n\nA <- ggplot(economics_small, aes(date, unemploy))+\n  geom_bar(stat=\"identity\")+\n  geom_vline(xintercept = as.Date(startdate), color=\"red\", size=2)+\n  xlim(as.Date(startdate), NA)\nB <- ggplot(economics_small, aes(date, uempmed))+\n  geom_point()+geom_line()+\n  geom_vline(xintercept = as.Date(startdate), color=\"red\", size=2)+\n  xlim(as.Date(startdate), NA)\ngA <- ggplotGrob(A) \n\nWarning: Removed 1 rows containing missing values (geom_bar).\n\ngB <- ggplotGrob(B)\n#grid::grid.draw(rbind(gA, gB))\ncowplot::plot_grid(A, B, ncol = 1, align = \"v\")\n\nWarning: Removed 1 rows containing missing values (geom_bar).\n\n\n\n\n\nThis can be fixed by adding a half unit to the x-axis (i.e. having the lower limit be half-unit lower than smallest x-value). In this case the unit is a month, so a half-unit would be ~15 days.\n\nHalfUnit <- .5*(economics_small$date[2] - economics_small$date[1])\nHalfUnit\n\nTime difference of 15 days\n\n\n\nA <- ggplot(economics_small, aes(date, unemploy))+\n  geom_bar(stat=\"identity\")+\n  geom_vline(xintercept = as.Date(startdate), color=\"red\", size=2)+\n  xlim(as.Date(startdate)-HalfUnit, NA)\nB <- ggplot(economics_small, aes(date, uempmed))+\n  geom_point()+geom_line()+\n  geom_vline(xintercept = as.Date(startdate), color=\"red\", size=2)+\n  xlim(as.Date(startdate)-HalfUnit, NA)\ngA <- ggplotGrob(A) \ngB <- ggplotGrob(B)\n#grid::grid.draw(rbind(gA, gB))\ncowplot::plot_grid(A, B, ncol = 1, align = \"v\")\n\n\n\n\n\n\n12.7.2.2 Shift Bar Chart\nBar charts are automatically centered over the x-value. Bar charts (and any geom object) can be shifted by using position - position_nudge()). The shift needs to be half a unit on the x-axis, again here it is monthly data so a half unit would be ~15 days.\n\n\nSource: Stack Overflow, Aug 2016 | shift geom bar right\n\n\nA <- ggplot(economics_small, aes(date, unemploy))+\n  geom_bar(stat=\"identity\", position = position_nudge(x = as.vector(HalfUnit)))+\n  geom_vline(xintercept = as.Date(startdate), color=\"red\", size=2)\nB <- ggplot(economics_small, aes(date, uempmed))+\n  geom_point()+geom_line()+\n  geom_vline(xintercept = as.Date(startdate), color=\"red\", size=2)\ngA <- ggplotGrob(A) \ngB <- ggplotGrob(B)\n#grid::grid.draw(rbind(gA, gB))\ncowplot::plot_grid(A, B, ncol = 1, align = \"v\")"
+  },
+  {
+    "objectID": "R_datavizgen.html#default-ggplot2",
+    "href": "R_datavizgen.html#default-ggplot2",
+    "title": "12  Data Viz",
+    "section": "12.8 Default ggplot2",
+    "text": "12.8 Default ggplot2\n\n12.8.1 Colors\nDefault colors can be recreated using scales::hue_pal() and can be shown using scales::show_col()\n\nscales::show_col(scales::hue_pal()(4))\n\n\n\n\n\nSource: Statistics Globe | Extract Default Color Palette of ggplot2 R Package - Hex Codes"
+  },
+  {
+    "objectID": "R_datavizgen.html#geom-defaults",
+    "href": "R_datavizgen.html#geom-defaults",
+    "title": "12  Data Viz",
+    "section": "12.9 Geom Defaults",
+    "text": "12.9 Geom Defaults\nLook up geom’s default aes using: GeomName$default_aes$\nExample: geom_text()\n\nGeomText$default_aes\n\nAesthetic mapping: \n* `colour`     -> \"black\"\n* `size`       -> 3.88\n* `angle`      -> 0\n* `hjust`      -> 0.5\n* `vjust`      -> 0.5\n* `alpha`      -> NA\n* `family`     -> \"\"\n* `fontface`   -> 1\n* `lineheight` -> 1.2"
+  },
+  {
+    "objectID": "R_datavizgen.html#links",
+    "href": "R_datavizgen.html#links",
+    "title": "12  Data Viz",
+    "section": "12.10 Links",
+    "text": "12.10 Links\nnew sections\n\nStack Overflow | Consistently center ggplot title across PANEL not PLOT\nStack Overflow | customize ggplot2 axis labels with different colors\n\nshape/line in ggplot\n\nSAPE | ggplot2 Quick Reference: size\nSAPE | ggplot2 Quick Reference: shape\nAlbert’s Blog | Point Shape Options in ggplot\n\nlayout\n\nBaptiste Augie, Jul 2019 | Laying out multiple plots on a page\nDatanovia | How To Easily Customize GGPlot Legend for Great Graphics\nR project | tableGrob - Displaying tables as grid graphics\nStatistics Globe | Remove Border of ggplot2 geom_label Text Annotation in R\n{gridExtra}::tableGrob\n\nStack Overflow | ggplot2: change colour of font and background in facet strip?\n\nother\n\nGitHub nprapps/dailygraphics | dailygraphics-templates/index.html\nGitHub hrbrmstr/statebins | Alternative to choropleths of US States\nStack Overflow | Accents using ggplot2\nStack Overflow | How does ggplot scale_continuous expand argument work?\nR CHARTS | Slopegraph in ggplot2 with newggslopegraph"
   },
   {
     "objectID": "accessibility.html",
     "href": "accessibility.html",
-    "title": "12  Accessibility",
+    "title": "13  Accessibility",
     "section": "",
     "text": "WebAIM | Color Contrast Checker\nWAVE Web Accessibility Evaluation Tool (for website/Rshiny app)\nRStudio Community | Making Shiny apps accessible for all humans - shiny\nGitHub | thedaviddias/Front-End-Checklist; https://frontendchecklist.io/\n\nA11Y Project | Checklist\nSmashing Magazine | Color Contrast And Why You Should Rethink It\n\nPeatworks | Creating Accessible Data Visualizations on the Web\nInclusive Components | Tooltips & Toggletips"
   },
   {
     "objectID": "accessibility.html#shiny",
     "href": "accessibility.html#shiny",
-    "title": "12  Accessibility",
-    "section": "12.2 {shiny}",
-    "text": "12.2 {shiny}\n\nGitHub | Issues · rstudio/shiny · Type: Accessiblity, check to see what has become accessible and current open issues on shiny’s github\nGitHub | Shiny HTML element has no lang attribute · Issue #2844 · rstudio/shiny; closed: tags$html(lang=\"en\")\n\nGitHub | Added alt param by jooyoungseo · Pull Request #3006"
+    "title": "13  Accessibility",
+    "section": "13.2 {shiny}",
+    "text": "13.2 {shiny}\n\nGitHub | Issues · rstudio/shiny · Type: Accessiblity, check to see what has become accessible and current open issues on shiny’s github\nGitHub | Shiny HTML element has no lang attribute · Issue #2844 · rstudio/shiny; closed: tags$html(lang=\"en\")\n\nGitHub | Added alt param by jooyoungseo · Pull Request #3006"
   },
   {
     "objectID": "accessibility.html#specific-issues",
     "href": "accessibility.html#specific-issues",
-    "title": "12  Accessibility",
-    "section": "12.3 Specific Issues",
-    "text": "12.3 Specific Issues\n\n12.3.1 Roman Numerals\ngoal was trying to figure out how to get the screen reader to read ‘III’ as ‘3’ instead of as ‘I I I’; couldn’t figure out how to get it to work last time but here are some links I found about it\n\nWebAIM | Email Archives: How to write roman numerals;\n\nStack Overflow | accessibility - ARIA attributes for reading alternative text (e.g. Roman Numerals) in HTML\nReddit | Roman numerals and accessibility: HTML\nStack Overflow | html - How do screen readers read  tags?"
+    "title": "13  Accessibility",
+    "section": "13.3 Specific Issues",
+    "text": "13.3 Specific Issues\n\n13.3.1 Roman Numerals\ngoal was trying to figure out how to get the screen reader to read ‘III’ as ‘3’ instead of as ‘I I I’; couldn’t figure out how to get it to work last time but here are some links I found about it\n\nWebAIM | Email Archives: How to write roman numerals;\n\nStack Overflow | accessibility - ARIA attributes for reading alternative text (e.g. Roman Numerals) in HTML\nReddit | Roman numerals and accessibility: HTML\nStack Overflow | html - How do screen readers read  tags?"
   },
   {
     "objectID": "htmlcss.html",
     "href": "htmlcss.html",
-    "title": "13  HTML/CSS",
+    "title": "14  HTML/CSS",
     "section": "",
     "text": "W3 Schools | HTML Color Names\nHexadecimal color code for transparency\nW3 Schools | CSS Buttons\nTutorial Republic | How to Set Table Cellpadding and Cellspacing Using CSS\nStack Overflow | How to align the table cells content on the top?\nStack Overflow | HTML: how to make 2 tables with different CSS\nDataTables | Default styling options\nSetting width/height as percentage minus pixels - Stack Overflow"
   },
   {
     "objectID": "latex.html",
     "href": "latex.html",
-    "title": "14  Latex",
+    "title": "15  Latex",
     "section": "",
     "text": "Definition \n    LaTeX \n    mu* \n    Result \n  \n \n\n  \n    Default \n      \n    0 \n    $f q$ \n  \n  \n    Thin \n    \\, or \\thinspace \n    3 \n    $f \\, q$ \n  \n  \n    Medium 1 \n    \\: \n    4 \n    $f \\: q$ \n  \n  \n    Medium 2 \n    \\; \n    5 \n    $f \\; q$ \n  \n  \n    Half of current font size, 0.5em \n    \\enspace \n    6 \n    $f \\enspace q$ \n  \n  \n    Current font size, 1em \n    \\quad \n    18 \n    $f \\quad q$ \n  \n  \n    2x Current font size, 2em \n    \\qquad \n    36 \n    $f \\qquad q$ \n  \n  \n    Space in normal text \n    \\  \n    NA \n    $f \\ q$ \n  \n  \n    Negative space \n    \\! \n    -3 \n    $f \\! q$ \n  \n\n\n* 1em (current font size) = 18mu\n\n\n\n\n\nSources: math-linux | Latex Horizontal space: qquad, hspace, thinspace, enspace and Overleaf | Spacing in math mode"
   }

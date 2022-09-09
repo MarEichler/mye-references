@@ -1,0 +1,127 @@
+# qmd/Rmd 
+
+
+## Loop with child (sub file)
+
+::: {.grid}
+
+::: {.g-col-6}
+**Main-file: `.qmd`** 
+:::
+<!-- END {.g-col-6} first column -->
+
+::: {.g-col-6}
+**Sub-file: `plot_for_state.qmd`**
+:::
+<!-- END {.g-col-6} second column -->
+
+::: 
+<!-- END {.grid} -->
+
+
+::: {.grid}
+
+::: {.g-col-6 style="border: 1px solid #dcdcdc; font-size: 0.7em;"}
+
+\#\# Individual States 
+
+```{r}
+#| eval: false
+#| results: asis
+# results: asis #outputs text as raw md content 
+
+STATE_vec <- c("Alabama", "Alaska", "Arizona", ...)
+
+#create empty list 
+res <- vector(mode = "list", length = 3L)
+
+#run loop 
+for (i in 1:length(STATE_vec)) { 
+  
+  #run the qmd with a specific state, save in list
+  res[[i]] <- knitr::knit_child(
+      "plot_for_state.qmd"      
+    , quiet = TRUE
+    , envir = environment()
+    )
+}
+
+#unlist and paste together with a break 
+cat(unlist(res), sep = '\n')
+```
+
+\#\# Next Section  
+
+:::
+<!-- END {.g-col-6} first column -->
+
+
+::: {.g-col-6 style="border: 1px solid #dcdcdc; font-size: 0.7em;"}
+
+```{r}
+#| eval: false
+this_STATE <- STATE_vec[i]  
+```
+
+\#\#\#  &#96;r this_STATE&#96;
+
+```{r}
+#| eval: false 
+
+all_data %>% 
+  filter(STATE == this_STATE) %>% 
+  plot_function()
+```
+
+:::
+<!-- END {.g-col-6} second column -->
+
+::: 
+<!-- END {.grid} -->
+
+<div class="source">
+Sources: <ul>
+  <li>[Stack Overvlow, Aug 2020 | R Markdown: loop with child.rmd](https://stackoverflow.com/questions/63011158/r-markdown-loop-with-child-rmd)</li>
+  <li>[Harvey Lieberman, Mar 2022 | knitr::knit_child with Quarto](https://www.harveyl888.com/post/2022-05-12-knit_child_quarto/)</li>
+  </ul>
+</div>
+
+
+
+## `quarto_render()` 
+
+- issue rendering qmd and saving in another folder
+- my work around is rendering in same place and moving to another folder and new name, then remove the rendered html 
+- links 
+    * [Stack Overflow, Jun 2022 | Two problems rendering a qmd file with quarto_render from R](https://stackoverflow.com/questions/72346829/two-problems-rendering-a-qmd-file-with-quarto-render-from-r)
+    * [RStudio, Aug 2022 | Output directory in quarto-cli not respected?](https://community.rstudio.com/t/output-directory-in-quarto-cli-not-respected/143762)
+
+```{r}
+#| eval: false 
+#when bugs are fixed 
+# quarto::quarto_render(input = "in.qmd", output_file = "products/output.html")
+
+quarto::quarto_render(input = "ind.qmd", output_file = "output.html")
+file.copy(from = "output.html", to = "products/output.html", overwrite = TRUE)
+rm("output.html")
+```
+
+
+
+
+## Output and Pathways  
+
+- [R Markdown Cookbook | 16.6 The working directory for R code chunks](https://bookdown.org/yihui/rmarkdown-cookbook/working-directory.html) 
+- [Stack Overflow | Run R markdown (.Rmd) from inside other R script to produce HTML - Stack Overflow](https://stackoverflow.com/questions/65921907/run-r-markdown-rmd-from-inside-other-r-script-to-produce-html)
+- [RStudio Community | save rmarkdown output in different folder - R Markdown](https://community.rstudio.com/t/save-rmarkdown-output-in-different-folder/68192/4)
+
+## Style 
+
+- [Stack Overflow | R markdown: how to change style with internal css?](https://stackoverflow.com/questions/34022558/r-markdown-how-to-change-style-with-internal-css)
+- [Stack Overflow | rmarkdown: both portrait and landscape layout in a single PDF](https://stackoverflow.com/questions/25849814/rstudio-rmarkdown-both-portrait-and-landscape-layout-in-a-single-pdf)
+- [R Markdown Cookbook | 4.4 Unnumbered sections](https://bookdown.org/yihui/rmarkdown-cookbook/unnumbered-sections.html)
+- [Stack Overflow | Increase width of entire HTML Rmarkdown output](https://stackoverflow.com/questions/34906002/increase-width-of-entire-html-rmarkdown-output)
+- [Steve Sque | Symbols in LaTeX and HTML](https://www.stevesque.com/symbols/)
+- [RStudio Community | Copy to clipboard buttons for code blocks - R Markdown](https://community.rstudio.com/t/copy-to-clipboard-buttons-for-code-blocks/45367)
+
+
