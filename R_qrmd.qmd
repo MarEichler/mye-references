@@ -5,15 +5,20 @@
 
 ::: {.grid}
 
-::: {.g-col-6}
-**Main-file: `.qmd`** 
+::: {.g-col-4}
+**Main-file: `main.qmd`** 
 :::
-<!-- END {.g-col-6} first column -->
+<!-- END {.g-col-4} first column -->
 
-::: {.g-col-6}
-**Sub-file: `plot_for_state.qmd`**
+::: {.g-col-4}
+**Sub-file: `stateplot.qmd`**
 :::
-<!-- END {.g-col-6} second column -->
+<!-- END {.g-col-4} second column -->
+
+::: {.g-col-4}
+**Output: `main.html`**
+:::
+<!-- END {.g-col-4} third column -->
 
 ::: 
 <!-- END {.grid} -->
@@ -21,45 +26,43 @@
 
 ::: {.grid}
 
-::: {.g-col-6 style="border: 1px solid #dcdcdc; font-size: 0.7em;"}
+::: {.g-col-4 style="border: 1px solid #dcdcdc; font-size: 0.65em;"}
 
 \#\# Individual States 
 
 ```{r}
 #| eval: false
 #| results: asis
-# results: asis #outputs text as raw md content 
+# results: asis #output raw md content 
 
-STATE_vec <- c("Alabama", "Alaska", "Arizona", ...)
+STATE_vec <- c("AL", "AK", "AZ", ...)
 
 #create empty list 
-res <- vector(mode = "list", length = 3L)
+res <- vector("list", length = 3L)
 
 #run loop 
 for (i in 1:length(STATE_vec)) { 
   
-  #run the qmd with a specific state, save in list
+  #run sub w/ state, save in list
   res[[i]] <- knitr::knit_child(
-      "plot_for_state.qmd"      
+      "stateplot.qmd"      
     , quiet = TRUE
     , envir = environment()
     )
 }
 
-#unlist and paste together with a break 
+#unlist and paste together w/ a break 
 cat(unlist(res), sep = '\n')
 ```
-
-\#\# Next Section  
-
 :::
-<!-- END {.g-col-6} first column -->
+<!-- END {.g-col-4} first column -->
 
 
-::: {.g-col-6 style="border: 1px solid #dcdcdc; font-size: 0.7em;"}
+::: {.g-col-4 style="border: 1px solid #dcdcdc; font-size: 0.65em;"}
 
 ```{r}
 #| eval: false
+#specify which state should be used
 this_STATE <- STATE_vec[i]  
 ```
 
@@ -67,17 +70,65 @@ this_STATE <- STATE_vec[i]
 
 ```{r}
 #| eval: false 
-
 all_data %>% 
   filter(STATE == this_STATE) %>% 
   plot_function()
 ```
 
 :::
-<!-- END {.g-col-6} second column -->
+<!-- END {.g-col-4} second column -->
+
+
+::: {.g-col-4 style="border: 1px solid #dcdcdc; font-size: 0.65em;"}
+
+#### Individual States {-}
+
+```{r}
+#| echo: false 
+library(ggplot2)
+```
+
+
+##### AL {-}
+
+```{r}
+#| echo: false 
+#| fig.height: 0.75
+#| fig.width: 4
+ggplot() + ggtitle("Plot for AL")
+```
+
+##### AK {-}
+
+```{r}
+#| echo: false 
+#| fig.height: 0.75
+#| fig.width: 4
+ggplot() + ggtitle("Plot for AK")
+```
+
+
+##### AZ {-} 
+
+```{r}
+#| echo: false 
+#| fig.height: 0.75
+#| fig.width: 4
+ggplot() + ggtitle("Plot for AZ")
+```
+
+
+:::
+<!-- END {.g-col-4} second column -->
+
 
 ::: 
 <!-- END {.grid} -->
+
+
+
+
+
 
 <div class="source">
 Sources: <ul>

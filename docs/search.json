@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "MYE References",
     "section": "",
-    "text": "This is a collection of information and links in one place so it’s easier to look up.\n\n\n\nLast updated: 2022-09-08 21:00:03"
+    "text": "This is a collection of information and links in one place so it’s easier to look up.\n\n\n\nLast updated: 2022-09-09 09:54:20"
   },
   {
     "objectID": "resources.html",
@@ -151,7 +151,7 @@
     "href": "R_qrmd.html",
     "title": "7  qmd/Rmd",
     "section": "",
-    "text": "Main-file: .qmd\n\n\n\nSub-file: plot_for_state.qmd\n\n\n\n\n\n\n## Individual States\n# results: asis #outputs text as raw md content \n\nSTATE_vec <- c(\"Alabama\", \"Alaska\", \"Arizona\", ...)\n\n#create empty list \nres <- vector(mode = \"list\", length = 3L)\n\n#run loop \nfor (i in 1:length(STATE_vec)) { \n  \n  #run the qmd with a specific state, save in list\n  res[[i]] <- knitr::knit_child(\n      \"plot_for_state.qmd\"      \n    , quiet = TRUE\n    , envir = environment()\n    )\n}\n\n#unlist and paste together with a break \ncat(unlist(res), sep = '\\n')\n## Next Section\n\n\n\n\nthis_STATE <- STATE_vec[i]  \n\n### `r this_STATE`\n\nall_data %>% \n  filter(STATE == this_STATE) %>% \n  plot_function()\n\n\n\n\n\n\nSources:\n\n\nStack Overvlow, Aug 2020 | R Markdown: loop with child.rmd\n\n\nHarvey Lieberman, Mar 2022 | knitr::knit_child with Quarto"
+    "text": "Main-file: main.qmd\n\n\n\nSub-file: stateplot.qmd\n\n\n\nOutput: main.html\n\n\n\n\n\n\n## Individual States\n# results: asis #output raw md content \n\nSTATE_vec <- c(\"AL\", \"AK\", \"AZ\", ...)\n\n#create empty list \nres <- vector(\"list\", length = 3L)\n\n#run loop \nfor (i in 1:length(STATE_vec)) { \n  \n  #run sub w/ state, save in list\n  res[[i]] <- knitr::knit_child(\n      \"stateplot.qmd\"      \n    , quiet = TRUE\n    , envir = environment()\n    )\n}\n\n#unlist and paste together w/ a break \ncat(unlist(res), sep = '\\n')\n\n\n\n\n#specify which state should be used\nthis_STATE <- STATE_vec[i]  \n\n### `r this_STATE`\n\nall_data %>% \n  filter(STATE == this_STATE) %>% \n  plot_function()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSources:\n\n\nStack Overvlow, Aug 2020 | R Markdown: loop with child.rmd\n\n\nHarvey Lieberman, Mar 2022 | knitr::knit_child with Quarto"
   },
   {
     "objectID": "R_qrmd.html#quarto_render",

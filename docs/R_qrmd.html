@@ -294,45 +294,49 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="loop-with-child-sub-file" class="level2" data-number="7.1">
 <h2 data-number="7.1" class="anchored" data-anchor-id="loop-with-child-sub-file"><span class="header-section-number">7.1</span> Loop with child (sub file)</h2>
 <div class="grid">
-<div class="g-col-6">
-<p><strong>Main-file: <code>.qmd</code></strong></p>
+<div class="g-col-4">
+<p><strong>Main-file: <code>main.qmd</code></strong></p>
 </div>
-<!-- END {.g-col-6} first column -->
-<div class="g-col-6">
-<p><strong>Sub-file: <code>plot_for_state.qmd</code></strong></p>
+<!-- END {.g-col-4} first column -->
+<div class="g-col-4">
+<p><strong>Sub-file: <code>stateplot.qmd</code></strong></p>
 </div>
-<!-- END {.g-col-6} second column -->
+<!-- END {.g-col-4} second column -->
+<div class="g-col-4">
+<p><strong>Output: <code>main.html</code></strong></p>
+</div>
+<!-- END {.g-col-4} third column -->
 </div>
 <!-- END {.grid} -->
 <div class="grid">
-<div class="g-col-6" style="border: 1px solid #dcdcdc; font-size: 0.7em;">
+<div class="g-col-4" style="border: 1px solid #dcdcdc; font-size: 0.65em;">
 <p>## Individual States</p>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># results: asis #outputs text as raw md content </span></span>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># results: asis #output raw md content </span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>STATE_vec <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Alabama"</span>, <span class="st">"Alaska"</span>, <span class="st">"Arizona"</span>, ...)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>STATE_vec <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"AL"</span>, <span class="st">"AK"</span>, <span class="st">"AZ"</span>, ...)</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">#create empty list </span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="at">mode =</span> <span class="st">"list"</span>, <span class="at">length =</span> 3L)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">"list"</span>, <span class="at">length =</span> 3L)</span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">#run loop </span></span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(STATE_vec)) { </span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="co">#run the qmd with a specific state, save in list</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="co">#run sub w/ state, save in list</span></span>
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  res[[i]] <span class="ot">&lt;-</span> knitr<span class="sc">::</span><span class="fu">knit_child</span>(</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>      <span class="st">"plot_for_state.qmd"</span>      </span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>      <span class="st">"stateplot.qmd"</span>      </span>
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    , <span class="at">quiet =</span> <span class="cn">TRUE</span></span>
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    , <span class="at">envir =</span> <span class="fu">environment</span>()</span>
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    )</span>
 <span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="co">#unlist and paste together with a break </span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="co">#unlist and paste together w/ a break </span></span>
 <span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">unlist</span>(res), <span class="at">sep =</span> <span class="st">'</span><span class="sc">\n</span><span class="st">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>## Next Section</p>
 </div>
-<!-- END {.g-col-6} first column -->
-<div class="g-col-6" style="border: 1px solid #dcdcdc; font-size: 0.7em;">
+<!-- END {.g-col-4} first column -->
+<div class="g-col-4" style="border: 1px solid #dcdcdc; font-size: 0.65em;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>this_STATE <span class="ot">&lt;-</span> STATE_vec[i]  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#specify which state should be used</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>this_STATE <span class="ot">&lt;-</span> STATE_vec[i]  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>### `r this_STATE`</p>
 <div class="cell">
@@ -341,7 +345,38 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot_function</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
-<!-- END {.g-col-6} second column -->
+<!-- END {.g-col-4} second column -->
+<section id="individual-states" class="level4 unnumbered g-col-4" style="border: 1px solid #dcdcdc; font-size: 0.65em;">
+<h4 class="unnumbered anchored" data-anchor-id="individual-states">Individual States</h4>
+<div class="cell">
+
+</div>
+<section id="al" class="level5 unnumbered">
+<h5 class="unnumbered anchored" data-anchor-id="al">AL</h5>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="R_qrmd_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="384"></p>
+</div>
+</div>
+</section>
+<section id="ak" class="level5 unnumbered">
+<h5 class="unnumbered anchored" data-anchor-id="ak">AK</h5>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="R_qrmd_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="384"></p>
+</div>
+</div>
+</section>
+<section id="az" class="level5 unnumbered">
+<h5 class="unnumbered anchored" data-anchor-id="az">AZ</h5>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="R_qrmd_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="384"></p>
+</div>
+</div>
+</section>
+</section>
+<!-- END {.g-col-4} second column -->
 </div>
 <!-- END {.grid} -->
 <div class="source">
