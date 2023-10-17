@@ -1,0 +1,32 @@
+# Package Development 
+
+## Work Flow 
+
+
+**Step 1: Document** 
+
+Update any documentation pages with `devtools::document()` 
+
+**Step 2: Check** 
+
+Run basic tests (and any unit tests created) using `devtools::check()` 
+
+
+**Step 3: Install** 
+
+Install the working version of your package with `devtools::install()` 
+
+
+There is also the option to use `devtools::load_all()` which will load all functions in the package.  However, this will not work if you are testing functions that use files in the `/inst` folder.  
+
+
+**Step 4: Restart R** 
+
+Restart your R session/environment to test the functions with a clean slate. 
+
+`Ctrl` + `Shift` + `F10` 
+
+
+
+
+
