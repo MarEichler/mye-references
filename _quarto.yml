@@ -14,6 +14,7 @@ book:
       - R_fonts.qmd
       - R_functions.qmd
       - R_impexp.qmd
+      - R_pkg.qmd
       - R_qrmd.qmd
       - R_regex.qmd
       - R_shape.qmd
