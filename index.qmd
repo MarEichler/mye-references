@@ -4,7 +4,7 @@ This is a collection of information and links in one place so it's easier to loo
 
 ```{r}
 #| echo = FALSE
-systime <- Sys.time()
+systime <- format(Sys.time(), "%Y-%m-%d %H:%M:%S %z/%Z")
 ```
 
 Last updated: `r systime`

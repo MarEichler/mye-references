@@ -266,7 +266,7 @@ tidy.df <- tidyr::pivot_longer(
 `scales = "free"`: removes types from the axis if that category has 0 cars of that type   
 
 ```{r}
-#| column: screen-inset-shaded
+#| column: page
 #| layout-nrow: 1
 ggplot(tidy.df, aes(type)) +
   geom_bar() + coord_flip() + 
@@ -282,7 +282,7 @@ ggplot(tidy.df, aes(type)) +
 `space = "free"`: spaces based on number of obs (i.e. number of bars); rather than giving each facet equal sizing, **ONLY** available for `facet_grid`
 
 ```{r}
-#| column: screen-inset-shaded
+#| column: page
 #| layout-nrow: 1
 ggplot(tidy.df, aes(type)) +
   geom_bar() + coord_flip() + 
@@ -320,7 +320,7 @@ Source: [Stack Overflow, Nov 2012 | left align two graph edges](https://stackove
 
 The `cowplot::plot_grid()` function allows you to line up plots by a specific axis.   
 ```{r}
-#| column: screen-inset-shaded
+#| column: page
 #| layout-nrow: 1
 #make plots into Grobs (grid graphical object)
 gA <- ggplotGrob(A) 
