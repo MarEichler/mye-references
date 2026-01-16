@@ -8,24 +8,22 @@ editor_options:
 ## Horizontal Spacing
 
 
-```{r}
-#| echo: FALSE
-tibble::tribble(
-  ~Definition, ~LaTeX, ~`mu*`, ~Result
-  , "Default"  , "<code> </code>"                              , 0, "$$f q$$"
-  , "Thin"     , "<code>\\,</code> or <code>\\thinspace</code>", 3, "$$f \\, q$$"
-  , "Medium 1" , "<code>\\:</code>"                            , 4, "$$f \\: q$$"
-  , "Medium 2" , "<code>\\;</code>"                            , 5, "$$f \\; q$$"
-  , "Half of current font size, 0.5em","<code>\\enspace</code>", 6, "$$f \\enspace q$$"
-  , "Current font size, 1em", "<code>\\quad</code>"            ,18, "$$f \\quad q$$"
-  , "2x Current font size, 2em", "<code>\\qquad</code>"        ,36, "$$f \\qquad q$$"
-  , "Space in normal text", "<code>\\&nbsp;</code>"            ,NA, "$$f \\ q$$"
-  , "Negative space", "<code>\\!</code>"                       ,-3, "$$f \\! q$$"
-  ) |> 
-  knitr::kable(escape = F) |> 
-  kableExtra::kable_styling() |> 
-  kableExtra::footnote(symbol = "1em (current font size) = 18mu")
-```
+| Definition | LaTeX | mu\* | Result | 
+|:----|:---|----:|:----| 
+| Default | ` `                                 | 0 | $$f q$$ | 
+| Thin | `\,` or `\thinspace`                   | 3 | $$f \, q$$ | 
+| Medium 1 | `\:`                               | 4 | $$f \: q$$  |
+| Medium 2 | `\;`                               | 5 | $$f \; q$$ | 
+| Half of current font size, 0.5em | `\enspace` | 6 | $$f \enspace q$$ | 
+| Current font size, 1em | `\quad`              |18 | $$f \quad q$$ | 
+| 2x Current font size, 2em | `\qquad`          |36 | $$f \qquad q$$ | 
+| Space in normal text | `\` or `&nbsp;`        |NA | $$f \ q$$ | 
+| Negative space | `\!`                         |-3 | $$f \! q$$ | 
+
+\* 1em (current font size) = 18mu
+
+
+
 
 
 <div class="source">

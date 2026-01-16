@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "MYE References",
     "section": "",
-    "text": "Welcome\nThis is a collection of information and links in one place so it’s easier to look up.\nLast updated: 2026-01-16 16:28:02 -0600/CST",
+    "text": "Welcome\nThis is a collection of information and links in one place so it’s easier to look up.\nLast updated: 2026-01-16 16:55:08 -0600/CST",
     "crumbs": [
       "Welcome"
     ]
@@ -728,7 +728,7 @@
     "href": "latex.html",
     "title": "16  Latex",
     "section": "",
-    "text": "16.1 Horizontal Spacing\nDefinition\nLaTeX\nmu*\nResult\n\n\n\n\nDefault\n&lt;code&gt; &lt;/code&gt;\n0\n$$f q$$\n\n\nThin\n&lt;code&gt;\\,&lt;/code&gt; or &lt;code&gt;\\thinspace&lt;/code&gt;\n3\n$$f \\, q$$\n\n\nMedium 1\n&lt;code&gt;\\:&lt;/code&gt;\n4\n$$f \\: q$$\n\n\nMedium 2\n&lt;code&gt;\\;&lt;/code&gt;\n5\n$$f \\; q$$\n\n\nHalf of current font size, 0.5em\n&lt;code&gt;\\enspace&lt;/code&gt;\n6\n$$f \\enspace q$$\n\n\nCurrent font size, 1em\n&lt;code&gt;\\quad&lt;/code&gt;\n18\n$$f \\quad q$$\n\n\n2x Current font size, 2em\n&lt;code&gt;\\qquad&lt;/code&gt;\n36\n$$f \\qquad q$$\n\n\nSpace in normal text\n&lt;code&gt;\\&nbsp;&lt;/code&gt;\nNA\n$$f \\ q$$\n\n\nNegative space\n&lt;code&gt;\\!&lt;/code&gt;\n-3\n$$f \\! q$$\n\n\n\n* 1em (current font size) = 18mu",
+    "text": "16.1 Horizontal Spacing\n* 1em (current font size) = 18mu",
     "crumbs": [
       "<span class='chapter-number'>16</span>  <span class='chapter-title'>Latex</span>"
     ]
@@ -738,7 +738,7 @@
     "href": "latex.html#horizontal-spacing",
     "title": "16  Latex",
     "section": "",
-    "text": "Sources: math-linux | Latex Horizontal space: qquad, hspace, thinspace, enspace and Overleaf | Spacing in math mode",
+    "text": "Definition\nLaTeX\nmu*\nResult\n\n\n\n\nDefault\n\n0\n\\[f q\\]\n\n\nThin\n\\, or \\thinspace\n3\n\\[f \\, q\\]\n\n\nMedium 1\n\\:\n4\n\\[f \\: q\\]\n\n\nMedium 2\n\\;\n5\n\\[f \\; q\\]\n\n\nHalf of current font size, 0.5em\n\\enspace\n6\n\\[f \\enspace q\\]\n\n\nCurrent font size, 1em\n\\quad\n18\n\\[f \\quad q\\]\n\n\n2x Current font size, 2em\n\\qquad\n36\n\\[f \\qquad q\\]\n\n\nSpace in normal text\n\\ or &nbsp;\nNA\n\\[f \\ q\\]\n\n\nNegative space\n\\!\n-3\n\\[f \\! q\\]\n\n\n\n\n\nSources: math-linux | Latex Horizontal space: qquad, hspace, thinspace, enspace and Overleaf | Spacing in math mode",
     "crumbs": [
       "<span class='chapter-number'>16</span>  <span class='chapter-title'>Latex</span>"
     ]
