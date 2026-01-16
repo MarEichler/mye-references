@@ -289,7 +289,7 @@ gg
 
 ggsave(
   plot = gg,
-  filename = "img/fonts-export-D.pdf", 
+  filename = "img/fonts-export-04.pdf", 
   device = cairo_pdf,
   dpi = 300,
   height = 6,
@@ -300,12 +300,11 @@ ggsave(
 
 ```
 
+<object class = "pdf" data="img/fonts-export-04.pdf" width="100%" height="475"></object>
 
 Can't get pdf preview to load when using the custom fonts; below is a screen shot of what the pdf looks like when opened.  
 
 <img src="img/fonts-export-04.png" alt = "screen shot of pdf using custom font" style = "width:90%;">
-
-<!-- <object class = "pdf" data="img/fonts-export-D.pdf" width="100%" height="475"></object>  --> 
 
 ### Additional Links
 
