@@ -4,9 +4,19 @@
     "href": "index.html",
     "title": "MYE References",
     "section": "",
-    "text": "Welcome\nThis is a collection of information and links in one place so it’s easier to look up.\nLast updated: 2025-05-21 14:47:47 -0500/CDT",
+    "text": "Welcome\nThis is a collection of information and links in one place so it’s easier to look up.\nLast updated: 2026-01-16 16:28:02 -0600/CST",
     "crumbs": [
       "Welcome"
+    ]
+  },
+  {
+    "objectID": "resources.html",
+    "href": "resources.html",
+    "title": "1  Resources",
+    "section": "",
+    "text": "1.1 Books",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Resources</span>"
     ]
   },
   {
@@ -50,6 +60,16 @@
     ]
   },
   {
+    "objectID": "R.html",
+    "href": "R.html",
+    "title": "R",
+    "section": "",
+    "text": "Versions\nSpecifically regarding R code",
+    "crumbs": [
+      "R"
+    ]
+  },
+  {
     "objectID": "R.html#versions",
     "href": "R.html#versions",
     "title": "R",
@@ -57,6 +77,17 @@
     "text": "Install Older Package from Source\n\nR Studio Support - Installing older versions of packages and Package Archive\n\n# P: package name, e.g. \"ggplot2\"\n# V: version number, e.g. \"3.3.5\"\n\n#single install \ninstall.packages(\n  \"https://cran.r-project.org/src/contrib/Archive/&lt;P&gt;/&lt;P&gt;_&lt;V&gt;.tar.gz\"\n  , repos=NULL\n  , type=\"source\"\n)\n\n#function to install (for multiple instances)\nlibrary(glue) \ninstall_old_version &lt;- function(P, V){\n  if (packageVersion(P) == V){\n    logger::log_info(\"Package already at that version\")\n  } else {\n    packageurl &lt;- as.character(glue(\n    \"https://cran.r-project.org/src/contrib/Archive/{P}/{P}_{V}.tar.gz\"\n    ))\n    install.packages(packageurl, repos=NULL, type=\"source\")\n    logger::log_success(\"{P} {V}\")\n  }\n}\n\n\nInstall Older Version of R (Windows)\nIf a program was built entirely in an older version of R, it may be difficult to get it to work with an updated version of R. When their isn’t time to investigate and re-code, installing an older version of R is possible.\n\ncran.r-project.org\nClick the ‘Download for Windows’ link for your given operating system\n\nClick on the ‘base’ link\n\nClick on the ‘Previous releases’ link \nClick on the specific R version you want, say R 3.5.3 \nClick on the ‘Download R  for Windows’ and this will download an exe file \nRun the exe file to install the older version of R\n\n\n\nSwitch between versions of R\n\nOpen R Studio\nTools &gt; Global Options…\nGeneral &gt; R Version &gt; Change…",
     "crumbs": [
       "R"
+    ]
+  },
+  {
+    "objectID": "R_datamanage.html",
+    "href": "R_datamanage.html",
+    "title": "2  Data Management",
+    "section": "",
+    "text": "2.1 Differences",
+    "crumbs": [
+      "R",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Data Management</span>"
     ]
   },
   {
@@ -93,11 +124,22 @@
     ]
   },
   {
+    "objectID": "R_dates.html",
+    "href": "R_dates.html",
+    "title": "3  Dates and Times",
+    "section": "",
+    "text": "3.1 Date Formats",
+    "crumbs": [
+      "R",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Dates and Times</span>"
+    ]
+  },
+  {
     "objectID": "R_dates.html#date-formats",
     "href": "R_dates.html#date-formats",
     "title": "3  Dates and Times",
     "section": "",
-    "text": "String\nMeaning\nCode\nOutput\n\n\n\n\n%a\nDay of the week, abbreviated (Mon-Sun)\nformat.Date(\"2020-12-10\", \"%a\")\nThu\n\n\n%A\nDay of the week, full (Monday-Sunday\nformat.Date(\"2020-12-10\", \"%A\")\nThursday\n\n\n%w\nDay of the week, numeric, 0 = Sunday (0-6)\nformat.Date(\"2020-12-10\", \"%w\")\n4\n\n\n%e\nDay of month (1-31)\nformat.Date(\"2020-12-10\", \"%e\")\n10\n\n\n%d\nDay of month (01-31)\nformat.Date(\"2020-12-10\", \"%d\")\n10\n\n\n%m\nMonth, numeric (01-12)\nformat.Date(\"2020-12-10\", \"%m\")\n12\n\n\n%b\nMonth, abbreviated (Jan-Dec)\nformat.Date(\"2020-12-10\", \"%b\")\nDec\n\n\n%B\nMonth, full (January-December)\nformat.Date(\"2020-12-10\", \"%B\")\nDecember\n\n\n%y\nYear, without century (00-99)\nformat.Date(\"2020-12-10\", \"%y\")\n20\n\n\n%Y\nYear, with century (0000-9999)\nformat.Date(\"2020-12-10\", \"%Y\")\n2020\n\n\n%j\nDay of the Year (001-366)\nformat.Date(\"2020-12-10\", \"%j\")\n345\n\n\n%U\nWeek of year, numeric, starting on Sunday (00-52)\nformat.Date(\"2020-12-10\", \"%U\")\n49\n\n\n%W\nWeek of year, numeric, starting on Monday (00-52)\nformat.Date(\"2020-12-10\", \"%W\")\n49\n\n\n%x\nLocale-specific date\nformat.Date(\"2020-12-10\", \"%x\")\n2020-12-10\n\n\n\n\n\n\n\n\n\nSource: stat.berkeley | Dates and Times in R Stack Overflow",
+    "text": "String\nMeaning\nCode\nOutput\n\n\n\n\n&lt;span style=\" font-family: monospace; \" &gt;%a&lt;/span&gt;\nDay of the week, abbreviated (Mon-Sun)\n&lt;span style=\" font-family: monospace; \" &gt;format.Date(&quot;2020-12-10&quot;, &quot;%a&quot;)&lt;/span&gt;\nThu\n\n\n&lt;span style=\" font-family: monospace; \" &gt;%A&lt;/span&gt;\nDay of the week, full (Monday-Sunday\n&lt;span style=\" font-family: monospace; \" &gt;format.Date(&quot;2020-12-10&quot;, &quot;%A&quot;)&lt;/span&gt;\nThursday\n\n\n&lt;span style=\" font-family: monospace; \" &gt;%w&lt;/span&gt;\nDay of the week, numeric, 0 = Sunday (0-6)\n&lt;span style=\" font-family: monospace; \" &gt;format.Date(&quot;2020-12-10&quot;, &quot;%w&quot;)&lt;/span&gt;\n4\n\n\n&lt;span style=\" font-family: monospace; \" &gt;%e&lt;/span&gt;\nDay of month (1-31)\n&lt;span style=\" font-family: monospace; \" &gt;format.Date(&quot;2020-12-10&quot;, &quot;%e&quot;)&lt;/span&gt;\n10\n\n\n&lt;span style=\" font-family: monospace; \" &gt;%d&lt;/span&gt;\nDay of month (01-31)\n&lt;span style=\" font-family: monospace; \" &gt;format.Date(&quot;2020-12-10&quot;, &quot;%d&quot;)&lt;/span&gt;\n10\n\n\n&lt;span style=\" font-family: monospace; \" &gt;%m&lt;/span&gt;\nMonth, numeric (01-12)\n&lt;span style=\" font-family: monospace; \" &gt;format.Date(&quot;2020-12-10&quot;, &quot;%m&quot;)&lt;/span&gt;\n12\n\n\n&lt;span style=\" font-family: monospace; \" &gt;%b&lt;/span&gt;\nMonth, abbreviated (Jan-Dec)\n&lt;span style=\" font-family: monospace; \" &gt;format.Date(&quot;2020-12-10&quot;, &quot;%b&quot;)&lt;/span&gt;\nDec\n\n\n&lt;span style=\" font-family: monospace; \" &gt;%B&lt;/span&gt;\nMonth, full (January-December)\n&lt;span style=\" font-family: monospace; \" &gt;format.Date(&quot;2020-12-10&quot;, &quot;%B&quot;)&lt;/span&gt;\nDecember\n\n\n&lt;span style=\" font-family: monospace; \" &gt;%y&lt;/span&gt;\nYear, without century (00-99)\n&lt;span style=\" font-family: monospace; \" &gt;format.Date(&quot;2020-12-10&quot;, &quot;%y&quot;)&lt;/span&gt;\n20\n\n\n&lt;span style=\" font-family: monospace; \" &gt;%Y&lt;/span&gt;\nYear, with century (0000-9999)\n&lt;span style=\" font-family: monospace; \" &gt;format.Date(&quot;2020-12-10&quot;, &quot;%Y&quot;)&lt;/span&gt;\n2020\n\n\n&lt;span style=\" font-family: monospace; \" &gt;%j&lt;/span&gt;\nDay of the Year (001-366)\n&lt;span style=\" font-family: monospace; \" &gt;format.Date(&quot;2020-12-10&quot;, &quot;%j&quot;)&lt;/span&gt;\n345\n\n\n&lt;span style=\" font-family: monospace; \" &gt;%U&lt;/span&gt;\nWeek of year, numeric, starting on Sunday (00-52)\n&lt;span style=\" font-family: monospace; \" &gt;format.Date(&quot;2020-12-10&quot;, &quot;%U&quot;)&lt;/span&gt;\n49\n\n\n&lt;span style=\" font-family: monospace; \" &gt;%W&lt;/span&gt;\nWeek of year, numeric, starting on Monday (00-52)\n&lt;span style=\" font-family: monospace; \" &gt;format.Date(&quot;2020-12-10&quot;, &quot;%W&quot;)&lt;/span&gt;\n49\n\n\n&lt;span style=\" font-family: monospace; \" &gt;%x&lt;/span&gt;\nLocale-specific date\n&lt;span style=\" font-family: monospace; \" &gt;format.Date(&quot;2020-12-10&quot;, &quot;%x&quot;)&lt;/span&gt;\n2020-12-10\n\n\n\n\n\n\n\nSource: stat.berkeley | Dates and Times in R Stack Overflow",
     "crumbs": [
       "R",
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Dates and Times</span>"
@@ -108,7 +150,7 @@
     "href": "R_dates.html#time-formats",
     "title": "3  Dates and Times",
     "section": "3.2 Time Formats",
-    "text": "3.2 Time Formats\n\n\n\n\n\n\nString\nMeaning\nCode\nOutput\n\n\n\n\n%S\nSecond (00-59)\nformat.Date(as.POSIXct(\"2020-12-10 15:30:10\", tz = \"America/Chicago\"), \"%S\")\n10\n\n\n%M\nMinute (00-59)\nformat.Date(as.POSIXct(\"2020-12-10 15:30:10\", tz = \"America/Chicago\"), \"%M\")\n30\n\n\n%l\nHour, in 12-hour clock (1-12)\nformat.Date(as.POSIXct(\"2020-12-10 15:30:10\", tz = \"America/Chicago\"), \"%l\")\n3\n\n\n%I\nHour, in 12-hour clock (01-12)\nformat.Date(as.POSIXct(\"2020-12-10 15:30:10\", tz = \"America/Chicago\"), \"%I\")\n03\n\n\n%p\nam/pm\nformat.Date(as.POSIXct(\"2020-12-10 15:30:10\", tz = \"America/Chicago\"), \"%p\")\nPM\n\n\n%H\nHour, in 24-hour clock (00-23)\nformat.Date(as.POSIXct(\"2020-12-10 15:30:10\", tz = \"America/Chicago\"), \"%H\")\n15\n\n\n%X\nLocale-specific time\nformat.Date(as.POSIXct(\"2020-12-10 15:30:10\", tz = \"America/Chicago\"), \"%X\")\n15:30:10\n\n\n%c\nLocale-specific date and time\nformat.Date(as.POSIXct(\"2020-12-10 15:30:10\", tz = \"America/Chicago\"), \"%c\")\nThu Dec 10 15:30:10 2020\n\n\n%z\nOffset from GMT\nformat.Date(as.POSIXct(\"2020-12-10 15:30:10\", tz = \"America/Chicago\"), \"%z\")\n-0600\n\n\n%Z\nTime zone (character)\nformat.Date(as.POSIXct(\"2020-12-10 15:30:10\", tz = \"America/Chicago\"), \"%Z\")\nCST\n\n\n\n\n\n\n\n\n\nSource: stat.berkeley | Dates and Times in R Stack Overflow",
+    "text": "3.2 Time Formats\n\n\n\n\n\n\nString\nMeaning\nCode\nOutput\n\n\n\n\n&lt;span style=\" font-family: monospace; \" &gt;%S&lt;/span&gt;\nSecond (00-59)\n&lt;span style=\" font-family: monospace; \" &gt;format.Date(as.POSIXct(&quot;2020-12-10 15:30:10&quot;, tz = &quot;America/Chicago&quot;), &quot;%S&quot;)&lt;/span&gt;\n10\n\n\n&lt;span style=\" font-family: monospace; \" &gt;%M&lt;/span&gt;\nMinute (00-59)\n&lt;span style=\" font-family: monospace; \" &gt;format.Date(as.POSIXct(&quot;2020-12-10 15:30:10&quot;, tz = &quot;America/Chicago&quot;), &quot;%M&quot;)&lt;/span&gt;\n30\n\n\n&lt;span style=\" font-family: monospace; \" &gt;%l&lt;/span&gt;\nHour, in 12-hour clock (1-12)\n&lt;span style=\" font-family: monospace; \" &gt;format.Date(as.POSIXct(&quot;2020-12-10 15:30:10&quot;, tz = &quot;America/Chicago&quot;), &quot;%l&quot;)&lt;/span&gt;\n3\n\n\n&lt;span style=\" font-family: monospace; \" &gt;%I&lt;/span&gt;\nHour, in 12-hour clock (01-12)\n&lt;span style=\" font-family: monospace; \" &gt;format.Date(as.POSIXct(&quot;2020-12-10 15:30:10&quot;, tz = &quot;America/Chicago&quot;), &quot;%I&quot;)&lt;/span&gt;\n03\n\n\n&lt;span style=\" font-family: monospace; \" &gt;%p&lt;/span&gt;\nam/pm\n&lt;span style=\" font-family: monospace; \" &gt;format.Date(as.POSIXct(&quot;2020-12-10 15:30:10&quot;, tz = &quot;America/Chicago&quot;), &quot;%p&quot;)&lt;/span&gt;\nPM\n\n\n&lt;span style=\" font-family: monospace; \" &gt;%H&lt;/span&gt;\nHour, in 24-hour clock (00-23)\n&lt;span style=\" font-family: monospace; \" &gt;format.Date(as.POSIXct(&quot;2020-12-10 15:30:10&quot;, tz = &quot;America/Chicago&quot;), &quot;%H&quot;)&lt;/span&gt;\n15\n\n\n&lt;span style=\" font-family: monospace; \" &gt;%X&lt;/span&gt;\nLocale-specific time\n&lt;span style=\" font-family: monospace; \" &gt;format.Date(as.POSIXct(&quot;2020-12-10 15:30:10&quot;, tz = &quot;America/Chicago&quot;), &quot;%X&quot;)&lt;/span&gt;\n15:30:10\n\n\n&lt;span style=\" font-family: monospace; \" &gt;%c&lt;/span&gt;\nLocale-specific date and time\n&lt;span style=\" font-family: monospace; \" &gt;format.Date(as.POSIXct(&quot;2020-12-10 15:30:10&quot;, tz = &quot;America/Chicago&quot;), &quot;%c&quot;)&lt;/span&gt;\nThu Dec 10 15:30:10 2020\n\n\n&lt;span style=\" font-family: monospace; \" &gt;%z&lt;/span&gt;\nOffset from GMT\n&lt;span style=\" font-family: monospace; \" &gt;format.Date(as.POSIXct(&quot;2020-12-10 15:30:10&quot;, tz = &quot;America/Chicago&quot;), &quot;%z&quot;)&lt;/span&gt;\n-0600\n\n\n&lt;span style=\" font-family: monospace; \" &gt;%Z&lt;/span&gt;\nTime zone (character)\n&lt;span style=\" font-family: monospace; \" &gt;format.Date(as.POSIXct(&quot;2020-12-10 15:30:10&quot;, tz = &quot;America/Chicago&quot;), &quot;%Z&quot;)&lt;/span&gt;\nCST\n\n\n\n\n\n\n\nSource: stat.berkeley | Dates and Times in R Stack Overflow",
     "crumbs": [
       "R",
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Dates and Times</span>"
@@ -137,25 +179,58 @@
     ]
   },
   {
-    "objectID": "R_fonts.html#ttf-fonts",
-    "href": "R_fonts.html#ttf-fonts",
+    "objectID": "R_fonts.html",
+    "href": "R_fonts.html",
     "title": "4  Fonts",
     "section": "",
-    "text": "4.1.1 Install Packages\n\ninstall.packages(\"extrafont\")\nremotes::install_version(\"Rttf2pt1\", version = \"1.3.8\")\n\nAs of August 2022, if you just install {extrafont} as is, you will have a problem with importing fonts on Windows and there will be an error saying ‘No Font Name’. To solve this, install version 1.3.8 of {Rttf2pt1}.\n\nSources: Stack Overflow, May 2020 | how to resolve the “No Font Name” issue when importing fonts into R with extrafont and extrafont GitHub Issue #88 Jul 2021 | wzbillings comment\n\n\n\n4.1.2 Download All .ttf Fonts in C:\\Windows\\Fonts Folder\n\n#will import ALL fonts, takes 5-10 min\nextrafont::font_import() \n\n\n\n4.1.3 Download Other Fonts by File\n\nextrafont::font_import(paths = \"C:/PATH/TO/FOLDER/WITH/TTF\", prompt = FALSE) \n\n\n\n4.1.4 Use\nPrior to using fonts in R, need to load fonts in each session (this is like using library() or box::use() for a specific package)\n\n#quiet = FALSE to remove listing of of fonts \nextrafont::Loadfonts(devide = \"win\", quite = TRUE)",
+    "text": "4.1 ggplot\nFollow along by using the Ubuntu font. Download the family Ubuntu family and extract the zip file.",
     "crumbs": [
       "R",
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Fonts</span>"
     ]
   },
   {
-    "objectID": "R_fonts.html#otf-fonts",
-    "href": "R_fonts.html#otf-fonts",
+    "objectID": "R_fonts.html#ggplot",
+    "href": "R_fonts.html#ggplot",
     "title": "4  Fonts",
-    "section": "4.2 otf fonts",
-    "text": "4.2 otf fonts\n\n4.2.1 Install Packages\n\nissues with {showtext} package when in use\nother ggplot2 fonts are affect when actively using this package, making the fonts smaller and making line breaks much larger\n\n\ninstall.packages(\"showtext\")\nlibrary(showtext)\nshowtext_auto() \nfont_add(\"NewFont\", regular = \"C://PATH//TO//NewFont.otf\")\nfont_families()",
+    "section": "",
+    "text": "4.1.1 Set-Up R Studio\nStart by setting up your R studio environment by following these instructions:\n\ninstall the ragg, the systemfonts will also be installed package as it’s a dependency of ragg\nSet default graphics device to use AGG in Tools &gt; Global Options &gt; General &gt; Graphics\nreview available fonts using systemfonts::system_fonts()\n\nAt this point, all fonts that are installed on your machine are available for use.\n\n\n4.1.2 Convert to .ttf\nThere are many different types of font files, only .ttf will work with R & ggplot together. If the custom font you want to use is not a .ttf file, you will need to convert it.\nI used convertio.co website to convert font files to .ttf files.\n\n\n4.1.3 Install Fonts on Machine\nOpen a .ttf file. Click ‘install’ in top right hand corner. You need to do this for each font file you plan to use.\n\nWays to check to see if font has been installed on your machine:\n\nOpen up Word/PowerPoint/Excel and see if the new font can be used in the document\nControl Panel &gt; Appearance and Personalization &gt; Fonts and search for font in folder\n\n\n\n4.1.4 View Font Options in R\n\nmy_fonts &lt;- systemfonts::system_fonts()\n\nubuntu_fonts &lt;- my_fonts |&gt; \n  filter(family == \"Ubuntu\") |&gt;\n  select(name, family, style, weight, width, italic, monospace)\n\nubuntu_fonts\n\n# A tibble: 8 × 7\n  name                family style         weight width  italic monospace\n  &lt;chr&gt;               &lt;chr&gt;  &lt;chr&gt;         &lt;ord&gt;  &lt;ord&gt;  &lt;lgl&gt;  &lt;lgl&gt;    \n1 Ubuntu-BoldItalic   Ubuntu Bold Italic   bold   normal TRUE   FALSE    \n2 Ubuntu-Italic       Ubuntu Italic        normal normal TRUE   FALSE    \n3 Ubuntu-Light        Ubuntu Light         light  normal FALSE  FALSE    \n4 Ubuntu-LightItalic  Ubuntu Light Italic  light  normal TRUE   FALSE    \n5 Ubuntu-Medium       Ubuntu Medium        medium normal FALSE  FALSE    \n6 Ubuntu-MediumItalic Ubuntu Medium Italic medium normal TRUE   FALSE    \n7 Ubuntu-Regular      Ubuntu Regular       normal normal FALSE  FALSE    \n8 Ubuntu-Bold         Ubuntu Bold          bold   normal FALSE  FALSE    \n\n\n\n\n4.1.5 Use Fonts in ggplot\n\n4.1.5.1 Basic Styling (Bold/Italic)\n\ndf &lt;- tibble(x = rep(0, 4), y = c(4:1), \n  font = rep(\"Ubuntu\", 4), style = c(\"plain\", \"italic\", \"bold\", \"bold.italic\"))\n\nggplot(df, aes(x = x, y = y)) +\n  labs(title = \"Ubuntu Font in ggplot\") + \n  geom_text(aes(x = x-0.2, label = style, family = font, fontface = style), hjust = 0) + \n  geom_text(aes(family = font, fontface = style), \n    label = \"The quick brown fox jumps over the lazy dog. 1234567890\", hjust = 0 ) + \n  scale_y_continuous(limits = c(0.5, 4.5)) + \n  scale_x_continuous(limits = c(-0.2, 0.6)) + \n  theme_void() + theme(plot.title = element_text(family = \"Ubuntu\", face = \"plain\"))\n\n\n\n\n\n\n\n\n\n\n4.1.5.2 Weight Styling (Medium/Light)\nMany custom fonts will have a light or medium weight version of the font. In order to use these styles, the user must register these fonts separately. This needs to occur every session.\n\nsystemfonts::register_variant(\n  name = \"Ubuntu Medium\",\n  family = \"Ubuntu\",\n  weight = \"medium\"\n)\n\nAll font variants can be hoisted at the same time creating hoist_fonts() function. If you are using the fonts for ggplot2 items within a shiny app, please review Adding Custom Fonts to a Shiny App\n\nfont_hoist &lt;- function(family, silent = FALSE) {\n\n  font_df &lt;- system_fonts()\n\n  # filter to specified font family\n  font_varients &lt;- font_df[which(font_df$family == family), c(\"family\", \"style\", \"path\")]\n\n  font_specs &lt;- data.frame(\n    name = paste(font_varients$family, font_varients$style), # create unique variant name\n    plain = font_varients$path # rename to match arguments in register_font fnc\n  )\n\n  pwalk(as.list(font_specs), register_font)\n\n  if (!silent)  message(paste0(\"Hoisted \", nrow(font_specs), \" variants:\\n\",\n                               paste(font_specs$name, collapse = \"\\n\")))\n}\n\n\nfont_hoist(\"Ubuntu\")\n\nHoisted 8 variants:\nUbuntu Bold Italic\nUbuntu Italic\nUbuntu Light\nUbuntu Light Italic\nUbuntu Medium\nUbuntu Medium Italic\nUbuntu Regular\nUbuntu Bold\n\ndf &lt;- tibble(x = rep(0, 4), y = c(4:1), \n  font = c(\"Ubuntu Light\", \"Ubuntu\", \"Ubuntu Medium\", \"Ubuntu Bold\"), \n  style = rep(\"plain\", 4) )\n\nggplot(df, aes(x = x, y = y)) +\n  labs(title = \"Ubuntu Font Weights in ggplot\") + \n  geom_text(aes(x = x-0.2, label = font, family = font, fontface = style), hjust = 0) + \n  geom_text(aes(family = font, fontface = style), \n    label = \"The quick brown fox jumps over the lazy dog. 1234567890\", hjust = 0 ) + \n  scale_y_continuous(limits = c(0.5, 4.5)) + \n  scale_x_continuous(limits = c(-0.2, 0.6)) + \n  theme_void() + theme(plot.title = element_text(family = \"Ubuntu\", face = \"plain\"))\n\n\n\n\n\n\n\n\n\n\n\n4.1.6 Export to PNG\n\ngg &lt;- ggplot(mpg, aes(x = cty, y = hwy)) +\n  geom_point() + \n  facet_wrap(~class) + \n  labs(\n    title = \"a quick brown fox jumps over the lazy dog\",\n    subtitle = \"a quick brown fox jumps over the lazy dog\",\n    caption = \"a quick brown fox jumps over the lazy dog\"\n  ) +\n  theme_minimal(base_family = \"Ubuntu\") + \n  theme(\n    plot.title = element_text(family = \"Ubuntu Bold\"),\n    plot.subtitle = element_text(family = \"Ubuntu Medium\"),\n    plot.caption = element_text(family = \"Ubuntu Light\")\n  )\n\nggsave(\n  plot = gg,\n  filename = file.path(\"img/fonts-export-01.png\"),\n  dpi = 300,\n  height = 6,\n  width = 10,\n  units = \"in\",\n  bg = \"transparent\"\n)\n\n\n\n\n4.1.7 Export to PDF\nHoisting fonts (as listed above) works for displaying preview window and exporting to png files; however this will not work if saving image as pdf.\n\nggsave(\n  plot = gg,\n  filename = file.path(\"img/fonts-export-02.pdf\"),\n  device = cairo_pdf,\n  dpi = 300,\n  height = 6,\n  width = 10,\n  units = \"in\",\n  bg = \"transparent\"\n)\n\n\n\n\nIf you are interested in just bolding items, that can be done and work in pdf without extra steps:\n\ngg &lt;- gg + theme(plot.title = element_text(family = \"Ubuntu\", face = \"bold\"))\n\nggsave(\n  plot = gg,\n  filename = file.path(\"img/fonts-export-03.pdf\"),\n  device = cairo_pdf,\n  dpi = 300,\n  height = 6,\n  width = 10,\n  units = \"in\",\n  bg = \"transparent\"\n)\n\n\n\n\nIf you want to use other weights (medium or light), or if you wanted to use a bolded italic font – it can be done but it is a bit of a process.\n\n4.1.7.0.1 Step 1: Create Custom Font\nThe most important point of this step is changing the name of the font so it is not associated with the original family.\n\nSuperUser, How do you change a TTF font name\nGlyphr Studio\n\nI went to Glphyr Studio and uploaded Ubuntu-MediumItalic.ttf by clicking the ‘Load’ tab. Uploading takes a 1-2 minutes.\n \nOnce the font is uploaded, change the name of the font by clicking the Edit project and font info. Select the ‘Font’ tab and change the name, in this case to “UbuntuMediumItalic.”\n \nFinally, select file and export the otf file.\n \n\n\n4.1.7.0.2 Step 2: Install font\nOpen the otf file and click the install button. After this is complete, the ‘new’ font should show up in the Fonts on the control panel.\n\nAfter restarting the R environment, the custom font should also be displayed in the system fonts.\n\nsystemfonts::system_fonts() |&gt; \n  filter(str_detect(name, \"Ubuntu\")) |&gt; \n  arrange(family, name) |&gt; \n  select(name, family, style, weight, width, italic, monospace)\n\n# A tibble: 9 × 7\n  name                     family            style weight width italic monospace\n  &lt;chr&gt;                    &lt;chr&gt;             &lt;chr&gt; &lt;ord&gt;  &lt;ord&gt; &lt;lgl&gt;  &lt;lgl&gt;    \n1 Ubuntu-Bold              Ubuntu            Bold  bold   norm… FALSE  FALSE    \n2 Ubuntu-BoldItalic        Ubuntu            Bold… bold   norm… TRUE   FALSE    \n3 Ubuntu-Italic            Ubuntu            Ital… normal norm… TRUE   FALSE    \n4 Ubuntu-Light             Ubuntu            Light light  norm… FALSE  FALSE    \n5 Ubuntu-LightItalic       Ubuntu            Ligh… light  norm… TRUE   FALSE    \n6 Ubuntu-Medium            Ubuntu            Medi… medium norm… FALSE  FALSE    \n7 Ubuntu-MediumItalic      Ubuntu            Medi… medium norm… TRUE   FALSE    \n8 Ubuntu-Regular           Ubuntu            Regu… normal norm… FALSE  FALSE    \n9 UbuntuMediumItalicItalic UbuntuMediumItal… Ital… medium norm… TRUE   FALSE    \n\n\n\n\n4.1.7.0.3 Step 3: Use Custom Font Name\nThe fonts will NOT work in the ggplot preview or when saving as png – only in saved pdf files.\n\ngg &lt;- ggplot(mpg, aes(x = cty, y = hwy)) +\n  geom_point() + \n  facet_wrap(~class) + \n  labs(\n    title = \"a quick brown fox jumps over the lazy dog\",\n    subtitle = \"a quick brown fox jumps over the lazy dog\",\n    caption = \"a quick brown fox jumps over the lazy dog\"\n  ) +\n  theme_minimal(base_family = \"Ubuntu\") + \n  theme(\n    plot.title = element_text(family = \"UbuntuMediumItalic\"),\n    plot.subtitle = element_text(family = \"UbuntuMediumItalic\"),\n    plot.caption = element_text(family = \"UbuntuMediumItalic\")\n  )\n\ngg\n\n\n\n\n\n\n\nggsave(\n  plot = gg,\n  filename = \"img/fonts-export-D.pdf\", \n  device = cairo_pdf,\n  dpi = 300,\n  height = 6,\n  width = 10,\n  units = \"in\",\n  bg = \"transparent\"\n)\n\nCan’t get pdf preview to load when using the custom fonts; below is a screen shot of what the pdf looks like when opened.\n\n\n\n\n\n4.1.8 Additional Links\n\nKerning and Kerning in a Widening Gyre, 2025 (fonts in pdf)\n\nSetting up and debugging custom fonts, June Choe - 2021\nSelecting the correct image file type, 2021",
     "crumbs": [
       "R",
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Fonts</span>"
+    ]
+  },
+  {
+    "objectID": "R_fonts.html#ttf-extrafont",
+    "href": "R_fonts.html#ttf-extrafont",
+    "title": "4  Fonts",
+    "section": "4.2 ttf: extrafont",
+    "text": "4.2 ttf: extrafont\n\n4.2.1 Install Packages\n\ninstall.packages(\"extrafont\")\nremotes::install_version(\"Rttf2pt1\", version = \"1.3.8\")\n\nAs of August 2022, if you just install {extrafont} as is, you will have a problem with importing fonts on Windows and there will be an error saying ‘No Font Name’. To solve this, install version 1.3.8 of {Rttf2pt1}.\n\nSources: Stack Overflow, May 2020 | how to resolve the “No Font Name” issue when importing fonts into R with extrafont and extrafont GitHub Issue #88 Jul 2021 | wzbillings comment\n\n\n\n4.2.2 Download All .ttf Fonts in C:\\Windows\\Fonts Folder\n\n#will import ALL fonts, takes 5-10 min\nextrafont::font_import() \n\n\n\n4.2.3 Download Other Fonts by File\n\nextrafont::font_import(paths = \"C:/PATH/TO/FOLDER/WITH/TTF\", prompt = FALSE) \n\n\n\n4.2.4 Use\nPrior to using fonts in R, need to load fonts in each session (this is like using library() or box::use() for a specific package)\n\n#quiet = FALSE to remove listing of of fonts \nextrafont::Loadfonts(devide = \"win\", quite = TRUE)",
+    "crumbs": [
+      "R",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Fonts</span>"
+    ]
+  },
+  {
+    "objectID": "R_fonts.html#otf-showtext",
+    "href": "R_fonts.html#otf-showtext",
+    "title": "4  Fonts",
+    "section": "4.3 otf: showtext",
+    "text": "4.3 otf: showtext\n\n4.3.1 Install Packages\n\nissues with {showtext} package when in use\nother ggplot2 fonts are affect when actively using this package, making the fonts smaller and making line breaks much larger\n\n\ninstall.packages(\"showtext\")\nlibrary(showtext)\nshowtext_auto() \nfont_add(\"NewFont\", regular = \"C://PATH//TO//NewFont.otf\")\nfont_families()",
+    "crumbs": [
+      "R",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Fonts</span>"
+    ]
+  },
+  {
+    "objectID": "R_functions.html",
+    "href": "R_functions.html",
+    "title": "5  Functions",
+    "section": "",
+    "text": "5.1 Correlation",
+    "crumbs": [
+      "R",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Functions</span>"
     ]
   },
   {
@@ -192,6 +267,17 @@
     ]
   },
   {
+    "objectID": "R_impexp.html",
+    "href": "R_impexp.html",
+    "title": "6  Import/Export",
+    "section": "",
+    "text": "6.1 CSV",
+    "crumbs": [
+      "R",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Import/Export</span>"
+    ]
+  },
+  {
     "objectID": "R_impexp.html#csv",
     "href": "R_impexp.html#csv",
     "title": "6  Import/Export",
@@ -214,18 +300,33 @@
     ]
   },
   {
-    "objectID": "R_pkg.html#work-flow",
-    "href": "R_pkg.html#work-flow",
+    "objectID": "R_pkg.html",
+    "href": "R_pkg.html",
     "title": "7  Package Development",
-    "section": "7.1 Work Flow",
-    "text": "7.1 Work Flow\nStep 1: Document\nUpdate any documentation pages with devtools::document()\nStep 2: Check\nRun basic tests (and any unit tests created) using devtools::check()\nStep 3: Install\nInstall the working version of your package with devtools::install()\nThere is also the option to use devtools::load_all() which will load all functions in the package. However, this will not work if you are testing functions that use files in the /inst folder.\nStep 4: Restart R\nRestart your R session/environment to test the functions with a clean slate.\nCtrl + Shift + F10"
+    "section": "",
+    "text": "7.1 Work Flow\nStep 1: Document\nUpdate any documentation pages with devtools::document()\nStep 2: Check\nRun basic tests (and any unit tests created) using devtools::check()\nStep 3: Install\nInstall the working version of your package with devtools::install()\nThere is also the option to use devtools::load_all() which will load all functions in the package. However, this will not work if you are testing functions that use files in the /inst folder.\nStep 4: Restart R\nRestart your R session/environment to test the functions with a clean slate.\nCtrl + Shift + F10",
+    "crumbs": [
+      "R",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Package Development</span>"
+    ]
+  },
+  {
+    "objectID": "R_qrmd.html",
+    "href": "R_qrmd.html",
+    "title": "8  qmd/Rmd",
+    "section": "",
+    "text": "8.1 Loop with child (sub file)",
+    "crumbs": [
+      "R",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>qmd/Rmd</span>"
+    ]
   },
   {
     "objectID": "R_qrmd.html#loop-with-child-sub-file",
     "href": "R_qrmd.html#loop-with-child-sub-file",
     "title": "8  qmd/Rmd",
     "section": "",
-    "text": "Main-file: main.qmd\n\n\n\nSub-file: stateplot.qmd\n\n\n\nOutput: main.html\n\n\n\n\n\n\n## Individual States\n# results: asis #output raw md content \n\nSTATE_vec &lt;- c(\"AL\", \"AK\", \"AZ\", ...)\n\n#create empty list \nres &lt;- vector(\"list\", length = 3L)\n\n#run loop \nfor (i in 1:length(STATE_vec)) { \n  \n  #run sub w/ state, save in list\n  res[[i]] &lt;- knitr::knit_child(\n      \"stateplot.qmd\"      \n    , quiet = TRUE\n    , envir = environment()\n    )\n}\n\n#unlist and paste together w/ a break \ncat(unlist(res), sep = '\\n')\n\n\n\n\n#specify which state should be used\nthis_STATE &lt;- STATE_vec[i]  \n\n### `r this_STATE`\n\nall_data %&gt;% \n  filter(STATE == this_STATE) %&gt;% \n  plot_function()\n\n\n\n\nIndividual States\n\nAL\n\n\n\n\n\n\n\n\n\n\n\nAK\n\n\n\n\n\n\n\n\n\n\n\nAZ\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSources:\n\n\nStack Overvlow, Aug 2020 | R Markdown: loop with child.rmd\n\n\nHarvey Lieberman, Mar 2022 | knitr::knit_child with Quarto",
+    "text": "Main-file: main.qmd\n\n\n\nSub-file: stateplot.qmd\n\n\n\nOutput: main.html\n\n\n\n\n\n\n## Individual States\n# results: asis #output raw md content \n\nSTATE_vec &lt;- c(\"AL\", \"AK\", \"AZ\", ...)\n\n#create empty list \nres &lt;- vector(\"list\", length = 3L)\n\n#run loop \nfor (i in 1:length(STATE_vec)) { \n  \n  #run sub w/ state, save in list\n  res[[i]] &lt;- knitr::knit_child(\n      \"stateplot.qmd\"      \n    , quiet = TRUE\n    , envir = environment()\n    )\n}\n\n#unlist and paste together w/ a break \ncat(unlist(res), sep = '\\n')\n\n\n\n\n#specify which state should be used\nthis_STATE &lt;- STATE_vec[i]  \n\n### `r this_STATE`\n\nall_data %&gt;% \n  filter(STATE == this_STATE) %&gt;% \n  plot_function()\n\n\n\n\nIndividual States\n\n\nWarning: package 'ggplot2' was built under R version 4.5.2\n\n\n\nAL\n\n\n\n\n\n\n\n\n\n\n\nAK\n\n\n\n\n\n\n\n\n\n\n\nAZ\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSources:\n\n\nStack Overvlow, Aug 2020 | R Markdown: loop with child.rmd\n\n\nHarvey Lieberman, Mar 2022 | knitr::knit_child with Quarto",
     "crumbs": [
       "R",
       "<span class='chapter-number'>8</span>  <span class='chapter-title'>qmd/Rmd</span>"
@@ -262,6 +363,17 @@
     "crumbs": [
       "R",
       "<span class='chapter-number'>8</span>  <span class='chapter-title'>qmd/Rmd</span>"
+    ]
+  },
+  {
+    "objectID": "R_regex.html",
+    "href": "R_regex.html",
+    "title": "9  regex",
+    "section": "",
+    "text": "9.1 Select/Remove Items",
+    "crumbs": [
+      "R",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>regex</span>"
     ]
   },
   {
@@ -331,6 +443,17 @@
     ]
   },
   {
+    "objectID": "R_shiny.html",
+    "href": "R_shiny.html",
+    "title": "11  Shiny",
+    "section": "",
+    "text": "11.1 iframe sizing",
+    "crumbs": [
+      "R",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Shiny</span>"
+    ]
+  },
+  {
     "objectID": "R_shiny.html#iframe-sizing",
     "href": "R_shiny.html#iframe-sizing",
     "title": "11  Shiny",
@@ -372,6 +495,17 @@
     "crumbs": [
       "R",
       "<span class='chapter-number'>11</span>  <span class='chapter-title'>Shiny</span>"
+    ]
+  },
+  {
+    "objectID": "R_zother.html",
+    "href": "R_zother.html",
+    "title": "12  Other",
+    "section": "",
+    "text": "12.1 Plotly",
+    "crumbs": [
+      "R",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Other</span>"
     ]
   },
   {
@@ -419,6 +553,17 @@
     ]
   },
   {
+    "objectID": "R_datavizgen.html",
+    "href": "R_datavizgen.html",
+    "title": "13  Data Viz",
+    "section": "",
+    "text": "13.1 Axis Breaks",
+    "crumbs": [
+      "R data viz",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Data Viz</span>"
+    ]
+  },
+  {
     "objectID": "R_datavizgen.html#axis-breaks",
     "href": "R_datavizgen.html#axis-breaks",
     "title": "13  Data Viz",
@@ -445,7 +590,7 @@
     "href": "R_datavizgen.html#secondary-legend",
     "title": "13  Data Viz",
     "section": "13.3 Secondary Legend",
-    "text": "13.3 Secondary Legend\n\n13.3.1 NA Legend\nAdded automatically if NA is part of discrete legend, but is NOT included automatically for continuous legend.\n\nset.seed(20220713)\nstates_sf &lt;- urbnmapr::get_urbn_map(map = \"states\", sf = TRUE) %&gt;% \n  #set new CRS \n  sf::st_transform(states_sf, crs = 4326) %&gt;% \n  mutate(\n      val_dis = sample(c(\"A\", \"B\", \"C\"), nrow(.), TRUE)\n    , val_con = sample(-50:50          , nrow(.), TRUE)\n  ) %&gt;% \n  mutate(\n      val_dis = ifelse(state_abbv == \"MN\", NA, val_dis)\n    , val_con = ifelse(state_abbv == \"MN\", NA, val_con)\n  )\n\nold-style crs object detected; please recreate object with a recent sf::st_crs()\n\nggplot(states_sf) + geom_sf(aes(fill = val_dis))\n\n\n\n\n\n\n\nggplot(states_sf) + geom_sf(aes(fill = val_con))\n\n\n\n\n\n\n\n\nAdd NA legend to continuous plot:\n\nggplot(states_sf) + \n  geom_sf(aes(fill = val_con, color = \"\")) + \n  scale_fill_continuous(na.value = \"grey40\") + \n  scale_color_manual(values = NA) + \n  guides(\n      color = guide_legend(\"NA\", override.aes = list(fill = \"grey40\"))\n    , fill = guide_colorbar(order = 1)\n  ) \n\n\n\n\n\n\n\n\n\nSource: Stack Overflow, Mar 2017 | Add a box for NA values for continuous map\n\n\n\n13.3.2 2+ Special Values\n\nlibrary(cowplot) \n\n\nAttaching package: 'cowplot'\n\n\nThe following object is masked from 'package:lubridate':\n\n    stamp\n\n#special value for 'suppressed' data\nstates_sf &lt;- states_sf %&gt;% \n  mutate(val_con = ifelse(state_abbv == \"CA\", 999, val_con))\n\n## Main Plot \np.main &lt;- ggplot(states_sf) + \n  geom_sf( # non-special values, typical cont. color bar \n    data = filter(states_sf, val_con != 999 & !is.na(val_con))\n    , aes(fill = val_con), color = NA\n  ) + \n  geom_sf( # NA states (missing data) \n    data = filter(states_sf, is.na(val_con))\n    , fill = \"grey30\", color = NA\n  ) + \n  geom_sf( # Special values (suppressed data) \n    data = filter(states_sf, val_con == 999)\n    , fill = \"grey80\", color = NA\n  ) + \n  geom_sf( # add borders for all \n    fill = NA, color = \"white\"\n  ) \n\n## Dummy Plot for 2nd Legend \np.missup &lt;- tibble(val = c(0, 1), type = c(\"Missing\", \"Suppressed\")) %&gt;% \n  ggplot() + \n  geom_bar(aes(val, fill = type)) + \n  scale_fill_manual(name = NULL\n    , values = c(\"grey30\", \"grey80\")\n    , guide = guide_legend( byrow = TRUE)\n  ) + \n  theme(legend.spacing.y = unit(5, \"pt\"))\n\n## Pull out legends and combine \nleg.main &lt;- cowplot::get_legend(p.main)\nleg.sec  &lt;- cowplot::get_legend(p.missup)\nleg.final &lt;- cowplot::plot_grid(leg.main, leg.sec, ncol = 1, align = \"v\") \n\n## Remvoe main legend from plot \np.final  &lt;- p.main  + theme(legend.position = \"none\") \n\n## Combined everything \ncowplot::plot_grid(p.final, leg.final, nrow = 1, rel_widths = c(4, 1))\n\n\n\n\n\n\n\n\n\nQuick Link: Stack Overflow, Sep 2018 | Use cowplot for custom multiple legends arrangement\n\nOUTSTANDING\n\nhow to minimize space between main legend and secondary legend\ngrid::grid.draw(rbind(leg.main, leg.sec)) binds together without huge space, but need to figure out how to add to another ggplot item",
+    "text": "13.3 Secondary Legend\n\n13.3.1 NA Legend\nAdded automatically if NA is part of discrete legend, but is NOT included automatically for continuous legend.\n\nset.seed(20220713)\nstates_sf &lt;- urbnmapr::get_urbn_map(map = \"states\", sf = TRUE) %&gt;% \n  #set new CRS \n  sf::st_transform(states_sf, crs = 4326) %&gt;% \n  mutate(\n      val_dis = sample(c(\"A\", \"B\", \"C\"), nrow(.), TRUE)\n    , val_con = sample(-50:50          , nrow(.), TRUE)\n  ) %&gt;% \n  mutate(\n      val_dis = ifelse(state_abbv == \"MN\", NA, val_dis)\n    , val_con = ifelse(state_abbv == \"MN\", NA, val_con)\n  )\n\nold-style crs object detected; please recreate object with a recent sf::st_crs()\n\n\nWarning in CPL_crs_from_input(x): GDAL Message 1: CRS EPSG:2163 is deprecated.\nIts non-deprecated replacement EPSG:9311 will be used instead. To use the\noriginal CRS, set the OSR_USE_NON_DEPRECATED configuration option to NO.\n\nggplot(states_sf) + geom_sf(aes(fill = val_dis))\n\n\n\n\n\n\n\nggplot(states_sf) + geom_sf(aes(fill = val_con))\n\n\n\n\n\n\n\n\nAdd NA legend to continuous plot:\n\nggplot(states_sf) + \n  geom_sf(aes(fill = val_con, color = \"\")) + \n  scale_fill_continuous(na.value = \"grey40\") + \n  scale_color_manual(values = NA) + \n  guides(\n      color = guide_legend(\"NA\", override.aes = list(fill = \"grey40\"))\n    , fill = guide_colorbar(order = 1)\n  ) \n\n\n\n\n\n\n\n\n\nSource: Stack Overflow, Mar 2017 | Add a box for NA values for continuous map\n\n\n\n13.3.2 2+ Special Values\n\nlibrary(cowplot) \n\nWarning: package 'cowplot' was built under R version 4.5.2\n\n\n\nAttaching package: 'cowplot'\n\n\nThe following object is masked from 'package:lubridate':\n\n    stamp\n\n#special value for 'suppressed' data\nstates_sf &lt;- states_sf %&gt;% \n  mutate(val_con = ifelse(state_abbv == \"CA\", 999, val_con))\n\n## Main Plot \np.main &lt;- ggplot(states_sf) + \n  geom_sf( # non-special values, typical cont. color bar \n    data = filter(states_sf, val_con != 999 & !is.na(val_con))\n    , aes(fill = val_con), color = NA\n  ) + \n  geom_sf( # NA states (missing data) \n    data = filter(states_sf, is.na(val_con))\n    , fill = \"grey30\", color = NA\n  ) + \n  geom_sf( # Special values (suppressed data) \n    data = filter(states_sf, val_con == 999)\n    , fill = \"grey80\", color = NA\n  ) + \n  geom_sf( # add borders for all \n    fill = NA, color = \"white\"\n  ) \n\n## Dummy Plot for 2nd Legend \np.missup &lt;- tibble(val = c(0, 1), type = c(\"Missing\", \"Suppressed\")) %&gt;% \n  ggplot() + \n  geom_bar(aes(val, fill = type)) + \n  scale_fill_manual(name = NULL\n    , values = c(\"grey30\", \"grey80\")\n    , guide = guide_legend( byrow = TRUE)\n  ) + \n  theme(legend.spacing.y = unit(5, \"pt\"))\n\n## Pull out legends and combine \nleg.main &lt;- cowplot::get_legend(p.main)\nleg.sec  &lt;- cowplot::get_legend(p.missup)\nleg.final &lt;- cowplot::plot_grid(leg.main, leg.sec, ncol = 1, align = \"v\") \n\n## Remvoe main legend from plot \np.final  &lt;- p.main  + theme(legend.position = \"none\") \n\n## Combined everything \ncowplot::plot_grid(p.final, leg.final, nrow = 1, rel_widths = c(4, 1))\n\n\n\n\n\n\n\n\n\nQuick Link: Stack Overflow, Sep 2018 | Use cowplot for custom multiple legends arrangement\n\nOUTSTANDING\n\nhow to minimize space between main legend and secondary legend\ngrid::grid.draw(rbind(leg.main, leg.sec)) binds together without huge space, but need to figure out how to add to another ggplot item",
     "crumbs": [
       "R data viz",
       "<span class='chapter-number'>13</span>  <span class='chapter-title'>Data Viz</span>"
@@ -467,7 +612,7 @@
     "href": "R_datavizgen.html#math-expressions",
     "title": "13  Data Viz",
     "section": "13.5 Math Expressions",
-    "text": "13.5 Math Expressions\n\n13.5.1 Use quote()\n\nggplot(mpg, aes(displ, hwy))+geom_point()+\n  ggtitle(\n    quote(\n      alpha ^ 2 - frac(1, 10) + sum(n[i], i==1, N)\n    ) #end quote\n  ) #end of ggtitle\n\n\n\n\n\n\n\n\n\n\n13.5.2 Use TeX() from the latex2exp package\n\nmust be in a string\nmust be denoted as math mode with dollar signs\nmust include 2 backslashes for \\(\\LaTeX\\) commands\n\n\nlibrary(latex2exp)\nggplot(mpg, aes(displ, hwy))+geom_point()+\n  ggtitle(TeX(\n    \"$\\\\alpha^2 - \\\\frac{1}{10} + \\\\sum_{i}^N n_i$\"\n    ) #end TeX\n  ) #end ggtitle",
+    "text": "13.5 Math Expressions\n\n13.5.1 Use quote()\n\nggplot(mpg, aes(displ, hwy))+geom_point()+\n  ggtitle(\n    quote(\n      alpha ^ 2 - frac(1, 10) + sum(n[i], i==1, N)\n    ) #end quote\n  ) #end of ggtitle\n\n\n\n\n\n\n\n\n\n\n13.5.2 Use TeX() from the latex2exp package\n\nmust be in a string\nmust be denoted as math mode with dollar signs\nmust include 2 backslashes for \\(\\LaTeX\\) commands\n\n\nlibrary(latex2exp)\n\nWarning: package 'latex2exp' was built under R version 4.5.2\n\nggplot(mpg, aes(displ, hwy))+geom_point()+\n  ggtitle(TeX(\n    \"$\\\\alpha^2 - \\\\frac{1}{10} + \\\\sum_{i}^N n_i$\"\n    ) #end TeX\n  ) #end ggtitle",
     "crumbs": [
       "R data viz",
       "<span class='chapter-number'>13</span>  <span class='chapter-title'>Data Viz</span>"
@@ -489,7 +634,7 @@
     "href": "R_datavizgen.html#align-axes",
     "title": "13  Data Viz",
     "section": "13.7 Align Axes",
-    "text": "13.7 Align Axes\nSometimes I’m working on two different types of plots (like a bar chart and a scatter plot) that happen to have the same x-axis. I want to line up these axes so that when the plots are stacked the values correspond to the same date.\n\n13.7.1 gridExtra::grid.arrange() and cowplot::plot_grid()\n\n# two different bar charts\nA &lt;- ggplot(mpg, aes(class))+geom_bar()+coord_flip()+ylim(0, 109)\nB &lt;- ggplot(mpg, aes(drv))+geom_bar()+coord_flip()+ylim(0, 109)\n\nUsing grid.arrange command from the gridExtra package does not line up axes.\n\n#axes don't line up\ngridExtra::grid.arrange(A, B, ncol=1)\n\n\n\n\n\n\n\n\nUse grid.draw command from the grid package to left align graph edges .\n\n\nSource: Stack Overflow, Nov 2012 | left align two graph edges\n\nThe cowplot::plot_grid() function allows you to line up plots by a specific axis.\n#make plots into Grobs (grid graphical object)\ngA &lt;- ggplotGrob(A) \ngB &lt;- ggplotGrob(B)\ngrid::grid.draw(rbind(gA, gB))\ncowplot::plot_grid(A, B, ncol = 1, align = \"v\")\n\n\n\n\n\n\n\n\n\n\n\n\n13.7.2 Mixed Geoms\nScatter plots and bar charts will not line up automatically, even when using the grid.draw/plot_grid command detailed above. This is because their default limits are different given that the bar chart is centered on the value and the scatter plot is a single point on the value.\n\n#work with smaller subset of economics (ggplot2)\nstartdate &lt;- \"2014-06-01\"\neconomics_small &lt;- economics %&gt;%\n  filter(date &gt;= as.Date(startdate)) %&gt;%\n  arrange(date)\n\n\nA &lt;- ggplot(economics_small, aes(date, unemploy))+\n  geom_bar(stat=\"identity\")+\n  geom_vline(xintercept = as.Date(startdate), color=\"red\", size=2)\n\nWarning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.\nℹ Please use `linewidth` instead.\n\nB &lt;- ggplot(economics_small, aes(date, uempmed))+\n  geom_point()+geom_line()+\n  geom_vline(xintercept = as.Date(startdate), color=\"red\", size=2)\ngA &lt;- ggplotGrob(A) \ngB &lt;- ggplotGrob(B)\n#grid::grid.draw(rbind(gA, gB)) \ncowplot::plot_grid(A, B, ncol = 1, align = \"v\")\n\n\n\n\n\n\n\n\nIn order to line the up there a a couple of options.\n\n13.7.2.1 Fix xlim\nIf you make the limit the first x-value, the bar chart will not show up (remember it’s centered over the value).\n\nA &lt;- ggplot(economics_small, aes(date, unemploy))+\n  geom_bar(stat=\"identity\")+\n  geom_vline(xintercept = as.Date(startdate), color=\"red\", size=2)+\n  xlim(as.Date(startdate), NA)\nB &lt;- ggplot(economics_small, aes(date, uempmed))+\n  geom_point()+geom_line()+\n  geom_vline(xintercept = as.Date(startdate), color=\"red\", size=2)+\n  xlim(as.Date(startdate), NA)\ngA &lt;- ggplotGrob(A) \n\nWarning: Removed 1 rows containing missing values (`geom_bar()`).\n\ngB &lt;- ggplotGrob(B)\n#grid::grid.draw(rbind(gA, gB))\ncowplot::plot_grid(A, B, ncol = 1, align = \"v\")\n\nWarning: Removed 1 rows containing missing values (`geom_bar()`).\n\n\n\n\n\n\n\n\n\nThis can be fixed by adding a half unit to the x-axis (i.e. having the lower limit be half-unit lower than smallest x-value). In this case the unit is a month, so a half-unit would be ~15 days.\n\nHalfUnit &lt;- .5*(economics_small$date[2] - economics_small$date[1])\nHalfUnit\n\nTime difference of 15 days\n\n\n\nA &lt;- ggplot(economics_small, aes(date, unemploy))+\n  geom_bar(stat=\"identity\")+\n  geom_vline(xintercept = as.Date(startdate), color=\"red\", size=2)+\n  xlim(as.Date(startdate)-HalfUnit, NA)\nB &lt;- ggplot(economics_small, aes(date, uempmed))+\n  geom_point()+geom_line()+\n  geom_vline(xintercept = as.Date(startdate), color=\"red\", size=2)+\n  xlim(as.Date(startdate)-HalfUnit, NA)\ngA &lt;- ggplotGrob(A) \ngB &lt;- ggplotGrob(B)\n#grid::grid.draw(rbind(gA, gB))\ncowplot::plot_grid(A, B, ncol = 1, align = \"v\")\n\n\n\n\n\n\n\n\n\n\n13.7.2.2 Shift Bar Chart\nBar charts are automatically centered over the x-value. Bar charts (and any geom object) can be shifted by using position - position_nudge()). The shift needs to be half a unit on the x-axis, again here it is monthly data so a half unit would be ~15 days.\n\n\nSource: Stack Overflow, Aug 2016 | shift geom bar right\n\n\nA &lt;- ggplot(economics_small, aes(date, unemploy))+\n  geom_bar(stat=\"identity\", position = position_nudge(x = as.vector(HalfUnit)))+\n  geom_vline(xintercept = as.Date(startdate), color=\"red\", size=2)\nB &lt;- ggplot(economics_small, aes(date, uempmed))+\n  geom_point()+geom_line()+\n  geom_vline(xintercept = as.Date(startdate), color=\"red\", size=2)\ngA &lt;- ggplotGrob(A) \ngB &lt;- ggplotGrob(B)\n#grid::grid.draw(rbind(gA, gB))\ncowplot::plot_grid(A, B, ncol = 1, align = \"v\")",
+    "text": "13.7 Align Axes\nSometimes I’m working on two different types of plots (like a bar chart and a scatter plot) that happen to have the same x-axis. I want to line up these axes so that when the plots are stacked the values correspond to the same date.\n\n13.7.1 gridExtra::grid.arrange() and cowplot::plot_grid()\n\n# two different bar charts\nA &lt;- ggplot(mpg, aes(class))+geom_bar()+coord_flip()+ylim(0, 109)\nB &lt;- ggplot(mpg, aes(drv))+geom_bar()+coord_flip()+ylim(0, 109)\n\nUsing grid.arrange command from the gridExtra package does not line up axes.\n\n#axes don't line up\ngridExtra::grid.arrange(A, B, ncol=1)\n\n\n\n\n\n\n\n\nUse grid.draw command from the grid package to left align graph edges .\n\n\nSource: Stack Overflow, Nov 2012 | left align two graph edges\n\nThe cowplot::plot_grid() function allows you to line up plots by a specific axis.\n#make plots into Grobs (grid graphical object)\ngA &lt;- ggplotGrob(A) \ngB &lt;- ggplotGrob(B)\ngrid::grid.draw(rbind(gA, gB))\ncowplot::plot_grid(A, B, ncol = 1, align = \"v\")\n\n\n\n\n\n\n\n\n\n\n\n\n13.7.2 Mixed Geoms\nScatter plots and bar charts will not line up automatically, even when using the grid.draw/plot_grid command detailed above. This is because their default limits are different given that the bar chart is centered on the value and the scatter plot is a single point on the value.\n\n#work with smaller subset of economics (ggplot2)\nstartdate &lt;- \"2014-06-01\"\neconomics_small &lt;- economics %&gt;%\n  filter(date &gt;= as.Date(startdate)) %&gt;%\n  arrange(date)\n\n\nA &lt;- ggplot(economics_small, aes(date, unemploy))+\n  geom_bar(stat=\"identity\")+\n  geom_vline(xintercept = as.Date(startdate), color=\"red\", size=2)\n\nWarning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.\nℹ Please use `linewidth` instead.\n\nB &lt;- ggplot(economics_small, aes(date, uempmed))+\n  geom_point()+geom_line()+\n  geom_vline(xintercept = as.Date(startdate), color=\"red\", size=2)\ngA &lt;- ggplotGrob(A) \ngB &lt;- ggplotGrob(B)\n#grid::grid.draw(rbind(gA, gB)) \ncowplot::plot_grid(A, B, ncol = 1, align = \"v\")\n\n\n\n\n\n\n\n\nIn order to line the up there a a couple of options.\n\n13.7.2.1 Fix xlim\nIf you make the limit the first x-value, the bar chart will not show up (remember it’s centered over the value).\n\nA &lt;- ggplot(economics_small, aes(date, unemploy))+\n  geom_bar(stat=\"identity\")+\n  geom_vline(xintercept = as.Date(startdate), color=\"red\", size=2)+\n  xlim(as.Date(startdate), NA)\nB &lt;- ggplot(economics_small, aes(date, uempmed))+\n  geom_point()+geom_line()+\n  geom_vline(xintercept = as.Date(startdate), color=\"red\", size=2)+\n  xlim(as.Date(startdate), NA)\ngA &lt;- ggplotGrob(A) \n\nWarning: Removed 1 row containing missing values or values outside the scale range\n(`geom_bar()`).\n\ngB &lt;- ggplotGrob(B)\n#grid::grid.draw(rbind(gA, gB))\ncowplot::plot_grid(A, B, ncol = 1, align = \"v\")\n\nWarning: Removed 1 row containing missing values or values outside the scale range\n(`geom_bar()`).\n\n\n\n\n\n\n\n\n\nThis can be fixed by adding a half unit to the x-axis (i.e. having the lower limit be half-unit lower than smallest x-value). In this case the unit is a month, so a half-unit would be ~15 days.\n\nHalfUnit &lt;- .5*(economics_small$date[2] - economics_small$date[1])\nHalfUnit\n\nTime difference of 15 days\n\n\n\nA &lt;- ggplot(economics_small, aes(date, unemploy))+\n  geom_bar(stat=\"identity\")+\n  geom_vline(xintercept = as.Date(startdate), color=\"red\", size=2)+\n  xlim(as.Date(startdate)-HalfUnit, NA)\nB &lt;- ggplot(economics_small, aes(date, uempmed))+\n  geom_point()+geom_line()+\n  geom_vline(xintercept = as.Date(startdate), color=\"red\", size=2)+\n  xlim(as.Date(startdate)-HalfUnit, NA)\ngA &lt;- ggplotGrob(A) \ngB &lt;- ggplotGrob(B)\n#grid::grid.draw(rbind(gA, gB))\ncowplot::plot_grid(A, B, ncol = 1, align = \"v\")\n\n\n\n\n\n\n\n\n\n\n13.7.2.2 Shift Bar Chart\nBar charts are automatically centered over the x-value. Bar charts (and any geom object) can be shifted by using position - position_nudge()). The shift needs to be half a unit on the x-axis, again here it is monthly data so a half unit would be ~15 days.\n\n\nSource: Stack Overflow, Aug 2016 | shift geom bar right\n\n\nA &lt;- ggplot(economics_small, aes(date, unemploy))+\n  geom_bar(stat=\"identity\", position = position_nudge(x = as.vector(HalfUnit)))+\n  geom_vline(xintercept = as.Date(startdate), color=\"red\", size=2)\nB &lt;- ggplot(economics_small, aes(date, uempmed))+\n  geom_point()+geom_line()+\n  geom_vline(xintercept = as.Date(startdate), color=\"red\", size=2)\ngA &lt;- ggplotGrob(A) \ngB &lt;- ggplotGrob(B)\n#grid::grid.draw(rbind(gA, gB))\ncowplot::plot_grid(A, B, ncol = 1, align = \"v\")",
     "crumbs": [
       "R data viz",
       "<span class='chapter-number'>13</span>  <span class='chapter-title'>Data Viz</span>"
@@ -511,7 +656,7 @@
     "href": "R_datavizgen.html#geom-defaults",
     "title": "13  Data Viz",
     "section": "13.9 Geom Defaults",
-    "text": "13.9 Geom Defaults\nLook up geom’s default aes using: GeomName$default_aes$\nExample: geom_text()\n\nGeomText$default_aes\n\nAesthetic mapping: \n* `colour`     -&gt; \"black\"\n* `size`       -&gt; 3.88\n* `angle`      -&gt; 0\n* `hjust`      -&gt; 0.5\n* `vjust`      -&gt; 0.5\n* `alpha`      -&gt; NA\n* `family`     -&gt; \"\"\n* `fontface`   -&gt; 1\n* `lineheight` -&gt; 1.2",
+    "text": "13.9 Geom Defaults\nLook up geom’s default aes using: GeomName$default_aes$\nExample: geom_text()\n\nGeomText$default_aes\n\nAesthetic mapping: \n* `colour`     -&gt; `from_theme(colour %||% ink)`\n* `family`     -&gt; `from_theme(family)`\n* `size`       -&gt; `from_theme(fontsize)`\n* `angle`      -&gt; 0\n* `hjust`      -&gt; 0.5\n* `vjust`      -&gt; 0.5\n* `alpha`      -&gt; NA\n* `fontface`   -&gt; 1\n* `lineheight` -&gt; 1.2",
     "crumbs": [
       "R data viz",
       "<span class='chapter-number'>13</span>  <span class='chapter-title'>Data Viz</span>"
@@ -526,6 +671,16 @@
     "crumbs": [
       "R data viz",
       "<span class='chapter-number'>13</span>  <span class='chapter-title'>Data Viz</span>"
+    ]
+  },
+  {
+    "objectID": "accessibility.html",
+    "href": "accessibility.html",
+    "title": "14  Accessibility",
+    "section": "",
+    "text": "14.1 General Information/Checks",
+    "crumbs": [
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Accessibility</span>"
     ]
   },
   {
@@ -569,6 +724,16 @@
     ]
   },
   {
+    "objectID": "latex.html",
+    "href": "latex.html",
+    "title": "16  Latex",
+    "section": "",
+    "text": "16.1 Horizontal Spacing\nDefinition\nLaTeX\nmu*\nResult\n\n\n\n\nDefault\n&lt;code&gt; &lt;/code&gt;\n0\n$$f q$$\n\n\nThin\n&lt;code&gt;\\,&lt;/code&gt; or &lt;code&gt;\\thinspace&lt;/code&gt;\n3\n$$f \\, q$$\n\n\nMedium 1\n&lt;code&gt;\\:&lt;/code&gt;\n4\n$$f \\: q$$\n\n\nMedium 2\n&lt;code&gt;\\;&lt;/code&gt;\n5\n$$f \\; q$$\n\n\nHalf of current font size, 0.5em\n&lt;code&gt;\\enspace&lt;/code&gt;\n6\n$$f \\enspace q$$\n\n\nCurrent font size, 1em\n&lt;code&gt;\\quad&lt;/code&gt;\n18\n$$f \\quad q$$\n\n\n2x Current font size, 2em\n&lt;code&gt;\\qquad&lt;/code&gt;\n36\n$$f \\qquad q$$\n\n\nSpace in normal text\n&lt;code&gt;\\&nbsp;&lt;/code&gt;\nNA\n$$f \\ q$$\n\n\nNegative space\n&lt;code&gt;\\!&lt;/code&gt;\n-3\n$$f \\! q$$\n\n\n\n* 1em (current font size) = 18mu",
+    "crumbs": [
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Latex</span>"
+    ]
+  },
+  {
     "objectID": "latex.html#horizontal-spacing",
     "href": "latex.html#horizontal-spacing",
     "title": "16  Latex",
@@ -576,167 +741,6 @@
     "text": "Sources: math-linux | Latex Horizontal space: qquad, hspace, thinspace, enspace and Overleaf | Spacing in math mode",
     "crumbs": [
       "<span class='chapter-number'>16</span>  <span class='chapter-title'>Latex</span>"
-    ]
-  },
-  {
-    "objectID": "resources.html",
-    "href": "resources.html",
-    "title": "1  Resources",
-    "section": "",
-    "text": "1.1 Books",
-    "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Resources</span>"
-    ]
-  },
-  {
-    "objectID": "latex.html",
-    "href": "latex.html",
-    "title": "16  Latex",
-    "section": "",
-    "text": "16.1 Horizontal Spacing\n\\[\nlatext\n\\]\nDefinition\nLaTeX\nmu*\nResult\n\n\n\n\nDefault\n \n0\n$$f q$$\n\n\nThin\n\\, or \\thinspace\n3\n$$f \\, q$$\n\n\nMedium 1\n\\:\n4\n$$f \\: q$$\n\n\nMedium 2\n\\;\n5\n$$f \\; q$$\n\n\nHalf of current font size, 0.5em\n\\enspace\n6\n$$f \\enspace q$$\n\n\nCurrent font size, 1em\n\\quad\n18\n$$f \\quad q$$\n\n\n2x Current font size, 2em\n\\qquad\n36\n$$f \\qquad q$$\n\n\nSpace in normal text\n\\ \nNA\n$$f \\ q$$\n\n\nNegative space\n\\!\n-3\n$$f \\! q$$\n\n\n\n* 1em (current font size) = 18mu",
-    "crumbs": [
-      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Latex</span>"
-    ]
-  },
-  {
-    "objectID": "accessibility.html",
-    "href": "accessibility.html",
-    "title": "14  Accessibility",
-    "section": "",
-    "text": "14.1 General Information/Checks",
-    "crumbs": [
-      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Accessibility</span>"
-    ]
-  },
-  {
-    "objectID": "R_datavizgen.html",
-    "href": "R_datavizgen.html",
-    "title": "13  Data Viz",
-    "section": "",
-    "text": "13.1 Axis Breaks",
-    "crumbs": [
-      "R data viz",
-      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Data Viz</span>"
-    ]
-  },
-  {
-    "objectID": "R.html",
-    "href": "R.html",
-    "title": "R",
-    "section": "",
-    "text": "Versions",
-    "crumbs": [
-      "R"
-    ]
-  },
-  {
-    "objectID": "R_datamanage.html",
-    "href": "R_datamanage.html",
-    "title": "2  Data Management",
-    "section": "",
-    "text": "2.1 Differences",
-    "crumbs": [
-      "R",
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Data Management</span>"
-    ]
-  },
-  {
-    "objectID": "R_dates.html",
-    "href": "R_dates.html",
-    "title": "3  Dates and Times",
-    "section": "",
-    "text": "3.1 Date Formats",
-    "crumbs": [
-      "R",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Dates and Times</span>"
-    ]
-  },
-  {
-    "objectID": "R_fonts.html",
-    "href": "R_fonts.html",
-    "title": "4  Fonts",
-    "section": "",
-    "text": "4.1 ttf fonts",
-    "crumbs": [
-      "R",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Fonts</span>"
-    ]
-  },
-  {
-    "objectID": "R_functions.html",
-    "href": "R_functions.html",
-    "title": "5  Functions",
-    "section": "",
-    "text": "5.1 Correlation",
-    "crumbs": [
-      "R",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Functions</span>"
-    ]
-  },
-  {
-    "objectID": "R_impexp.html",
-    "href": "R_impexp.html",
-    "title": "6  Import/Export",
-    "section": "",
-    "text": "6.1 CSV",
-    "crumbs": [
-      "R",
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Import/Export</span>"
-    ]
-  },
-  {
-    "objectID": "R_pkg.html",
-    "href": "R_pkg.html",
-    "title": "7  Package Development",
-    "section": "",
-    "text": "7.1 Work Flow\nStep 1: Document\nUpdate any documentation pages with devtools::document()\nStep 2: Check\nRun basic tests (and any unit tests created) using devtools::check()\nStep 3: Install\nInstall the working version of your package with devtools::install()\nThere is also the option to use devtools::load_all() which will load all functions in the package. However, this will not work if you are testing functions that use files in the /inst folder.\nStep 4: Restart R\nRestart your R session/environment to test the functions with a clean slate.\nCtrl + Shift + F10",
-    "crumbs": [
-      "R",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Package Development</span>"
-    ]
-  },
-  {
-    "objectID": "R_qrmd.html",
-    "href": "R_qrmd.html",
-    "title": "8  qmd/Rmd",
-    "section": "",
-    "text": "8.1 Loop with child (sub file)",
-    "crumbs": [
-      "R",
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>qmd/Rmd</span>"
-    ]
-  },
-  {
-    "objectID": "R_regex.html",
-    "href": "R_regex.html",
-    "title": "9  regex",
-    "section": "",
-    "text": "9.1 Select/Remove Items",
-    "crumbs": [
-      "R",
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>regex</span>"
-    ]
-  },
-  {
-    "objectID": "R_shiny.html",
-    "href": "R_shiny.html",
-    "title": "11  Shiny",
-    "section": "",
-    "text": "11.1 iframe sizing",
-    "crumbs": [
-      "R",
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Shiny</span>"
-    ]
-  },
-  {
-    "objectID": "R_zother.html",
-    "href": "R_zother.html",
-    "title": "12  Other",
-    "section": "",
-    "text": "12.1 Plotly",
-    "crumbs": [
-      "R",
-      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Other</span>"
     ]
   }
 ]
